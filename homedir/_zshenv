@@ -1,0 +1,49 @@
+source ~/.yacoob-conf
+
+# locales
+export LC_MESSAGES=C
+export LANG=en_IE.UTF-8
+export LC_COLLATE=pl_PL.UTF-8
+export LC_CTYPE=pl_PL.UTF-8
+export LC_MESSAGES=C
+export TZ='Europe/Dublin'
+
+# misc
+export CVS_RSH=ssh
+export TMPDIR=/tmp
+export VISUAL=vim
+export EDITOR=vim
+export EMAIL="yacoob@gmail.com"
+#export TERM=xterm-256color
+
+# less settings
+export LESS="-SXRM"
+export LESSCHARSET="utf-8"
+
+# grep settings
+export GREP_OPTIONS="--color=auto"
+
+# python settings
+export PYTHONSTARTUP="${HOME}/.pythonstartup"
+
+# system/location dependent settings
+case "${OS}" in
+    "linux")
+        export  PATH=~/bin:/usr/local/bin:$PATH
+        ;;
+    "osx")
+        case "${LOCATION}" in
+            "office")
+                export BREWPATH=/usr/brew
+                ;;
+            *)
+                export BREWPATH=/usr/local
+                ;;
+        esac
+        export PATH=~/.bin:${BREWPATH}/sbin:${BREWPATH}/share/python:${BREWPATH}/bin:${PATH}
+        export MANPATH=${BREWPATH}/share/man:${MANPATH}
+        ;;
+esac
+
+# Location dependent confidential settings
+[[ -r ~/.zshenv.${LOCATION} ]] && source ~/.zshenv.${LOCATION}

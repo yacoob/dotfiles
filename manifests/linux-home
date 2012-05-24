@@ -1,0 +1,15 @@
+_cvsignore
+_emacs
+_emacs-lib
+_gitconfig
+_gvimrc
+_pythonstartup
+_screenrc
+_tmux.conf
+_tmux.conf.c-e
+_vim
+_vimrc
+=_zsh
+_zsh/functions
+_zshenv
+_zshrc

@@ -1,0 +1,13 @@
+"" GUI specific settings
+set lines=999                " maximize window by default, vertical
+set columns=999              " and horizontal
+set guioptions-=T            " don't show toolbar
+
+"" OS specific settings
+if $OS == "osx"
+  set guifont=Menlo\ Regular:h12
+  set fuoptions=maxvert,maxhorz      " use whole screen in fullscreen mode
+else
+  set guifont=DejaVu\ Sans\ Mono:h12
+  set guioptions-=m                  " no menu
+endif

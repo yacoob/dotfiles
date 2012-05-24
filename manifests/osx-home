@@ -1,0 +1,31 @@
+=_bin/
+_bin/gvim
+_bin/libmp3lame.dylib
+_bin/mount_archive
+_bin/mvim
+_bin/suspendme
+_bin/syncmusic
+_bin/syncphoto
+_bin/vim
+_cvsignore
+_emacs
+_emacs-lib
+_gitconfig
+_gvimrc
+_pythonstartup
+_screenrc
+_tmux.conf
+_tmux.conf.c-e
+_vim
+_vimrc
+=_zsh
+_zsh/functions
+_zshenv
+_zshrc
+=Library/Application\ Support/Quicksilver
+Library/Application\ Support/Quicksilver/Triggers.plist
+=Library/Keyboard\ Layouts
+Library/Keyboard\ Layouts/polish.keylayout
+=Library/Preferences
+>Library/Preferences/com.googlecode.iterm2.plist
+>Library/Preferences/com.irradiatedsoftware.SizeUp.plist

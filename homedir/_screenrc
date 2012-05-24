@@ -1,0 +1,21 @@
+altscreen off
+startup_message off
+vbell on
+activity        "activity in %n (%t)^G"
+bell_msg        "/!\\ bell in %n (%t) /!\\"
+
+# shortcuts for moving between regions
+bind j focus down
+bind k focus up
+bind K kill
+bind t focus top
+bind b focus bottom
+
+
+# hardstatus -> xterm title
+termcapinfo xterm*|Eterm|mlterm "hs:ts=\E]0;:fs=\007:ds=\E]0;screen\007"
+hardstatus off
+hardstatus string "*%h"
+
+# status line
+caption always "%?%F%{= kr}%:%{= kw}%?%H/%l   %{+u}%?%-Lw%?%{y}(%n*%f%t%?(%u)%?)%?%F%{r}%:%{w}%?%?%+Lw%? %-0<"

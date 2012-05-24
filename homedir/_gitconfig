@@ -1,0 +1,15 @@
+[user]
+	name = Jakub Turski
+	email = yacoob@gmail.com
+[color]
+	ui = true
+[core]
+	excludesfile = ~/.cvsignore
+[merge]
+	tool = vimdiff
+[diff]
+	tool = vimdiff
+[lastfm]
+	user = boocay
+	maxhours = 4
+	groupby = album

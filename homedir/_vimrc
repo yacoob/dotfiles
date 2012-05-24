@@ -1,0 +1,104 @@
+"" pathogen init
+call pathogen#infect()
+call pathogen#helptags()
+
+"" general settings
+set autoread                    " auto-reread file if modified outside and not in vim
+set autowrite                   " auto-write file before certain operations
+set backup                      " leave a backup file behind on save
+set encoding=utf-8              " utf-8 is default encoding
+set foldmethod=syntax           " use syntax rules for folding
+set formatoptions+=21           " use indent from second line of a paragraph, don't break line after single letter word
+set history=1000                " save more history
+set nocompatible                " choose no compatibility with legacy vi
+set ssop+=winpos,localoptions   " save window positions and local options for :mksession
+let mapleader = ","             " set the trigger key for plugins/shortcuts
+
+syntax enable
+filetype plugin indent on
+
+"" whitespace
+set backspace=indent,eol,start  " backspace through everything in insert mode
+set expandtab                   " use spaces, not tabs
+set list                        " highlight some special characters
+set listchars=tab:→┈,trail:┈,extends:»,precedes:«
+set nojoinspaces                " single dot spacing<D-`>
+set nowrap                      " don't wrap lines
+set tabstop=2 shiftwidth=2      " a tab is two spaces
+
+"" searching
+set gdefault                    " g flag by default for :s
+set hlsearch                    " highlight matches
+set ignorecase                  " searches are case insensitive...
+set incsearch                   " incremental searching
+set matchpairs+=<:>             " add < and > to list of "matching" brackets
+set showmatch                   " flash matching bracket
+set smartcase                   " ... unless they contain at least one capital letter
+
+"" ui
+set background=dark             " use dark versions of backgrounds
+set cmdheight=2                 " use two lines for command-line, useful to avoid hit-enter prompts
+set cursorline                  " highlight current line
+set clipboard=unnamed           " use native clipboard for c&p
+set display=lastline            " display as much as possible from last line in window
+set keymodel+=startsel          " shift+special key = selection
+set laststatus=2                " always show status line
+silent! set relativenumber              " use relative line numbers
+set ruler                       " display coords in bottom right corner
+set shortmess+=mrwI             " shorter indicators (like [RO]) in messages, no :intro on start
+set shortmess-=l                " verbose "x lines, y characters" in messages
+set showcmd                     " display incomplete commands
+set statusline=%n)\ %f\ \ [%-(%M%R%H%)]%=\ \ %P\ \ \ x:%-4.4c\ y:%-4.4l\ %-3b\ %y
+set wildmenu                    " use fancy tab-completion
+
+"" colors
+colorscheme jellybeans
+
+"" autocommands
+" remove trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+" different tabs for Python code
+autocmd BufRead *.py set tabstop=4 shiftwidth=4 textwidth=80
+" disable certain backup-related settings that make crontab complain
+au FileType crontab set nobackup nowritebackup
+
+"" keyboard mappings
+" stop using arrow keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+nnoremap j gj
+nnoremap k gk
+" easier navigation between split windows
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+" options togglers
+nmap <silent> <leader>h :set hlsearch! hlsearch?<CR>
+nmap <silent> <leader>l :set list! list?<CR>
+nmap <silent> <leader>n :set number! number?<CR>
+nmap <silent> <leader>p :set paste! paste?<CR>
+nmap <silent> <leader>r :set relativenumber! relativenumber?<CR>
+nmap <silent> <leader>w :set wrap! wrap?<CR>
+" buffer switch
+nnoremap <leader><leader> <c-^>
+" easier escape
+inoremap jj <ESC>
+" edit vimrc
+nmap <silent> <leader>rc :n $HOME/.vimrc<CR>
+" forgot your sudo?
+cmap w!! w !sudo tee % >/dev/null
+" change searches to use normal regexpes by default
+nnoremap / /\v
+vnoremap / /\v
+
+"" plugins
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_lazy_update = 1
+let g:Powerline_symbols = 'compatible'
+
+
+" system/location dependent settings
+silent! source ~/.vimrc.${LOCATION}

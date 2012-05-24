@@ -1,0 +1,19 @@
+if [[ ! "${1}" =~ [a-zA-Z.]+:[[:alpha:]/]+ ]]; then
+  echo "Bad hostdir: ${1}"
+  return 1
+fi
+local hostdir=${1}
+
+if [[ ! -d ${2} ]]; then
+  echo "Bad mountpoint: ${2}"
+  return 2
+fi
+local mountpoint=$2
+
+local mountopts="reconnect,workaround=nodelaysrv,transform_symlinks,follow_symlinks,auto_cache"
+sshfs ${USER}@${hostdir} ${mountpoint} -o ${mountopts}
+if [[ $? -eq 0 ]]; then
+  mount | grep "${hostdir}"
+else
+  echo "Failed to mount ${hostdir} on ${mountpoint} :("
+fi
