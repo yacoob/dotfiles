@@ -141,21 +141,14 @@ case "${OS}" in
         ;;
 esac
 
-case "${LOCATION}" in
-    "home")
-        alias s-server='synergys -f -n imac >& /dev/null &!'
-        alias s-client='synergyc -f -n mbp dom-imacoob >& /dev/null &!'
-        alias s-stop='killall synergys; killall synergyc'
-        ;;
-esac
-
-# Location dependent confidential settings
-[[ -r ~/.zshrc.${LOCATION} ]] && source ~/.zshrc.${LOCATION}
-
 # Tab-completion
 autoload -Uz compinit
 [[ -d "${ZDOTDIR:-$HOME}/.zcompdumps" ]] || mkdir -m 0700 -p "${ZDOTDIR:-$HOME}/.zcompdumps"
 compinit -i -d "${ZDOTDIR:-$HOME}/.zcompdumps/${HOST%%.*}-$ZSH_VERSION"
+
+# Bring in bash compability layer for tabcompletions
+autoload -Uz bashcompinit
+bashcompinit
 
 zstyle ':completion::complete:cd::' tag-order '! users' -
 zstyle ':completion::complete:-command-::' tag-order '! users' -
@@ -179,3 +172,6 @@ zstyle ':completion:*:*:*:*:hosts' list-colors '=*=30;41'
 zstyle ':completion:*:*:*:*:users' list-colors '=*=$color[green]=$color[red]'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
+
+# Location dependent confidential settings
+[[ -r ~/.zshrc.${LOCATION} ]] && source ~/.zshrc.${LOCATION}
