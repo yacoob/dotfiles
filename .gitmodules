@@ -1,6 +1,3 @@
-[submodule "homedir/_vim/bundle/inkpot"]
-	path = homedir/_vim/bundle/inkpot
-	url = https://github.com/ciaranm/inkpot
 [submodule "homedir/_vim/bundle/ctrlp"]
 	path = homedir/_vim/bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
@@ -22,3 +19,6 @@
 [submodule "homedir/_vim/bundle/neocomplcache"]
 	path = homedir/_vim/bundle/neocomplcache
 	url = https://github.com/Shougo/neocomplcache.git
+[submodule "homedir/_vim/bundle/golden-ratio"]
+	path = homedir/_vim/bundle/golden-ratio
+	url = https://github.com/roman/golden-ratio
