@@ -48,9 +48,9 @@ typeset -U path
 cdpath=(. ~)
 DIRSTACKSIZE=20
 
-# Autoload zsh functions.
-fpath=(~/.zsh/functions $fpath)
-autoload -U ~/.zsh/functions/*(:t)
+# Autoload zsh functions, including site-specific
+fpath=(~/.zsh/functions* $fpath)
+autoload -U ~/.zsh/functions*/*(:t)
 
 fignore=(\~)
 
