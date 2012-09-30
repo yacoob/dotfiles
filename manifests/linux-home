@@ -1,6 +1,4 @@
 _cvsignore
-_emacs
-_emacs-lib
 _gitconfig
 _gvimrc
 _pythonstartup

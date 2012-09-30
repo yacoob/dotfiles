@@ -8,8 +8,6 @@ _bin/syncmusic
 _bin/syncphoto
 _bin/vim
 _cvsignore
-_emacs
-_emacs-lib
 _gitconfig
 _gvimrc
 _pythonstartup

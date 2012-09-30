@@ -5,8 +5,6 @@ _bin/mvim
 _bin/suspendme
 _bin/vim
 _cvsignore
-_emacs
-_emacs-lib
 _gvimrc
 _pythonstartup
 _screenrc
