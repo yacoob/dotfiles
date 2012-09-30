@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CMCrashReporterIgnoreCrashes</key>
+	<false/>
 	<key>Center</key>
 	<dict>
 		<key>ComboCode</key>
@@ -87,7 +89,7 @@
 	<key>MenuEnabled</key>
 	<false/>
 	<key>MinutesSaved</key>
-	<real>6</real>
+	<real>30</real>
 	<key>Next Monitor</key>
 	<dict>
 		<key>ComboCode</key>
@@ -124,7 +126,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2011-07-24T20:22:57Z</date>
+	<date>2012-09-29T17:12:43Z</date>
 	<key>ShortcutsEnabled</key>
 	<true/>
 	<key>ShowPrefsOnNextStart</key>
@@ -216,6 +218,6 @@
 	<key>WebKitStandardFont</key>
 	<string>Lucida Grande</string>
 	<key>WindowsMoved</key>
-	<integer>135</integer>
+	<integer>619</integer>
 </dict>
 </plist>

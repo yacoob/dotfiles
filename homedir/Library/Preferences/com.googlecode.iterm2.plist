@@ -1767,7 +1767,7 @@
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>426 420 214 309 0 0 1920 1178 </string>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>929 77 445 270 0 0 1440 878 </string>
+	<string>1110 163 445 270 0 0 1920 1178 </string>
 	<key>NSWindow Frame Preferences</key>
 	<string>270 157 800 433 0 0 1920 1200 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
@@ -2072,11 +2072,11 @@
 			<key>Name</key>
 			<string>hell</string>
 			<key>Non Ascii Font</key>
-			<string>Menlo-Regular 12</string>
+			<string>SourceCodePro-Regular 12</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Menlo-Regular 12</string>
+			<string>SourceCodePro-Regular 12</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Right Option Key Sends</key>
@@ -2420,11 +2420,11 @@
 			<key>Name</key>
 			<string>magi.i</string>
 			<key>Non Ascii Font</key>
-			<string>Menlo-Regular 12</string>
+			<string>SourceCodePro-Regular 12</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Menlo-Regular 12</string>
+			<string>SourceCodePro-Regular 12</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Right Option Key Sends</key>
@@ -2768,11 +2768,11 @@
 			<key>Name</key>
 			<string>terminal</string>
 			<key>Non Ascii Font</key>
-			<string>Menlo-Regular 12</string>
+			<string>SourceCodePro-Regular 12</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Menlo-Regular 12</string>
+			<string>SourceCodePro-Regular 12</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Right Option Key Sends</key>
@@ -3116,11 +3116,11 @@
 			<key>Name</key>
 			<string>v</string>
 			<key>Non Ascii Font</key>
-			<string>Menlo-Regular 12</string>
+			<string>SourceCodePro-Regular 12</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Menlo-Regular 12</string>
+			<string>SourceCodePro-Regular 12</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Right Option Key Sends</key>
@@ -3214,7 +3214,7 @@
 	<key>SUFeedURL</key>
 	<string>http://iterm2.googlecode.com/svn/trunk/appcasts/final.xml</string>
 	<key>SULastCheckTime</key>
-	<date>2011-12-24T17:32:56Z</date>
+	<date>2012-09-30T22:40:23Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -3262,7 +3262,7 @@
 		</dict>
 	</dict>
 	<key>UKCrashReporterLastCrashReportDate</key>
-	<real>1299836288</real>
+	<real>1337117696</real>
 	<key>URLHandlers</key>
 	<dict/>
 	<key>URLHandlersByGuid</key>
