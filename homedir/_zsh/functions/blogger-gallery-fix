@@ -1,0 +1,4 @@
+#set -x
+grep -Eo '"http://[^"]+s1600[^"]+"' - | while read url; do echo -n '<div class="picture">'; echo "<a href=${url}></a></div>"; done | sed '2 i\
+<!--more--><br />\
+'
