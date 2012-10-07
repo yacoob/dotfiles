@@ -76,6 +76,7 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 " options togglers
+nmap <silent> <leader>f :set fullscreen! fullscreen?<CR>
 nmap <silent> <leader>g :GoldenRatioToggle<CR>
 nmap <silent> <leader>h :set hlsearch! hlsearch?<CR>
 nmap <silent> <leader>l :set list! list?<CR>

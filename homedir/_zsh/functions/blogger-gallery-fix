@@ -1,4 +1,14 @@
-#set -x
-grep -Eo '"http://[^"]+s1600[^"]+"' - | while read url; do echo -n '<div class="picture">'; echo "<a href=${url}></a></div>"; done | sed '2 i\
-<!--more--><br />\
+grep -Eo '"http://[^"]+s1600[^"]+"' - | while read url; do
+  local mini=$(echo ${url} | sed 's/s1600/s320-p/');
+  echo -n '<div class="picture">';
+  echo -n "<a href=${url}>";
+  echo -n "<img src=${mini}/>";
+  echo "</a></div>";
+done | sed '
+1 i\
+<div class="gallery">
+2 i\
+<!--more-->
+$ a\
+</div>\
 '
