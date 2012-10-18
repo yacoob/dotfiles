@@ -1,6 +1,5 @@
-"" pathogen init
-call pathogen#infect()
-call pathogen#helptags()
+"" vundle init
+source ~/.vim/bundles.vim
 
 "" general settings
 set autoread                    " auto-reread file if modified outside and not in vim
