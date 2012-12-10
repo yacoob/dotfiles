@@ -1,0 +1,1 @@
+syncdir -machine spacecore -share worek -localdir ~/Music/iTunes/muzyka $1

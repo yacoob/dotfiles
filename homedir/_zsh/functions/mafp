@@ -1,0 +1,5 @@
+local machine=${1:-spacecore}
+local resource=${2:-archiwum}
+local ruser=${3:-$USER}
+
+osascript -e "try" -e "mount volume \"afp://${ruser}@${machine}/${resource}\"" -e "end try"

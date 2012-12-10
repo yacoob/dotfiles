@@ -1,3 +1,0 @@
-#!/bin/sh
-mount_archive
-rsync --delete --size-only -i -r -z $1 ~/Music/iTunes/muzyka/ /Volumes/archiwum/muzyka/

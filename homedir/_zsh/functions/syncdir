@@ -1,0 +1,12 @@
+set -x
+local -A opts;
+zparseopts -D -A opts localdir:- machine:- share:-
+
+if [[ -z "${opts[-localdir]}" || -z "${opts[-machine]}" || -z "${opts[-share]}" ]]; then
+  echo "Please provide all of -localdir, -machine and -share options."
+  return 1
+fi
+local remotedir=${opts[-localdir]##*/}
+
+mafp ${opts[-machine]} ${opts[-share]}
+rsync --delete --size-only -i -r -z $* ${opts[-localdir]}/ /Volumes/${opts[-share]}/${remotedir}/

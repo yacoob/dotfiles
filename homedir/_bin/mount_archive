@@ -1,2 +1,0 @@
-#!/bin/sh
-osascript -e "try" -e "mount volume \"afp://yacoob@spacecore/archiwum\"" -e "end try"
