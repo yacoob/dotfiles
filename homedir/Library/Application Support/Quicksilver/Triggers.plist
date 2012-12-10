@@ -146,6 +146,20 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>QSiTunesEQToggleTrigger</string>
+			<key>command</key>
+			<string>QSiTunesEQToggleCommand</string>
+			<key>enabled</key>
+			<false/>
+			<key>name</key>
+			<string>Toggle iTunes Equalizer</string>
+			<key>set</key>
+			<string>iTunes</string>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>QSiTunesSetRating1</string>
 			<key>command</key>
 			<string>QSiTunesSetRating1</string>
