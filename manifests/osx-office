@@ -1,10 +1,14 @@
 =_bin/
 _bin/gvim
+_bin/gvimdiff
 _bin/libmp3lame.dylib
 _bin/mvim
 _bin/suspendme
 _bin/vim
+_bin/vimdiff
 _cvsignore
+_gitconfig
+_gitconfig.osx
 _gvimrc
 _pythonstartup
 _screenrc
@@ -25,8 +29,6 @@ Library/Application\ Support/Quicksilver/Triggers.plist
 >Library/Fonts/SourceCodePro-Light.otf
 >Library/Fonts/SourceCodePro-Regular.otf
 >Library/Fonts/SourceCodePro-Semibold.otf
-=Library/Keyboard\ Layouts
-Library/Keyboard\ Layouts/polish.keylayout
 =Library/Preferences
 >Library/Preferences/com.googlecode.iterm2.plist
 >Library/Preferences/com.irradiatedsoftware.SizeUp.plist

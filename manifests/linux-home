@@ -1,5 +1,7 @@
 _cvsignore
 _gitconfig
+_gitconfig.linux
+_gitconfig.home
 _gvimrc
 _pythonstartup
 _screenrc
