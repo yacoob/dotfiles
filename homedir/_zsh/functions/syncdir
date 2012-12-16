@@ -1,4 +1,3 @@
-set -x
 local -A opts;
 zparseopts -D -A opts localdir:- machine:- share:-
 
