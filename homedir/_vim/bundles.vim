@@ -16,5 +16,6 @@ Bundle 'roman/golden-ratio'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
+Bundle 'https://github.com/jnwhiteh/vim-golang.git'
 
 filetype plugin indent on
