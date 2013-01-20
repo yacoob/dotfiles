@@ -56,12 +56,12 @@ fignore=(\~)
 
 LISTMAX=0
 LOGCHECK=60
-HISTSIZE=200
+HISTSIZE=20000
 HISTFILE=~/.zsh_history
 MAILCHECK=1
 READNULLCMD=less
 REPORTTIME=15
-SAVEHIST=200
+SAVEHIST=20000
 TIMEFMT='%J  %*U user %*S system %P cpu (%*E wasted time).'
 watch=(all)
 WATCHFMT='%n %a %l from %m at %t.'
@@ -85,6 +85,7 @@ setopt \
   hist_find_no_dups \
   hist_ignore_all_dups \
   hist_ignore_dups \
+  hist_ignore_space \
   hist_reduce_blanks \
   HIST_save_no_dups \
   inc_append_history \
