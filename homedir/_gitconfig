@@ -6,6 +6,8 @@
 	user = boocay
 	maxhours = 4
 	groupby = album
+[push]
+	default = simple
 [include]
 # wildcards don't work, but nonexisting files are ignored :|
 	path = .gitconfig.osx
