@@ -115,14 +115,11 @@ typeset -ga preexec_functions
 typeset -ga precmd_functions
 typeset -ga chpwd_functions
 
-# Append git functions needed for prompt.
-#preexec_functions+='preexec_update_git_vars'
-#precmd_functions+='precmd_update_git_vars'
-#chpwd_functions+='chpwd_update_git_vars'
-
 # vcs info
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git svn
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git*' formats "%s  %r/%S %b (%a) %m%u%c "
+zstyle ':vcs_info:*' check-for-changes true
 precmd_functions+='vcs_info'
 
 # Terminal title
@@ -132,7 +129,6 @@ precmd_functions+='precmd_term_title'
 # Prompt
 PROMPT=$'%(!.%F{red}☠%F{default}.%F{green}❤%F{default}) [%(2L.+.)%n%F{red}@%F{default}%m] [%F{cyan}%~%F{default}] [%F{red}%T %w%F{default}] [%F{yellow}%!%F{default}] [%(?.-.%F{cyan}%?%F{default})]
 %(!.#.$) '
-#RPROMPT=$'%F{yellow}$(prompt_git_info)%F{default}'
 RPROMPT=$'%F{yellow}${vcs_info_msg_0_}%F{default}'
 
 # Umask
