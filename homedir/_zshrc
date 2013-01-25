@@ -31,6 +31,7 @@ alias cd/='cd /'
 
 alias dlb='rm  -i (.*~|*~)'
 alias dlbf='rm -f (.*~|*~)'
+alias pwg='pwgen -c -n -y -s -B 12 1'
 alias rdlbf='find . -iname \*~ | xargs rm -f'
 alias sl='screen -list'
 
@@ -128,6 +129,7 @@ precmd_functions+='precmd_term_title'
 PROMPT=$'%(!.%F{red}☠%F{default}.%F{green}❤%F{default}) [%(2L.+.)%n%F{red}@%F{default}%m] [%F{cyan}%~%F{default}] [%F{red}%T %w%F{default}] [%F{yellow}%!%F{default}] [%(?.-.%F{cyan}%?%F{default})]
 %(!.#.$) '
 RPROMPT=$'%F{yellow}$(prompt_git_info)%F{default}'
+
 
 # Umask
 umask 027
