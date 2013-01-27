@@ -132,7 +132,7 @@ precmd_functions+='precmd_term_title'
 # Prompt
 PROMPT=$'%(!.%F{red}☠%F{default}.%F{green}❤%F{default}) [%(2L.+.)%n%F{red}@%F{default}%m] [%F{cyan}%~%F{default}] [%F{red}%T %w%F{default}] [%F{yellow}%!%F{default}] [%(?.-.%F{cyan}%?%F{default})]
 %(!.#.$) '
-RPROMPT=$'%F{yellow}${vcs_info_msg_0_}%F{default}'
+RPROMPT=$'%(?,,%F{red}(╯°□°）╯︵┻━┻ %F{default}) ${vcs_info_msg_0_}'
 
 # Umask
 umask 027
@@ -181,3 +181,6 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # Location dependent confidential settings
 [[ -r ~/.zshrc.${LOCATION} ]] && source ~/.zshrc.${LOCATION}
+
+# A dummy command that returns positive exit status
+:
