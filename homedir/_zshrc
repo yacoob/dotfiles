@@ -116,10 +116,15 @@ typeset -ga preexec_functions
 typeset -ga precmd_functions
 typeset -ga chpwd_functions
 
-# Append git functions needed for prompt.
-preexec_functions+='preexec_update_git_vars'
-precmd_functions+='precmd_update_git_vars'
-chpwd_functions+='chpwd_update_git_vars'
+# VCS info for right side prompt
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' stagedstr '%F{yellow}●'
+zstyle ':vcs_info:*' unstagedstr '%F{red}●'
+zstyle ':vcs_info:*' formats '%u%c %F{green}%b %F{default}'
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' get-revision  true
+precmd_functions+='vcs_info'
 
 # Terminal title
 preexec_functions+='preexec_term_title'
@@ -128,7 +133,7 @@ precmd_functions+='precmd_term_title'
 # Prompt
 PROMPT=$'%(!.%F{red}☠%F{default}.%F{green}❤%F{default}) [%(2L.+.)%n%F{red}@%F{default}%m] [%F{cyan}%~%F{default}] [%F{red}%T %w%F{default}] [%F{yellow}%!%F{default}] [%(?.-.%F{cyan}%?%F{default})]
 %(!.#.$) '
-RPROMPT=$'%F{yellow}$(prompt_git_info)%F{default}'
+RPROMPT=$'%(?,,%F{red}(╯°□°）╯︵┻━┻ %F{default}) ${vcs_info_msg_0_}'
 
 
 # Umask
@@ -178,3 +183,6 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # Location dependent confidential settings
 [[ -r ~/.zshrc.${LOCATION} ]] && source ~/.zshrc.${LOCATION}
+
+# A dummy command that returns positive exit status
+:
