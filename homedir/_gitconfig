@@ -7,7 +7,7 @@
 	maxhours = 4
 	groupby = album
 [push]
-	default = simple
+	default = matching
 [include]
 # wildcards don't work, but nonexisting files are ignored :|
 	path = .gitconfig.osx
