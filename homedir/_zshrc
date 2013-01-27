@@ -115,11 +115,14 @@ typeset -ga preexec_functions
 typeset -ga precmd_functions
 typeset -ga chpwd_functions
 
-# vcs info
+# VCS info for right side prompt
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git*' formats "%s  %r/%S %b (%a) %m%u%c "
+zstyle ':vcs_info:*' stagedstr '%F{yellow}●'
+zstyle ':vcs_info:*' unstagedstr '%F{red}●'
+zstyle ':vcs_info:*' formats '%u%c %F{green}%b %F{default}'
 zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' get-revision  true
 precmd_functions+='vcs_info'
 
 # Terminal title
