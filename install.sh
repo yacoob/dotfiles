@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-#set -x
 shopt -s extglob
 
 
@@ -100,11 +99,7 @@ if [[ -z "${OS}" ]] || [[ -z "${LOCATION}" ]] || [[ -z "${CONFDIR}" ]]; then
 fi
 BASEDIR=${CONFDIR}/homedir
 TARGETDIR=${HOME}
-#TARGETDIR=/tmp/bubu
 cd ${BASEDIR}
-
-# Update config.
-#git pull -q || croak "Remote repository not set up." 1
 
 # Grab a manifest.
 MANIFEST=${CONFDIR}/manifests/${OS}-${LOCATION}
