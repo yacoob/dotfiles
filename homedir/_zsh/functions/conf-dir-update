@@ -1,3 +1,4 @@
 cd ${CONFDIR}
 git pull && touch ~/.conf-last-update
+conf-prompt-helper
 cd -
