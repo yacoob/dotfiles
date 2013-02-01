@@ -114,7 +114,7 @@ alias mmv='noglob zmv -W'
 # Enable auto-execution of functions.
 typeset -ga preexec_functions
 typeset -ga precmd_functions
-typeset -ga chpwd_functions
+typeset -ga periodic_functions
 
 # VCS info for right side prompt
 autoload -Uz vcs_info
