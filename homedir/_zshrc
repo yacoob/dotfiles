@@ -132,7 +132,7 @@ precmd_functions+='precmd_term_title'
 
 # Conf dir updates
 PERIOD=300
-periodic_functions=+'conf-prompt-helper'
+periodic_functions+='conf-prompt-helper'
 
 # Prompt
 PROMPT=$'%(!.%F{red}☠%F{default}.%F{green}❤%F{default}) [%(2L.+.)%n%F{red}@%F{default}%m] [%F{cyan}%~%F{default}] [%F{red}%T %w%F{default}] [%F{yellow}%!%F{default}] [%(?.-.%F{cyan}%?%F{default})]
