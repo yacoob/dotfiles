@@ -130,10 +130,14 @@ precmd_functions+='vcs_info'
 preexec_functions+='preexec_term_title'
 precmd_functions+='precmd_term_title'
 
+# Conf dir updates
+PERIOD=300
+periodic_functions=+'conf-prompt-helper'
+
 # Prompt
 PROMPT=$'%(!.%F{red}☠%F{default}.%F{green}❤%F{default}) [%(2L.+.)%n%F{red}@%F{default}%m] [%F{cyan}%~%F{default}] [%F{red}%T %w%F{default}] [%F{yellow}%!%F{default}] [%(?.-.%F{cyan}%?%F{default})]
 %(!.#.$) '
-RPROMPT=$'%(?,,%F{red}(╯°□°）╯︵┻━┻ %F{default}) ${vcs_info_msg_0_}'
+RPROMPT=$'%(?,,%F{red}(╯°□°）╯︵┻━┻ %F{default} )%F{cyan}${_CONF_UPDATE:+(╯°□°）╯ }%F{default}${vcs_info_msg_0_}'
 
 
 # Umask
