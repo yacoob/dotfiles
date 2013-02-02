@@ -9,6 +9,7 @@ nmap
 pstree
 python
 pwgen
+pv
 sshfs
 task
 tig
