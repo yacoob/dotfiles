@@ -87,6 +87,10 @@ nmap <silent> <leader>n :set number! number?<CR>
 nmap <silent> <leader>p :set paste! paste?<CR>
 nmap <silent> <leader>r :set relativenumber! relativenumber?<CR>
 nmap <silent> <leader>w :set wrap! wrap?<CR>
+" search highlight clearing
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+endif
 " buffer switch
 nnoremap <leader><leader> <c-^>
 " easier escape
