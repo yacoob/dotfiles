@@ -700,7 +700,7 @@
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>Show Cheat Sheet</key>
-	<true/>
+	<false/>
 	<key>Snap</key>
 	<true/>
 	<key>WebKitCacheModelPreferenceKey</key>
