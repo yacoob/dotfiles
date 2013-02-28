@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Application Mode</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>Custom Controls</key>
 	<array>
 		<dict>
@@ -685,7 +685,7 @@
 	<key>PMSparkleWrapper Status</key>
 	<dict>
 		<key>Check Date</key>
-		<integer>1361808558</integer>
+		<integer>1361875911</integer>
 		<key>Current Version</key>
 		<string>3.0.1</string>
 		<key>Update Version</key>
@@ -696,12 +696,14 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2013-02-25T16:09:18Z</date>
+	<date>2013-02-26T10:51:49Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>Show Cheat Sheet</key>
 	<false/>
 	<key>Snap</key>
+	<true/>
+	<key>Stealth Mode</key>
 	<true/>
 	<key>WebKitCacheModelPreferenceKey</key>
 	<integer>1</integer>

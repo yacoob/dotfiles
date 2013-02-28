@@ -1,4 +1,4 @@
-if [[ -z "${TMUX}" ]]; then
+if [[ -z "${TMUX}" && ! -f .tmux-inhibit ]]; then
   sname='tmp'
   ( tmux has-session -t ${sname} && tmux attach-session -t ${sname} ) || ( tmux new-session -s ${sname} )
 fi

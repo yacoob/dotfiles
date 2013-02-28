@@ -14,7 +14,6 @@ export TMPDIR=/tmp
 export VISUAL=vim
 export EDITOR=vim
 export EMAIL="yacoob@gmail.com"
-#export TERM=xterm-256color
 
 # less settings
 export LESS="-SXRM"
@@ -29,7 +28,8 @@ export PYTHONSTARTUP="${HOME}/.pythonstartup"
 # system/location dependent settings
 case "${OS}" in
     "linux")
-        export  PATH=~/bin:/usr/local/bin:$PATH
+        export PATH=~/bin:/usr/local/bin:$PATH
+        export TERM=xterm-color
         ;;
     "osx")
         case "${LOCATION}" in
