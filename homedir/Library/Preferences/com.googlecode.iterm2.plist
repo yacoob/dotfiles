@@ -1769,13 +1769,13 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>1110 163 445 270 0 0 1920 1178 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>1560 328 800 433 0 0 2560 1578 </string>
+	<string>502 96 800 433 0 0 1366 768 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>768 787 384 129 0 0 1920 1178 </string>
 	<key>NSWindow Frame SUUpdateAlertFrame</key>
 	<string>439 362 566 395 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 1162 585 410 0 0 2560 1578 </string>
+	<string>0 0 1366 768 0 0 1366 746 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>904 539 585 384 0 0 1920 1178 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -2322,7 +2322,7 @@
 			<key>Columns</key>
 			<integer>80</integer>
 			<key>Command</key>
-			<string>ssh inferno.hell.pl</string>
+			<string>zsh -c "mosh inferno.hell.pl"</string>
 			<key>Cursor Color</key>
 			<dict>
 				<key>Blue Component</key>
