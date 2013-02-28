@@ -1,8 +1,7 @@
-ack
 ccrypt
-elinks
 git
 lighttpd
+mobile-shell
 mtr --no-gtk
 netcat
 nmap
