@@ -22,8 +22,6 @@ _zlogin
 _zsh/functions
 _zshenv
 _zshrc
-=Library/Application\ Support/Quicksilver
-Library/Application\ Support/Quicksilver/Triggers.plist
 =Library/Fonts
 >Library/Fonts/SourceCodePro-Black.otf
 >Library/Fonts/SourceCodePro-Bold.otf
@@ -34,3 +32,5 @@ Library/Application\ Support/Quicksilver/Triggers.plist
 =Library/Preferences
 >Library/Preferences/com.googlecode.iterm2.plist
 >Library/Preferences/com.manytricks.Moom.plist
+=Library/Services
+>Library/Services/Save the Screen.workflow
