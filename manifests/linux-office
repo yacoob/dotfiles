@@ -5,7 +5,7 @@ _gvimrc
 _pythonstartup
 _screenrc
 _tmux.conf
-_tmux.conf.c-e
+_tmux.conf.inner
 _vim
 _vimrc
 _zlogin
