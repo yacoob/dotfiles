@@ -14,7 +14,6 @@ export TMPDIR=/tmp
 export VISUAL=vim
 export EDITOR=vim
 export EMAIL="yacoob@gmail.com"
-export TERM="xterm-256color"
 
 # less settings
 export LESS="-SXRM"
@@ -30,8 +29,10 @@ export PYTHONSTARTUP="${HOME}/.pythonstartup"
 case "${OS}" in
     "linux")
         export PATH=~/bin:/usr/local/bin:$PATH
+        export TERM="screen-256color"
         ;;
     "osx")
+        export TERM="xterm-256color"
         case "${LOCATION}" in
             "office")
                 export BREWPATH=/usr/brew
