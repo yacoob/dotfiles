@@ -29,10 +29,8 @@ export PYTHONSTARTUP="${HOME}/.pythonstartup"
 case "${OS}" in
     "linux")
         export PATH=~/bin:/usr/local/bin:$PATH
-        export TERM="screen-256color"
         ;;
     "osx")
-        export TERM="xterm-256color"
         case "${LOCATION}" in
             "office")
                 export BREWPATH=/usr/brew
