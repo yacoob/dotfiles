@@ -134,10 +134,32 @@ precmd_functions+='precmd_term_title'
 PERIOD=300
 periodic_functions+='conf-prompt-helper'
 
-# Prompt
-PROMPT=$'%F{cyan}${_CONF_UPDATE:+⟳  }%F{default}%(!.%F{red}✖%F{default}.%F{green}❤%F{default}) [%(2L.+.)%n%F{red}@%F{default}%m] [%F{cyan}%~%F{default}] [%F{red}%T %w%F{default}] [%F{yellow}%!%F{default}] [%(?.-.%F{cyan}%?%F{default})]
-%(!.#.$) '
-RPROMPT=$'%(?,,%F{red}(╯°□°）╯︵┻━┻ %F{default} )${vcs_info_msg_0_}'
+# Prompt definition.
+# Anonymous function is used to isolate local variables from user environment.
+function {
+  local -a plines tmp
+
+  # First line.
+  tmp+='%(!.%F{red}✖%F{default}.%F{green}❤%F{default})'
+  tmp+=' [%(2L.+.)%n${SSH_CONNECTION:+"%F{red}@%F{default}%m}"%F{default}]'
+  tmp+=' [%F{red}%T %w%F{default}]'
+  tmp+=' [%F{yellow}%!%F{default}]'
+  tmp+=' [%(?.-.%F{cyan}%?%F{default})]'
+  plines+=${(j::)tmp}
+
+  # Second line.
+  plines+='[%F{cyan}%~%F{default}]'
+
+  # Third line.
+  tmp=()
+  tmp+='%F{cyan}${_CONF_UPDATE:+⟳  }%F{default}'
+  tmp+='%(?,,%F{red})%(!.#.$)%F{default} '
+  plines+=${(j::)tmp}
+
+  # PROMPT, assemble!
+  PROMPT=${(F)plines}
+ }
+RPROMPT=$'${vcs_info_msg_0_}'
 
 
 # Umask
