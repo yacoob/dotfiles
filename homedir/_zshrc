@@ -1,60 +1,39 @@
 source ~/.yacoob-conf
 
-# few terminal keybinds
-bindkey -e
-zle -N fake-enter; bindkey "^X^H" fake-enter
+# Umask
+umask 027
 
-zmodload -a colors
-zmodload -a complist
-
-# aliases
-alias mv='nocorrect mv -i'
-alias cp='nocorrect cp -i'
-alias rm='rm -i'
-alias mkdir='nocorrect mkdir'
-
-alias j=jobs
-alias pu=pushd
-alias po=popd
-alias d='dirs -v'
-alias h=history
-alias grep=egrep
-
-alias ll='ls -lh'
-alias lld='ls -ld *(-/DN)'
-alias la='ls -A'
-alias lla='ll -A'
-
-alias cd..='cd ..'
-alias cd...='cd ../..'
-alias cd/='cd /'
-
-alias dlb='rm  -i (.*~|*~)'
-alias dlbf='rm -f (.*~|*~)'
-alias pwg='pwgen -c -n -y -s -B 12 1'
-alias rdlbf='find . -iname \*~ | xargs rm -f'
-alias sl='screen -list'
-
+# Load zsh modules and builtins, configure them.
 autoload run-help
+autoload -Uz compinit
+[[ -d "${ZDOTDIR:-$HOME}/.zcompdumps" ]] || mkdir -m 0700 -p "${ZDOTDIR:-$HOME}/.zcompdumps"
+compinit -i -d "${ZDOTDIR:-$HOME}/.zcompdumps/${HOST%%.*}-$ZSH_VERSION"
+autoload -Uz bashcompinit
+bashcompinit
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' stagedstr '%F{yellow}●'
+zstyle ':vcs_info:*' unstagedstr '%F{red}●'
+zstyle ':vcs_info:*' formats '%u%c %F{green}%b %F{default}'
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' get-revision  true
+autoload -U zmv
 
-# global aliases
-alias -g L='|less'
-alias -g H='|head'
-alias -g T='|tail'
-alias -g G="egrep"
-
-# zsh parameters
-typeset -U path
-
-cdpath=(. ~)
-DIRSTACKSIZE=20
-
-# Autoload zsh functions, including site-specific
+# Load user functions.
 fpath=(~/.zsh/functions* $fpath)
 autoload -U ~/.zsh/functions*/*(:t)
 
-fignore=(\~)
+# Configure ZLE.
+bindkey -e
+zle -N fake-enter; bindkey "^X^H" fake-enter
 
+# Setup ZSH variables.
+typeset -U path
+cdpath=(. ~)
+DIRSTACKSIZE=20
+fignore=(\~)
 LISTMAX=0
 LOGCHECK=60
 HISTSIZE=20000
@@ -68,8 +47,7 @@ watch=(all)
 WATCHFMT='%n %a %l from %m at %t.'
 WORDCHARS="${WORDCHARS:s#/#}"
 
-
-# zsh options
+# Setup ZSH options.
 setopt \
   auto_cd \
   auto_name_dirs \
@@ -104,38 +82,18 @@ setopt \
   shwordsplit \
   transient_rprompt \
 
-# Modules
-autoload -U url-quote-magic
-zle -N self-insert url-quote-magic
-autoload -U zmv
-alias zmv='noglob zmv'
-alias mmv='noglob zmv -W'
-
 # Enable auto-execution of functions.
+PERIOD=300
 typeset -ga preexec_functions
 typeset -ga precmd_functions
 typeset -ga periodic_functions
-
-# VCS info for right side prompt
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' stagedstr '%F{yellow}●'
-zstyle ':vcs_info:*' unstagedstr '%F{red}●'
-zstyle ':vcs_info:*' formats '%u%c %F{green}%b %F{default}'
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' get-revision  true
 precmd_functions+='vcs_info'
-
-# Terminal title
-preexec_functions+='preexec_term_title'
 precmd_functions+='precmd_term_title'
-
-# Conf dir updates
-PERIOD=300
+preexec_functions+='preexec_term_title'
 periodic_functions+='conf-prompt-helper'
 
-# Prompt definition.
-# Anonymous function is used to isolate local variables from user environment.
+# Set up prompts.
+# Use an anonymous function to isolate local variables from user environment.
 function {
   local -a plines tmp
 
@@ -159,13 +117,61 @@ function {
   # PROMPT, assemble!
   PROMPT=${(F)plines}
  }
-RPROMPT=$'${vcs_info_msg_0_}'
+RPROMPT=${vcs_info_msg_0_}
 
+# Define aliases.
+alias cd/='cd /'
+alias cd..='cd ..'
+alias cd...='cd ../..'
+alias cp='nocorrect cp -i'
+alias d='dirs -v'
+alias dlbf='rm -f (.*~|*~)'
+alias dlb='rm  -i (.*~|*~)'
+alias grep=egrep
+alias h=history
+alias j=jobs
+alias la='ls -A'
+alias lla='ll -A'
+alias lld='ls -ld *(-/DN)'
+alias ll='ls -lh'
+alias mkdir='nocorrect mkdir'
+alias mmv='noglob zmv -W'
+alias mv='nocorrect mv -i'
+alias po=popd
+alias pu=pushd
+alias pwg='pwgen -c -n -y -s -B 12 1'
+alias rdlbf='find . -iname \*~ | xargs rm -f'
+alias rezsh='nocorrect exec $SHELL'
+alias rm='rm -i'
+alias sudosh='nocorrect sudo $SHELL'
+alias zmv='noglob zmv'
 
-# Umask
-umask 027
+alias -g G="egrep"
+alias -g H='|head'
+alias -g L='|less'
+alias -g T='|tail'
 
-# System/location dependent settings
+# Configure tab-completion.
+zstyle ':completion::complete:cd::' tag-order '! users' -
+zstyle ':completion::complete:-command-::' tag-order '! users' -
+zstyle ':completion:*:corrections' format "- %d - (errors %e})"
+zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+zstyle ':completion:*:descriptions' format "- %d -"
+zstyle ':completion:*:*:*:*:hosts' list-colors '=*=30;41'
+zstyle ':completion:*:kill:*:processes' command "ps x"
+zstyle ':completion:*:manuals.(^1*)' insert-sections true
+zstyle ':completion:*:manuals' separate-sections true
+#zstyle ':completion:*:*:*:*:users' list-colors '=*=$color[green]=$color[red]'
+zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle ':completion:*' group-name ''
+#zstyle ':completion:*' list-colors 'reply=( "=(#b)(*$VAR)(?)*=00=$color[green]=$color[bg-green]" )'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu select
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' verbose yes
+zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
+
+# Pull in OS dependent settings.
 case "${OS}" in
     "linux")
         alias ls='ls --color=auto'
@@ -175,40 +181,8 @@ case "${OS}" in
         ;;
 esac
 
-# Tab-completion
-autoload -Uz compinit
-[[ -d "${ZDOTDIR:-$HOME}/.zcompdumps" ]] || mkdir -m 0700 -p "${ZDOTDIR:-$HOME}/.zcompdumps"
-compinit -i -d "${ZDOTDIR:-$HOME}/.zcompdumps/${HOST%%.*}-$ZSH_VERSION"
-
-# Bring in bash compability layer for tabcompletions
-autoload -Uz bashcompinit
-bashcompinit
-
-zstyle ':completion::complete:cd::' tag-order '! users' -
-zstyle ':completion::complete:-command-::' tag-order '! users' -
-compdef g4=p4
-
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-     /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
-zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
-zstyle ':completion:*:descriptions' format "- %d -"
-zstyle ':completion:*:corrections' format "- %d - (errors %e})"
-zstyle ':completion:*:default' list-prompt '%S%M matches%s'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*:manuals' separate-sections true
-zstyle ':completion:*:manuals.(^1*)' insert-sections true
-zstyle ':completion:*' menu select
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*:kill:*:processes' command "ps x"
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' list-colors 'reply=( "=(#b)(*$VAR)(?)*=00=$color[green]=$color[bg-green]" )'
-zstyle ':completion:*:*:*:*:hosts' list-colors '=*=30;41'
-zstyle ':completion:*:*:*:*:users' list-colors '=*=$color[green]=$color[red]'
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
-
-# Location dependent confidential settings
+# Pull in location dependent settings.
 [[ -r ~/.zshrc.${LOCATION} ]] && source ~/.zshrc.${LOCATION}
 
-# A dummy command that returns positive exit status
+# A dummy command that returns positive exit status to make prompt non-red :)
 :
