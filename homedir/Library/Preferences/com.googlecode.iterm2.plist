@@ -1726,9 +1726,26 @@
 		</data>
 		<string>29</string>
 	</array>
+	<key>NSTableView Columns KeyBingingTable</key>
+	<array>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
+		hAErATCG
+		</data>
+		<string>198</string>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
+		hAErATGG
+		</data>
+		<string>198</string>
+	</array>
 	<key>NSTableView Hidden Columns BookmarksView5</key>
 	<array/>
+	<key>NSTableView Hidden Columns KeyBingingTable</key>
+	<array/>
 	<key>NSTableView Sort Ordering BookmarksView5</key>
+	<array/>
+	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
 	<key>NSToolbar Configuration Terminal Toolbar</key>
 	<dict>
@@ -1750,17 +1767,11 @@
 		<array>
 			<string>New</string>
 			<string>Info</string>
-			<string>NSToolbarSeparatorItem</string>
-			<string>NSToolbarCustomizeToolbarItem</string>
 			<string>Close</string>
-			<string>NSToolbarSeparatorItem</string>
 			<string>Command</string>
-			<string>Bookmarks</string>
 		</array>
 		<key>TB Size Mode</key>
 		<integer>1</integer>
-		<key>TB Visibility Priority Values</key>
-		<dict/>
 	</dict>
 	<key>NSWindow Frame Bookmarks</key>
 	<string>638 785 1370 702 0 0 2560 1578 </string>
@@ -2110,7 +2121,7 @@
 			<key>Send Code When Idle</key>
 			<false/>
 			<key>Shortcut</key>
-			<string></string>
+			<string>T</string>
 			<key>Silence Bell</key>
 			<true/>
 			<key>Smart Cursor Color</key>
@@ -3530,6 +3541,354 @@
 			<key>Working Directory</key>
 			<string></string>
 		</dict>
+		<dict>
+			<key>ASCII Anti Aliased</key>
+			<true/>
+			<key>Ambiguous Double Width</key>
+			<false/>
+			<key>Ansi 0 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.0</real>
+				<key>Green Component</key>
+				<real>0.0</real>
+				<key>Red Component</key>
+				<real>0.0</real>
+			</dict>
+			<key>Ansi 1 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.1875</real>
+				<key>Green Component</key>
+				<real>0.1875</real>
+				<key>Red Component</key>
+				<real>1</real>
+			</dict>
+			<key>Ansi 10 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.4375</real>
+				<key>Green Component</key>
+				<real>0.60546875</real>
+				<key>Red Component</key>
+				<real>0.33203125</real>
+			</dict>
+			<key>Ansi 11 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.0</real>
+				<key>Green Component</key>
+				<real>0.67578125</real>
+				<key>Red Component</key>
+				<real>0.80078125</real>
+			</dict>
+			<key>Ansi 12 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.80078125</real>
+				<key>Green Component</key>
+				<real>0.6015625</real>
+				<key>Red Component</key>
+				<real>0.0</real>
+			</dict>
+			<key>Ansi 13 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.78515625</real>
+				<key>Green Component</key>
+				<real>0.41015625</real>
+				<key>Red Component</key>
+				<real>0.80078125</real>
+			</dict>
+			<key>Ansi 14 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.80078125</real>
+				<key>Green Component</key>
+				<real>0.76953125</real>
+				<key>Red Component</key>
+				<real>0.4765625</real>
+			</dict>
+			<key>Ansi 15 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.80078125</real>
+				<key>Green Component</key>
+				<real>0.80078125</real>
+				<key>Red Component</key>
+				<real>0.73828125</real>
+			</dict>
+			<key>Ansi 2 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.4375</real>
+				<key>Green Component</key>
+				<real>0.60546875</real>
+				<key>Red Component</key>
+				<real>0.33203125</real>
+			</dict>
+			<key>Ansi 3 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.0</real>
+				<key>Green Component</key>
+				<real>0.67578125</real>
+				<key>Red Component</key>
+				<real>0.80078125</real>
+			</dict>
+			<key>Ansi 4 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.80078125</real>
+				<key>Green Component</key>
+				<real>0.6015625</real>
+				<key>Red Component</key>
+				<real>0.0</real>
+			</dict>
+			<key>Ansi 5 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.78515625</real>
+				<key>Green Component</key>
+				<real>0.41015625</real>
+				<key>Red Component</key>
+				<real>0.80078125</real>
+			</dict>
+			<key>Ansi 6 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.80078125</real>
+				<key>Green Component</key>
+				<real>0.76953125</real>
+				<key>Red Component</key>
+				<real>0.4765625</real>
+			</dict>
+			<key>Ansi 7 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.80078125</real>
+				<key>Green Component</key>
+				<real>0.80078125</real>
+				<key>Red Component</key>
+				<real>0.73828125</real>
+			</dict>
+			<key>Ansi 8 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.0</real>
+				<key>Green Component</key>
+				<real>0.0</real>
+				<key>Red Component</key>
+				<real>0.0</real>
+			</dict>
+			<key>Ansi 9 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.1875</real>
+				<key>Green Component</key>
+				<real>0.1875</real>
+				<key>Red Component</key>
+				<real>1</real>
+			</dict>
+			<key>BM Growl</key>
+			<false/>
+			<key>Background Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.0</real>
+				<key>Green Component</key>
+				<real>0.0</real>
+				<key>Red Component</key>
+				<real>0.0</real>
+			</dict>
+			<key>Background Image Location</key>
+			<string></string>
+			<key>Blink Allowed</key>
+			<false/>
+			<key>Blinking Cursor</key>
+			<true/>
+			<key>Blur</key>
+			<false/>
+			<key>Bold Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.18811781704425812</real>
+				<key>Green Component</key>
+				<real>0.18754874169826508</real>
+				<key>Red Component</key>
+				<real>1</real>
+			</dict>
+			<key>Character Encoding</key>
+			<integer>4</integer>
+			<key>Close Sessions On End</key>
+			<true/>
+			<key>Columns</key>
+			<integer>80</integer>
+			<key>Command</key>
+			<string>zsh -c "mosh bx"</string>
+			<key>Cursor Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>1</real>
+				<key>Green Component</key>
+				<real>1</real>
+				<key>Red Component</key>
+				<real>1</real>
+			</dict>
+			<key>Cursor Text Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.0</real>
+				<key>Green Component</key>
+				<real>0.0</real>
+				<key>Red Component</key>
+				<real>0.0</real>
+			</dict>
+			<key>Cursor Type</key>
+			<integer>2</integer>
+			<key>Custom Command</key>
+			<string>Yes</string>
+			<key>Custom Directory</key>
+			<string>No</string>
+			<key>Default Bookmark</key>
+			<string>No</string>
+			<key>Disable Smcup Rmcup</key>
+			<true/>
+			<key>Disable Window Resizing</key>
+			<true/>
+			<key>Flashing Bell</key>
+			<false/>
+			<key>Foreground Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.76079577207565308</real>
+				<key>Green Component</key>
+				<real>0.7619737982749939</real>
+				<key>Red Component</key>
+				<real>0.68694168329238892</real>
+			</dict>
+			<key>Guid</key>
+			<string>5B720219-0007-4808-B044-8AC10EA5F79E</string>
+			<key>Horizontal Spacing</key>
+			<real>1</real>
+			<key>Idle Code</key>
+			<integer>0</integer>
+			<key>Keyboard Map</key>
+			<dict>
+				<key>0xf700-0x220000</key>
+				<dict>
+					<key>Action</key>
+					<integer>7</integer>
+				</dict>
+				<key>0xf701-0x220000</key>
+				<dict>
+					<key>Action</key>
+					<integer>6</integer>
+				</dict>
+				<key>0xf702-0x220000</key>
+				<dict>
+					<key>Action</key>
+					<integer>2</integer>
+				</dict>
+				<key>0xf703-0x220000</key>
+				<dict>
+					<key>Action</key>
+					<integer>0</integer>
+				</dict>
+				<key>0xf729-0x20000</key>
+				<dict>
+					<key>Action</key>
+					<integer>5</integer>
+				</dict>
+				<key>0xf72b-0x20000</key>
+				<dict>
+					<key>Action</key>
+					<integer>4</integer>
+				</dict>
+				<key>0xf72c-0x20000</key>
+				<dict>
+					<key>Action</key>
+					<integer>9</integer>
+				</dict>
+				<key>0xf72d-0x20000</key>
+				<dict>
+					<key>Action</key>
+					<integer>8</integer>
+				</dict>
+			</dict>
+			<key>Minimum Contrast</key>
+			<real>0.0</real>
+			<key>Mouse Reporting</key>
+			<true/>
+			<key>Name</key>
+			<string>b</string>
+			<key>Non Ascii Font</key>
+			<string>SourceCodePro-Regular 12</string>
+			<key>Non-ASCII Anti Aliased</key>
+			<true/>
+			<key>Normal Font</key>
+			<string>SourceCodePro-Regular 12</string>
+			<key>Option Key Sends</key>
+			<integer>2</integer>
+			<key>Right Option Key Sends</key>
+			<integer>0</integer>
+			<key>Rows</key>
+			<integer>24</integer>
+			<key>Screen</key>
+			<integer>-1</integer>
+			<key>Scrollback Lines</key>
+			<integer>0</integer>
+			<key>Scrollback With Status Bar</key>
+			<false/>
+			<key>Selected Text Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.0</real>
+				<key>Green Component</key>
+				<real>0.0</real>
+				<key>Red Component</key>
+				<real>0.0</real>
+			</dict>
+			<key>Selection Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<real>0.0</real>
+				<key>Green Component</key>
+				<real>0.67803394794464111</real>
+				<key>Red Component</key>
+				<real>0.79844218492507935</real>
+			</dict>
+			<key>Send Code When Idle</key>
+			<false/>
+			<key>Shortcut</key>
+			<string>B</string>
+			<key>Silence Bell</key>
+			<true/>
+			<key>Smart Cursor Color</key>
+			<true/>
+			<key>Sync Title</key>
+			<false/>
+			<key>Tags</key>
+			<array/>
+			<key>Terminal Type</key>
+			<string>xterm-256color</string>
+			<key>Transparency</key>
+			<real>0.0</real>
+			<key>Unlimited Scrollback</key>
+			<true/>
+			<key>Use Bold Font</key>
+			<true/>
+			<key>Use Bright Bold</key>
+			<true/>
+			<key>Vertical Spacing</key>
+			<real>1</real>
+			<key>Visual Bell</key>
+			<true/>
+			<key>Window Type</key>
+			<integer>0</integer>
+			<key>Working Directory</key>
+			<string></string>
+		</dict>
 	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
@@ -3562,7 +3921,7 @@
 	<key>SUFeedURL</key>
 	<string>http://iterm2.googlecode.com/svn/trunk/appcasts/final.xml</string>
 	<key>SULastCheckTime</key>
-	<date>2013-02-28T14:39:25Z</date>
+	<date>2013-03-09T17:22:36Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
