@@ -8,4 +8,4 @@ fi
 local remotedir=${opts[-localdir]##*/}
 
 msmb ${opts[-machine]} ${opts[-share]}
-rsync --delete --size-only -i -r -z $* ${opts[-localdir]}/ /Volumes/${opts[-share]}/${remotedir}/
+rsync --exclude '.DS_Store' --delete --size-only -i -r -z $* ${opts[-localdir]}/ /Volumes/${opts[-share]}/${remotedir}/
