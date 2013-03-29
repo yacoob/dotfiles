@@ -117,7 +117,7 @@ function {
   # PROMPT, assemble!
   PROMPT=${(F)plines}
  }
-RPROMPT=${vcs_info_msg_0_}
+RPROMPT=$'${vcs_info_msg_0_}'
 
 # Define aliases.
 alias cd/='cd /'
