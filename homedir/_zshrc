@@ -99,7 +99,7 @@ function {
 
   # First line.
   tmp+='%(!.%F{red}✖%F{default}.%F{green}❤%F{default})'
-  tmp+=' [%(2L.+.)%n${SSH_CONNECTION:+"%F{red}@%F{default}%m"}%F{default}]'
+  tmp+=' [%(2L.+.)%n%F{red}@%F{default}%m%F{default}]'
   tmp+=' [%F{red}%T %w%F{default}]'
   tmp+=' [%F{yellow}%!%F{default}]'
   tmp+=' [%(?.-.%F{cyan}%?%F{default})]'
