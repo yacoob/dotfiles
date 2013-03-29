@@ -1,1 +1,1 @@
-syncdir -machine spacecore -share archiwum -localdir ~/Pictures/foto $1
+syncdir -machine boxoob -share archiwum -localdir ~/Pictures/foto $1

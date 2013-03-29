@@ -1,0 +1,10 @@
+if [[ ${0} = "mnas" ]]; then
+  echo "Don't use mnas directly." >&2
+  return 1
+fi
+local protocol=${0[2,${#0}]}
+local machine=${1:-boxoob}
+local resource=${2:-archiwum}
+local ruser=${3:-$USER}
+
+osascript -e "try" -e "mount volume \"${protocol}://${ruser}@${machine}/${resource}\"" -e "end try"

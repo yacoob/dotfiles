@@ -7,5 +7,5 @@ if [[ -z "${opts[-localdir]}" || -z "${opts[-machine]}" || -z "${opts[-share]}" 
 fi
 local remotedir=${opts[-localdir]##*/}
 
-mafp ${opts[-machine]} ${opts[-share]}
+msmb ${opts[-machine]} ${opts[-share]}
 rsync --delete --size-only -i -r -z $* ${opts[-localdir]}/ /Volumes/${opts[-share]}/${remotedir}/
