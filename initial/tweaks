@@ -1,6 +1,7 @@
 -g AppleCollationOrder -string "pl"
 -g AppleEnableMenuBarTransparency -boolean NO
 -g AppleFirstWeekday -dict "gregorian" 2
+-g ApplePressAndHoldEnabled -bool false
 -g AppleScrollBarVariant -string "Single"
 -g NSNavPanelExpandedStateForSaveMode -bool YES
 -g com.apple.sound.beep.feedback -boolean NO
