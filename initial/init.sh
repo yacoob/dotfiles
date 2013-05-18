@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 #set -x
 
+source ~/.yacoob-conf
+
 # Helper function to complain about a problem and die.
 # (wait, is that Perl? :)
 croak() {
@@ -25,7 +27,11 @@ install_brew() {
     ${DEBUG} cd -
     ${DEBUG} ${BREW} install $(cat ${BREW_LIST_FILE})
     ${DEBUG} ${BREW} cleanup -s
-    ${DEBUG} grep -q '$(BREW_PREFIX)/bin/zsh' /etc/shells || sudo sh -c 'echo "$(BREW_PREFIX)/bin/zsh" >> /etc/shells'
+    ZSH=${BREW_PREFIX}/bin/zsh
+    grep -q "${ZSH}" /etc/shells
+    if [[ $? -ne 0 ]]; then 
+        echo "${ZSH}" | sudo tee -a /etc/shells
+    fi
   fi
 }
 
