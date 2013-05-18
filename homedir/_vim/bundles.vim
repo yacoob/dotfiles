@@ -9,7 +9,6 @@ Bundle 'gmarik/vundle'
 
 " ...rest of bundles
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'Shougo/neocomplcache'
 Bundle 'kien/ctrlp.vim'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'roman/golden-ratio'
