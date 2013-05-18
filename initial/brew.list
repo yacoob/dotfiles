@@ -2,7 +2,6 @@ ccrypt
 git
 lighttpd
 mobile-shell
-mtr --no-gtk
 netcat
 nmap
 pstree
@@ -10,7 +9,6 @@ python
 pwgen
 pv
 sshfs
-task
 tig
 tmux
 unrar
