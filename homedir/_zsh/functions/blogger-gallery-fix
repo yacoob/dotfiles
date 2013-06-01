@@ -1,14 +1,20 @@
-grep -Eo '"http://[^"]+s1600[^"]+"' - | uniq | while read url; do
-  local mini=$(echo ${url} | sed 's/s1600/s320-p/');
-  echo -n '<div class="picture">';
-  echo -n "<a href=${url}>";
-  echo -n "<img src=${mini}/>";
-  echo "</a></div>";
-done | sed '
-1 i\
-<div class="gallery">
+grep -Eo '"http://[^"]+s1600[^"]+"' - | uniq | sed -n '
+1 {
+  h
+  s#\(.*\)/s1600/\(.*\)#<img class="hideme" itemprop="image" src=\1/s200-p/\2>\
+#
+  p
+  g
+  s#.*#<div class="gallery">\
+<div mp_picture mp_position="50% 50%" class="picture"><a href=&></a></div>#
+  p
+}
 2 i\
 <!--more-->
+1!{
+  s#.*#<div class="picture"><a href=&></a></div>#
+  p
+}
 $ a\
 </div>\
 '
