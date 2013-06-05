@@ -1,3 +1,0 @@
-local d=~/.vim/bundle/vundle
-mkdir -p ${d}
-git clone https://github.com/gmarik/vundle.git ${d}
