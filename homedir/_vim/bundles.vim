@@ -1,20 +1,21 @@
 set nocompatible
-filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-" vundle itself
-Bundle 'gmarik/vundle'
+call neobundle#rc(expand('~/.vim/bundle/'))
 
-" ...rest of bundles
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'kien/ctrlp.vim'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'roman/golden-ratio'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'https://github.com/jnwhiteh/vim-golang.git'
+NeoBundleFetch 'Shougo/neobundle.vim'
 
-filetype plugin indent on
+" rest of bundles
+NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/vimproc'  " remember to make -f your_machines_makefile
+NeoBundle 'https://github.com/jnwhiteh/vim-golang.git'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'roman/golden-ratio'
+
+filetype plugin indent on     " Required!
+NeoBundleCheck

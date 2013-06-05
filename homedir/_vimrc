@@ -108,10 +108,14 @@ cmap w!! w !sudo tee % >/dev/null
 nnoremap / /\v
 vnoremap / /\v
 
-"" plugins
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_lazy_update = 1
+"" plugin config
+" vim-powerline
 let g:Powerline_symbols = 'compatible'
+" unite
+nnoremap <C-p> :Unite file_rec/async<cr>
+nnoremap <leader>/ :Unite grep:.<cr>
+nnoremap <leader>y :Unite history/yanks<cr>
+nnoremap <leader>s :Unite -quick-match buffer<cr>
 
 " system/location dependent settings
 silent! source ~/.vimrc.${LOCATION}
