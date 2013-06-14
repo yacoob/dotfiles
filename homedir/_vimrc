@@ -107,6 +107,8 @@ cmap w!! w !sudo tee % >/dev/null
 " change searches to use normal regexpes by default
 nnoremap / /\v
 vnoremap / /\v
+" no yank on paste
+" xnoremap p pgvy
 
 "" plugin config
 " vim-powerline
