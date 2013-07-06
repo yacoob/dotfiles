@@ -111,8 +111,8 @@ vnoremap / /\v
 " xnoremap p pgvy
 
 "" plugin config
-" vim-powerline
-let g:Powerline_symbols = 'compatible'
+" vim-airline
+let g:airline_powerline_fonts=1
 " unite
 nnoremap <C-p> :Unite file_rec/async<cr>
 nnoremap <leader>/ :Unite grep:.<cr>

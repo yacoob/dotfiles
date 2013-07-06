@@ -5,7 +5,7 @@ set guioptions-=T            " don't show toolbar
 
 "" OS specific settings
 if $OS == "osx"
-  set guifont=Source\ Code\ Pro:h12
+  set guifont=Source\ Code\ Pro\ for\ Powerline:h12
   set fuoptions=maxvert,maxhorz      " use whole screen in fullscreen mode
 else
   set guifont=DejaVu\ Sans\ Mono:h12
