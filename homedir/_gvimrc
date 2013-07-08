@@ -7,6 +7,7 @@ set guioptions-=T            " don't show toolbar
 if $OS == "osx"
   set guifont=Source\ Code\ Pro\ for\ Powerline:h12
   set fuoptions=maxvert,maxhorz      " use whole screen in fullscreen mode
+  autocmd VimLeave * macaction terminate:
 else
   set guifont=DejaVu\ Sans\ Mono:h12
   set guioptions-=m                  " no menu
