@@ -11,7 +11,9 @@ set formatoptions+=21           " use indent from second line of a paragraph, do
 set history=1000                " save more history
 set nocompatible                " choose no compatibility with legacy vi
 set ssop+=winpos,localoptions   " save window positions and local options for :mksession
-let mapleader = ","             " set the trigger key for plugins/shortcuts
+let mapleader = "\<space>"      " set the trigger key for plugins/shortcuts
+
+
 
 syntax enable
 filetype plugin indent on
