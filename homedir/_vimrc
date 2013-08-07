@@ -1,4 +1,4 @@
-"" vundle init
+"" load bundles
 source ~/.vim/bundles.vim
 
 "" general settings
