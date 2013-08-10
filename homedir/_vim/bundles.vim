@@ -11,11 +11,12 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " rest of bundles
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc'  " needs: make -f your_machines_makefile
-NeoBundle 'Valloric/YouCompleteMe' " needs: brew unlink python; ./install.sh --clang-completer; brew link python
 NeoBundle 'bling/vim-airline'
 NeoBundle 'jnwhiteh/vim-golang.git'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'scrooloose/syntastic'
+
+silent! source bundles.${LOCATION}.vim
 
 filetype plugin indent on     " Required!
 NeoBundleCheck
