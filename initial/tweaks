@@ -22,8 +22,5 @@ com.apple.menuextra.battery ShowTime -bool YES
 com.apple.menuextra.textinput  ModeNameVisible -int 0
 com.apple.screencapture type PNG
 com.apple.screensaver askForPassword -int 1
-cx.c3.xee autoFullscreen -int 1
-cx.c3.xee useOrientation -int 1
-cx.c3.xee windowOpening -int 0
 org.vim.MacVim MMNativeFullScreen 0
 org.vim.MacVim MMLastWindowClosedBehavior -int 2
