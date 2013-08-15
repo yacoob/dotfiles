@@ -29,7 +29,7 @@ install_brew() {
     ${DEBUG} ${BREW} cleanup -s
     ZSH=${BREW_PREFIX}/bin/zsh
     grep -q "${ZSH}" /etc/shells
-    if [[ $? -ne 0 ]]; then 
+    if [[ $? -ne 0 ]]; then
         echo "${ZSH}" | sudo tee -a /etc/shells
     fi
   fi
@@ -44,6 +44,16 @@ apply_tweaks() {
   fi
 }
 
+# Make sure ~/.yacoob-conf is available for gui apps (ie. MacVim)
+adjust_env() {
+  if [[ ! -r /etc/zprofile ]]; then
+    sudo mv /etc/zshenv /etc/zprofile
+  fi
+  grep -q '.yacoob-conf' /etc/zprofile
+  if [[ $? -ne 0 ]]; then
+    echo 'source ~/.yacoob-conf' | sudo tee -a /etc/zprofile
+  fi
+}
 
 # Set up environment.
 . ${HOME}/.yacoob-conf
@@ -60,3 +70,4 @@ fi
 
 install_brew
 apply_tweaks
+adjust_env
