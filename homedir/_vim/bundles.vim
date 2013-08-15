@@ -10,13 +10,19 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " rest of bundles
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc'  " needs: make -f your_machines_makefile
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
 NeoBundle 'bling/vim-airline'
 NeoBundle 'jnwhiteh/vim-golang.git'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'scrooloose/syntastic'
 
-silent! source bundles.${LOCATION}.vim
+" location specific bundles
+silent! source ~/.vim/bundles.$LOCATION.vim
 
 filetype plugin indent on     " Required!
 NeoBundleCheck
