@@ -22,6 +22,7 @@ _zlogin
 _zsh/functions
 _zshenv
 _zshrc
+_zshrc.home
 =Library/Fonts
 >Library/Fonts/SourceCodePro-Black.otf
 >Library/Fonts/SourceCodePro-Bold.otf

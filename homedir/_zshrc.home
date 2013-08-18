@@ -1,0 +1,8 @@
+# Home-specific config.
+
+# Pull in OS dependent settings.
+case "${OS}" in
+    "osx")
+        alias mame='cd ~/Library/Application\ Support/mame; mame; cd -'
+        ;;
+esac
