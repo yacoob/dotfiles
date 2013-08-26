@@ -82,11 +82,6 @@ imap <left> <nop>
 imap <right> <nop>
 nnoremap j gj
 nnoremap k gk
-" easier navigation between split windows
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
 " options togglers
 nmap <silent> <leader>F :set fullscreen! fullscreen?<CR>
 nmap <silent> <leader>h :set hlsearch! hlsearch?<CR>

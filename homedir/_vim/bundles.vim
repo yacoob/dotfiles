@@ -17,6 +17,7 @@ NeoBundle 'Shougo/vimproc', {
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
+NeoBundle 'SirVer/ultisnips'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'jnwhiteh/vim-golang.git'
 NeoBundle 'nanotech/jellybeans.vim'
