@@ -105,6 +105,13 @@ vnoremap / /\v
 "" plugin config
 " airline
 let g:airline_powerline_fonts=1
+" neobundle
+nnoremap <leader>nu :NeoBundleUpdate<cr>
+nnoremap <leader>nl :NeoBundleUpdatesLog<cr>
+" syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_auto_loc_list = 1
 " unite
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
@@ -115,10 +122,6 @@ nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outl
 nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
 nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
 nnoremap <leader>/ :<C-u>Unite -buffer-name=grep grep:.<cr>
-" syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_auto_loc_list = 1
 " ycm
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
