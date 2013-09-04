@@ -104,7 +104,8 @@ vnoremap / /\v
 
 "" plugin config
 " airline
-let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 " neobundle
 nnoremap <leader>nu :NeoBundleUpdate<cr>
 nnoremap <leader>nl :NeoBundleUpdatesLog<cr>
