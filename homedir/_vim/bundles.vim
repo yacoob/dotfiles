@@ -9,19 +9,20 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " rest of bundles
-NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'mac' : 'make -f make_mac.mak',
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
-NeoBundle 'SirVer/ultisnips'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'gregsexton/gitv'
 NeoBundle 'jnwhiteh/vim-golang.git'
 NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'SirVer/ultisnips'
 NeoBundle 'tpope/vim-fugitive'
 
 " location specific bundles
