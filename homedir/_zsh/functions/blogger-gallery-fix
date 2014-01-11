@@ -1,7 +1,7 @@
-grep -Eo '"http://[^"]+s1600[^"]+"' - | uniq | sed 's#/s1600/#/s1920/#' | sed -n '
+grep -Eo '"http://[^"]+s1600[^"]+"' - | uniq | sed 's#/s1600/#/s1920/#' | sed -En '
 1 {
   h
-  s#\(.*\)/s[0-9]+/\(.*\)#<img class="hideme" itemprop="image" src=\1/s200-p/\2>\
+  s#(.*)/s[0-9]+/(.*)#<img class="hideme" itemprop="image" src=\1/s200-p/\2>\
 #
   p
   g
