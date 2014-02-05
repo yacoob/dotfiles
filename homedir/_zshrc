@@ -144,6 +144,7 @@ alias rdlbf='find . -iname \*~ | xargs rm -f'
 alias rezsh='nocorrect exec $SHELL'
 alias rm='rm -i'
 alias sudosh='nocorrect sudo $SHELL'
+alias vew='source $(which virtualenvwrapper.sh)'
 alias vi=vim
 alias zmv='noglob zmv'
 

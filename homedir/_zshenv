@@ -24,6 +24,7 @@ export LESSCHARSET="utf-8"
 
 # python settings
 export PYTHONSTARTUP="${HOME}/.pythonstartup"
+export WORKON_HOME="${HOME}/.venvs"
 
 # system/location dependent settings
 case "${OS}" in
