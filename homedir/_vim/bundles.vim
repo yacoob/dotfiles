@@ -1,32 +1,29 @@
 set nocompatible
+filetype off
 
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
-call neobundle#rc(expand('~/.vim/bundle/'))
-
-NeoBundleFetch 'Shougo/neobundle.vim'
+Bundle 'gmarik/vundle'
 
 " rest of bundles
-NeoBundle 'Shougo/vimproc', {
+Bundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'mac' : 'make -f make_mac.mak',
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
-NeoBundle 'bling/vim-airline'
-NeoBundle 'gregsexton/gitv'
-NeoBundle 'jnwhiteh/vim-golang.git'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'tpope/vim-fugitive'
+Bundle 'bling/vim-airline'
+Bundle 'gregsexton/gitv'
+Bundle 'jnwhiteh/vim-golang.git'
+Bundle 'nanotech/jellybeans.vim'
+Bundle 'Raimondi/delimitMate'
+Bundle 'scrooloose/syntastic'
+Bundle 'Shougo/unite.vim'
+Bundle 'SirVer/ultisnips'
+Bundle 'tpope/vim-fugitive'
 
 " location specific bundles
 silent! source ~/.vim/bundles.$LOCATION.vim
 
 filetype plugin indent on     " Required!
-NeoBundleCheck

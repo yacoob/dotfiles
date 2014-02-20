@@ -106,9 +106,6 @@ vnoremap / /\v
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-" neobundle
-nnoremap <leader>nu :NeoBundleUpdate<cr>
-nnoremap <leader>nl :NeoBundleUpdatesLog<cr>
 " syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
