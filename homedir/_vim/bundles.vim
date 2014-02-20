@@ -7,20 +7,13 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " rest of bundles
-Bundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
+Bundle 'Raimondi/delimitMate'
+Bundle 'SirVer/ultisnips'
 Bundle 'bling/vim-airline'
 Bundle 'gregsexton/gitv'
 Bundle 'jnwhiteh/vim-golang.git'
 Bundle 'nanotech/jellybeans.vim'
-Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
-Bundle 'Shougo/unite.vim'
-Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-fugitive'
 
 " location specific bundles
