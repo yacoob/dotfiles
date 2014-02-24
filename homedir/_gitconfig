@@ -2,12 +2,10 @@
 	ui = true
 [core]
 	excludesfile = ~/.cvsignore
-[lastfm]
-	user = boocay
-	maxhours = 4
-	groupby = album
 [push]
 	default = matching
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
 [include]
 # wildcards don't work, but nonexisting files are ignored :|
 	path = .gitconfig.osx
