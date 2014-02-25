@@ -101,7 +101,6 @@ setopt \
   pushd_to_home \
   rc_quotes \
   share_history \
-  shwordsplit \
   transient_rprompt \
 
 # Enable auto-execution of functions.
@@ -195,6 +194,10 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' verbose yes
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
+
+# Load functional zsh if it's there.
+# https://github.com/Tarrasch/zsh-functional
+[[ -d ~/.zsh/functional ]] && source ~/.zsh/functional/functional.plugin.zsh ]]
 
 # Pull in OS dependent settings.
 case "${OS}" in
