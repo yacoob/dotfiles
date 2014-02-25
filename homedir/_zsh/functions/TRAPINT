@@ -1,0 +1,2 @@
+_CMD_MODE=
+return $(( 128 + $1 ))

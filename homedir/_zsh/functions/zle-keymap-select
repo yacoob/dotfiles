@@ -1,0 +1,6 @@
+if [[ $KEYMAP = vicmd ]]; then
+ _CMD_MODE=1
+else
+ _CMD_MODE=
+fi
+zle reset-prompt

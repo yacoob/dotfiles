@@ -26,7 +26,27 @@ fpath=(~/.zsh/functions* $fpath)
 autoload -U ~/.zsh/functions*/*(:t)
 
 # Configure ZLE.
-bindkey -e
+bindkey -v
+# vi mode indicator in prompt.
+zle -N zle-keymap-select
+zle -N zle-line-finish
+# Some vim and emacs keybindings.
+bindkey -M viins '^r' history-incremental-search-backward
+bindkey -M vicmd '^r' history-incremental-search-backward
+bindkey -a 'gg' beginning-of-buffer-or-history
+bindkey -a G end-of-buffer-or-history
+bindkey '^G' what-cursor-position
+bindkey -a u undo
+bindkey -a '^R' redo
+bindkey '^?' backward-delete-char
+bindkey '^H' backward-delete-char
+# Terminal dependent binds.
+typeset -A key
+key[Home]=${terminfo[khome]}
+key[End]=${terminfo[kend]}
+[[ -n "${key[Home]}" ]]  && bindkey "${key[Home]}" beginning-of-line; bindkey -a "${key[Home]}" beginning-of-line
+[[ -n "${key[End]}"  ]]  && bindkey "${key[End]}" end-of-line; bindkey -a "${key[End]}" end-of-line
+# fake-enter = save to history without executing.
 zle -N fake-enter; bindkey "^X^H" fake-enter
 
 # Setup ZSH variables.
@@ -110,6 +130,7 @@ function {
 
   # Third line.
   tmp=()
+  tmp+='%F{yellow}${_CMD_MODE:+☯ }%F{default}'
   tmp+='%F{cyan}${_CONF_UPDATE:+⟳  }%F{default}'
   tmp+='%(?,,%F{red})%(!.#.$)%F{default} '
   plines+=${(j::)tmp}
