@@ -5,11 +5,6 @@ umask 027
 
 # Load zsh modules and builtins, configure them.
 autoload run-help
-autoload -Uz compinit
-[[ -d "${ZDOTDIR:-$HOME}/.zcompdumps" ]] || mkdir -m 0700 -p "${ZDOTDIR:-$HOME}/.zcompdumps"
-compinit -i -d "${ZDOTDIR:-$HOME}/.zcompdumps/${HOST%%.*}-$ZSH_VERSION"
-autoload -Uz bashcompinit
-bashcompinit
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 autoload -Uz vcs_info

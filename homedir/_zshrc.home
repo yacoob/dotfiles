@@ -6,3 +6,10 @@ case "${OS}" in
         alias mame='cd ~/Library/Application\ Support/mame; mame; cd -'
         ;;
 esac
+
+# Initialize tabcompletion.
+autoload -Uz compinit
+[[ -d "${ZDOTDIR:-$HOME}/.zcompdumps" ]] || mkdir -m 0700 -p "${ZDOTDIR:-$HOME}/.zcompdumps"
+compinit -i -d "${ZDOTDIR:-$HOME}/.zcompdumps/${HOST%%.*}-$ZSH_VERSION"
+autoload -Uz bashcompinit
+bashcompinit
