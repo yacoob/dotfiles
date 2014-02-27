@@ -40,12 +40,12 @@ set smartcase                   " ... unless they contain at least one capital l
 set background=dark             " use dark versions of backgrounds
 set cmdheight=2                 " use two lines for command-line, useful to avoid hit-enter prompts
 set cursorline                  " highlight current line
-"set clipboard=unnamed           " use native clipboard for c&p
 set display=lastline            " display as much as possible from last line in window
 set keymodel+=startsel          " shift+special key = selection
 set laststatus=2                " always show status line
+set lazyredraw                  " batch some screen updates during macros and such
 set number                      " display current line number
-silent! set relativenumber      " use relative line numbers for lines other than current
+"silent! set relativenumber      " use relative line numbers for lines other than current
 set ruler                       " display coords in bottom right corner
 set scrolloff=14                " leave this amount of lines while scrolling up/down
 set shortmess+=mrwI             " shorter indicators (like [RO]) in messages, no :intro on start
