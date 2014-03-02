@@ -16,6 +16,10 @@ Bundle 'nanotech/jellybeans.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
 
+" untested
+Bundle 'jmcantrell/vim-virtualenv'
+Bundle 'zhaocai/GoldenView.Vim'
+
 " location specific bundles
 silent! source ~/.vim/bundles.$LOCATION.vim
 
