@@ -45,6 +45,7 @@ key[Up]=${terminfo[kcuu1]}
 key[Down]=${terminfo[kcud1]}
 [[ -n "${key[Home]}" ]]  && bindkey "${key[Home]}" beginning-of-line; bindkey -a "${key[Home]}" beginning-of-line
 [[ -n "${key[End]}"  ]]  && bindkey "${key[End]}" end-of-line; bindkey -a "${key[End]}" end-of-line
+autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 [[ -n "${key[Up]}"   ]]  && bindkey  "${key[Up]}" history-beginning-search-backward-end
