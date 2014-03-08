@@ -6,6 +6,7 @@ nmap
 pstree
 pwgen
 pv
+reattach-to-user-namespace
 tig
 tmux
 unrar
