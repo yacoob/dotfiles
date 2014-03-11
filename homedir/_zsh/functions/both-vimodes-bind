@@ -1,0 +1,3 @@
+foreach keymap (vicmd viins) {
+  bindkey -M ${keymap} "$1" $2
+}

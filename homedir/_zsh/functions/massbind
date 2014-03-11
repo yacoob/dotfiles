@@ -1,0 +1,5 @@
+local widget=$1
+shift
+foreach key ("$@") {
+  both-vimodes-bind "${key}" ${widget}
+}
