@@ -40,22 +40,15 @@ bindkey '^E' end-of-line
 # fake-enter = save to history without executing.
 zle -N fake-enter; bindkey "^X^H" fake-enter
 # Terminal dependent binds.
-autoload zkbd
-keyfile=$(zkbd_file)
-ret=$?
-if [[ ${ret} -ne 0 ]]; then
-  zkbd
-  keyfile=$(zkbd_file)
-  ret=$?
-fi
-if [[ ${ret} -eq 0 ]]; then
-  source "${keyfile}"
-else
-  print 'Failed to setup keys using zkbd.\n'
-fi
-unset keyfile ret
+# Keycodes recorded via zkbd, as terminfo had some quirks about up/down.
+# http://zshwiki.org/home/zle/bindkeys
 zle -N vi-cmd-up-line-history
 zle -N vi-cmd-down-line-history
+typeset -g -A key
+key[Home]='^[[1~'
+key[End]='^[[4~'
+key[Up]='^[[A'
+key[Down]='^[[B'
 bindkey -M vicmd "${key[Home]}" beginning-of-line
 bindkey -M viins "${key[Home]}" beginning-of-line
 bindkey -M vicmd "${key[End]}" end-of-line
@@ -64,6 +57,7 @@ bindkey -M vicmd "${key[Up]}" vi-cmd-up-line-history
 bindkey -M viins "${key[Up]}" vi-cmd-up-line-history
 bindkey -M vicmd "${key[Down]}" vi-cmd-down-line-history
 bindkey -M viins "${key[Down]}" vi-cmd-down-line-history
+unset key
 
 # Setup ZSH variables.
 typeset -U path
