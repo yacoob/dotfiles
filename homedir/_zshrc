@@ -37,21 +37,33 @@ bindkey '^?' backward-delete-char
 bindkey '^H' backward-delete-char
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
-# Terminal dependent binds.
-typeset -A key
-key[Home]=${terminfo[khome]}
-key[End]=${terminfo[kend]}
-key[Up]=${terminfo[kcuu1]}
-key[Down]=${terminfo[kcud1]}
-[[ -n "${key[Home]}" ]]  && bindkey "${key[Home]}" beginning-of-line; bindkey -a "${key[Home]}" beginning-of-line
-[[ -n "${key[End]}"  ]]  && bindkey "${key[End]}" end-of-line; bindkey -a "${key[End]}" end-of-line
-autoload -U history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-[[ -n "${key[Up]}"   ]]  && bindkey  "${key[Up]}" history-beginning-search-backward-end
-[[ -n "${key[Down]}" ]]  && bindkey  "${key[Down]}" history-beginning-search-forward-end
 # fake-enter = save to history without executing.
 zle -N fake-enter; bindkey "^X^H" fake-enter
+# Terminal dependent binds.
+autoload zkbd
+keyfile=$(zkbd_file)
+ret=$?
+if [[ ${ret} -ne 0 ]]; then
+  zkbd
+  keyfile=$(zkbd_file)
+  ret=$?
+fi
+if [[ ${ret} -eq 0 ]]; then
+  source "${keyfile}"
+else
+  print 'Failed to setup keys using zkbd.\n'
+fi
+unset keyfile ret
+zle -N vi-cmd-up-line-history
+zle -N vi-cmd-down-line-history
+bindkey -M vicmd "${key[Home]}" beginning-of-line
+bindkey -M viins "${key[Home]}" beginning-of-line
+bindkey -M vicmd "${key[End]}" end-of-line
+bindkey -M viins "${key[End]}" end-of-line
+bindkey -M vicmd "${key[Up]}" vi-cmd-up-line-history
+bindkey -M viins "${key[Up]}" vi-cmd-up-line-history
+bindkey -M vicmd "${key[Down]}" vi-cmd-down-line-history
+bindkey -M viins "${key[Down]}" vi-cmd-down-line-history
 
 # Setup ZSH variables.
 typeset -U path
