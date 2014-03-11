@@ -17,6 +17,7 @@ _tmux.conf
 _tmux.conf.inner
 _vim
 _vimrc
+_zkbd
 _zlogin
 =_zsh
 _zsh/functions
