@@ -11,14 +11,15 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'SirVer/ultisnips'
 Bundle 'bling/vim-airline'
 Bundle 'gregsexton/gitv'
+Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'jnwhiteh/vim-golang.git'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
+Bundle 'zhaocai/GoldenView.Vim'
 
 " untested
-Bundle 'jmcantrell/vim-virtualenv'
-Bundle 'zhaocai/GoldenView.Vim'
+Bundle 'tpope/vim-dispatch'
 
 " location specific bundles
 silent! source ~/.vim/bundles.$LOCATION.vim
