@@ -34,6 +34,13 @@ update() {
     src=${BASEDIR}/$1
     dst=${TARGETDIR}/$(mangle_filename "$1")
 
+    # Special actions per file type.
+    case "${dst}" in
+      *.plist)
+        d=${dst##*/}
+        d=${d%.*}
+        ${DEBUG} defaults delete ${d} ;;
+    esac
     ${DEBUG} cp -fR "${src}" "${dst}"
 }
 
