@@ -20,6 +20,9 @@ Bundle 'zhaocai/GoldenView.Vim'
 
 " untested
 Bundle 'tpope/vim-dispatch'
+Bundle 'kien/ctrlp.vim'
+Bundle 'terryma/vim-expand-region'
+Bundle 'vim-scripts/gitignore'
 
 " location specific bundles
 silent! source ~/.vim/bundles.$LOCATION.vim

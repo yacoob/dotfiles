@@ -12,9 +12,6 @@ set history=1000                " save more history
 set nocompatible                " choose no compatibility with legacy vi
 set ssop+=winpos,localoptions   " save window positions and local options for :mksession
 let mapleader = "\<space>"      " set the trigger key for plugins/shortcuts
-
-
-
 syntax enable
 filetype plugin indent on
 
@@ -45,13 +42,11 @@ set keymodel+=startsel          " shift+special key = selection
 set laststatus=2                " always show status line
 set lazyredraw                  " batch some screen updates during macros and such
 set number                      " display current line number
-"silent! set relativenumber      " use relative line numbers for lines other than current
 set ruler                       " display coords in bottom right corner
 set scrolloff=14                " leave this amount of lines while scrolling up/down
 set shortmess+=mrwI             " shorter indicators (like [RO]) in messages, no :intro on start
 set shortmess-=l                " verbose "x lines, y characters" in messages
 set showcmd                     " display incomplete commands
-set statusline=%n)\ %f\ \ [%-(%M%R%H%)]%=\ \ %P\ \ \ x:%-4.4c\ y:%-4.4l\ %-3b\ %y
 set wildmenu                    " use fancy tab-completion
 
 "" colors
@@ -88,19 +83,22 @@ nmap <silent> <leader>h :set hlsearch! hlsearch?<CR>
 nmap <silent> <leader>l :set list! list?<CR>
 nmap <silent> <leader>p :set paste! paste?<CR>
 nmap <silent> <leader>w :set wrap! wrap?<CR>
-" buffer switch
+" convenience binds for frequently used operations
 nnoremap <leader><leader> <c-^>
+nnoremap <Leader>o :CtrlP<CR>
+nmap <silent> <leader>rc :n $HOME/.vimrc<CR>
 " easier escape
 inoremap jj <ESC>
-" edit vimrc
-nmap <silent> <leader>rc :n $HOME/.vimrc<CR>
 " forgot your sudo?
 cmap w!! w !sudo tee % >/dev/null
 " change searches to use normal regexpes by default
 nnoremap / /\v
 vnoremap / /\v
 " no yank on paste
-" xnoremap p pgvy
+xnoremap p pgvy
+" vim-expand-region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 "" plugin config
 " airline
