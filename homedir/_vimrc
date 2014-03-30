@@ -89,6 +89,11 @@ nnoremap <leader>o :CtrlP<cr>
 nnoremap <leader>c :copen<cr>
 nnoremap <leader>C :cclose<cr>
 nmap <silent> <leader>rc :n $HOME/.vimrc<CR>
+" moving whole lines
+nmap <C-k> ddkP
+nmap <C-j> ddp
+vmap <C-k> xkP`[V`]
+vmap <C-j> xp`[V`]
 " better tab
 noremap <tab> v>
 noremap <s-tab> v<
