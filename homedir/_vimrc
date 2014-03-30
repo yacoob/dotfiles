@@ -85,8 +85,15 @@ nmap <silent> <leader>p :set paste! paste?<CR>
 nmap <silent> <leader>w :set wrap! wrap?<CR>
 " convenience binds for frequently used operations
 nnoremap <leader><leader> <c-^>
-nnoremap <Leader>o :CtrlP<CR>
+nnoremap <leader>o :CtrlP<cr>
+nnoremap <leader>c :copen<cr>
+nnoremap <leader>C :cclose<cr>
 nmap <silent> <leader>rc :n $HOME/.vimrc<CR>
+" better tab
+noremap <tab> v>
+noremap <s-tab> v<
+vnoremap <tab> >gv
+vnoremap <s-tab> <gv
 " easier escape
 inoremap jj <ESC>
 " forgot your sudo?
