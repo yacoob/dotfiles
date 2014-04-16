@@ -10,10 +10,13 @@ Bundle 'gmarik/vundle'
 Bundle 'Raimondi/delimitMate'
 Bundle 'SirVer/ultisnips'
 Bundle 'bling/vim-airline'
+Bundle 'fatih/vim-go'
 Bundle 'gregsexton/gitv'
 Bundle 'jmcantrell/vim-virtualenv'
+Bundle 'mhinz/vim-signify'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'scrooloose/syntastic'
+Bundle 'takac/vim-hardtime'
 Bundle 'tpope/vim-fugitive'
 Bundle 'zhaocai/GoldenView.Vim'
 
@@ -22,7 +25,6 @@ Bundle 'tpope/vim-dispatch'
 Bundle 'kien/ctrlp.vim'
 Bundle 'terryma/vim-expand-region'
 Bundle 'vim-scripts/gitignore'
-Bundle 'fatih/vim-go'
 
 " location specific bundles
 silent! source ~/.vim/bundles.$LOCATION.vim
