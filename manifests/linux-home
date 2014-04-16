@@ -13,5 +13,6 @@ _zlogin
 =_zsh
 _zsh/functions
 _zshenv
+_zshenv.home
 _zshrc
 _zshrc.home
