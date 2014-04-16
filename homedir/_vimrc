@@ -19,7 +19,7 @@ filetype plugin indent on
 set backspace=indent,eol,start  " backspace through everything in insert mode
 set expandtab                   " use spaces, not tabs
 set list                        " highlight some special characters
-set listchars=tab:→┈,trail:┈,extends:»,precedes:«
+set listchars=tab:\|\ ,trail:·,extends:»,precedes:«
 set nojoinspaces                " single dot spacing<D-`>
 set nowrap                      " don't wrap lines
 set tabstop=2 shiftwidth=2      " a tab is two spaces
@@ -61,9 +61,11 @@ endif
 " remove trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 " different tabs for Python code
-autocmd BufRead *.py set tabstop=4 shiftwidth=4 textwidth=80
+autocmd BufRead,BufNewFile *.py set tabstop=4 shiftwidth=4 textwidth=80
 " disable certain backup-related settings that make crontab complain
 au FileType crontab set nobackup nowritebackup
+" tolerate tabs in golang
+au BufRead,BufNewFile *.go set noexpandtab
 
 "" keyboard mappings
 " stop using arrow keys
