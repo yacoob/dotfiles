@@ -87,7 +87,8 @@ nmap <silent> <leader>p :set paste! paste?<CR>
 nmap <silent> <leader>w :set wrap! wrap?<CR>
 " convenience binds for frequently used operations
 nnoremap <leader><leader> <c-^>
-nnoremap <leader>o :CtrlP<cr>
+nnoremap <leader>b :CtrlPBuffer<cr>
+nnoremap <leader>o :CtrlPMixed<cr>
 nnoremap <leader>c :copen<cr>
 nnoremap <leader>C :cclose<cr>
 nmap <silent> <leader>rc :n $HOME/.vimrc<CR>
@@ -101,6 +102,8 @@ noremap <tab> v>
 noremap <s-tab> v<
 vnoremap <tab> >gv
 vnoremap <s-tab> <gv
+" window operations
+nmap <C-C> :close<cr>
 " easier escape
 inoremap jj <ESC>
 " forgot your sudo?
@@ -110,14 +113,18 @@ nnoremap / /\v
 vnoremap / /\v
 " no yank on paste
 xnoremap p pgvy
-" vim-expand-region
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
 
 "" plugin config
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+" ctrlp
+let g:ctrlp_map = ''
+" goldenview
+nmap <F8> <Plug>GoldenViewSwitchToggle
+nmap <C-F8> <Plug>GoldenViewSwitchMain
+" signify
+let g:signify_vcs_list = [ 'git', 'hg' ]
 " syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -129,6 +136,9 @@ let g:ycm_seed_identifiers_with_syntax = 1
 " vim-go
 " https://github.com/fatih/vim-go/issues/57
 let g:go_disable_autoinstall = 1
+" vim-expand-region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 " system/location dependent settings
 silent! source ~/.vimrc.${LOCATION}
