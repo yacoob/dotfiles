@@ -39,6 +39,7 @@ update() {
       *.plist)
         d=${dst##*/}
         d=${d%.*}
+        ${DEBUG} killall -u ${USER} cfprefsd
         ${DEBUG} defaults delete ${d} ;;
     esac
     ${DEBUG} cp -fR "${src}" "${dst}"
