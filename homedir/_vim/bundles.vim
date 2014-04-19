@@ -26,7 +26,8 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'terryma/vim-expand-region'
 Bundle 'vim-scripts/gitignore'
 
-" location specific bundles
+" location/os specific bundles
 silent! source ~/.vim/bundles.$LOCATION.vim
+silent! source ~/.vim/bundles.$OS.vim
 
 filetype plugin indent on     " Required!
