@@ -1,5 +1,5 @@
 " Dash integration.
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
+Plugin 'rizzatti/funcoo.vim'
+Plugin 'rizzatti/dash.vim'
 
 nmap <silent> <leader>d <Plug>DashSearch
