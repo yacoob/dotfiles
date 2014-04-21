@@ -133,6 +133,9 @@ let g:signify_vcs_list = [ 'git', 'hg' ]
 " syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
+" ultisnips
+let g:UltiSnipsExpandTrigger="<c-tab>"
+let g:UltiSnipsListSnippets="<c-s-tab>"
 " unite
 let g:unite_enable_start_insert = 1
 let g:unite_prompt = '» '
@@ -151,6 +154,7 @@ let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_key_list_previous_completion=['<Up>']
 " vim-go
 " https://github.com/fatih/vim-go/issues/57
 let g:go_disable_autoinstall = 1
