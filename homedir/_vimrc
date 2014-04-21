@@ -82,7 +82,7 @@ nnoremap k gk
 " options togglers
 nmap <silent> <leader>F :set fullscreen! fullscreen?<CR>
 nmap <silent> <leader>h :set hlsearch! hlsearch?<CR>
-nmap <silent> <leader>l :set list! list?<CR>
+nmap <silent> <leader>i :set list! list?<CR>
 nmap <silent> <leader>p :set paste! paste?<CR>
 nmap <silent> <leader>w :set wrap! wrap?<CR>
 " convenience binds for frequently used operations
@@ -92,8 +92,10 @@ nnoremap <leader>o :Unite -buffer-name=files file_rec/async:! file_mru:long file
 nnoremap <leader>O :UniteWithBufferDir -profile-name=files file:/<cr>
 nnoremap <leader>D :Unite -no-start-insert -default-action=lcd directory_mru<cr>
 nnoremap <leader>G :Unite -no-start-insert grep:.<cr>
-nnoremap <leader>C :cwindow<cr>
-nnoremap <leader>L :lwindow<cr>
+nnoremap <leader>c :cwindow<cr>
+nnoremap <leader>C :cclose<cr>
+nnoremap <leader>l :lwindow<cr>
+nnoremap <leader>L :lclose<cr>
 nmap <silent> <leader>rc :n $HOME/.vimrc<CR>
 " moving whole lines
 nmap <C-k> ddkP
