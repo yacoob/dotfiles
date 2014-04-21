@@ -92,8 +92,8 @@ nnoremap <leader>o :Unite -buffer-name=files file_rec/async:! file_mru:long file
 nnoremap <leader>O :UniteWithBufferDir -profile-name=files file:/<cr>
 nnoremap <leader>D :Unite -no-start-insert -default-action=lcd directory_mru<cr>
 nnoremap <leader>G :Unite -no-start-insert grep:.<cr>
-nnoremap <leader>c :copen<cr>
-nnoremap <leader>C :cclose<cr>
+nnoremap <leader>C :cwindow<cr>
+nnoremap <leader>L :lwindow<cr>
 nmap <silent> <leader>rc :n $HOME/.vimrc<CR>
 " moving whole lines
 nmap <C-k> ddkP
