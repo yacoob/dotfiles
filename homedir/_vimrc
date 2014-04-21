@@ -136,7 +136,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 " ultisnips
 let g:UltiSnipsExpandTrigger="<F1>"
-let g:UltiSnipsListSnippets="<S-F1>"
+let g:UltiSnipsListSnippets="<F2>"
 " unite
 let g:unite_enable_start_insert = 1
 let g:unite_prompt = '» '
