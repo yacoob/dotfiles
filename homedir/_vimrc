@@ -9,7 +9,6 @@ set encoding=utf-8              " utf-8 is default encoding
 set foldmethod=syntax           " use syntax rules for folding
 set formatoptions+=21           " use indent from second line of a paragraph, don't break line after single letter word
 set history=1000                " save more history
-set nocompatible                " choose no compatibility with legacy vi
 set ssop+=winpos,localoptions   " save window positions and local options for :mksession
 let mapleader = "\<space>"      " set the trigger key for plugins/shortcuts
 syntax enable
