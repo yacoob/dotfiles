@@ -6,26 +6,27 @@ call vundle#rc()
 
 Plugin 'gmarik/vundle'
 
-" rest of bundles
+" bundles
 Plugin 'Raimondi/delimitMate'
-Plugin 'SirVer/ultisnips'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimproc.vim'
+"Plugin 'SirVer/ultisnips'
 Plugin 'bling/vim-airline'
 Plugin 'fatih/vim-go'
 Plugin 'gregsexton/gitv'
+"Plugin 'honza/vim-snippets.git'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'mhinz/vim-signify'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'takac/vim-hardtime'
+Plugin 'terryma/vim-expand-region'
+Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
+Plugin 'vim-scripts/gitignore'
 Plugin 'zhaocai/GoldenView.Vim'
 
 " untested
-Plugin 'tpope/vim-dispatch'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'terryma/vim-expand-region'
-Plugin 'vim-scripts/gitignore'
 
 " location/os specific bundles
 silent! source ~/.vim/bundles.$LOCATION.vim
