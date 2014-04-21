@@ -120,6 +120,8 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 " ctrlp
 let g:ctrlp_map = ''
+" dash
+nmap <silent> <leader>d <Plug>DashSearch
 " goldenview
 nmap <F8> <Plug>GoldenViewSwitchToggle
 nmap <C-F8> <Plug>GoldenViewSwitchMain
