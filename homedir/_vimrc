@@ -125,6 +125,10 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 " dash
 nmap <silent> <leader>d <Plug>DashSearch
+" delimitMate
+let delimitMate_expand_cr = 2
+let delimitMate_expand_space = 1
+
 " goldenview
 nmap <F8> <Plug>GoldenViewSwitchToggle
 nmap <C-F8> <Plug>GoldenViewSwitchMain
