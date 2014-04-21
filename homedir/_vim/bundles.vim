@@ -22,7 +22,8 @@ Plugin 'zhaocai/GoldenView.Vim'
 
 " untested
 Plugin 'tpope/vim-dispatch'
-Plugin 'kien/ctrlp.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimproc.vim'
 Plugin 'terryma/vim-expand-region'
 Plugin 'vim-scripts/gitignore'
 
