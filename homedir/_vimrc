@@ -12,7 +12,6 @@ set history=1000                " save more history
 set ssop+=winpos,localoptions   " save window positions and local options for :mksession
 let mapleader = "\<space>"      " set the trigger key for plugins/shortcuts
 syntax enable
-filetype plugin indent on
 
 "" whitespace
 set backspace=indent,eol,start  " backspace through everything in insert mode
