@@ -39,10 +39,17 @@ update() {
       *.plist)
         d=${dst##*/}
         d=${d%.*}
-        ${DEBUG} killall -u ${USER} cfprefsd
-        ${DEBUG} defaults delete ${d} ;;
+        ${DEBUG} defaults delete ${d}
+        ;;
     esac
+    # Copy the file.
     ${DEBUG} cp -fR "${src}" "${dst}"
+    # Special actions per file type.
+    case "${dst}" in
+      *.plist)
+        ${DEBUG} killall -u ${USER} cfprefsd
+        ;;
+    esac
 }
 
 
