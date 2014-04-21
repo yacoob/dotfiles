@@ -88,7 +88,7 @@ nmap <silent> <leader>w :set wrap! wrap?<CR>
 " convenience binds for frequently used operations
 nnoremap <leader><leader> <c-^>
 nnoremap <leader>b :Unite buffer<cr>
-nnoremap <leader>o :Unite -buffer-name=files file_rec/async:! file_mru:long file/new<cr>
+nnoremap <leader>o :Unite -buffer-name=files file_mru:long file_rec/async:! file/new<cr>
 nnoremap <leader>O :UniteWithBufferDir -profile-name=files file:/<cr>
 nnoremap <leader>D :Unite -no-start-insert -default-action=lcd directory_mru<cr>
 nnoremap <leader>G :Unite -no-start-insert grep:.<cr>
