@@ -135,8 +135,8 @@ let g:signify_vcs_list = [ 'git', 'hg' ]
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 " ultisnips
-let g:UltiSnipsExpandTrigger="<c-tab>"
-let g:UltiSnipsListSnippets="<c-s-tab>"
+let g:UltiSnipsExpandTrigger="<F1>"
+let g:UltiSnipsListSnippets="<S-F1>"
 " unite
 let g:unite_enable_start_insert = 1
 let g:unite_prompt = '» '
