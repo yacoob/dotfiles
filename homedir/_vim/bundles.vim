@@ -8,6 +8,7 @@ Plugin 'gmarik/vundle'
 
 " bundles
 Plugin 'Raimondi/delimitMate'
+Plugin 'Shougo/neomru.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'SirVer/ultisnips'
