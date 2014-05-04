@@ -6,7 +6,7 @@ grep -Eo '"http://[^"]+s1600[^"]+"' - | uniq | sed 's#/s1600/#/s1920/#' | sed -E
   p
   g
   s#.*#<div class="gallery">\
-<div mp_picture class="picture"><a href=&></a></div>#
+<div data-mp_picture class="picture"><a href=&></a></div>#
   p
 }
 2 i\
