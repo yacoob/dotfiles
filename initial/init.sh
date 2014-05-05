@@ -46,12 +46,9 @@ apply_tweaks() {
 
 # Make sure ~/.yacoob-conf is available for gui apps (ie. MacVim)
 adjust_env() {
-  if [[ ! -r /etc/zprofile ]]; then
-    sudo mv /etc/zshenv /etc/zprofile
-  fi
-  grep -q '.yacoob-conf' /etc/zprofile
+  grep -q '.yacoob-conf' /etc/zshenv
   if [[ $? -ne 0 ]]; then
-    echo 'source ~/.yacoob-conf' | sudo tee -a /etc/zprofile
+    echo 'source ~/.yacoob-conf' | sudo tee -a /etc/zshenv
   fi
 }
 
