@@ -1,5 +1,8 @@
 source ~/.yacoob-conf
 
+# Special arrangement for certain variables.
+typeset -U path manpath
+
 # locales
 export LANG=en_IE.UTF-8
 export LC_COLLATE=pl_PL.UTF-8
@@ -29,7 +32,7 @@ export WORKON_HOME="${HOME}/.venvs"
 # system/location dependent settings
 case "${OS}" in
     "linux")
-        export PATH=~/bin:/usr/local/bin:$PATH
+        path=(~/bin /usr/local/bin ${path})
         ;;
     "osx")
         case "${LOCATION}" in
@@ -40,12 +43,10 @@ case "${OS}" in
                 export BREWPATH=/usr/local
                 ;;
         esac
-        export PATH=~/.bin:${BREWPATH}/sbin:${BREWPATH}/share/python:${BREWPATH}/bin:${PATH}
-        export MANPATH=${BREWPATH}/share/man:${MANPATH}
+        path=(~/.bin ${BREWPATH}/sbin ${BREWPATH}/share/python ${BREWPATH}/bin ${path})
+        manpath=(${BREWPATH}/share/man ${manpath})
         ;;
 esac
-echo "In ~/.zshenv"
-echo $PATH
 
 # Location dependent confidential settings
 [[ -r ~/.zshenv.${LOCATION} ]] && source ~/.zshenv.${LOCATION}
