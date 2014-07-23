@@ -111,6 +111,7 @@ nnoremap <leader>o :Unite -buffer-name=files file_mru:long file_rec/async:! file
 nnoremap <leader>O :UniteWithBufferDir -profile-name=files file:/<cr>
 nnoremap <leader>D :Unite -no-start-insert -default-action=lcd directory_mru<cr>
 nnoremap <leader>G :Unite -no-start-insert grep:.<cr>
+nnoremap <leader>/ :Unite line -start-insert<cr>
 nnoremap <leader>c :cwindow<cr>
 nnoremap <leader>C :cclose<cr>
 nnoremap <leader>l :lwindow<cr>
