@@ -98,12 +98,41 @@ nnoremap / /\v
 vnoremap / /\v
 " no yank on paste
 xnoremap p pgvy
+" don't move on *
+nnoremap <silent> * :let stay_star_view = winsaveview()<cr>*:call winrestview(stay_star_view)<cr>
+" keep search matches in the middle of the window
+nnoremap n nzzzv
+nnoremap N Nzzzv
 " option togglers
 nmap <silent> <leader>F :set fullscreen! fullscreen?<CR>
 nmap <silent> <leader>h :set hlsearch! hlsearch?<CR>
 nmap <silent> <leader>i :set list! list?<CR>
 nmap <silent> <leader>p :set paste! paste?<CR>
 nmap <silent> <leader>w :set wrap! wrap?<CR>
+" window toggling
+function! ToggleList(bufname, pfx)
+  redir =>buflist
+  silent! ls
+  redir END
+  for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+    if bufwinnr(bufnum) != -1
+      exec(a:pfx.'close')
+      return
+    endif
+  endfor
+  if a:pfx == 'l' && len(getloclist(0)) == 0
+      echohl ErrorMsg
+      echo "Location List is Empty."
+      return
+  endif
+  let winnr = winnr()
+  exec(a:pfx.'open')
+  if winnr() != winnr
+    wincmd p
+  endif
+endfunction
+nmap <silent> <leader>l :call ToggleList("Location List", 'l')<CR>
+nmap <silent> <leader>q :call ToggleList("Quickfix List", 'c')<CR>
 " convenience binds for frequently used operations
 nnoremap <leader><leader> <c-^>
 nnoremap <leader>b :Unite buffer<cr>
@@ -112,10 +141,29 @@ nnoremap <leader>O :UniteWithBufferDir -profile-name=files file:/<cr>
 nnoremap <leader>D :Unite -no-start-insert -default-action=lcd directory_mru<cr>
 nnoremap <leader>G :Unite -no-start-insert grep:.<cr>
 nnoremap <leader>/ :Unite line -start-insert<cr>
-nnoremap <leader>c :cwindow<cr>
-nnoremap <leader>C :cclose<cr>
-nnoremap <leader>l :lwindow<cr>
-nnoremap <leader>L :lclose<cr>
+" arbitrary word highliting
+function! HiInterestingWord(n) " {{{
+    normal! mz
+    normal! "zyiw
+    let mid = 86750 + a:n
+    silent! call matchdelete(mid)
+    let pat = '\V\<' . escape(@z, '\') . '\>'
+    call matchadd("InterestingWord" . a:n, pat, 1, mid)
+    normal! `z
+endfunction
+nnoremap <silent> <leader>1 :call HiInterestingWord(1)<cr>
+nnoremap <silent> <leader>2 :call HiInterestingWord(2)<cr>
+nnoremap <silent> <leader>3 :call HiInterestingWord(3)<cr>
+nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>
+nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>
+nnoremap <silent> <leader>6 :call HiInterestingWord(6)<cr>
+hi def InterestingWord1 guifg=#000000 ctermfg=16 guibg=#ffa724 ctermbg=214
+hi def InterestingWord2 guifg=#000000 ctermfg=16 guibg=#aeee00 ctermbg=154
+hi def InterestingWord3 guifg=#000000 ctermfg=16 guibg=#8cffba ctermbg=121
+hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#b88853 ctermbg=137
+hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#ff9eb8 ctermbg=211
+hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
+" edit .vimrc
 nmap <silent> <leader>rc :n $HOME/.vimrc<CR>
 
 "" plugin config
