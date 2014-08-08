@@ -1,5 +1,5 @@
 "" load bundles
-source ~/.vim/bundles.vim
+source ~/.vim/plugins.vim
 
 "" general settings
 set autoread                    " auto-reread file if modified outside and not in vim
