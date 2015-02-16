@@ -3,6 +3,7 @@ s#/s144/#/s1920/#
 s/https?://
 s/$/" %}}/
 s/^/{{%photo title="" href="/
+' | tail -r | sed -E '
 1 s/photo/photo first=true/
 $ s/photo/photo last=true/
 '
