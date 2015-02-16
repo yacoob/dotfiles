@@ -1,0 +1,8 @@
+grep -Eo "https?://lh.\.googleusercontent.com/[^']+/s144/[^']+" - | head -${1} | sed -E '
+s#/s144/#/s1920/#
+s/https?://
+s/$/" %}}/
+s/^/{{%photo title="" href="/
+1 s/photo/photo first=true/
+$ s/photo/photo last=true/
+'
