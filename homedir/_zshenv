@@ -18,9 +18,6 @@ export EMAIL="yacoob@gmail.com"
 export TMPDIR=/tmp
 export VISUAL=vim
 
-# grep settings
-export GREP_OPTIONS="--color=auto"
-
 # less settings
 export LESS="-SXRM"
 export LESSCHARSET="utf-8"

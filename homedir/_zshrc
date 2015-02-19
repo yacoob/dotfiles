@@ -145,7 +145,7 @@ alias cp='nocorrect cp -i'
 alias d='dirs -v'
 alias dlbf='rm -f (.*~|*~)'
 alias dlb='rm  -i (.*~|*~)'
-alias grep=egrep
+alias grep='egrep --color=auto'
 alias h=history
 alias j=jobs
 alias la='ls -A'
