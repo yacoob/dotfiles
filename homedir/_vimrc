@@ -156,6 +156,8 @@ nmap <silent> <leader>d <Plug>DashSearch
 let delimitMate_expand_cr = 2
 let delimitMate_expand_space = 1
 " goldenview
+let g:goldenview__enable_default_mapping = 0
+nmap <silent> <F7> <Plug>GoldenViewSplit
 nmap <F8> <Plug>GoldenViewSwitchToggle
 nmap <C-F8> <Plug>GoldenViewSwitchMain
 " signify
