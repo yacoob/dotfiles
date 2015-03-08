@@ -1,8 +1,0 @@
-grep -Eo '"http://[^"]+s1600[^"]+"' - | uniq | sed -E '
-s#/s1600/#/s1920/#
-s/https?://
-s/$/ %}}/
-s/^/{{%photo title="" href=/
-1 s/photo/photo first=true/
-$ s/photo/photo last=true/
-'
