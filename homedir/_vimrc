@@ -150,8 +150,6 @@ nmap <silent> <leader>rc :n $HOME/.vimrc<CR>
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-" dash
-nmap <silent> <leader>d <Plug>DashSearch
 " delimitMate
 let delimitMate_expand_cr = 2
 let delimitMate_expand_space = 1
@@ -193,6 +191,8 @@ let g:go_disable_autoinstall = 1
 " vim-expand-region
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+" vim-indent-guide
+let g:indent_guides_enable_on_vim_startup = 1
 
 " system/location dependent settings
 silent! source ~/.vimrc.${LOCATION}
