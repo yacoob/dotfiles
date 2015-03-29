@@ -1,9 +1,9 @@
-grep -Eo "https?://lh.\.googleusercontent.com/[^']+/s144/[^']+" - | head -${1} | tail -r | sed -E '
+grep -Eo "https?://lh.\.googleusercontent.com/[^']+/s144/[^']+" - | head -${1} | sed -E '
 s#/s144/#/s1920/#
 s/https?://
 s/$/" >}}/
 s/^/{{<photo title="" href="/
 ' | tail -r | sed -E '
-1 s/photo/photo first=true/
-$ s/photo/photo last=true/
+1 s/photo/photo first="true"/
+$ s/photo/photo last="true"/
 '
