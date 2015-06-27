@@ -23,6 +23,7 @@ Plug 'vim-scripts/gitignore'
 Plug 'zhaocai/GoldenView.Vim'
 
 " untested
+Plug 'regedarek/ZoomWin'
 
 " location/os specific bundles
 silent! source ~/.vim/plugins.$LOCATION.vim
