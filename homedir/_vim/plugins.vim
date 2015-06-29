@@ -13,6 +13,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'mhinz/vim-signify'
 Plug 'nanotech/jellybeans.vim'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'regedarek/ZoomWin'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-expand-region'
@@ -23,7 +24,6 @@ Plug 'vim-scripts/gitignore'
 Plug 'zhaocai/GoldenView.Vim'
 
 " untested
-Plug 'regedarek/ZoomWin'
 
 " location/os specific bundles
 silent! source ~/.vim/plugins.$LOCATION.vim
