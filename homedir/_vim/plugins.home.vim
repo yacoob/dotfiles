@@ -1,1 +1,1 @@
-Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
+Plug 'Shougo/neocomplete'
