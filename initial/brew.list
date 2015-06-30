@@ -1,11 +1,13 @@
 ccrypt
+ctags
 git
+lua
 mobile-shell
 netcat
 nmap
 pstree
-pwgen
 pv
+pwgen
 reattach-to-user-namespace
 the_silver_searcher
 tig

@@ -26,6 +26,11 @@ Plug 'zhaocai/GoldenView.Vim'
 " untested
 Plug 'majutsushi/tagbar'
 
+" colorschemes
+Plug 'jdkanani/vim-material-theme'
+Plug 'blerins/flattown'
+Plug 'sjl/badwolf'
+
 " location/os specific bundles
 silent! source ~/.vim/plugins.$LOCATION.vim
 silent! source ~/.vim/plugins.$OS.vim
