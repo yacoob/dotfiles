@@ -11,7 +11,6 @@ Plug 'gregsexton/gitv'
 Plug 'jmcantrell/vim-virtualenv', {'for': 'python'}
 Plug 'justinmk/vim-sneak'
 Plug 'mhinz/vim-signify'
-Plug 'nanotech/jellybeans.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'regedarek/ZoomWin'
 Plug 'rking/ag.vim'
@@ -23,13 +22,12 @@ Plug 'vasconcelloslf/vim-interestingwords'
 Plug 'vim-scripts/gitignore'
 Plug 'zhaocai/GoldenView.Vim'
 
+"colorschemes
+Plug 'jdkanani/vim-material-theme'
+Plug 'nanotech/jellybeans.vim'
+"
 " untested
 Plug 'majutsushi/tagbar'
-
-" colorschemes
-Plug 'jdkanani/vim-material-theme'
-Plug 'blerins/flattown'
-Plug 'sjl/badwolf'
 
 " location/os specific bundles
 silent! source ~/.vim/plugins.$LOCATION.vim
