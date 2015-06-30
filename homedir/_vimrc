@@ -168,7 +168,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 " tagbar
 let g:tagbar_show_linenumbers = -1
-let g:tagbar_autopreview = 1
 nnoremap <silent> <leader>t :TagbarToggle<CR>
 " unite
 let g:unite_enable_start_insert = 1
