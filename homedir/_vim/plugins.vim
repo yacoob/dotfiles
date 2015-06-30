@@ -24,6 +24,7 @@ Plug 'vim-scripts/gitignore'
 Plug 'zhaocai/GoldenView.Vim'
 
 " untested
+Plug 'majutsushi/tagbar'
 
 " location/os specific bundles
 silent! source ~/.vim/plugins.$LOCATION.vim

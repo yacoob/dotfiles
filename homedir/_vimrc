@@ -158,14 +158,18 @@ let g:goldenview__enable_default_mapping = 0
 nmap <silent> <F7> <Plug>GoldenViewSplit
 nmap <F8> <Plug>GoldenViewSwitchToggle
 nmap <C-F8> <Plug>GoldenViewSwitchMain
+" neocomplete
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
 " signify
 let g:signify_vcs_list = [ 'git', 'hg' ]
 " syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
-" neocomplete
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
+" tagbar
+let g:tagbar_show_linenumbers = -1
+let g:tagbar_autopreview = 1
+nnoremap <silent> <leader>t :TagbarToggle<CR>
 " unite
 let g:unite_enable_start_insert = 1
 let g:unite_prompt = '» '
