@@ -68,6 +68,8 @@ au FileType crontab set nobackup nowritebackup
 au BufRead,BufNewFile *.go set noexpandtab
 " .md files are markdown, not Modula2
 au BufRead,BufNewFile *.md set filetype=markdown
+" open folds in newly opened files
+au Syntax * normal zR
 
 "" keyboard mappings
 " stop using arrow keys
