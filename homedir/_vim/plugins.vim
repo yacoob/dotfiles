@@ -5,6 +5,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
+Plug 'Valloric/ListToggle'
 Plug 'bling/vim-airline'
 Plug 'fatih/vim-go'
 Plug 'gregsexton/gitv'
