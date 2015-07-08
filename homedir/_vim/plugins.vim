@@ -11,6 +11,7 @@ Plug 'fatih/vim-go'
 Plug 'gregsexton/gitv'
 Plug 'jmcantrell/vim-virtualenv', {'for': 'python'}
 Plug 'justinmk/vim-sneak'
+Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'regedarek/ZoomWin'
@@ -28,7 +29,6 @@ Plug 'jdkanani/vim-material-theme'
 Plug 'nanotech/jellybeans.vim'
 "
 " untested
-Plug 'majutsushi/tagbar'
 
 " location/os specific bundles
 silent! source ~/.vim/plugins.$LOCATION.vim
