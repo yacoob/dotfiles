@@ -162,12 +162,6 @@ if executable('ag')
   let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
   let g:unite_source_grep_recursive_opt = ''
 endif
-" ycm
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_key_list_previous_completion=['<Up>']
 " vim-go
 " https://github.com/fatih/vim-go/issues/57
 let g:go_disable_autoinstall = 1
@@ -176,6 +170,14 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 " vim-indent-guide
 let g:indent_guides_enable_on_vim_startup = 1
+" ycm
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_key_list_previous_completion=['<Up>']
+" zoomwin
+nmap <silent> <leader>z :ZoomWin<CR>
 
 " system/location dependent settings
 silent! source ~/.vimrc.${LOCATION}
