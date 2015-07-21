@@ -71,6 +71,8 @@ au BufRead,BufNewFile *.md set filetype=markdown
 " open folds in newly opened files
 au Syntax * normal zR
 
+"" abbreviations
+iab --- —
 "" keyboard mappings
 " stop using arrow keys
 map <up> <nop>
