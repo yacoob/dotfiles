@@ -32,8 +32,9 @@ Plug 'zhaocai/GoldenView.Vim'
 
 "colorschemes
 Plug 'nanotech/jellybeans.vim'
-"
+
 " untested
+Plug 'tpope/vim-commentary'
 
 " location/os specific bundles
 silent! source ~/.vim/plugins.$LOCATION.vim
