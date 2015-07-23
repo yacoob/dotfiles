@@ -10,7 +10,7 @@ zle -N self-insert url-quote-magic
 autoload -U zmv
 
 # vcs_info
-#zstyle ':vcs_info:*+*:*' debug true
+zstyle ':vcs_info:*+*:*' debug true
 setopt promptsubst
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
@@ -21,8 +21,6 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' get-revision true
 # Don't run vcs_info every time
 zstyle ':vcs_info:*+pre-get-data:*' hooks pre-get-data
-# Force initial vcs_info run.
-FORCE_RUN_VCS_INFO=1
 
 # Load user functions.
 fpath=(~/.zsh/functions* $fpath)
@@ -109,7 +107,7 @@ setopt \
 
 # Hooks
 autoload -Uz add-zsh-hook
-add-zsh-hook chpwd vcs_info-force
+add-zsh-hook chpwd chpwd_vcs_info
 PERIOD=300
 add-zsh-hook periodic conf-prompt-helper
 add-zsh-hook precmd vcs_info

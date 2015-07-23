@@ -1,0 +1,2 @@
+# Force vcs_info run after cwd change.
+__FORCE_RUN_VCS_INFO=1

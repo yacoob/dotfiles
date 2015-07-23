@@ -1,39 +1,16 @@
-# From zsh-doc/examples/Misc/vcs_info-examples
-
-# Only run vcs_info when necessary to speed up the prompt and make using
-# check-for-changes bearable in bigger repositories. This setup was
-# inspired by Bart Trojanowski
-# (http://jukie.net/~bart/blog/pimping-out-zsh-prompt).
+# The name of this function is silly; vcs_info forces '+vi-' prefix for hook
+# function names.
 #
-# This setup is by no means perfect. It can only detect changes done
-# through the VCS's commands run by the current shell. If you use your
-# editor to commit changes to the VCS or if you run them in another shell
-# this setup won't detect them. To fix this just run "cd ." which causes
-# vcs_info to run and update the information. If you use aliases to run
-# the VCS commands update the case check below.
+# inspired by zsh-doc/examples/Misc/vcs_info-examples
 
-# Only Git and Mercurial support and need caching. Abort if any other
-# VCS is used.
+# Don't handle VCSs other than git or hg.
 [[ "$vcs" != git && "$vcs" != hg ]] && return
 
-# If the shell just started up or we changed directories (or for other
-# custom reasons) we must run vcs_info.
-if [[ -n $FORCE_RUN_VCS_INFO ]]; then
-    FORCE_RUN_VCS_INFO=
-    return
+# Allow vcs_info to run if sentinel variable is set, prohibit it from running
+# otherwise.
+if [[ ${__FORCE_RUN_VCS_INFO-1} == 1 ]]; then
+    __FORCE_RUN_VCS_INFO=0
+    ret=0
+else
+    ret=1
 fi
-
-# If we got to this point, running vcs_info was not forced, so now we
-# default to not running it and selectively choose when we want to run
-# it (ret=1 means run it, ret=0 means don't).
-ret=1
-# If a git/hg command was run then run vcs_info as the status might
-# need to be updated.
-case "$(fc -ln $(($HISTCMD-1)))" in
-    git*)
-        ret=0
-        ;;
-    hg*)
-        ret=0
-        ;;
-esac
