@@ -7,14 +7,22 @@ umask 027
 autoload run-help
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
+autoload -U zmv
+
+# vcs_info
+#zstyle ':vcs_info:*+*:*' debug true
+setopt promptsubst
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' stagedstr '%F{yellow}●'
 zstyle ':vcs_info:*' unstagedstr '%F{red}●'
 zstyle ':vcs_info:*' formats '%u%c %F{green}%b %F{default}'
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' get-revision  true
-autoload -U zmv
+zstyle ':vcs_info:*' get-revision true
+# Don't run vcs_info every time
+zstyle ':vcs_info:*+pre-get-data:*' hooks pre-get-data
+# Force initial vcs_info run.
+FORCE_RUN_VCS_INFO=1
 
 # Load user functions.
 fpath=(~/.zsh/functions* $fpath)
@@ -99,15 +107,14 @@ setopt \
   share_history \
   transient_rprompt \
 
-# Enable auto-execution of functions.
+# Hooks
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd vcs_info-force
 PERIOD=300
-typeset -ga preexec_functions
-typeset -ga precmd_functions
-typeset -ga periodic_functions
-precmd_functions+='vcs_info'
-precmd_functions+='precmd_term_title'
-preexec_functions+='preexec_term_title'
-periodic_functions+='conf-prompt-helper'
+add-zsh-hook periodic conf-prompt-helper
+add-zsh-hook precmd vcs_info
+add-zsh-hook precmd precmd_term_title
+add-zsh-hook preexec preexec_term_title
 
 # Set up prompts.
 # Use an anonymous function to isolate local variables from user environment.
@@ -181,10 +188,8 @@ zstyle ':completion:*:*:*:*:hosts' list-colors '=*=30;41'
 zstyle ':completion:*:kill:*:processes' command "ps x"
 zstyle ':completion:*:manuals.(^1*)' insert-sections true
 zstyle ':completion:*:manuals' separate-sections true
-#zstyle ':completion:*:*:*:*:users' list-colors '=*=$color[green]=$color[red]'
 zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*' group-name ''
-#zstyle ':completion:*' list-colors 'reply=( "=(#b)(*$VAR)(?)*=00=$color[green]=$color[bg-green]" )'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu select
 zstyle ':completion:*' use-cache on
