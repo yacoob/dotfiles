@@ -31,7 +31,6 @@ Plug 'vim-scripts/gitignore'
 Plug 'zhaocai/GoldenView.Vim'
 
 "colorschemes
-Plug 'jdkanani/vim-material-theme'
 Plug 'nanotech/jellybeans.vim'
 "
 " untested
