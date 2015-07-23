@@ -1,7 +1,6 @@
 # Force vcs_info run if we're about to execute a git/hg command.
 case "$1" in
-  git*)
-  hg*)
+  git*|hg*)
     __FORCE_RUN_VCS_INFO=1
   ;;
 esac

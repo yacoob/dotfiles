@@ -113,6 +113,7 @@ add-zsh-hook periodic conf-prompt-helper
 add-zsh-hook precmd vcs_info
 add-zsh-hook precmd precmd_term_title
 add-zsh-hook preexec preexec_term_title
+add-zsh-hook preexec preexec_vcs_info
 
 # Set up prompts.
 # Use an anonymous function to isolate local variables from user environment.
