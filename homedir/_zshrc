@@ -10,7 +10,7 @@ zle -N self-insert url-quote-magic
 autoload -U zmv
 
 # vcs_info
-zstyle ':vcs_info:*+*:*' debug true
+#zstyle ':vcs_info:*+*:*' debug true
 setopt promptsubst
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
