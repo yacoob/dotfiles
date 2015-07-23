@@ -24,7 +24,7 @@ zstyle ':vcs_info:*+pre-get-data:*' hooks pre-get-data
 
 # Load user functions.
 fpath=(~/.zsh/functions* $fpath)
-autoload -U ~/.zsh/functions*/*(:t)
+autoload -U -- ~/.zsh/functions*/*(:t)
 
 # Configure ZLE.
 bindkey -v
