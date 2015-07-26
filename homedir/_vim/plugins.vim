@@ -34,7 +34,9 @@ Plug 'zhaocai/GoldenView.Vim'
 Plug 'nanotech/jellybeans.vim'
 
 " untested
+Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 
 " location/os specific bundles
 silent! source ~/.vim/plugins.$LOCATION.vim
