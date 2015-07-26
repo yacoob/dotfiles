@@ -138,6 +138,10 @@ let g:goldenview__enable_default_mapping = 0
 nmap <silent> <F7> <Plug>GoldenViewSplit
 nmap <F8> <Plug>GoldenViewSwitchToggle
 nmap <C-F8> <Plug>GoldenViewSwitchMain
+" goyo
+nmap <leader>g :Goyo<CR>
+" limelight
+nmap <leader>L :Limelight!!<CR>
 " neocomplete
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1

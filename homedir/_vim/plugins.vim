@@ -34,6 +34,8 @@ Plug 'zhaocai/GoldenView.Vim'
 Plug 'nanotech/jellybeans.vim'
 
 " untested
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
