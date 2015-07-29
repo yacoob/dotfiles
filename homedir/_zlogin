@@ -1,4 +1,9 @@
 if [[ -z "${TMUX}" && ! -f tmux-inhibit ]]; then
-  sname='tmp'
+  SESSION_FILE=${HOME}/.tmux-attach-session
+  if [[ -r ${SESSION_FILE} ]]; then
+    sname=$(<${SESSION_FILE})
+  else
+    sname='tmp'
+  fi
   ( tmux has-session -t ${sname} && tmux attach-session -t ${sname} ) || ( tmux new-session -s ${sname} )
 fi
