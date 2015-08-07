@@ -9,9 +9,6 @@ call plug#begin('~/.vim/plugged')
 
 " bundles
 Plug 'Raimondi/delimitMate'
-Plug 'Shougo/neomru.vim'
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'Valloric/ListToggle'
 Plug 'bling/vim-airline'
 Plug 'fatih/vim-go'
@@ -28,7 +25,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'vasconcelloslf/vim-interestingwords'
 Plug 'vim-scripts/gitignore'
-Plug 'zhaocai/GoldenView.Vim'
+"Plug 'zhaocai/GoldenView.Vim'
 
 "colorschemes
 Plug 'nanotech/jellybeans.vim'
@@ -37,6 +34,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'sjl/gundo.vim'
+Plug 'szw/vim-ctrlspace'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 
