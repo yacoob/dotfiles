@@ -10,6 +10,7 @@ _vim
 _vimrc
 _zlogin
 =_zsh
+_zsh/antigen-plugins
 _zsh/functions
 _zshenv
 _zshrc

@@ -195,9 +195,8 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' verbose yes
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
 
-# Load functional zsh if it's there.
-# https://github.com/Tarrasch/zsh-functional
-[[ -d ~/.zsh/functional ]] && source ~/.zsh/functional/functional.plugin.zsh ]]
+# Pull in antigen plugins.
+source ~/.zsh/antigen-plugins
 
 # Pull in OS dependent settings.
 case "${OS}" in
