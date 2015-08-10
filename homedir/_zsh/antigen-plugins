@@ -3,7 +3,14 @@
 #
 local antigen_file=~/.zsh/antigen/antigen.zsh
 if [[ -r ${antigen_file} ]]; then
+  source ${antigen_file}
+
   antigen bundle zsh-users/zsh-syntax-highlighting
   antigen bundle Tarrasch/zsh-functional
+
+  # Config for zsh-syntax-highlighting.
   ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+
+  # Load the plugins.
+  antigen apply
 fi
