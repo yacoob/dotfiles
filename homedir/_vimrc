@@ -134,26 +134,16 @@ let g:CtrlSpaceHeight = 5
 if executable("ag")
   let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
 endif
-if $OS == "osx"
-  let g:CtrlSpaceFileEngine = "file_engine_darwin_amd64"
-elseif $OS == "linux"
-  let g:CtrlSpaceFileEngine = "file_engine_linux_amd64"
-endif
 " delimitMate
 let delimitMate_expand_cr = 2
 let delimitMate_expand_space = 1
-" goldenview
-let g:goldenview__enable_default_mapping = 0
-nmap <silent> <F7> <Plug>GoldenViewSplit
-nmap <F8> <Plug>GoldenViewSwitchToggle
-nmap <C-F8> <Plug>GoldenViewSwitchMain
 " goyo
 nmap <leader>g :Goyo<CR>
+" gundo
+nmap <leader>G :GundoToggle<CR>
 " limelight
+let g:limelight_conceal_ctermfg = 'gray'
 nmap <leader>L :Limelight!!<CR>
-" neocomplete
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
 " signify
 let g:signify_vcs_list = [ 'git', 'hg' ]
 " syntastic
