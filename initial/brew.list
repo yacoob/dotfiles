@@ -1,10 +1,14 @@
 ccrypt
+cmake
 ctags
+fasd
 git
-lua
+htop-osx
 mobile-shell
+mtr
 netcat
 nmap
+parallel
 pstree
 pv
 pwgen
