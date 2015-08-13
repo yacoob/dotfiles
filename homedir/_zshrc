@@ -198,6 +198,11 @@ zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SU
 # Pull in antigen plugins.
 source ~/.zsh/antigen-plugins
 
+# Configure fasd if it's available.
+if (( $+commands[fasd] )) ; then
+  eval "$(fasd --init auto)"
+fi
+
 # Pull in OS dependent settings.
 case "${OS}" in
     "linux")
