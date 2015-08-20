@@ -168,7 +168,6 @@ alias rdlbf='find . -iname \*~ | xargs rm -f'
 alias rezsh='nocorrect exec $SHELL'
 alias rm='rm -i'
 alias sudosh='nocorrect sudo $SHELL'
-alias vew='source $(which virtualenvwrapper.sh)'
 alias vi=vim
 alias zmv='noglob zmv'
 
@@ -207,10 +206,12 @@ fi
 case "${OS}" in
     "linux")
         alias ls='ls --color=auto'
+        alias vew='source /etc/bash_completion.d/virtualenvwrapper'
         ;;
     "osx")
         alias ls='ls -G'
         alias mpv='/Applications/mpv.app/Contents/MacOS/mpv'
+        alias vew='source $(which virtualenvwrapper.sh)'
         ;;
 esac
 
