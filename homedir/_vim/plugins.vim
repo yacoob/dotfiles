@@ -34,6 +34,7 @@ Plug 'vim-scripts/gitignore'
 Plug 'nanotech/jellybeans.vim'
 
 " untested
+Plug 'hwrod/interactive-replace'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 
