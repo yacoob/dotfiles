@@ -1,5 +1,5 @@
 if [[ -z "${TMUX}" && ! -f tmux-inhibit ]]; then
-  if [[ "${LOCATION}" == "office" ]]; then
+  if [[ "${LOCATION}" == "office" && "${OS}" == "linux" ]]; then
     TMUX_CMD=tmx
   else
     TMUX_CMD=tmux
