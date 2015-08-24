@@ -1,9 +1,14 @@
 if [[ -z "${TMUX}" && ! -f tmux-inhibit ]]; then
+  if [[ "${LOCATION}" == "office" ]]; then
+    TMUX_CMD=tmx
+  else
+    TMUX_CMD=tmux
+  fi
   SESSION_FILE=${HOME}/.tmux-attach-session
   if [[ -r ${SESSION_FILE} ]]; then
     sname=$(<${SESSION_FILE})
   else
     sname='tmp'
   fi
-  ( tmux has-session -t ${sname} && tmux attach-session -t ${sname} ) || ( tmux new-session -s ${sname} )
+  ( ${TMUX_CMD} has-session -t ${sname} && ${TMUX_CMD} attach-session -t ${sname} ) || ( ${TMUX_CMD} new-session -s ${sname} )
 fi
