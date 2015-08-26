@@ -1796,13 +1796,13 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>1110 163 445 270 0 0 1920 1178 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>760 390 924 485 0 0 2560 1577 </string>
+	<string>351 202 924 485 0 0 1680 1050 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>768 787 384 129 0 0 1920 1178 </string>
 	<key>NSWindow Frame SUUpdateAlertFrame</key>
 	<string>439 362 566 395 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>4 0 1278 1562 0 0 2560 1577 </string>
+	<string>0 0 1680 1050 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>904 539 585 384 0 0 1920 1178 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -5150,7 +5150,7 @@
 			<key>Columns</key>
 			<integer>80</integer>
 			<key>Command</key>
-			<string>zsh -c "ssh -o ProxyCommand='ssh -p 2501 h.turski.org nc %h %p' imacoob.nerv.local"</string>
+			<string>zsh -c "mosh h.turski.org ssh imacoob"</string>
 			<key>Cursor Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -5445,7 +5445,7 @@
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>461078437.46846402</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>461775939.86140603</real>
+	<real>462120499.45348102</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -5516,7 +5516,7 @@
 	<key>SUFeedURL</key>
 	<string>http://iterm2.com/appcasts/testing.xml</string>
 	<key>SULastCheckTime</key>
-	<date>2015-08-24T14:42:41Z</date>
+	<date>2015-08-26T10:02:22Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
