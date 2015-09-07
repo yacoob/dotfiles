@@ -1,6 +1,7 @@
 ccrypt
 cmake
 ctags
+direnv
 fasd
 git
 htop-osx
