@@ -79,7 +79,7 @@ if [[ -z ""${__path_has_been_adjusted}"" ]]; then
                   export BREWPATH=/usr/local
                   ;;
           esac
-          path=(~/.bin ${BREWPATH}/sbin ${BREWPATH}/share/python ${BREWPATH}/bin ${path})
+          path=(~/.bin ${BREWPATH}/sbin ${BREWPATH}/share/python ${BREWPATH}/bin /Applications/calibre.app/Contents/MacOS ${path})
           manpath=(${BREWPATH}/share/man ${manpath})
           ;;
   esac
