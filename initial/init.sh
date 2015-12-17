@@ -25,7 +25,9 @@ install_brew() {
       ${DEBUG} curl -L https://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 -C homebrew
     fi
     ${DEBUG} cd -
+    ${DEBUG} ${BREW} tap caskroom/cask
     ${DEBUG} ${BREW} install $(cat ${BREW_LIST_FILE})
+    ${DEBUG} ${BREW} install $(cat ${CASK_LIST_FILE})
     ${DEBUG} ${BREW} cleanup -s
     ZSH=${BREW_PREFIX}/bin/zsh
     grep -q "${ZSH}" /etc/shells
@@ -58,6 +60,7 @@ if [[ -z "${OS}" ]] || [[ -z "${LOCATION}" ]] || [[ -z "${CONFDIR}" ]]; then
     croak "Please fix your config file: ${CONFIGFILE}" 5
 fi
 BREW_LIST_FILE="./brew.list"
+CASK_LIST_FILE="./cask.list"
 TWEAKS_FILE="./tweaks"
 
 # Main screen turn on!
