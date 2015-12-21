@@ -22,7 +22,7 @@ install_brew() {
     if [[ ! -x "${BREW}" ]]; then
       ${DEBUG} mkdir -p ${BREW_PREFIX}
       cd ${BREW_PREFIX}
-      ${DEBUG} curl -L https://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 -C homebrew
+      ${DEBUG} curl -L https://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 
     fi
     ${DEBUG} cd -
     ${DEBUG} ${BREW} install $(cat ${BREW_LIST_FILE})
