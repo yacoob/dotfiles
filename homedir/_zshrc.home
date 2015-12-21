@@ -3,7 +3,7 @@
 # Pull in OS dependent settings.
 case "${OS}" in
     "osx")
-        alias mame='cd ~/Library/Application\ Support/mame; mame; cd -'
+        alias mame='cd ~/.mame; mame; cd -'
         ;;
 esac
 

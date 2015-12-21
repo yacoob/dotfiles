@@ -11,7 +11,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'Raimondi/delimitMate'
 Plug 'Valloric/ListToggle'
 Plug 'bling/vim-airline'
-Plug 'fatih/vim-go'
 Plug 'gregsexton/gitv'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
