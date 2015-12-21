@@ -25,9 +25,10 @@ install_brew() {
       ${DEBUG} curl -L https://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 -C homebrew
     fi
     ${DEBUG} cd -
-    ${DEBUG} ${BREW} tap caskroom/cask
     ${DEBUG} ${BREW} install $(cat ${BREW_LIST_FILE})
-    ${DEBUG} ${BREW} install $(cat ${CASK_LIST_FILE})
+    ${DEBUG} ${BREW} tap caskroom/cask
+    ${DEBUG} ${BREW} tap caskroom/fonts
+    ${DEBUG} ${BREW} cask install $(cat ${CASK_LIST_FILE})
     ${DEBUG} ${BREW} cleanup -s
     ZSH=${BREW_PREFIX}/bin/zsh
     grep -q "${ZSH}" /etc/shells
