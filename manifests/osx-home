@@ -25,13 +25,6 @@ _zshenv
 _zshenv.home
 _zshrc
 _zshrc.home
-=Library/Fonts
->Library/Fonts/SourceCodePro-Black.otf
->Library/Fonts/SourceCodePro-Bold.otf
->Library/Fonts/SourceCodePro-ExtraLight.otf
->Library/Fonts/SourceCodePro-Light.otf
->Library/Fonts/SourceCodePro-Regular.otf
->Library/Fonts/SourceCodePro-Semibold.otf
 =Library/Preferences
 >Library/Preferences/com.googlecode.iterm2.plist
 >Library/Preferences/com.manytricks.Moom.plist
