@@ -29,7 +29,7 @@ export PYTHONSTARTUP="${HOME}/.pythonstartup"
 export WORKON_HOME="${HOME}/.venvs"
 
 # System dependent settings
-[[ -r ~/.zshenv.${OS} ]] && source ~/.zshenv.${LOCATION}
+[[ -r ~/.zshenv.${OS} ]] && source ~/.zshenv.${OS}
 
 # Handle variables that are being *modified* (as opposed to just set to a fixed
 # value) by adding something in the front. After we modify them, we set
