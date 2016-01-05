@@ -29,17 +29,6 @@ export PYTHONSTARTUP="${HOME}/.pythonstartup"
 export WORKON_HOME="${HOME}/.venvs"
 
 # system/location dependent settings
-case "${OS}" in
-    "osx")
-        case "${LOCATION}" in
-            "office")
-                export BREWPATH=/usr/brew
-                ;;
-            *)
-                export BREWPATH=/usr/local
-                ;;
-        esac
-esac
 
 # Handle variables that are being *modified* (as opposed to just set to a fixed
 # value) by adding something in the front. After we modify them, we set
@@ -73,7 +62,7 @@ if [[ -z ""${__path_has_been_adjusted}"" ]]; then
       "osx")
           case "${LOCATION}" in
               "office")
-                  export BREWPATH=/usr/brew
+                  export BREWPATH=~/brew
                   ;;
               *)
                   export BREWPATH=/usr/local
