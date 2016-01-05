@@ -23,6 +23,7 @@ _zsh/antigen-plugins
 _zsh/functions
 _zshenv
 _zshenv.home
+_zshenv.osx
 _zshrc
 _zshrc.home
 =Library/Preferences

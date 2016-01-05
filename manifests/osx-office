@@ -21,6 +21,7 @@ _zlogin
 _zsh/antigen-plugins
 _zsh/functions
 _zshenv
+_zshenv.osx
 _zshrc
 =Library/Preferences
 >Library/Preferences/com.googlecode.iterm2.plist

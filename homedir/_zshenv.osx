@@ -1,0 +1,3 @@
+# Keep homebrew and casks in homedir, always.
+export BREWPATH=~/brew
+export HOMEBREW_CASK_OPTS="--caskroom=~/cask"

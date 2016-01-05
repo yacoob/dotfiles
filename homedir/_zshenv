@@ -28,7 +28,8 @@ export LESSCHARSET="utf-8"
 export PYTHONSTARTUP="${HOME}/.pythonstartup"
 export WORKON_HOME="${HOME}/.venvs"
 
-# system/location dependent settings
+# System dependent settings
+[[ -r ~/.zshenv.${OS} ]] && source ~/.zshenv.${LOCATION}
 
 # Handle variables that are being *modified* (as opposed to just set to a fixed
 # value) by adding something in the front. After we modify them, we set
@@ -60,14 +61,6 @@ if [[ -z ""${__path_has_been_adjusted}"" ]]; then
           path=(~/bin /usr/local/bin ${path})
           ;;
       "osx")
-          case "${LOCATION}" in
-              "office")
-                  export BREWPATH=~/brew
-                  ;;
-              *)
-                  export BREWPATH=/usr/local
-                  ;;
-          esac
           path=(~/.bin ${BREWPATH}/sbin ${BREWPATH}/share/python ${BREWPATH}/bin /Applications/calibre.app/Contents/MacOS ${path})
           manpath=(${BREWPATH}/share/man ${manpath})
           ;;
