@@ -2,14 +2,12 @@
 set lines=999                " maximize window by default, vertical
 set columns=999              " and horizontal
 set guioptions-=T            " don't show toolbar
+set guioptions-=m            " no menu
+set guifont=Hack\ Regular:h13
 
 "" OS specific settings
 if $OS == "osx"
-  set guifont=Source\ Code\ Pro\ for\ Powerline:h12
   set fuoptions=maxvert,maxhorz      " use whole screen in fullscreen mode
-else
-  set guifont=Source\ Code\ Pro\ for\ Powerline\ 12
-  set guioptions-=m                  " no menu
 endif
 
 "" Visual feedback for insert mode.
