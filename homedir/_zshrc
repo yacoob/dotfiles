@@ -213,6 +213,7 @@ case "${OS}" in
     "linux")
         alias ls='ls --color=auto'
         alias vew='source /etc/bash_completion.d/virtualenvwrapper'
+        alias mosh-kill-other='kill $(ps --no-headers --sort=start_time -C mosh-server -o pid | head -n -1)'
         ;;
     "osx")
         alias ls='ls -G'
