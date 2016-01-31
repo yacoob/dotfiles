@@ -1,0 +1,7 @@
+.git
+.svn
+.hg
+.DS_Store
+**/*.pyc
+.git5_specs
+review/*
