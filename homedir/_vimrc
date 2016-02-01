@@ -45,6 +45,7 @@ set scrolloff=14                " leave this amount of lines while scrolling up/
 set shortmess+=mrwI             " shorter indicators (like [RO]) in messages, no :intro on start
 set shortmess-=l                " verbose "x lines, y characters" in messages
 set showcmd                     " display incomplete commands
+set splitbelow                  " open horizontal splits below, instead of above
 set wildmenu                    " use fancy tab-completion
 
 "" colors
@@ -117,7 +118,16 @@ nmap <silent> <leader>rc :n $HOME/.vimrc<CR>
 " use ag when it's available
 if executable("ag")
     set grepprg=ag\ --nogroup\ --nocolor
-    let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+    let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ --ignore .git5_specs
+      \ --ignore review
+      \ -g ""'
+    let g:ctrlp_root_markers = ['OWNERS']
     let g:ctrlp_use_caching = 0
 endif
 
