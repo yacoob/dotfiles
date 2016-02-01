@@ -26,6 +26,7 @@ Plug 'sjl/gundo.vim'                       " undo tree visualisation
 Plug 'terryma/vim-expand-region'           " quick selection expansion for visual mode
 Plug 'tpope/vim-commentary'                " quick comment out/in
 Plug 'tpope/vim-fugitive'                  " git integration
+Plug 'tpope/vim-unimpaired'                " various navigation and convenience toggles
 Plug 'vasconcelloslf/vim-interestingwords' " arbitrary phrase highlighter
 Plug 'vim-scripts/gitignore'               " merge .gitignore into wildignore
 
@@ -34,7 +35,6 @@ Plug 'nanotech/jellybeans.vim'
 
 " untested
 Plug 'tpope/vim-surround'                  " quick 'surrounds' editing
-Plug 'tpope/vim-unimpaired'                " various navigation and convenience toggles
 
 " location/os specific bundles
 silent! source ~/.vim/plugins.$LOCATION.vim

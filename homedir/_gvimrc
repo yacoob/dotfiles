@@ -8,6 +8,10 @@ set guifont=Hack\ Regular:h13
 "" OS specific settings
 if $OS == "osx"
   set fuoptions=maxvert,maxhorz      " use whole screen in fullscreen mode
+  " keybindings a'la tpope/vim-unimpaired
+  nmap cof :set fullscreen! fullscreen?<CR>
+  nmap [of :set fullscreen<CR>
+  nmap ]of :set nofullscreen<CR>
 endif
 
 "" Visual feedback for insert mode.

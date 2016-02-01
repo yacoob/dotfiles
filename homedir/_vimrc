@@ -45,7 +45,7 @@ set scrolloff=14                " leave this amount of lines while scrolling up/
 set shortmess+=mrwI             " shorter indicators (like [RO]) in messages, no :intro on start
 set shortmess-=l                " verbose "x lines, y characters" in messages
 set showcmd                     " display incomplete commands
-set splitbelow                  " open horizontal splits below, instead of above
+set splitbelow splitright       " change splits placement
 set wildmenu                    " use fancy tab-completion
 
 "" colors
@@ -107,8 +107,6 @@ nnoremap <silent> * :let stay_star_view = winsaveview()<cr>*:call winrestview(st
 " keep search matches in the middle of the window
 nnoremap n nzzzv
 nnoremap N Nzzzv
-" option togglers (mostly replaced by tpope/vim-unimpaired)
-nmap <silent> <leader>F :set fullscreen! fullscreen?<CR>
 " edit .vimrc
 nmap <silent> <leader>rc :n $HOME/.vimrc<CR>
 " use ag when it's available
