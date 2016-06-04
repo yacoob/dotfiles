@@ -61,7 +61,7 @@ if [[ -z ""${__path_has_been_adjusted}"" ]]; then
           path=(~/bin /usr/local/bin ${path})
           ;;
       "osx")
-          path=(~/.bin ${BREWPATH}/sbin ${BREWPATH}/share/python ${BREWPATH}/bin /Applications/calibre.app/Contents/MacOS ${path})
+          path=(~/.bin ${BREWPATH}/sbin ${BREWPATH}/share/python ${BREWPATH}/bin /Applications/calibre.app/Contents/MacOS /usr/local/bin ${path})
           manpath=(${BREWPATH}/share/man ${manpath})
           ;;
   esac
