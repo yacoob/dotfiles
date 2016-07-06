@@ -1,0 +1,52 @@
+{
+  "Profiles": [
+    {
+      "Name": "hell",
+      "Guid": "5D1B8066-2E11-4C4D-908D-050AEAAE2673",
+      "Custom Command" : "Yes",
+      "Command": "zsh -c \"mosh inferno.hell.pl\"",
+      "Dynamic Profile Parent Name": "terminal",
+      "Shortcut": "E"
+    },
+    {
+      "Name": "magi",
+      "Guid": "44DE76CC-F5CA-49E0-98AF-7311058265E9",
+      "Custom Command" : "Yes",
+      "Command": "zsh -c \"mosh magi.i\"",
+      "Dynamic Profile Parent Name": "terminal",
+      "Shortcut": "N"
+    },
+    {
+      "Name": "v",
+      "Guid": "B0C17BE1-F4B6-44FB-92E0-78BCB9D9B594",
+      "Custom Command" : "Yes",
+      "Command": "zsh -c \"mosh v.turski.org\"",
+      "Dynamic Profile Parent Name": "terminal",
+      "Shortcut": "V"
+    },
+    {
+      "Name": "h",
+      "Guid": "A13F2918-25C7-45AF-8A9A-2D52A03C779B",
+      "Custom Command" : "Yes",
+      "Command": "zsh -c \"mosh h.turski.org\"",
+      "Dynamic Profile Parent Name": "terminal",
+      "Shortcut": "H"
+    },
+    {
+      "Name": "g",
+      "Guid": "058398F8-9D51-4E54-8CFA-63715837E1E0",
+      "Custom Command" : "Yes",
+      "Command": "zsh -c \"mosh g.turski.org\"",
+      "Dynamic Profile Parent Name": "terminal",
+      "Shortcut": "G"
+    },
+    {
+      "Name":    "ssh to magi.i",
+      "Guid":    "5d57e2a8-6111-445a-a848-306b62b86604",
+      "Custom Command" : "Yes",
+      "Command": "zsh -c \"ssh magi.i\"",
+      "Dynamic Profile Parent Name": "terminal",
+      "Shortcut": "M"
+    }
+  ]
+}

@@ -24,6 +24,8 @@ _zsh/functions
 _zshenv
 _zshenv.osx
 _zshrc
+=Library/Application Support/iTerm2/DynamicProfiles
+Library/Application Support/iTerm2/DynamicProfiles/remotes
 =Library/Preferences
 >Library/Preferences/com.googlecode.iterm2.plist
 >Library/Preferences/com.manytricks.Moom.plist
