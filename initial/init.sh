@@ -28,7 +28,7 @@ install_brew() {
     ${DEBUG} ${BREW} install $(cat ${BREW_LIST_FILE})
     ${DEBUG} ${BREW} tap caskroom/cask
     ${DEBUG} ${BREW} tap caskroom/fonts
-    ${DEBUG} ${BREW} cask install $(cat ${CASK_LIST_FILE})
+    ${DEBUG} ${BREW} cask install $(cat ${CASK_LIST_FILE} ${CASK_LIST_FILE}.${LOCATION} 2>/dev/null )
     ${DEBUG} ${BREW} cleanup -s
     ZSH=${BREW_PREFIX}/bin/zsh
     grep -q "${ZSH}" /etc/shells
