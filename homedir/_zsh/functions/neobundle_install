@@ -1,3 +1,0 @@
-local d=~/.vim/bundle
-mkdir -p ${d}
-git clone git://github.com/Shougo/neobundle.vim ${d}/neobundle.vim
