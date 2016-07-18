@@ -17,6 +17,14 @@
       "Shortcut": "N"
     },
     {
+      "Name": "geofront",
+      "Guid": "C5E32636-E0A5-496C-B144-AB1C5FCFBBF1",
+      "Custom Command" : "Yes",
+      "Command": "zsh -c \"mosh geofront.i\"",
+      "Dynamic Profile Parent Name": "terminal",
+      "Shortcut": "O"
+    },
+    {
       "Name": "v",
       "Guid": "B0C17BE1-F4B6-44FB-92E0-78BCB9D9B594",
       "Custom Command" : "Yes",
