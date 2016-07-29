@@ -35,6 +35,7 @@ Plug 'nanotech/jellybeans.vim'
 
 " untested
 Plug 'tpope/vim-surround'                  " quick 'surrounds' editing
+Plug 'lifepillar/vim-cheat40'              " a cheatsheet :)
 
 " location/os specific bundles
 silent! source ~/.vim/plugins.$LOCATION.vim
