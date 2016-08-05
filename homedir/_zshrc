@@ -170,6 +170,7 @@ alias pu=pushd
 alias pwg='pwgen -c -n -y -s -B 12 1'
 alias pwgl='pwgen -c -n -y -s -B 30 1'
 alias pyv='eval "$(pyenv init -)"'
+alias pyvv='eval "$(pyenv virtualenv-init -)"'
 alias rdlbf='find . -iname \*~ | xargs rm -f'
 alias rezsh='nocorrect exec $SHELL'
 alias rm='rm -i'
