@@ -13,6 +13,9 @@ parallel
 pstree
 pv
 pwgen
+pyenv
+pyenv-virtualenv
+pyenv-virtualenvwrapper
 reattach-to-user-namespace
 the_silver_searcher
 tig
