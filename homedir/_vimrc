@@ -21,6 +21,7 @@ set listchars=tab:\|\ ,trail:·,extends:»,precedes:«
 set nojoinspaces                " single dot spacing<D-`>
 set nowrap                      " don't wrap lines
 set tabstop=2 shiftwidth=2      " a tab is two spaces
+set textwidth=80                " MY TERMINAL IS OLD AND SMALL
 
 "" searching
 set gdefault                    " g flag by default for :s
@@ -59,8 +60,6 @@ endif
 "" autocommands
 " remove trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
-" different tabs for Python code
-autocmd BufRead,BufNewFile *.py set tabstop=4 shiftwidth=4 textwidth=80
 " disable certain backup-related settings that make crontab complain
 au FileType crontab set nobackup nowritebackup
 " tolerate tabs in golang
