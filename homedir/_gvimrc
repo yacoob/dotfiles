@@ -1,6 +1,4 @@
 "" GUI specific settings
-set lines=999                " maximize window by default, vertical
-set columns=999              " and horizontal
 set guioptions-=T            " don't show toolbar
 set guioptions-=m            " no menu
 set guifont=Hack\ Regular:h13
