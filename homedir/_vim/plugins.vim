@@ -35,6 +35,7 @@ Plug 'nanotech/jellybeans.vim'
 
 " untested
 Plug 'tpope/vim-surround'                  " quick 'surrounds' editing
+Plug 'lepture/vim-jinja'                   " jinja ft plugin
 Plug 'lifepillar/vim-cheat40'              " a cheatsheet :)
 
 " location/os specific bundles
