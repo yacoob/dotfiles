@@ -1,6 +1,8 @@
 [core]
   editor = mvim -f
 [merge]
-	tool = mvim -d
+  tool = mvimdiff
 [diff]
-	tool = mvim -d
+  tool = mvimdiff
+[difftool "mvimdiff"]
+  cmd = mvim -f -d \"$LOCAL\" \"$REMOTE\"
