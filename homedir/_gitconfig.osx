@@ -1,6 +1,6 @@
 [core]
   editor = mvim -f
 [merge]
-	tool = gvimdiff
+	tool = mvim -d
 [diff]
-	tool = gvimdiff
+	tool = mvim -d

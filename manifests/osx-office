@@ -1,12 +1,7 @@
 _agignore
 =_bin/
-_bin/gvim
-_bin/gvimdiff
 _bin/libmp3lame.dylib
-_bin/mvim
 _bin/suspendme
-_bin/vim
-_bin/vimdiff
 _cvsignore
 _gitconfig
 _gitconfig.osx
