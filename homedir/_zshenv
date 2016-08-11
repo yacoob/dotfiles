@@ -56,6 +56,10 @@ export WORKON_HOME="${HOME}/.venvs"
 # Grrr.
 #
 if [[ -z ""${__path_has_been_adjusted}"" ]]; then
+
+  if [[ -d ~/.pyenv/bin ]]; then
+    path=(~/.pyenv/bin ${path})
+  fi
   case "${OS}" in
       "linux")
           path=(~/bin /usr/local/bin ${path})

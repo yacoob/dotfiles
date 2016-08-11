@@ -204,14 +204,16 @@ zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SU
 # Pull in antigen plugins.
 source ~/.zsh/antigen-plugins
 
-# Configure fasd if it's available.
-if (( $+commands[fasd] )) ; then
+# Conditional configurations
+if (( $+commands[fasd] )); then
   eval "$(fasd --init auto)"
 fi
-
-# Configure direnv if it's available.
-if (( $+commands[direnv] )) ; then
+if (( $+commands[direnv] )); then
   eval "$(direnv hook zsh)"
+fi
+if (( $+commands[pyenv] )); then
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
 fi
 
 # Pull in OS dependent settings.
