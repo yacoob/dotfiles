@@ -5,6 +5,8 @@
 -g AppleScrollBarVariant -string "Single"
 -g NSNavPanelExpandedStateForSaveMode -bool YES
 -g com.apple.sound.beep.feedback -boolean NO
+NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 com.apple.dashboard devmode YES
 com.apple.desktopservices DSDontWriteNetworkStores true
 com.apple.dock autohide -boolean YES
@@ -21,5 +23,5 @@ com.apple.menuextra.battery ShowTime -bool YES
 com.apple.menuextra.textinput  ModeNameVisible -int 0
 com.apple.screencapture type PNG
 com.apple.screensaver askForPassword -int 1
-org.vim.MacVim MMNativeFullScreen 0
 org.vim.MacVim MMLastWindowClosedBehavior -int 2
+org.vim.MacVim MMNativeFullScreen 0
