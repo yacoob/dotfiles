@@ -25,6 +25,7 @@ install_brew() {
       ${DEBUG} curl -L https://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1
     fi
     ${DEBUG} cd -
+    ${DEBUG} ${BREW} analytics off
     ${DEBUG} ${BREW} install $(cat ${BREW_LIST_FILE})
     ${DEBUG} ${BREW} tap caskroom/cask
     ${DEBUG} ${BREW} tap caskroom/fonts
