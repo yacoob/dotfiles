@@ -5,6 +5,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall
 endif
 
+let g:plug_shallow = 1
 call plug#begin('~/.vim/plugged')
 
 " bundles
@@ -36,7 +37,6 @@ Plug 'nanotech/jellybeans.vim'
 " untested
 Plug 'tpope/vim-surround'                  " quick 'surrounds' editing
 Plug 'lepture/vim-jinja'                   " jinja ft plugin
-Plug 'lifepillar/vim-cheat40'              " a cheatsheet :)
 
 " location/os specific bundles
 silent! source ~/.vim/plugins.$LOCATION.vim
