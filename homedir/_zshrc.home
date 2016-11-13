@@ -1,10 +1,10 @@
 # Home-specific config.
 
 # binary-present? configurations
-if (( $+commands[pyenv] )); then
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-fi
+# if (( $+commands[pyenv] )); then
+#   eval "$(pyenv init -)"
+#   eval "$(pyenv virtualenv-init -)"
+# fi
 #
 # Pull in OS dependent settings.
 case "${OS}" in

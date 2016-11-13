@@ -25,6 +25,7 @@ export LESS="-SXRM"
 export LESSCHARSET="utf-8"
 
 # python settings
+export PIP_REQUIRE_VIRTUALENV=true
 export PYTHONSTARTUP="${HOME}/.pythonstartup"
 export WORKON_HOME="${HOME}/.venvs"
 

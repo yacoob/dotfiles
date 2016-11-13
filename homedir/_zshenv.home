@@ -1,6 +1,6 @@
 # Default Go workspace.
 export GOPATH="${HOME}/workarea/golang"
 
-if [[ -d ~/.pyenv/bin ]]; then
-  path=(~/.pyenv/bin ${path})
-fi
+# if [[ -d ~/.pyenv/bin ]]; then
+#   path=(~/.pyenv/bin ${path})
+# fi
