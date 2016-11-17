@@ -3,6 +3,9 @@
 #
 local antigen_file=~/.zsh/antigen/antigen.zsh
 if [[ -r ${antigen_file} ]]; then
+  # Disabling caching as it seems to be problematic:
+  # https://github.com/zsh-users/antigen/issues/313
+  _ANTIGEN_CACHE_ENABLED=false
   source ${antigen_file}
 
   antigen bundle Tarrasch/zsh-functional
