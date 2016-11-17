@@ -5,12 +5,19 @@ local antigen_file=~/.zsh/antigen/antigen.zsh
 if [[ -r ${antigen_file} ]]; then
   source ${antigen_file}
 
-  antigen bundle zsh-users/zsh-syntax-highlighting
   antigen bundle Tarrasch/zsh-functional
+  antigen bundle zsh-users/zsh-syntax-highlighting
+  antigen bundle zsh-users/zaw
 
   # Config for zsh-syntax-highlighting.
   ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
   ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
+
+  # Config for zaw.
+  [[ $(whence -w zaw-history) == *:\ function ]] && bindkey '^R' zaw-history
+  zstyle ':filter-select:highlight' matched fg=yellow,standout
+  zstyle ':filter-select' extended-search yes  # !-negated + smartcase search.
+  zstyle ':filter-select' max-lines 50
 
   # Load the plugins.
   antigen apply
