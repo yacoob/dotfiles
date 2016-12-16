@@ -6,7 +6,6 @@ _cvsignore
 _gitconfig
 _gitconfig.osx
 _gvimrc
-_pythonstartup
 _screenrc
 _tmux.conf
 _tmux.conf.inner

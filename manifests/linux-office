@@ -3,7 +3,6 @@ _cvsignore
 _gitconfig
 _gitconfig.linux
 _gvimrc
-_pythonstartup
 _screenrc
 _tmux.conf
 _tmux.conf.inner

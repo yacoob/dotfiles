@@ -4,7 +4,6 @@ _gitconfig
 _gitconfig.linux
 _gitconfig.home
 _gvimrc
-_pythonstartup
 _screenrc
 _tmux.conf
 _tmux.conf.inner
