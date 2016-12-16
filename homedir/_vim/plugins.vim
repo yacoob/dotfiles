@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'Raimondi/delimitMate'                " auto-closing of quotes, parenthesis and brackets
 Plug 'Valloric/ListToggle'                 " quick toggle for location and quickfist lists
 Plug 'bling/vim-airline'                   " status line
+Plug 'brooth/far.vim'                      " find&replace on steroids
 Plug 'ctrlpvim/ctrlp.vim'                  " fuzzy file/buffer/etc finder
 Plug 'gregsexton/gitv'                     " gitk in vim
 Plug 'junegunn/goyo.vim'                   " distraction-free mode
