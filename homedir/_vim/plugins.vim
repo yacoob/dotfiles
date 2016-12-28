@@ -38,6 +38,7 @@ Plug 'nanotech/jellybeans.vim'
 " untested
 Plug 'tpope/vim-surround'                  " quick 'surrounds' editing
 Plug 'lepture/vim-jinja'                   " jinja ft plugin
+Plug 'yuttie/comfortable-motion.vim'       " intertial scrolling
 
 " location/os specific bundles
 silent! source ~/.vim/plugins.$LOCATION.vim
