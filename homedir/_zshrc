@@ -23,7 +23,7 @@ zstyle ':vcs_info:*' get-revision true
 zstyle ':vcs_info:*+pre-get-data:*' hooks pre-get-data
 
 # Load user functions.
-fpath=(~/.zsh/functions* $fpath)
+fpath=(~/.zsh/functions* ~/.zsh/completion $fpath)
 autoload -U -- ~/.zsh/functions*/*(:t)
 
 # Configure ZLE.
@@ -174,7 +174,7 @@ alias pyvv='eval "$(pyenv virtualenv-init -)"'
 alias rdlbf='find . -iname \*~ | xargs rm -f'
 alias rezsh='nocorrect exec $SHELL'
 alias rm='rm -i'
-alias sudosh='nocorrect sudo $SHELL'
+alias sudosh='nocorrect sudo -Es'
 alias vi=vim
 alias zmv='noglob zmv'
 
