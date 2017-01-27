@@ -71,6 +71,8 @@ au Syntax * normal zR
 
 "" abbreviations
 iab --- —
+iab --> →
+iab <-- ←
 "" keyboard mappings
 " stop using arrow keys
 map <up> <nop>

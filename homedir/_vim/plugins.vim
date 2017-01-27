@@ -18,6 +18,7 @@ Plug 'gregsexton/gitv'                     " gitk in vim
 Plug 'junegunn/goyo.vim'                   " distraction-free mode
 Plug 'junegunn/limelight.vim'              " dim syntax in other parts of the file
 Plug 'justinmk/vim-sneak'                  " middle ground between f and /
+Plug 'lepture/vim-jinja'                   " jinja ft plugin
 Plug 'majutsushi/tagbar'                   " tagbar
 Plug 'mhinz/vim-signify'                   " vcs modification marks
 Plug 'nathanaelkane/vim-indent-guides'     " alternating colors for indent guides
@@ -37,7 +38,6 @@ Plug 'nanotech/jellybeans.vim'
 
 " untested
 Plug 'tpope/vim-surround'                  " quick 'surrounds' editing
-Plug 'lepture/vim-jinja'                   " jinja ft plugin
 Plug 'yuttie/comfortable-motion.vim'       " intertial scrolling
 
 " location/os specific bundles
