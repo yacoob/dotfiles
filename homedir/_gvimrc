@@ -1,7 +1,8 @@
 "" GUI specific settings
 set guioptions-=T            " don't show toolbar
 set guioptions-=m            " no menu
-set guifont=Hack\ Regular:h13
+"set guifont=Hack\ Regular:h13
+set guifont=Fantasque\ Sans\ Mono:h17
 
 "" OS specific settings
 if $OS == "osx"
