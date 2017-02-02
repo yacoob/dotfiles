@@ -11,6 +11,9 @@ case "${OS}" in
     "osx")
         alias mame='cd ~/.mame; mame; cd -'
         ;;
+    "linux")
+        alias wm='sudo wifi-menu -o'
+        ;;
 esac
 
 # Initialize tabcompletion.
