@@ -1,11 +1,14 @@
 "" GUI specific settings
 set guioptions-=T            " don't show toolbar
 set guioptions-=m            " no menu
-"set guifont=Hack\ Regular:h13
-set guifont=Fantasque\ Sans\ Mono:h17
 
 "" OS specific settings
+if $OS == "linux"
+  set guifont=Fantasque\ Sans\ Mono 14
+endif
+
 if $OS == "osx"
+  set guifont=Fantasque\ Sans\ Mono:h17
   set fuoptions=maxvert,maxhorz      " use whole screen in fullscreen mode
   " keybindings a'la tpope/vim-unimpaired
   nmap cof :set fullscreen! fullscreen?<CR>
