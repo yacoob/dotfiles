@@ -141,6 +141,7 @@ let g:ctrlp_working_path_mode = 'rc'
 " delimitMate
 let delimitMate_expand_cr = 2
 let delimitMate_expand_space = 1
+au FileType cpp let b:delimitMate_matchpairs = '(:),[:],{:}'
 " goyo
 nmap <leader>g :Goyo<CR>
 " gundo
