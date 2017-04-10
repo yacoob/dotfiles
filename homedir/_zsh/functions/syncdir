@@ -7,5 +7,14 @@ if [[ -z "${opts[-localdir]}" || -z "${opts[-machine]}" || -z "${opts[-share]}" 
 fi
 local remotedir=${opts[-localdir]##*/}
 
-msmb ${opts[-machine]} ${opts[-share]}
-rsync --exclude '.DS_Store' --delete --size-only -i -r -z $* ${opts[-localdir]}/ /Volumes/${opts[-share]}/${remotedir}/
+# msmb ${opts[-machine]} ${opts[-share]}
+# rsync --exclude '.DS_Store' --delete --size-only -i -r -z $* ${opts[-localdir]}/ /Volumes/${opts[-share]}/${remotedir}/
+rsync \
+  --iconv=UTF-8-MAC,UTF-8 \
+  --exclude .stfolder --exclude .stignore --exclude '.DS_Store' \
+  --itemize-changes \
+  --delete --recursive \
+  --times --omit-dir-times \
+  $* \
+  ${opts[-localdir]}/ \
+  yacoob@boxoob:/mnt/lcl/geofront/${opts[-share]}/${remotedir}/

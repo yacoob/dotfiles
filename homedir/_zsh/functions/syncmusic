@@ -1,1 +1,1 @@
-syncdir -machine boxoob -share worek -localdir ~/Music/iTunes/muzyka $1 --exclude .stfolder
+syncdir -machine boxoob -share worek -localdir ~/Music/iTunes/muzyka $1
