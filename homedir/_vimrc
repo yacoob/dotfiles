@@ -101,6 +101,8 @@ nmap <C-C> :close<cr>
 inoremap jj <ESC>
 " forgot your sudo?
 cmap w!! w !sudo tee % >/dev/null
+" change directory to that of current file
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 " no yank on paste
 xnoremap p pgvy
 " don't move on *
