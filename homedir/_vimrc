@@ -110,6 +110,8 @@ nnoremap <silent> * :let stay_star_view = winsaveview()<cr>*:call winrestview(st
 " keep search matches in the middle of the window
 nnoremap n nzzzv
 nnoremap N Nzzzv
+" cd to current file's path
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 " edit .vimrc
 nmap <silent> <leader>rc :n $HOME/.vimrc<CR>
 " use ag when it's available
