@@ -136,6 +136,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 " ctrlp
 nnoremap <leader>b :CtrlPBuffer<cr>
+nnoremap <leader>B :CtrlPBookmarkDir<cr>
 nnoremap <leader>i :CtrlPLine<cr>
 nnoremap <leader>o :CtrlPMixed<cr>
 nnoremap <leader>r :CtrlPMRU<cr>
