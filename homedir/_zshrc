@@ -221,7 +221,6 @@ case "${OS}" in
         ;;
     "osx")
         alias ls='ls -G'
-        alias mpv='/Applications/mpv.app/Contents/MacOS/mpv'
         alias vi=mvim
         alias vim=mvim
         alias vimdiff='mvim -d'
