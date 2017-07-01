@@ -10,6 +10,9 @@ set foldmethod=syntax           " use syntax rules for folding
 set formatoptions+=21           " use indent from second line of a paragraph, don't break line after single letter word
 set history=1000                " save more history
 set ssop+=winpos,localoptions   " save window positions and local options for :mksession
+set undodir=~/.vim/undo         " place to keep undo files
+set undofile                    " write undo history to undo files
+set undolevels=2000             " keep this many changes in undo history
 let mapleader = "\<space>"      " set the trigger key for plugins/shortcuts
 syntax enable
 

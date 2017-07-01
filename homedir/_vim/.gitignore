@@ -1,4 +1,6 @@
-autoload/
-plugged/
 .netrwhist
+autoload/
 doc/
+plugged/
+undo/*
+!undo/_dummy
