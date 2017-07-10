@@ -225,6 +225,7 @@ case "${OS}" in
         alias vim=mvim
         alias vimdiff='mvim -d'
         alias vew='source $(which virtualenvwrapper.sh)'
+        fpath=(${BREWPATH}/share/zsh-completions $fpath)
         ;;
 esac
 
