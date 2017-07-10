@@ -2,6 +2,7 @@ ccrypt
 ctags
 direnv
 fasd
+findutils
 git
 htop-osx
 ipmitool
@@ -15,7 +16,6 @@ parallel
 pstree
 pv
 pwgen
-python
 python3
 reattach-to-user-namespace
 rsync

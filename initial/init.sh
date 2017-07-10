@@ -26,7 +26,7 @@ install_brew() {
     fi
     ${DEBUG} cd -
     ${DEBUG} ${BREW} analytics off
-    ${DEBUG} ${BREW} install $(cat ${BREW_LIST_FILE})
+    ${DEBUG} ${BREW} install $(cat ${BREW_LIST_FILE}) $(cat ${BREW_LIST_FILE}.${LOCATION} 2>/dev/null )
     ${DEBUG} ${BREW} tap caskroom/cask
     ${DEBUG} ${BREW} tap caskroom/fonts
     ${DEBUG} ${BREW} cask install $(cat ${CASK_LIST_FILE} ${CASK_LIST_FILE}.${LOCATION} 2>/dev/null )
