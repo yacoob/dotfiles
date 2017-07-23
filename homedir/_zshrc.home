@@ -1,11 +1,5 @@
 # Home-specific config.
 
-# binary-present? configurations
-# if (( $+commands[pyenv] )); then
-#   eval "$(pyenv init -)"
-#   eval "$(pyenv virtualenv-init -)"
-# fi
-#
 # Pull in OS dependent settings.
 case "${OS}" in
     "osx")
@@ -15,6 +9,9 @@ case "${OS}" in
         alias wm='sudo wifi-menu -o'
         ;;
 esac
+
+# OS independent aliases
+alias yda='youtube-dl --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s"'
 
 # Initialize tabcompletion.
 autoload -Uz compinit
