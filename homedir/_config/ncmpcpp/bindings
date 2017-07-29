@@ -1,3 +1,4 @@
+# Missing 'insert' key?
 def_key "v"
   select_item
 def_key "ctrl-v"
@@ -5,10 +6,19 @@ def_key "ctrl-v"
 def_key "alt-v"
   select_range
 
-def_key "+"
-    show_clock
-def_key "="
-  volume_up
+# ...and 'delete'?
+def_key "x"
+  delete_playlist_items
+def_key "x"
+  delete_browser_items
+def_key "x"
+  delete_stored_playlist
+def_key "X"
+  toggle_crossfade
+def_key "ctrl-x"
+  set_crossfade
+
+# vi keys
 def_key "j"
     scroll_down
 def_key "k"
@@ -27,3 +37,9 @@ def_key "K"
   move_selected_items_up
 def_key "J"
   move_selected_items_down
+
+# Convenience binds.
+def_key "+"
+    show_clock
+def_key "="
+  volume_up
