@@ -1,5 +1,7 @@
 _agignore
 =_bin/
+=_config/ncmpcpp
+_config/ncmpcpp/bindings
 _bin/libmp3lame.dylib
 _bin/suspendme
 _cvsignore
@@ -25,6 +27,6 @@ _zshrc.home
 Library/Application Support/iTerm2/DynamicProfiles/remotes
 =Library/Preferences
 >Library/Preferences/com.googlecode.iterm2.plist
->Library/Preferences/com.manytricks.Moom.plist
+  >Library/Preferences/com.manytricks.Moom.plist
 =Library/Services
 >Library/Services/Save the Screen.workflow

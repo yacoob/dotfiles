@@ -2,6 +2,8 @@ _agignore
 =_bin/
 _bin/libmp3lame.dylib
 _bin/suspendme
+=_config/ncmpcpp
+_config/ncmpcpp/bindings
 _cvsignore
 _gitconfig
 _gitconfig.osx

@@ -1,4 +1,6 @@
 _agignore
+=_config/ncmpcpp
+_config/ncmpcpp/bindings
 _cvsignore
 _gitconfig
 _gitconfig.linux
