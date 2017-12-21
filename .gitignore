@@ -1,2 +1,5 @@
 .dotrepo
 .yacoob-conf
+# remove those
+.cache
+.viminfo
