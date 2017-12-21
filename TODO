@@ -1,3 +1,4 @@
+Kill .bin, optionally replace with a ~/bin/_placeholder.
 Merge as many files as possible.
 Test new setup.
 Change the deployment for initial config.
