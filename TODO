@@ -1,4 +1,5 @@
 Kill .bin, optionally replace with a ~/bin/_placeholder.
+Switch to bare repo.
 Merge as many files as possible.
 Test new setup.
 Change the deployment for initial config.
