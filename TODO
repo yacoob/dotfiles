@@ -1,5 +1,5 @@
-Switch to bare repo.
-Merge as many files as possible.
+Test multiple repos with same workdir.
+Handle OSX specific dirs and files (shared lib, iterm's remotes, plists).
 Test new setup.
 Change the deployment for initial config.
 Handle OSXisms.
