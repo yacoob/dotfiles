@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
-shopt -s extglob
+TARGET=${HOME}/.dotrepo
+BRANCH=new-layout
+METAFILE=${HOME}/.yacoob-conf
+CONFDIR=${HOME}/workarea/conf
 
 # check usage
 if  [[ $# -ne 2 ]]; then
@@ -12,29 +15,26 @@ fi
 dotrepo() { git --git-dir=${TARGET} --work-tree=${HOME} $@}
 
 # pull in the repo
-TARGET=${HOME}/.dotrepo
-BRANCH=new-layout
 git clone --bare -b ${BRANCH} https://github.com/yacoob/conf ${TARGET}
 dotrepo config status.showUntrackedFiles no
 dotrepo config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
 dotrepo fetch
 dotrepo checkout ${BRANCH}
 if [ $? != 0 ]; then
+  # bkp any files that are conflicting with the ones from repo
   BKP=~/dotrepo-backup
   mkdir ${BKP}
   files=($(dotrepo checkout 2>&1 | egrep '\s+\.'))
   foreach f ($files) { mv ${f} ${BKP}/ }
-  dotrepo checkout -b host-$(hostname) --track origin/${BRANCH}
+  dotrepo checkout ${BRANCH}
 fi
 
-# create local meta config
-FILE=${HOME}/.yacoob-conf
-CONFDIR=${TARGET}
-rm -f ${FILE}
-echo "export OS=$1" > ${FILE}
-echo "export LOCATION=$2" >> ${FILE}
-echo "export CONFDIR=${CONFDIR}" >> ${FILE}
-chmod u=r,go= ${FILE}
-
-echo "${FILE} now contains:"
-cat ${FILE}
+# set up meta config
+rm -f ${METAFILE}
+echo "export OS=$1" > ${METAFILE}
+echo "export LOCATION=$2" >> ${METAFILE}
+echo "export CONFDIR=${CONFDIR}" >> ${METAFILE}
+echo "export DOTREPODIR=${TARGET}" >> ${METAFILE}
+chmod u=r,go= ${METAFILE}
+echo "${METAFILE} now contains:"
+cat ${METAFILE}

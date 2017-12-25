@@ -1,0 +1,2 @@
+source ~/.yacoob-conf
+git --git-dir=${CONFDIR} --work-tree=${HOME} $@
