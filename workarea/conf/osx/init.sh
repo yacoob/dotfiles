@@ -15,7 +15,7 @@ CASK_LIST_FILE=${BASEDIR}/cask.list
 BREW=${BREW_PREFIX}/bin/brew
 if [[ ! -x "${BREW}" ]]; then
   ${DEBUG} mkdir -p ${BREW_PREFIX}
-  cd ${BREW_PREFIX}
+  ${DEBUG} cd ${BREW_PREFIX}
   ${DEBUG} curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
 fi
 ${DEBUG} cd -
@@ -39,7 +39,7 @@ done < ${BASEDIR}/tweaks
 # Make sure ~/.yacoob-conf is available for gui apps (ie. MacVim)
 grep -q '.yacoob-conf' /etc/zshenv
 if [[ $? -ne 0 ]]; then
-  ${DEBUG} echo 'source ~/.yacoob-conf' | sudo tee -a /etc/zshenv
+  echo 'source ~/.yacoob-conf' | sudo tee -a /etc/zshenv
 fi
 
 # Link iTerm's remotes
