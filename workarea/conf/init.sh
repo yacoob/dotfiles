@@ -37,3 +37,7 @@ echo "export CONFBRANCH=${BRANCH}" >> ${METAFILE}
 chmod u=r,go= ${METAFILE}
 echo "${METAFILE} now contains:"
 cat ${METAFILE}
+
+# run OS-specific script if there is one
+s=${CONFDIR}/${OS}/init.sh
+[[ -x $s ]] && echo "Now run $s by hand."
