@@ -1,9 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 source ~/.yacoob-conf
-branch=master
-remote=origin
-dotrepo remote update ${remote} > /dev/null 2>&1 || exit 1
-reslog=$(dotrepo diff ${remote}/${branch})
+confgit remote update origin > /dev/null 2>&1 || exit 1
+reslog=$(confgit log ${CONFBRANCH}..origin/${CONFBRANCH} --oneline)
 if [[ "${reslog}" != "" ]] ; then
   touch ~/.conf-update-available
 fi
