@@ -1,7 +1,1 @@
-source ~/.yacoob-conf
-local branch=master
-local remote=origin
-
-cd ${CONFDIR}
-git log ${branch}..origin/${branch} $*
-cd -
+confgit log ${CONFBRANCH}..origin/${CONFBRANCH}
