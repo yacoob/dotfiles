@@ -68,7 +68,7 @@ if [[ -z ""${__path_has_been_adjusted}"" ]]; then
           path=(~/bin /usr/local/bin ${path})
           ;;
       "osx")
-          path=(~/.bin ${BREWPATH}/sbin ${BREWPATH}/bin /usr/local/bin ${path})
+          path=(~/bin ${BREWPATH}/sbin ${BREWPATH}/bin /usr/local/bin ${path})
           manpath=(${BREWPATH}/share/man ${manpath})
           ;;
   esac
