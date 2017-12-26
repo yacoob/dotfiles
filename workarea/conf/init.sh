@@ -16,16 +16,7 @@ git clone --bare -b ${BRANCH} https://github.com/yacoob/conf ${TARGET}
 confgit config status.showUntrackedFiles no
 confgit config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
 confgit fetch
-confgit checkout ${BRANCH}
-if [[ $? != 0 ]]; then
-  # bkp any files that are conflicting with the ones from repo
-  BKP=~/confgit-backup
-  mkdir ${BKP}
-  confgit checkout 2>&1 | egrep '\s+\.' | while read file; do
-    mv ${file} ${BKP}/
-  done
-  confgit checkout ${BRANCH}
-fi
+confgit checkout -f ${BRANCH}
 
 # set up meta config
 rm -f ${METAFILE}
