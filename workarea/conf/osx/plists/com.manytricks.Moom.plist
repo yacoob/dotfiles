@@ -1134,16 +1134,31 @@
 	<true/>
 	<key>Mouse Controls Grid</key>
 	<true/>
+	<key>Mouse Controls Grid: Mode</key>
+	<integer>0</integer>
+	<key>Mouse Controls Grid: Mode: Show Dialog</key>
+	<false/>
 	<key>Mouse Controls Include Custom Controls</key>
 	<true/>
 	<key>Mouse Controls Include Custom Controls: Show On Hover</key>
 	<true/>
+	<key>NSToolbar Configuration Preferences (Independent) 3174</key>
+	<dict>
+		<key>TB Display Mode</key>
+		<integer>1</integer>
+		<key>TB Icon Size Mode</key>
+		<integer>1</integer>
+		<key>TB Is Shown</key>
+		<integer>1</integer>
+		<key>TB Size Mode</key>
+		<integer>1</integer>
+	</dict>
 	<key>PMSparkleWrapper Status</key>
 	<dict>
 		<key>Check Date</key>
-		<integer>1394933897</integer>
+		<integer>1514212000</integer>
 		<key>Current Version</key>
-		<string>3.1</string>
+		<string>3.2.10</string>
 		<key>Update Version</key>
 		<string></string>
 	</dict>
@@ -1154,7 +1169,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2014-03-16T01:38:17Z</date>
+	<date>2017-12-25T14:26:40Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>Show Cheat Sheet</key>
