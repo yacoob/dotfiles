@@ -17,8 +17,8 @@ if [[ ! -x "${BREW}" ]]; then
   ${DEBUG} mkdir -p ${BREW_PREFIX}
   ${DEBUG} cd ${BREW_PREFIX}
   ${DEBUG} curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
+  ${DEBUG} cd -
 fi
-${DEBUG} cd -
 ${DEBUG} ${BREW} analytics off
 ${DEBUG} ${BREW} install $(cat ${BREW_LIST_FILE}) $(cat ${BREW_LIST_FILE}.${LOCATION} 2>/dev/null )
 ${DEBUG} ${BREW} tap caskroom/cask
@@ -40,6 +40,7 @@ done < ${BASEDIR}/tweaks
 grep -q '.yacoob-conf' /etc/zshenv
 if [[ $? -ne 0 ]]; then
   echo 'source ~/.yacoob-conf' | sudo tee -a /etc/zshenv
+  ${DEBUG} chmod a+r /etc/zshenv
 fi
 
 # Link iTerm's remotes
