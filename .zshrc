@@ -199,8 +199,8 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' verbose yes
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
 
-# Pull in antigen plugins.
-source ~/.zsh/antigen-plugins
+# Pull in zplug plugins.
+source ~/.zsh/zplug-plugins
 
 # binary-present? configurations
 if (( $+commands[fasd] )); then
