@@ -17,7 +17,7 @@ if [[ -r ${zplug_file} ]]; then
   ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
 
   # Config for zaw.
-  [[ $(whence -w zaw-history) == *:\ function ]] && bindkey '^T' zaw-history
+  bindkey '^T' zaw-history
   zstyle ':filter-select:highlight' matched fg=yellow,standout
   zstyle ':filter-select' extended-search yes  # !-negated + smartcase search.
   zstyle ':filter-select' max-lines 50
