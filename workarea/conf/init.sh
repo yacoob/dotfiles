@@ -17,6 +17,7 @@ confgit config status.showUntrackedFiles no
 confgit config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
 confgit fetch
 confgit checkout -f ${BRANCH}
+confgit branch --set-upstream-to=origin/${BRANCH} ${BRANCH}
 
 # set up meta config
 rm -f ${METAFILE}
