@@ -1,5 +1,6 @@
 local zplug_file=~/.zplug/init.zsh
 if [[ -r ${zplug_file} ]]; then
+  ZPLUG_BIN=~/bin
   source ${zplug_file}
 
   zplug 'zplug/zplug', hook-build:'zplug --self-manage'
@@ -11,8 +12,6 @@ if [[ -r ${zplug_file} ]]; then
     zplug install
   fi
 
-  zplug load
-
   # Config for zsh-syntax-highlighting.
   ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
   ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
@@ -22,4 +21,6 @@ if [[ -r ${zplug_file} ]]; then
   zstyle ':filter-select:highlight' matched fg=yellow,standout
   zstyle ':filter-select' extended-search yes  # !-negated + smartcase search.
   zstyle ':filter-select' max-lines 50
+
+  zplug load
 fi
