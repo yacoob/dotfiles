@@ -59,6 +59,12 @@ colorscheme jellybeans
 if &term =~ '256color'
   set t_ut=
 endif
+" truecolor support
+if $COLORTERM == "truecolor"
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 "" autocommands
 " remove trailing whitespace on save
