@@ -30,6 +30,13 @@ export LESS_TERMCAP_me=$(printf '\e[0m')     # turn off all appearance modes (mb
 #export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode – yellow
 export LESS_TERMCAP_ue=$(printf '\e[0m')     # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode – cyan
+# use highlight if it's installed
+if (( $+commands[highlight] )); then
+  export LESSOPEN="| $(which highlight) %s"
+fi
+
+# highlight settings
+export HIGHLIGHT_OPTIONS="--force -O truecolor -s zmrok"
 
 # python settings
 export PIP_REQUIRE_VIRTUALENV=true

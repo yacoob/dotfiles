@@ -4,6 +4,7 @@ direnv
 fasd
 findutils
 git
+highlight
 htop-osx
 ipmitool
 jq
