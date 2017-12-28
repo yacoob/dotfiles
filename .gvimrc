@@ -16,8 +16,3 @@ if $OS == "osx"
   nmap ]of :set nofullscreen<CR>
 endif
 
-"" Visual feedback for insert mode.
-" guibg for InsertLeave is specific to jellybeans color scheme.
-" TODO: solve this problem for terminal too
-au InsertEnter * hi Normal guibg=#000000
-au InsertLeave * hi Normal guibg=#151515

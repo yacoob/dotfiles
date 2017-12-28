@@ -53,12 +53,8 @@ set splitbelow splitright       " change splits placement
 set wildmenu                    " use fancy tab-completion
 
 "" colors
-colorscheme jellybeans
-" make sure vim clears trailing empty space properly on 256color terms
-" http://snk.tuxfamily.org/log/vim-256color-bce.html
-if &term =~ '256color'
-  set t_ut=
-endif
+let g:gruvbox_contrast_dark="hard"
+colorscheme gruvbox
 " truecolor support
 if $COLORTERM == "truecolor"
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
