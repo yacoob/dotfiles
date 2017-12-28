@@ -4,11 +4,11 @@ set guioptions-=m            " no menu
 
 "" OS specific settings
 if $OS == "linux"
-  set guifont=Fantasque\ Sans\ Mono\ 14
+  set guifont=Anonymice\ Powerline\ Nerd\ Font\ Complete\ 14
 endif
 
 if $OS == "osx"
-  set guifont=Fantasque\ Sans\ Mono:h14
+  set guifont=Anonymice\ Powerline\ Nerd\ Font\ Complete:h14
   set fuoptions=maxvert,maxhorz      " use whole screen in fullscreen mode
   " keybindings a'la tpope/vim-unimpaired
   nmap cof :set fullscreen! fullscreen?<CR>

@@ -1708,7 +1708,7 @@
 	<key>NSColorPanelVisibleSwatchRows</key>
 	<integer>1</integer>
 	<key>NSFontPanelAttributes</key>
-	<string>1, 0</string>
+	<string>1, 7</string>
 	<key>NSFontPanelPreviewHeight</key>
 	<real>79</real>
 	<key>NSNavBrowserPreferedColumnContentWidth</key>
@@ -1819,7 +1819,7 @@
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>426 420 214 309 0 0 1920 1178 </string>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>1295 214 445 77 0 0 2560 1417 </string>
+	<string>1202 271 801 453 0 0 2560 1440 </string>
 	<key>NSWindow Frame Preferences</key>
 	<string>205 285 606 456 0 0 1366 745 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
@@ -1827,9 +1827,9 @@
 	<key>NSWindow Frame SUUpdateAlertFrame</key>
 	<string>439 362 566 395 0 0 1440 878 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>118 655 918 512 0 0 2560 1417 </string>
+	<string>1196 659 796 473 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1278 1417 0 0 2560 1417 </string>
+	<string>0 0 2560 1440 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>904 539 585 384 0 0 1920 1178 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -2163,7 +2163,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>FantasqueSansMonoNerdFontC-Regular 14</string>
+			<string>AnonymicePowerlineNerdFontC- 14</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
@@ -7027,7 +7027,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-12-26T18:21:04Z</date>
+	<date>2017-12-28T01:08:05Z</date>
 	<key>SUSkippedVersion</key>
 	<string>3.0.2</string>
 	<key>SavePasteHistory</key>
