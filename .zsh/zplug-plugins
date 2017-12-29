@@ -4,8 +4,10 @@ if [[ -r ${zplug_file} ]]; then
   source ${zplug_file}
 
   zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-  zplug 'zsh-users/zsh-syntax-highlighting'
-  zplug 'zsh-users/zaw'
+  zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
+  zplug "junegunn/fzf", as:command, use:"bin/fzf-tmux"
+  zplug "junegunn/fzf", use:"shell/key-bindings.zsh"
+  zplug 'zsh-users/zsh-syntax-highlighting', defer:2
   zplug 'Tarrasch/zsh-functional'
 
   if ! zplug check; then
@@ -15,12 +17,6 @@ if [[ -r ${zplug_file} ]]; then
   # Config for zsh-syntax-highlighting.
   ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
   ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
-
-  # Config for zaw.
-  bindkey '^T' zaw-history
-  zstyle ':filter-select:highlight' matched fg=yellow,standout
-  zstyle ':filter-select' extended-search yes  # !-negated + smartcase search.
-  zstyle ':filter-select' max-lines 50
 
   zplug load
 fi

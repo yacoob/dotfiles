@@ -38,6 +38,9 @@ fi
 # highlight settings
 export HIGHLIGHT_OPTIONS="--force -O truecolor -s zmrok"
 
+# fzf
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border --inline-info --black'
+
 # python settings
 export PIP_REQUIRE_VIRTUALENV=true
 export WORKON_HOME="${HOME}/.venvs"
