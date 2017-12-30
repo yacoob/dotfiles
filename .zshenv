@@ -50,7 +50,7 @@ export WORKON_HOME="${HOME}/.venvs"
 # those variables will bump those values to the front of the array instead.
 typeset -U path manpath
 # set fixed PATH
-path=(~/bin ${BREWPATH}/sbin ${BREWPATH}/bin /usr/local/bin /usr/bin /usr/sbin)
+path=(~/bin ${BREWPATH}/sbin ${BREWPATH}/bin /usr/local/bin /usr/bin /usr/sbin /bin /sbin)
 manpath=(${BREWPATH}/share/man $(manpath))
 
 # Location dependent confidential settings
