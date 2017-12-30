@@ -1,10 +1,5 @@
 source ~/.yacoob-conf
 
-# No duplicates in  variables specified below. Any attempts to add values to
-# those variables will bump those values to the front of the array instead.
-# See also __path_has_been_adjusted below.
-typeset -U path manpath
-
 # locales
 export LANG=en_IE.UTF-8
 export LC_COLLATE=pl_PL.UTF-8
@@ -41,6 +36,9 @@ export HIGHLIGHT_OPTIONS="--force -O truecolor -s zmrok"
 # fzf
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border --inline-info --black'
 
+# *brew
+export BREWPATH=~/brew
+
 # python settings
 export PIP_REQUIRE_VIRTUALENV=true
 export WORKON_HOME="${HOME}/.venvs"
@@ -48,42 +46,12 @@ export WORKON_HOME="${HOME}/.venvs"
 # System dependent settings
 [[ -r ~/.zshenv.${OS} ]] && source ~/.zshenv.${OS}
 
-# Handle variables that are being *modified* (as opposed to just set to a fixed
-# value) by adding something in the front. After we modify them, we set
-# a sentinel variable to avoid doing this again in child shells.
-#
-# Details:
-# Assume 'PATH=a:b:c:$PATH' being present in a file that's read for both
-# interactive and non-interactive shell startup. If you launch a child shell
-# (say, from vim), PATH would end up with duplicates. If you modify $PATH during your shell runtime (for example via virtualenvwrapper), you end up with:
-#
-# $ PATH=venv_bin:$PATH
-# $ vim
-# :!echo $PATH
-# a:b:c:venv_bin:a:b:c:...
-#
-# zsh's 'typeset -U' helps a bit with this situation - instead of adding
-# duplicated elements, zsh is moving them to the front instead. Which helps for
-# PATH elongation problem as long as you don't run into scenario described
-# above.
-#
-# :!echo $PATH
-# a:b:c:venv_bin:...
-#
-# Grrr.
-#
-if [[ -z ""${__path_has_been_adjusted}"" ]]; then
-  case "${OS}" in
-      "linux")
-          path=(~/bin /usr/local/bin ${path})
-          ;;
-      "osx")
-          path=(~/bin ${BREWPATH}/sbin ${BREWPATH}/bin /usr/local/bin ${path})
-          manpath=(${BREWPATH}/share/man ${manpath})
-          ;;
-  esac
-  export __path_has_been_adjusted=1
-fi
+# No duplicates in  variables specified below. Any attempts to add values to
+# those variables will bump those values to the front of the array instead.
+typeset -U path manpath
+# set fixed PATH
+path=(~/bin ${BREWPATH}/sbin ${BREWPATH}/bin /usr/local/bin /usr/bin /usr/sbin)
+manpath=(${BREWPATH}/share/man $(manpath))
 
 # Location dependent confidential settings
 [[ -r ~/.zshenv.${LOCATION} ]] && source ~/.zshenv.${LOCATION}

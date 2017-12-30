@@ -1,4 +1,1 @@
-# Keep homebrew in homedir, always.
-export BREWPATH=~/brew
-
 export MPD_HOST=/Users/yacoob/.mpd/socket

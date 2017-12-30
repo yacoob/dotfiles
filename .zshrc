@@ -163,6 +163,7 @@ alias lla='ll -A'
 alias lld='ls -ld *(-/DN)'
 alias ll='ls -lh'
 alias mkdir='nocorrect mkdir'
+alias mosh-kill-other='kill $(ps --no-headers --sort=start_time -C mosh-server -o pid | head -n -1)'
 alias mmv='noglob zmv -W'
 alias mv='nocorrect mv -i'
 alias po=popd
@@ -199,9 +200,6 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' verbose yes
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
 
-# Pull in zplug plugins.
-source ~/.zsh/zplug-plugins
-
 # binary-present? configurations
 if (( $+commands[fasd] )); then
   eval "$(fasd --init auto)"
@@ -210,20 +208,21 @@ if (( $+commands[direnv] )); then
   eval "$(direnv hook zsh)"
 fi
 
+# add brew's completions
+fpath=(${BREWPATH}/share/zsh-completions $fpath)
+
 # Pull in OS dependent settings.
 case "${OS}" in
     "linux")
         alias ls='ls --color=auto'
         alias vew='source /etc/bash_completion.d/virtualenvwrapper'
-        alias mosh-kill-other='kill $(ps --no-headers --sort=start_time -C mosh-server -o pid | head -n -1)'
         ;;
     "osx")
         alias ls='ls -G'
+        alias vew='source $(which virtualenvwrapper.sh)'
         alias vi=mvim
         alias vim=mvim
         alias vimdiff='mvim -d'
-        alias vew='source $(which virtualenvwrapper.sh)'
-        fpath=(${BREWPATH}/share/zsh-completions $fpath)
         ;;
 esac
 
