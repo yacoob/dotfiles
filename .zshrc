@@ -207,6 +207,11 @@ fi
 if (( $+commands[direnv] )); then
   eval "$(direnv hook zsh)"
 fi
+if (( $+commands[fzf] )); then
+  local p=$(brew --prefix fzf)
+  source $p/shell/key-bindings.zsh
+  source $p/shell/completion.zsh
+fi
 
 # add brew's completions
 fpath=(${BREWPATH}/share/zsh-completions $fpath)
