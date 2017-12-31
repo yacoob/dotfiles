@@ -41,8 +41,6 @@ Plug 'morhetz/gruvbox'
 " untested
 Plug 'tpope/vim-surround'                  " quick 'surrounds' editing
 Plug 'yuttie/comfortable-motion.vim'       " intertial scrolling
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'                    " fzf integration
 
 " location/os specific bundles
 silent! source ~/.vim/plugins.$LOCATION.vim
