@@ -39,8 +39,8 @@ export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode – cyan
 #
 # use highlight if it's installed
 if (( $+commands[highlight] )); then
-  export LESSOPEN="| $(which highlight) %s"
-  export HIGHLIGHT_OPTIONS="--force -O truecolor -s zmrok"
+  export LESSOPEN="| $(which highlight) --force --quiet %s"
+  export HIGHLIGHT_OPTIONS="-O truecolor -s zmrok"
 fi
 
 # fzf
