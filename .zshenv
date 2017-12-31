@@ -1,4 +1,15 @@
 source ~/.yacoob-conf
+#
+# No duplicates in  variables specified below.
+typeset -U path manpath
+# set fixed PATH
+path=(/usr/local/bin /usr/bin /usr/sbin /bin /sbin)
+if [[ -x ~/brew/bin/brew ]]; then
+  export BREWPATH=$(~/brew/bin/brew --prefix)
+  path=(${BREWPATH}/bin ${BREWPATH}/sbin $path[@])
+  manpath=(${BREWPATH}/share/man $(manpath))
+fi
+path=(~/bin $path[@])
 
 # locales
 export LANG=en_IE.UTF-8
@@ -25,19 +36,17 @@ export LESS_TERMCAP_me=$(printf '\e[0m')     # turn off all appearance modes (mb
 #export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode – yellow
 export LESS_TERMCAP_ue=$(printf '\e[0m')     # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode – cyan
+#
 # use highlight if it's installed
 if (( $+commands[highlight] )); then
   export LESSOPEN="| $(which highlight) %s"
+  export HIGHLIGHT_OPTIONS="--force -O truecolor -s zmrok"
 fi
 
-# highlight settings
-export HIGHLIGHT_OPTIONS="--force -O truecolor -s zmrok"
-
 # fzf
-export FZF_DEFAULT_OPTS='--height 40% --reverse --border --inline-info --black'
-
-# *brew
-export BREWPATH=~/brew
+if (( $+commands[fzf] )); then
+  export FZF_DEFAULT_OPTS='--height 40% --reverse --border --inline-info --black'
+fi
 
 # python settings
 export PIP_REQUIRE_VIRTUALENV=true
@@ -45,13 +54,6 @@ export WORKON_HOME="${HOME}/.venvs"
 
 # System dependent settings
 [[ -r ~/.zshenv.${OS} ]] && source ~/.zshenv.${OS}
-
-# No duplicates in  variables specified below. Any attempts to add values to
-# those variables will bump those values to the front of the array instead.
-typeset -U path manpath
-# set fixed PATH
-path=(~/bin ${BREWPATH}/sbin ${BREWPATH}/bin /usr/local/bin /usr/bin /usr/sbin /bin /sbin)
-manpath=(${BREWPATH}/share/man $(manpath))
 
 # Location dependent confidential settings
 [[ -r ~/.zshenv.${LOCATION} ]] && source ~/.zshenv.${LOCATION}

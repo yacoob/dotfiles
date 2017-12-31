@@ -30,3 +30,6 @@ watch
 wget
 zsh
 zsh-completions
+zsh-git-prompt
+zsh-lovers
+zsh-syntax-highlighting

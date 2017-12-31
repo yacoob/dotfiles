@@ -9,19 +9,6 @@ autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 autoload -U zmv
 
-# vcs_info
-#zstyle ':vcs_info:*+*:*' debug true
-setopt promptsubst
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' stagedstr '%F{yellow}●'
-zstyle ':vcs_info:*' unstagedstr '%F{red}●'
-zstyle ':vcs_info:*' formats '%u%c %F{green}%b %F{default}'
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' get-revision true
-# Don't run vcs_info every time
-zstyle ':vcs_info:*+pre-get-data:*' hooks pre-get-data
-
 # Load user functions.
 fpath=(~/.zsh/functions* ~/.zsh/completion $fpath)
 autoload -U -- ~/.zsh/functions*/*(:t)
@@ -111,13 +98,10 @@ setopt \
 
 # Hooks
 autoload -Uz add-zsh-hook
-add-zsh-hook chpwd chpwd_vcs_info
 PERIOD=300
 add-zsh-hook periodic conf-prompt-helper
-add-zsh-hook precmd vcs_info
 add-zsh-hook precmd precmd_term_title
 add-zsh-hook preexec preexec_term_title
-add-zsh-hook preexec preexec_vcs_info
 
 # Set up prompts.
 # Use an anonymous function to isolate local variables from user environment.
@@ -144,8 +128,7 @@ function {
 
   # PROMPT, assemble!
   PROMPT=${(F)plines}
- }
-RPROMPT=$'${vcs_info_msg_0_}'
+}
 
 # Define aliases.
 alias cd/='cd /'
@@ -210,14 +193,35 @@ fi
 if (( $+commands[direnv] )); then
   eval "$(direnv hook zsh)"
 fi
-if (( $+commands[fzf] )); then
-  local p=$(brew --prefix fzf)
-  source $p/shell/key-bindings.zsh
-  source $p/shell/completion.zsh
-fi
-
-# add brew's completions
-fpath=(${BREWPATH}/share/zsh-completions $fpath)
+# brewed utilities
+function {
+  local p
+  if [[ -n "${BREWPATH}" ]]; then
+    if (( $+commands[fzf] )); then
+      p=$(brew --prefix fzf)
+      source $p/shell/key-bindings.zsh
+      source $p/shell/completion.zsh
+    fi
+    # add brew's completions
+    p=${BREWPATH}/share/zsh-completions
+    [[ -d $p ]] && fpath+=$p
+    p=${BREWPATH}/opt/zsh-git-prompt/zshrc.sh
+    if [[ -r $p ]]; then
+      source $p
+      ZSH_THEME_GIT_PROMPT_CACHE=1
+      ZSH_THEME_GIT_PROMPT_PREFIX=""
+      ZSH_THEME_GIT_PROMPT_SUFFIX=""
+      ZSH_THEME_GIT_PROMPT_SEPARATOR="/"
+      RPROMPT='$(git_super_status)'
+    fi
+    p=${BREWPATH}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    if [[ -r $p ]]; then
+      source $p
+      ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+      ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
+    fi
+  fi
+}
 
 # Pull in OS dependent settings.
 case "${OS}" in
