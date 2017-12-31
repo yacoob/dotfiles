@@ -193,38 +193,11 @@ fi
 if (( $+commands[direnv] )); then
   eval "$(direnv hook zsh)"
 fi
-# brewed utilities
-function {
-  local p
-  if [[ -n "${BREWPATH}" ]]; then
-    # fzf
-    if (( $+commands[fzf] )); then
-      p=${BREWPATH}/opt/fzf/shell
-      source $p/key-bindings.zsh
-      source $p/completion.zsh
-    fi
-    # zsh-completions
-    p=${BREWPATH}/share/zsh-completions
-    [[ -d $p ]] && fpath+=$p
-    # zsh-git-prompt
-    p=${BREWPATH}/opt/zsh-git-prompt/zshrc.sh
-    if [[ -r $p ]]; then
-      source $p
-      ZSH_THEME_GIT_PROMPT_CACHE=1
-      ZSH_THEME_GIT_PROMPT_PREFIX=""
-      ZSH_THEME_GIT_PROMPT_SUFFIX=""
-      ZSH_THEME_GIT_PROMPT_SEPARATOR="/"
-      RPROMPT='$(git_super_status)'
-    fi
-    # zsh-syntax-highlighting
-    p=${BREWPATH}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    if [[ -r $p ]]; then
-      source $p
-      ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-      ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
-    fi
-  fi
-}
+# fzf
+if [[ -n "${BREWPATH}" ]] && (( $+commands[fzf] )); then
+    source ${BREWPATH}/opt/fzf/shell/key-bindings.zsh
+    source ${BREWPATH}/opt/fzf/shell/completion.zsh
+fi
 
 # Pull in OS dependent settings.
 case "${OS}" in

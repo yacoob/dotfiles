@@ -2,5 +2,19 @@ local antigen_file=${BREWPATH}/share/antigen/antigen.zsh
 if [[ -r ${antigen_file} ]]; then
   source ${antigen_file}
   antigen bundle Tarrasch/zsh-functional
+  antigen bundle olivierverdier/zsh-git-prompt
+  antigen bundle zsh-users/zsh-completions
+  antigen bundle zsh-users/zsh-syntax-highlighting
   antigen apply
+
+  # zsh-git-prompt
+  ZSH_THEME_GIT_PROMPT_CACHE=1
+  ZSH_THEME_GIT_PROMPT_PREFIX=""
+  ZSH_THEME_GIT_PROMPT_SUFFIX=""
+  ZSH_THEME_GIT_PROMPT_SEPARATOR="/"
+  RPROMPT='$(git_super_status)'
+
+  # zsh-syntax-highlighting
+  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+  ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
 fi
