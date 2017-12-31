@@ -197,14 +197,16 @@ fi
 function {
   local p
   if [[ -n "${BREWPATH}" ]]; then
+    # fzf
     if (( $+commands[fzf] )); then
-      p=$(brew --prefix fzf)
-      source $p/shell/key-bindings.zsh
-      source $p/shell/completion.zsh
+      p=${BREWPATH}/opt/fzf/shell
+      source $p/key-bindings.zsh
+      source $p/completion.zsh
     fi
-    # add brew's completions
+    # zsh-completions
     p=${BREWPATH}/share/zsh-completions
     [[ -d $p ]] && fpath+=$p
+    # zsh-git-prompt
     p=${BREWPATH}/opt/zsh-git-prompt/zshrc.sh
     if [[ -r $p ]]; then
       source $p
@@ -214,6 +216,7 @@ function {
       ZSH_THEME_GIT_PROMPT_SEPARATOR="/"
       RPROMPT='$(git_super_status)'
     fi
+    # zsh-syntax-highlighting
     p=${BREWPATH}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     if [[ -r $p ]]; then
       source $p

@@ -1,8 +1,6 @@
 local antigen_file=${BREWPATH}/share/antigen/antigen.zsh
 if [[ -r ${antigen_file} ]]; then
   source ${antigen_file}
-
   antigen bundle Tarrasch/zsh-functional
-
   antigen apply
 fi
