@@ -1,12 +1,12 @@
+antigen
 ccrypt
 ctags
-direnv
 fasd
 findutils
+fzf
 git
 highlight
 htop-osx
-ipmitool
 jq
 mobile-shell
 mpv
@@ -20,8 +20,6 @@ pwgen
 python3
 reattach-to-user-namespace
 rsync
-syncthing
-syncthing-inotify
 the_silver_searcher
 tig
 tmux
