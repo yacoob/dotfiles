@@ -1,0 +1,11 @@
+local invocation=$1
+local tmp=(${(s/ /)invocation})
+local cmd=$tmp[1]
+
+if (( $+commands[${cmd}] )); then
+  local cachefile="${HOME}/.${cmd}-init"
+  if [ "$(command -v {cmd})" -nt "${cachefile}" -o ! -s "${cachefile}" ]; then
+    eval "${invocation}" >| "${cachefile}"
+  fi
+  source "${cachefile}"
+fi

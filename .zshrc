@@ -186,13 +186,9 @@ zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SU
 # Pull in antigen plugins.
 source ~/.zsh/antigen-plugins
 
-# binary-present? configurations
-if (( $+commands[fasd] )); then
-  eval "$(fasd --init auto)"
-fi
-if (( $+commands[direnv] )); then
-  eval "$(direnv hook zsh)"
-fi
+# fasd
+cmd-init-cache "fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install"
+
 # fzf
 if [[ -n "${BREWPATH}" ]] && (( $+commands[fzf] )); then
     source ${BREWPATH}/opt/fzf/shell/key-bindings.zsh
