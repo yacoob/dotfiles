@@ -15,9 +15,7 @@ CASK_LIST_FILE=${BASEDIR}/cask.list
 BREW=${BREW_PREFIX}/bin/brew
 if [[ ! -x "${BREW}" ]]; then
   ${DEBUG} mkdir -p ${BREW_PREFIX}
-  ${DEBUG} cd ${BREW_PREFIX}
-  ${DEBUG} curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
-  ${DEBUG} cd -
+  ${DEBUG} curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ${BREW_PREFIX}
 fi
 ${DEBUG} ${BREW} analytics off
 ${DEBUG} ${BREW} install $(cat ${BREW_LIST_FILE}) $(cat ${BREW_LIST_FILE}.${LOCATION} 2>/dev/null )
