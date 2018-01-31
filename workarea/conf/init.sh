@@ -2,7 +2,7 @@
 OS=${OS:-linux}
 LOCATION=${LOCATION:-home}
 TARGET=${HOME}/.dotrepo
-BRANCH=new-layout
+BRANCH=master
 METAFILE=${HOME}/.yacoob-conf
 CONFDIR=${HOME}/workarea/conf
 
