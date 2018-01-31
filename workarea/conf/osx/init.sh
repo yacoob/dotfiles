@@ -46,7 +46,7 @@ fi
 # Link iTerm's remotes
 d="${HOME}/Library/Application Support/iTerm2/DynamicProfiles"
 [[ -d "$d" ]] || mkdir -p "${d}"
-${DEBUG} ln -sf "${BASEDIR}/iterm.remotes" "${HOME}/Library/Application Support/iTerm2/DynamicProfiles/remotes"
+${DEBUG} ln -sf "${BASEDIR}/iterm.remotes" "${d}/remotes"
 
 # Drop in plists.
 for file in ${BASEDIR}/plists/*.plist; do
