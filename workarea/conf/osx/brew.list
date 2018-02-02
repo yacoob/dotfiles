@@ -13,6 +13,7 @@ mtr
 netcat
 nmap
 parallel
+pipenv
 pstree
 pv
 pwgen

@@ -51,6 +51,7 @@ fi
 # python settings
 export PIP_REQUIRE_VIRTUALENV=true
 export WORKON_HOME="${HOME}/.venvs"
+export PIPENV_VENV_IN_PROJECT=1
 
 # System dependent settings
 [[ -r ~/.zshenv.${OS} ]] && source ~/.zshenv.${OS}
