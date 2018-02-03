@@ -1,6 +1,7 @@
 antigen
 ccrypt
 ctags
+duti
 fasd
 findutils
 fzf
@@ -8,7 +9,6 @@ git
 highlight
 jq
 mobile-shell
-mpv
 mtr
 netcat
 nmap
