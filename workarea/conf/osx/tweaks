@@ -22,6 +22,7 @@ com.apple.itunes hide-ping-dropdown -bool YES
 com.apple.menuextra.battery ShowPercent -bool NO
 com.apple.menuextra.battery ShowTime -bool YES
 com.apple.menuextra.textinput  ModeNameVisible -int 0
+com.apple.screencapture location /Users/yacoob/Downloads
 com.apple.screencapture type PNG
 com.apple.screensaver askForPassword -int 1
 org.vim.MacVim MMLastWindowClosedBehavior -int 2
