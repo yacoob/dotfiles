@@ -14,8 +14,6 @@ com.apple.finder FXEnableExtensionChangeWarning -bool false
 com.apple.finder QLEnableXRayFolders 1
 com.apple.finder _FXShowPosixPathInTitle -bool YES
 com.apple.helpviewer DevMode -bool true
-com.apple.iTunes invertStoreLinks -bool YES
-com.apple.itunes hide-ping-dropdown -bool YES
 com.apple.menuextra.battery ShowPercent -bool NO
 com.apple.menuextra.battery ShowTime -bool YES
 com.apple.menuextra.textinput  ModeNameVisible -int 0
