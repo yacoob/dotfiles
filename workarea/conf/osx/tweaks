@@ -10,9 +10,6 @@ NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 com.apple.dashboard devmode YES
 com.apple.desktopservices DSDontWriteNetworkStores true
-com.apple.dock autohide -boolean YES
-com.apple.dock magnification -boolean YES
-com.apple.dock mineffect -string suck
 com.apple.finder FXEnableExtensionChangeWarning -bool false
 com.apple.finder QLEnableXRayFolders 1
 com.apple.finder _FXShowPosixPathInTitle -bool YES
