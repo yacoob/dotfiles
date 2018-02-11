@@ -42,7 +42,7 @@ fi
 
 # Apply OSX tweaks.
 while read line; do
-  ${DEBUG} defaults write ${line}
+  [[ ! "${line}" =~ ^\ *# ]] && ${DEBUG} defaults write ${line}
 done < ${BASEDIR}/tweaks
 
 # Make sure ~/.yacoob-conf is available for gui apps (ie. MacVim)

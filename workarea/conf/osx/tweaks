@@ -17,6 +17,7 @@ com.apple.helpviewer DevMode -bool true
 com.apple.menuextra.battery ShowPercent -bool NO
 com.apple.menuextra.battery ShowTime -bool YES
 com.apple.menuextra.textinput  ModeNameVisible -int 0
+# Screenshots
 com.apple.screencapture location /Users/yacoob/Downloads
 com.apple.screencapture type PNG
 com.apple.screensaver askForPassword -int 1
