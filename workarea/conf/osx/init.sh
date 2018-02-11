@@ -8,14 +8,23 @@ if [[ "$1" == "-n" ]]; then
     DEBUG="echo "
 fi
 
-# Install homebrew packages.
-BREW_PREFIX=~/brew
+# Homebrew
+if [[ "${LOCATION}" == "office" ]]; then
+  BREW_PREFIX=~/brew
+else
+  BREW_PREFIX=/usr/local
+fi
+BREW=${BREW_PREFIX}/bin/brew
 BREW_LIST_FILE=${BASEDIR}/brew.list
 CASK_LIST_FILE=${BASEDIR}/cask.list
-BREW=${BREW_PREFIX}/bin/brew
+# Install homebrew if it's not already there.
 if [[ ! -x "${BREW}" ]]; then
-  ${DEBUG} mkdir -p ${BREW_PREFIX}
-  ${DEBUG} curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ${BREW_PREFIX}
+  if [[ "${BREW_PREFIX}" == "/usr/local" ]]; then
+    ${DEBUG} /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  else
+    ${DEBUG} mkdir -p ${BREW_PREFIX}
+    ${DEBUG} curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ${BREW_PREFIX}
+  fi
 fi
 export HOMEBREW_NO_ANALYTICS=1
 ${DEBUG} ${BREW} update

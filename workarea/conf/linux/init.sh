@@ -9,11 +9,11 @@ if [[ "$1" == "-n" ]]; then
 fi
 
 # Install homebrew packages.
-BREW_PREFIX=~/brew
-BREW_LIST_FILE=${BASEDIR}/brew.list
+BREW_PREFIX=~/.linuxbrew
 BREW=${BREW_PREFIX}/bin/brew
+BREW_LIST_FILE=${BASEDIR}/brew.list
 if [[ ! -x "${BREW}" ]]; then
-  ${DEBUG} git clone https://github.com/Linuxbrew/brew.git ${BREW_PREFIX}
+  ${DEBUG} sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 fi
 ${DEBUG} ${BREW} analytics off
 ${DEBUG} ${BREW} install $(cat ${BREW_LIST_FILE}) $(cat ${BREW_LIST_FILE}.${LOCATION} 2>/dev/null )

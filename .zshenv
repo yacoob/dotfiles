@@ -4,8 +4,12 @@ source ~/.yacoob-conf
 typeset -U path manpath
 # set fixed PATH
 path=(/usr/local/bin /usr/bin /usr/sbin /bin /sbin)
-if [[ -x ~/brew/bin/brew ]]; then
-  export BREWPATH=$(~/brew/bin/brew --prefix)
+# Handle non-standard homebrew location.
+local p
+foreach p (/usr/local/bin ~/brew/bin ~/.linuxbrew/bin) {
+  [[ -x $p/brew ]] && export BREWPATH=${p%%/bin}
+}
+if [[ "${BREWPATH}" != "/usr/local" ]]; then
   path=(${BREWPATH}/bin ${BREWPATH}/sbin $path[@])
   manpath=(${BREWPATH}/share/man $(manpath))
 fi
