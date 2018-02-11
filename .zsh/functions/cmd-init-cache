@@ -1,6 +1,5 @@
 local invocation=$1
-local tmp=(${(s/ /)invocation})
-local cmd=$tmp[1]
+local cmd=${invocation%% *}
 
 if (( $+commands[${cmd}] )); then
   local cachefile="${HOME}/.${cmd}-init"
