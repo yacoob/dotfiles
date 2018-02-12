@@ -7,7 +7,10 @@ path=(/usr/local/bin /usr/bin /usr/sbin /bin /sbin)
 # Handle non-standard homebrew location.
 local p
 foreach p (/usr/local/bin ~/brew/bin ~/.linuxbrew/bin) {
-  [[ -x $p/brew ]] && export BREWPATH=${p%%/bin}
+  if [[ -x $p/brew ]]; then
+    export BREWPATH=${p%%/bin}
+    break
+  fi
 }
 if [[ "${BREWPATH}" != "/usr/local" ]]; then
   path=(${BREWPATH}/bin ${BREWPATH}/sbin $path[@])
