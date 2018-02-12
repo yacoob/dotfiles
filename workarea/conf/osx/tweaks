@@ -1,25 +1,25 @@
--g AppleCollationOrder -string "pl"
--g AppleEnableMenuBarTransparency -boolean NO
--g AppleFirstWeekday -dict "gregorian" 2
--g ApplePressAndHoldEnabled -bool false
--g AppleScrollBarVariant -string "Single"
--g NSNavPanelExpandedStateForSaveMode -bool YES
--g com.apple.sound.beep.feedback -boolean NO
+# Keyboard: set fast and working key repeat.
 NSGlobalDomain ApplePressAndHoldEnabled -bool false
+NSGlobalDomain KeyRepeat -int 1
+NSGlobalDomain InitialKeyRepeat -int 10
+# Default state of save dialog.
 NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+# Dashboard dev mode.
 com.apple.dashboard devmode YES
-com.apple.desktopservices DSDontWriteNetworkStores true
+# Display full POSIX path as Finder window title
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+# Don't write .DS_Store files on net shares and USB volumes.
+com.apple.desktopservices DSDontWriteNetworkStores -bool true
+com.apple.desktopservices DSDontWriteUSBStores -bool true
+# Disable the warning when changing a file extension
 com.apple.finder FXEnableExtensionChangeWarning -bool false
-com.apple.finder QLEnableXRayFolders 1
-com.apple.finder _FXShowPosixPathInTitle -bool YES
+# Make OS help window a normal window.
 com.apple.helpviewer DevMode -bool true
-com.apple.menuextra.battery ShowPercent -bool NO
-com.apple.menuextra.battery ShowTime -bool YES
-com.apple.menuextra.textinput  ModeNameVisible -int 0
 # Screenshots
 com.apple.screencapture location /Users/yacoob/Downloads
 com.apple.screencapture type PNG
 com.apple.screensaver askForPassword -int 1
+# MacVim
 org.vim.MacVim MMLastWindowClosedBehavior -int 2
 org.vim.MacVim MMNativeFullScreen 0
