@@ -20,6 +20,3 @@ com.apple.helpviewer DevMode -bool true
 com.apple.screencapture location /Users/yacoob/Downloads
 com.apple.screencapture type PNG
 com.apple.screensaver askForPassword -int 1
-# MacVim
-org.vim.MacVim MMLastWindowClosedBehavior -int 2
-org.vim.MacVim MMNativeFullScreen 0
