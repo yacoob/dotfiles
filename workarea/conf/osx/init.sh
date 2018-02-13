@@ -41,7 +41,7 @@ if [[ $? -ne 0 ]]; then
 fi
 
 # Apply OSX tweaks.
-while read line; do
+while read -A line; do
   [[ ! "${line}" =~ ^\ *# ]] && ${DEBUG} defaults write ${line}
 done < ${BASEDIR}/tweaks
 
