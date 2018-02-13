@@ -1,7 +1,5 @@
 # Keyboard: set fast and working key repeat.
 NSGlobalDomain ApplePressAndHoldEnabled -bool false
-NSGlobalDomain KeyRepeat -int 1
-NSGlobalDomain InitialKeyRepeat -int 10
 # Default state of save dialog.
 NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
