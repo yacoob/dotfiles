@@ -8,7 +8,7 @@ NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 # Dashboard dev mode.
 com.apple.dashboard devmode YES
 # Display full POSIX path as Finder window title
-defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+com.apple.finder _FXShowPosixPathInTitle -bool true
 # Don't write .DS_Store files on net shares and USB volumes.
 com.apple.desktopservices DSDontWriteNetworkStores -bool true
 com.apple.desktopservices DSDontWriteUSBStores -bool true
