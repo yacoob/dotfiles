@@ -19,4 +19,3 @@ com.apple.helpviewer DevMode -bool true
 # Screenshots
 com.apple.screencapture location /Users/yacoob/Downloads
 com.apple.screencapture type PNG
-com.apple.screensaver askForPassword -int 1
