@@ -16,8 +16,8 @@ autoload -U -- ~/.zsh/functions*/*(:t)
 # Configure ZLE.
 bindkey -v
 # vi mode indicator in prompt.
+zle -N zle-line-init
 zle -N zle-keymap-select
-zle -N zle-line-finish
 # Some vim and emacs keybindings.
 bindkey -M viins '^r' history-incremental-search-backward
 bindkey -M vicmd '^r' history-incremental-search-backward

@@ -1,6 +1,5 @@
-if [[ $KEYMAP = vicmd ]]; then
- _CMD_MODE=1
-else
- _CMD_MODE=
-fi
+case ${KEYMAP} in
+  (vicmd) _CMD_MODE=1;;
+  (*)     _CMD_MODE=;;
+esac
 zle reset-prompt
