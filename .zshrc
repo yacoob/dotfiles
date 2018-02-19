@@ -117,7 +117,7 @@ function {
   tmp+='%(3L.%F{magenta} %L%F{default}  .)'
   tmp+='%F{red} %T %w%F{default}  '
   tmp+='%F{yellow} %!%F{default}  '
-  tmp+='%(?..%F{cyan} %?%F{default})  '
+  tmp+='%(?..%F{cyan} %?%F{default}  )'
   plines+=${(j::)tmp}
 
   # Second line.
