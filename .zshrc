@@ -30,6 +30,8 @@ bindkey '^?' backward-delete-char
 bindkey '^H' backward-delete-char
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
+# one more Esc key won't hurt
+bindkey -M viins 'jj' vi-cmd-mode
 # fake-enter = save to history without executing.
 zle -N fake-enter; bindkey "^X^H" fake-enter
 # edit in external editor
