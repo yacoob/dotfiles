@@ -15,8 +15,7 @@ else
   BREW_PREFIX=/usr/local
 fi
 BREW=${BREW_PREFIX}/bin/brew
-BREW_LIST_FILE=${BASEDIR}/brew.list
-CASK_LIST_FILE=${BASEDIR}/cask.list
+BREWFILE=Brewfile
 # Install homebrew if it's not already there.
 if [[ ! -x "${BREW}" ]]; then
   if [[ "${BREW_PREFIX}" == "/usr/local" ]]; then
@@ -29,10 +28,8 @@ fi
 export HOMEBREW_NO_ANALYTICS=1
 ${DEBUG} ${BREW} update
 ${DEBUG} ${BREW} analytics off
-${DEBUG} ${BREW} install $(cat ${BREW_LIST_FILE}) $(cat ${BREW_LIST_FILE}.${LOCATION} 2>/dev/null )
-${DEBUG} ${BREW} tap caskroom/cask
-${DEBUG} ${BREW} tap caskroom/fonts
-${DEBUG} ${BREW} cask install $(cat ${CASK_LIST_FILE} ${CASK_LIST_FILE}.${LOCATION} 2>/dev/null )
+${DEBUG} ${BREW} bundle --file=${BREWFILE}.any
+${DEBUG} ${BREW} bundle --file=${BREWFILE}.${LOCATION}
 ${DEBUG} ${BREW} cleanup -s
 ZSH=${BREW_PREFIX}/bin/zsh
 grep -q "${ZSH}" /etc/shells
