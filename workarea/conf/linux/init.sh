@@ -12,9 +12,13 @@ fi
 BREW_PREFIX=~/.linuxbrew
 BREW=${BREW_PREFIX}/bin/brew
 BREW_LIST_FILE=${BASEDIR}/brew.list
+BREWFILE=${BASEDIR}/Brewfile.any
 if [[ ! -x "${BREW}" ]]; then
   ${DEBUG} sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 fi
+${DEBUG} ${BREW} update
 ${DEBUG} ${BREW} analytics off
-${DEBUG} ${BREW} install $(cat ${BREW_LIST_FILE}) $(cat ${BREW_LIST_FILE}.${LOCATION} 2>/dev/null )
+${DEBUG} ${BREW} bundle --file=${BREWFILE}.any
+local f=${BREWFILE}.${LOCATION}
+[[ -r $f ]] && ${DEBUG} ${BREW} bundle --file=$f
 ${DEBUG} ${BREW} cleanup -s
