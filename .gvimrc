@@ -8,7 +8,7 @@ if $OS == "linux"
 endif
 
 if $OS == "osx"
-  set guifont=Anonymice\ Powerline\ Nerd\ Font\ Complete:h14
+  set guifont=Anonymice\ Nerd\ Font\ Complete:h14
   set fuoptions=maxvert,maxhorz      " use whole screen in fullscreen mode
   " keybindings a'la tpope/vim-unimpaired
   nmap cof :set fullscreen! fullscreen?<CR>

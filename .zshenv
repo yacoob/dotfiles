@@ -3,7 +3,7 @@ source ~/.yacoob-conf
 # No duplicates in  variables specified below.
 typeset -U path manpath
 # set fixed PATH
-path=(/usr/local/bin /usr/bin /usr/sbin /bin /sbin)
+path=(/usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin)
 # Handle non-standard homebrew location.
 local p
 foreach p (/usr/local/bin ~/brew/bin ~/.linuxbrew/bin) {
