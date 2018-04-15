@@ -14,6 +14,8 @@
 	<false/>
 	<key>AllowClipboardAccess</key>
 	<true/>
+	<key>AlternateMouseScroll</key>
+	<true/>
 	<key>AnimateDimming</key>
 	<false/>
 	<key>AppleAntiAliasingThreshold</key>
@@ -2392,7 +2394,7 @@
 	<key>NSColorPanelVisibleSwatchRows</key>
 	<integer>1</integer>
 	<key>NSFontPanelAttributes</key>
-	<string>1, 7</string>
+	<string>1, 0</string>
 	<key>NSFontPanelPreviewHeight</key>
 	<real>79</real>
 	<key>NSNavBrowserPreferedColumnContentWidth</key>
@@ -2515,9 +2517,9 @@
 	<key>NSWindow Frame SUUpdateAlertFrame</key>
 	<string>439 362 566 395 0 0 1440 878 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>263 689 918 401 0 0 2560 1417 </string>
+	<string>263 761 937 401 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 849 1417 0 0 2560 1417 </string>
+	<string>0 0 961 1417 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>904 539 585 384 0 0 1920 1178 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -2976,7 +2978,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>AnonymicePowerlineNerdFontC- 14</string>
+			<string>AnonymiceNerdFontComplete- 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -3610,7 +3612,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>AnonymicePowerlineNerdFontC- 14</string>
+			<string>AnonymiceNerdFontComplete- 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -4246,7 +4248,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>AnonymicePowerlineNerdFontC- 14</string>
+			<string>AnonymiceNerdFontComplete- 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -4882,7 +4884,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>AnonymicePowerlineNerdFontC- 14</string>
+			<string>AnonymiceNerdFontComplete- 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -5518,7 +5520,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>AnonymicePowerlineNerdFontC- 14</string>
+			<string>AnonymiceNerdFontComplete- 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -6154,7 +6156,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>AnonymicePowerlineNerdFontC- 14</string>
+			<string>AnonymiceNerdFontComplete- 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -6790,7 +6792,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>AnonymicePowerlineNerdFontC- 14</string>
+			<string>AnonymiceNerdFontComplete- 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -7426,7 +7428,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>AnonymicePowerlineNerdFontC- 14</string>
+			<string>AnonymiceNerdFontComplete- 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -8062,7 +8064,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>AnonymicePowerlineNerdFontC- 14</string>
+			<string>AnonymiceNerdFontComplete- 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -8698,7 +8700,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>AnonymicePowerlineNerdFontC- 14</string>
+			<string>AnonymiceNerdFontComplete- 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -9065,7 +9067,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-02-18T23:47:47Z</date>
+	<date>2018-04-14T23:05:53Z</date>
 	<key>SUSkippedVersion</key>
 	<string>3.0.2</string>
 	<key>SavePasteHistory</key>
