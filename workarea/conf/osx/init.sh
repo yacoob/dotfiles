@@ -29,7 +29,7 @@ export HOMEBREW_NO_ANALYTICS=1
 ${DEBUG} ${BREW} update
 ${DEBUG} ${BREW} analytics off
 ${DEBUG} ${BREW} bundle --file=${BREWFILE}.any
-local f=${BREWFILE}.${LOCATION}
+f=${BREWFILE}.${LOCATION}
 [[ -r $f ]] && ${DEBUG} ${BREW} bundle --file=$f
 ${DEBUG} ${BREW} cleanup -s
 ZSH=${BREW_PREFIX}/bin/zsh
