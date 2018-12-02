@@ -172,6 +172,8 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 " vim-indent-guide
 let g:indent_guides_enable_on_vim_startup = 1
+" vim-rust
+let g:rustfmt_autosave = 1
 " ycm
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
