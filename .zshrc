@@ -164,6 +164,7 @@ alias pwgl='pwgen -c -n -y -s -B 30 1'
 alias rdlbf='find . -iname \*~ | xargs rm -f'
 alias rezsh='nocorrect exec $SHELL'
 alias rm='rm -i'
+alias sfcp='rsync -i -rltgoD'
 alias sudosh='nocorrect sudo -Es'
 alias vi=vim
 alias zmv='noglob zmv'
