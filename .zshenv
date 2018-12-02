@@ -16,7 +16,7 @@ if [[ "${BREWPATH}" != "/usr/local" ]]; then
   path=(${BREWPATH}/bin ${BREWPATH}/sbin $path[@])
   manpath=(${BREWPATH}/share/man $(manpath))
 fi
-path=(~/bin $path[@])
+path=(~/bin ~/.cargo/bin $path[@])
 
 # locales
 export LANG=en_IE.UTF-8
