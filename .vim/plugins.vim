@@ -41,6 +41,7 @@ Plug 'morhetz/gruvbox'
 " untested
 Plug 'tpope/vim-surround'                  " quick 'surrounds' editing
 Plug 'yuttie/comfortable-motion.vim'       " intertial scrolling
+Plug 'rust-lang/rust.vim'                  " Rust support
 
 " location/os specific bundles
 silent! source ~/.vim/plugins.$LOCATION.vim
