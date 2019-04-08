@@ -72,7 +72,7 @@ au BufRead,BufNewFile *.go set noexpandtab
 " .md files are markdown, not Modula2
 au BufRead,BufNewFile *.md set filetype=markdown
 " open folds in newly opened files
-au Syntax * normal zR
+au BufRead,BufNewFile * normal zR
 
 "" abbreviations
 iab --- —
@@ -154,11 +154,13 @@ let delimitMate_expand_space = 1
 au FileType cpp let b:delimitMate_matchpairs = '(:),[:],{:}'
 " goyo
 nmap <leader>g :Goyo<CR>
-" gundo
-nmap <leader>G :GundoToggle<CR>
+" undotree
+nmap <leader>G :UndotreeToggle<CR>
 " limelight
 let g:limelight_conceal_ctermfg = 'gray'
 nmap <leader>L :Limelight!!<CR>
+" rainbow
+let g:rainbow_active = 1
 " signify
 let g:signify_vcs_list = [ 'git', 'hg' ]
 " syntastic
@@ -174,6 +176,8 @@ vmap <C-v> <Plug>(expand_region_shrink)
 let g:indent_guides_enable_on_vim_startup = 1
 " vim-rust
 let g:rustfmt_autosave = 1
+let g:rust_clip_command = 'pbcopy'
+"let g:syntastic_rust_checkers = ['cargo', 'cargoclippy']
 " ycm
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
