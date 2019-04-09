@@ -38,6 +38,7 @@ set smartcase                   " ... unless they contain at least one capital l
 "" ui
 set background=dark             " use dark versions of backgrounds
 set cmdheight=2                 " use two lines for command-line, useful to avoid hit-enter prompts
+set completeopt+=noinsert,menuone " completion menu options
 set cursorline                  " highlight current line
 set display=lastline            " display as much as possible from last line in window
 set keymodel+=startsel          " shift+special key = selection
@@ -139,13 +140,38 @@ endif
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+" ale
+" generic 'next completion if pop-up is visible' binding
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+nmap <silent> <Leader>ad <Plug>(ale_go_to_definition)
+nmap <silent> <Leader>af <Plug>(ale_fix)
+nmap <silent> <Leader>ah <Plug>(ale_hover)
+nmap <silent> <Leader>ai <Plug>(ale_detail)
+nmap <silent> <Leader>aj <Plug>(ale_next_wrap)
+nmap <silent> <Leader>ak <Plug>(ale_previous_wrap)
+nmap <silent> <Leader>al <Plug>(ale_lint)
+nmap <silent> <Leader>ar <Plug>(ale_find_references)
+let g:ale_completion_enabled = 1
+let g:ale_sign_error = '⨉'
+let g:ale_sign_warning = '•'
+let g:ale_fix_on_save = 1
+let g:airline#extensions#ale#enabled = 1
+hi link ALEErrorSign    GruvboxRed
+hi link ALEWarningSign  GruvboxYellow
+let g:ale_linters = {
+  \ 'python': ['pyls', 'flake8', 'pylint'],
+  \}
+let g:ale_fixers = {
+  \ 'python': ['yapf'],
+  \}
 " ctrlp
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>B :CtrlPBookmarkDir<cr>
 nnoremap <leader>i :CtrlPLine<cr>
 nnoremap <leader>o :CtrlPMixed<cr>
 nnoremap <leader>r :CtrlPMRU<cr>
-
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_working_path_mode = 'rc'
 " delimitMate
@@ -163,9 +189,6 @@ nmap <leader>L :Limelight!!<CR>
 let g:rainbow_active = 1
 " signify
 let g:signify_vcs_list = [ 'git', 'hg' ]
-" syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 1
 " tagbar
 let g:tagbar_show_linenumbers = -1
 nnoremap <silent> <leader>t :TagbarToggle<CR>
@@ -177,13 +200,6 @@ let g:indent_guides_enable_on_vim_startup = 1
 " vim-rust
 let g:rustfmt_autosave = 1
 let g:rust_clip_command = 'pbcopy'
-"let g:syntastic_rust_checkers = ['cargo', 'cargoclippy']
-" ycm
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_key_list_previous_completion=['<Up>']
 " zoomwin
 nmap <silent> <leader>z :ZoomWin<CR>
 

@@ -29,7 +29,6 @@ Plug 'nathanaelkane/vim-indent-guides'     " alternating colors for indent guide
 Plug 'regedarek/ZoomWin'                   " toggle between single/multi window
 Plug 'rking/ag.vim'                        " ag integration
 Plug 'rust-lang/rust.vim'                  " Rust support
-Plug 'scrooloose/syntastic'                " syntax checking
 Plug 'mbbill/undotree/'                    " undo tree visualisation
 Plug 'terryma/vim-expand-region'           " quick selection expansion for visual mode
 Plug 'tpope/vim-commentary'                " quick comment out/in
@@ -47,6 +46,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'morhetz/gruvbox'
 
 " untested
+Plug 'w0rp/ale'
 
 " location/os specific bundles
 silent! source ~/.vim/plugins.$LOCATION.vim
