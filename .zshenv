@@ -34,7 +34,7 @@ export TMPDIR=/tmp
 export VISUAL=vim
 
 # less settings
-export LESS="-iSrM"
+export LESS="-iSRM"
 export LESSCHARSET="utf-8"
 export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode – red
 export LESS_TERMCAP_md=$(printf '\e[01;35m') # enter double-bright mode – bold, magenta
