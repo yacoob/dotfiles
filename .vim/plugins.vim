@@ -46,7 +46,6 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'morhetz/gruvbox'
 
 " untested
-Plug 'w0rp/ale'
 
 " location/os specific bundles
 silent! source ~/.vim/plugins.$LOCATION.vim

@@ -164,6 +164,9 @@ let g:ale_linters = {
   \ 'python': ['pyls', 'flake8', 'pylint'],
   \}
 let g:ale_fixers = {
+  \ 'css': ['prettier'],
+  \ 'html': ['prettier'],
+  \ 'javascript': ['prettier'],
   \ 'python': ['yapf'],
   \}
 " ctrlp
