@@ -191,7 +191,6 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' verbose yes
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
-compdef confgit=git
 
 # Pull in antigen plugins.
 source ~/.zsh/antigen-plugins
