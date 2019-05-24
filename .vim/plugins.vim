@@ -46,6 +46,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'morhetz/gruvbox'
 
 " untested
+Plug 'kana/vim-narrow'                     " narrowing
 
 " location/os specific bundles
 silent! source ~/.vim/plugins.$LOCATION.vim
