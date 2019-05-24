@@ -17,5 +17,6 @@ alias yda='youtube-dl --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s"'
 autoload -Uz compinit
 [[ -d "${ZDOTDIR:-$HOME}/.zcompdumps" ]] || mkdir -m 0700 -p "${ZDOTDIR:-$HOME}/.zcompdumps"
 compinit -i -d "${ZDOTDIR:-$HOME}/.zcompdumps/${HOST%%.*}-$ZSH_VERSION"
+compdefas git confgit
 autoload -Uz bashcompinit
 bashcompinit
