@@ -5,15 +5,21 @@
 [push]
 	default = matching
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+  branch-name = "!git rev-parse --abbrev-ref HEAD"
+  publish = "!git push -u origin $(git branch-name)"
+  unpublish = "!git push origin :$(git branch-name)"
+  diffc = diff --cached
+  push-everywhere = "!git remote | xargs -L1 git push"
+  push-all = "!git remote | xargs -L1 git push --all"
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [include]
 # wildcards don't work, but nonexisting files are ignored :|
-	path = .gitconfig.osx
+  path = .gitconfig.osx
   path = .gitconfig.linux
   path = .gitconfig.home
   path = .gitconfig.office
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
