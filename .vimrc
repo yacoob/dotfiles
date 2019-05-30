@@ -4,7 +4,6 @@ source ~/.vim/plugins.vim
 "" general settings
 set autoread                    " auto-reread file if modified outside and not in vim
 set autowrite                   " auto-write file before certain operations
-set backup                      " leave a backup file behind on save
 set encoding=utf-8              " utf-8 is default encoding
 set foldmethod=syntax           " use syntax rules for folding
 set formatoptions+=21           " use indent from second line of a paragraph, don't break line after single letter word
@@ -13,6 +12,7 @@ set ssop+=winpos,localoptions   " save window positions and local options for :m
 set undodir=~/.vim/undo         " place to keep undo files
 set undofile                    " write undo history to undo files
 set undolevels=2000             " keep this many changes in undo history
+set nowritebackup               " no backup files, even while vim is running
 let mapleader = "\<space>"      " set the trigger key for plugins/shortcuts
 syntax enable
 
