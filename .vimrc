@@ -121,20 +121,25 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 " edit .vimrc
 nmap <silent> <leader>rc :n $HOME/.vimrc<CR>
 " use ag when it's available
-if executable("ag")
-    set grepprg=ag\ --nogroup\ --nocolor
-    let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-      \ --ignore .git
-      \ --ignore .svn
-      \ --ignore .hg
-      \ --ignore .DS_Store
-      \ --ignore "**/*.pyc"
-      \ --ignore .git5_specs
-      \ --ignore review
-      \ -g ""'
-    let g:ctrlp_root_markers = ['OWNERS']
-    let g:ctrlp_use_caching = 0
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+elseif executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+  let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+    \ --ignore .git
+    \ --ignore .svn
+    \ --ignore .hg
+    \ --ignore .DS_Store
+    \ --ignore "**/*.pyc"
+    \ --ignore .git5_specs
+    \ --ignore review
+    \ -g ""'
+  let g:ctrlp_root_markers = ['OWNERS']
 endif
+" ctrlp
+let g:ctrlp_use_caching = 0
 
 "" plugin config
 " airline
