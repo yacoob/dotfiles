@@ -80,6 +80,7 @@ au BufRead,BufNewFile * normal zR
 iab --- —
 iab --> →
 iab <-- ←
+iab <expr> dts strftime('%Y-%m-%d')
 "" keyboard mappings
 " stop using arrow keys
 map <up> <nop>
