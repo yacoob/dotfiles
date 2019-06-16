@@ -1,4 +1,6 @@
 tap "homebrew/cask-drivers"
+brew "docker-completion"
+brew "docker-compose-completion"
 brew "eye-d3"
 brew "ipmitool"
 brew "mame"
