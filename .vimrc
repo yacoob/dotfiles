@@ -7,6 +7,7 @@ set autowrite                   " auto-write file before certain operations
 set encoding=utf-8              " utf-8 is default encoding
 set foldmethod=syntax           " use syntax rules for folding
 set formatoptions+=21           " use indent from second line of a paragraph, don't break line after single letter word
+set nofsync                     " disable fsync() call after write; has problems on OSX with network shares
 set history=1000                " save more history
 set ssop+=winpos,localoptions   " save window positions and local options for :mksession
 set undodir=~/.vim/undo         " place to keep undo files
