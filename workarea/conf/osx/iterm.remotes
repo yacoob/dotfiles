@@ -25,36 +25,12 @@
       "Shortcut": "O"
     },
     {
-      "Name": "v",
-      "Guid": "B0C17BE1-F4B6-44FB-92E0-78BCB9D9B594",
-      "Custom Command" : "Yes",
-      "Command": "zsh -c \"mosh v.turski.org\"",
-      "Dynamic Profile Parent Name": "terminal",
-      "Shortcut": "V"
-    },
-    {
-      "Name": "gedächtnis",
-      "Guid": "030B88ED-90F9-4F00-8446-9A3E7C1B26D7",
-      "Custom Command" : "Yes",
-      "Command": "zsh -c \"mosh gedachtnis\"",
-      "Dynamic Profile Parent Name": "terminal",
-      "Shortcut": "C"
-    },
-    {
       "Name": "h",
       "Guid": "A13F2918-25C7-45AF-8A9A-2D52A03C779B",
       "Custom Command" : "Yes",
       "Command": "zsh -c \"mosh h.turski.org\"",
       "Dynamic Profile Parent Name": "terminal",
       "Shortcut": "H"
-    },
-    {
-      "Name": "g",
-      "Guid": "058398F8-9D51-4E54-8CFA-63715837E1E0",
-      "Custom Command" : "Yes",
-      "Command": "zsh -c \"mosh g.turski.org\"",
-      "Dynamic Profile Parent Name": "terminal",
-      "Shortcut": "G"
     },
     {
       "Name":    "ssh to magi.i",
