@@ -15,6 +15,7 @@ foreach p (/usr/local/bin ~/brew/bin ~/.linuxbrew/bin) {
 if [[ "${BREWPATH}" != "/usr/local" ]]; then
   path=(${BREWPATH}/bin ${BREWPATH}/sbin $path[@])
   manpath=(${BREWPATH}/share/man $(manpath))
+  fpath=(${BREWPATH}/share/zsh-completions $fpath)
 fi
 path=(~/bin ~/.cargo/bin $path[@])
 
