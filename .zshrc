@@ -199,9 +199,18 @@ source ~/.zsh/antigen-plugins
 cmd-init-cache "fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install"
 
 # fzf
-if [[ -n "${BREWPATH}" ]] && (( $+commands[fzf] )); then
-    source ${BREWPATH}/opt/fzf/shell/key-bindings.zsh
-    source ${BREWPATH}/opt/fzf/shell/completion.zsh
+if (( $+commands[fzf] )); then
+  case "${OS}" in
+    "linux")
+        source /usr/share/doc/fzf/examples/key-bindings.zsh
+        ;;
+    "osx")
+        if [[ -n "${BREWPATH}" ]]; then
+            source ${BREWPATH}/opt/fzf/shell/key-bindings.zsh
+            source ${BREWPATH}/opt/fzf/shell/completion.zsh
+        fi
+        ;;
+  esac
 fi
 
 # Pull in OS dependent settings.
