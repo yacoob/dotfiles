@@ -1,8 +1,8 @@
 case "${OS}" in
-  "linux")
+  "osx")
       local antigen_file=${BREWPATH}/share/antigen/antigen.zsh
       ;;
-  "osx")
+  "linux")
       local antigen_file=/usr/share/zsh-antigen/antigen.zsh
       ;;
 esac
