@@ -6,7 +6,7 @@ typeset -U path manpath
 path=(/usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin)
 # Handle non-standard homebrew location.
 local p
-foreach p (/usr/local/bin ~/brew/bin ~/.linuxbrew/bin) {
+foreach p (/usr/local/bin ~/brew/bin) {
   if [[ -x $p/brew ]]; then
     export BREWPATH=${p%%/bin}
     break

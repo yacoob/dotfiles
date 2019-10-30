@@ -1,4 +1,12 @@
-local antigen_file=${BREWPATH}/share/antigen/antigen.zsh
+case "${OS}" in
+  "linux")
+      local antigen_file=${BREWPATH}/share/antigen/antigen.zsh
+      ;;
+  "osx")
+      local antigen_file=/usr/share/zsh-antigen/antigen.zsh
+      ;;
+esac
+
 if [[ -r ${antigen_file} ]]; then
   source ${antigen_file}
   antigen bundle Tarrasch/zsh-functional
