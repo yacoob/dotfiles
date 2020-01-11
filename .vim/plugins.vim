@@ -47,6 +47,7 @@ Plug 'morhetz/gruvbox'
 
 " untested
 Plug 'kana/vim-narrow'                     " narrowing
+Plug 'sjl/splice.vim'                      " diff/merge plugin
 
 " location/os specific bundles
 silent! source ~/.vim/plugins.$LOCATION.vim
