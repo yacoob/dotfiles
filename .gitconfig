@@ -23,3 +23,5 @@
   path = .gitconfig.linux
   path = .gitconfig.home
   path = .gitconfig.office
+[pull]
+	rebase = true
