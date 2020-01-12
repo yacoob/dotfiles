@@ -3,8 +3,6 @@ NSGlobalDomain ApplePressAndHoldEnabled -bool false
 # Default state of save dialog.
 NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
-# Dashboard dev mode.
-com.apple.dashboard devmode YES
 # Display full POSIX path as Finder window title
 com.apple.finder _FXShowPosixPathInTitle -bool true
 # Don't write .DS_Store files on net shares and USB volumes.
