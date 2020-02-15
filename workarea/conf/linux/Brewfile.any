@@ -1,4 +1,0 @@
-tap "homebrew/core"
-tap "homebrew/bundle"
-brew "antigen"
-brew "fzf"
