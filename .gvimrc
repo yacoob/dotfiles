@@ -4,7 +4,7 @@ set guioptions-=m            " no menu
 
 "" OS specific settings
 if $OS == "linux"
-  set guifont=Anonymice\ Powerline\ Nerd\ Font\ Complete\ 14
+  set guifont=Anonymice\ Nerd\ Font\ 14
 endif
 
 if $OS == "osx"
