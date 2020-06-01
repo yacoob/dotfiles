@@ -16,3 +16,6 @@ if $OS == "osx"
   nmap ]of :set nofullscreen<CR>
 endif
 
+if has('win32')
+  set guifont=Anonymice_NF:h12:cDEFAULT:qCLEARTYPE
+endif

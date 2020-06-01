@@ -1,3 +1,6 @@
+if has('win32')
+  set rtp^=$HOME/.vim
+endif
 "" load bundles
 source ~/.vim/plugins.vim
 

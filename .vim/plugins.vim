@@ -6,7 +6,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 let g:plug_shallow = 1
-call plug#begin('~/.vim/plugged')
+silent! call plug#begin('~/.vim/plugged')
 
 " bundles
 Plug 'Raimondi/delimitMate'                " auto-closing of quotes, parenthesis and brackets
