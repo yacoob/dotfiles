@@ -59,7 +59,7 @@ set wildmenu                    " use fancy tab-completion
 
 "" colors
 let g:gruvbox_contrast_dark="hard"
-colorscheme gruvbox
+silent! colorscheme gruvbox
 " truecolor support
 if $COLORTERM == "truecolor"
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
