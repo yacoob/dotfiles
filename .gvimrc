@@ -8,7 +8,8 @@ if $OS == "linux"
 endif
 
 if $OS == "osx"
-  set guifont=Anonymice\ Nerd\ Font\ Complete:h14
+  set guifont=FiraCodeNerdFontComplete-Retina:h14
+  set macligatures
   set fuoptions=maxvert,maxhorz      " use whole screen in fullscreen mode
   " keybindings a'la tpope/vim-unimpaired
   nmap cof :set fullscreen! fullscreen?<CR>
@@ -17,5 +18,6 @@ if $OS == "osx"
 endif
 
 if has('win32')
-  set guifont=Anonymice_NF:h12:cDEFAULT:qCLEARTYPE
+  set guifont=FiraCode_NF:h12:cDEFAULT:qCLEARTYPE
+  set renderoptions=type:directx,renmode:0,taamode:0
 endif
