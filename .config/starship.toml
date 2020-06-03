@@ -1,0 +1,24 @@
+[cmd_duration]
+show_milliseconds = true
+
+[env_var]
+style = "red bold"
+variable = "_CONF_UPDATE"
+
+[jobs]
+threshold = 0
+
+[time]
+disabled = false
+format = "%b %d %H:%M"
+
+[hostname]
+#prefix = "@"
+ssh_only = false
+
+[directory]
+truncation_length = 8
+
+# In the future, add
+# * exit status
+# * better user@host formatting
