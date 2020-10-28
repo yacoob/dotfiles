@@ -10,7 +10,13 @@ threshold = 0
 
 [time]
 disabled = false
-format = "%b %d %H:%M"
+format = "[$time]($style) "
+time_format = "%b %d %H:%M"
+
+[shlvl]
+disabled = false
+threshold = 3
+symbol = "↕️"
 
 [hostname]
 #prefix = "@"
@@ -19,6 +25,6 @@ ssh_only = false
 [directory]
 truncation_length = 8
 
-# In the future, add
-# * exit status
-# * better user@host formatting
+[status]
+disabled = false
+symbol = "╳"
