@@ -13,6 +13,7 @@ if [[ -r ${antigen_file} ]]; then
   # antigen bundle olivierverdier/zsh-git-prompt
   antigen bundle zsh-users/zsh-completions
   antigen bundle zsh-users/zsh-syntax-highlighting
+  antigen theme romkatv/powerlevel10k
   antigen apply
 
   # zsh-git-prompt

@@ -137,9 +137,9 @@ add-zsh-hook preexec preexec_term_title
 #   # PROMPT, assemble!
 #   PROMPT=${(F)plines}
 # }
-if (( $+commands[starship] )); then
-  eval $(starship init zsh)
-fi
+#if (( $+commands[starship] )); then
+#  eval $(starship init zsh)
+#fi
 
 # Define aliases.
 alias cd/='cd /'
@@ -233,6 +233,15 @@ esac
 
 # Pull in location dependent settings.
 [[ -r ~/.zshrc.${LOCATION} ]] && source ~/.zshrc.${LOCATION}
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # A dummy command that returns positive exit status to make prompt non-red :)
 :
