@@ -1,0 +1,3 @@
+if [[ ${SHLVL} > 2 ]]; then
+  p10k segment -f green -t '%L' -i '↕️'
+fi
