@@ -1,5 +1,0 @@
-# Use C-e as prefix
-set-option -g prefix C-0
-unbind-key C-a
-bind-key C-e send-prefix
-bind-key e send-prefix
