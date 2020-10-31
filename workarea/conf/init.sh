@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 OS=${OS:-linux}
 LOCATION=${LOCATION:-home}
 TARGET=${HOME}/.dotrepo
