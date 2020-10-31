@@ -33,3 +33,6 @@ cat ${METAFILE}
 # run OS-specific script if there is one
 s=${CONFDIR}/${OS}/init.sh
 [[ -x $s ]] && echo "Now run $s by hand."
+
+# Make sure the exit code is 0.
+:
