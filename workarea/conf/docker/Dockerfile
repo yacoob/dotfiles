@@ -49,14 +49,13 @@ ENV OS=linux
 ENV LOCATION=home
 # Copy the entire repo to a tmp directory.
 COPY --chown=yacoob:yacoob . /tmp/conf-bootstrap
-RUN ls -l /tmp/conf-bootstrap
 # Initialize dotfiles, using that tmp directory as a remote repo.
-#RUN REPO_PULL_URL=/tmp/conf-bootstrap /tmp/conf-bootstrap/workarea/conf/init.sh && rm -rf /tmp/conf-bootstrap
+RUN REPO_PULL_URL=/tmp/conf-bootstrap /tmp/conf-bootstrap/workarea/conf/init.sh && rm -rf /tmp/conf-bootstrap
 
 # Install all zsh plugins.
-#RUN /usr/bin/zsh /home/yacoob/.zsh/antigen-plugins
+RUN /usr/bin/zsh /home/yacoob/.zsh/antigen-plugins
 # Run a dummy zsh session to allow plugins to fully initialize.
-#RUN script -qec '/usr/bin/zsh -is </dev/null' /dev/null
+RUN script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 # Run the shell.
 ENTRYPOINT ["/usr/bin/zsh"]
 
