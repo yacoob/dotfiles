@@ -25,6 +25,7 @@ jobs:
           target: base
           context: .
           file: workarea/conf/docker/Dockerfile
+          push: true
           tags: |
             yacoob/interactive:latest
             yacoob/interactive:latest-${{ env.NOW }}
@@ -36,6 +37,7 @@ jobs:
           target: vim
           context: .
           file: workarea/conf/docker/Dockerfile
+          push: true
           tags: |
             yacoob/interactive:vim
             yacoob/interactive:vim-${{ env.NOW }}
