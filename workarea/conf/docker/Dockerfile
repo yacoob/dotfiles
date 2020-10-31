@@ -3,7 +3,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get upgrade -y
 
 # Sort out locales.
-COPY debconf debconf
+COPY workarea/conf/docker/debconf debconf
 RUN cat debconf | debconf-set-selections && rm -f debconf
 RUN apt-get update && apt-get install -y apt-utils locales localepurge && \
     dpkg-reconfigure --unseen-only localepurge && localepurge && \
@@ -24,6 +24,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       git-lfs \
       less \
       man-db \
+      openssh-client \
       silversearcher-ag \
       sudo \
       wget \
@@ -43,14 +44,20 @@ ENV TERM=xterm-256color
 ENV TZ='Europe/Dublin'
 ENV SSH_AUTH_SOCK=/home/yacoob/.ssh/agent.sock
 
-# Pull in my config
+# Set up the dotfiles.
 ENV OS=linux
 ENV LOCATION=home
-RUN ["/bin/bash", "-c", "set -o pipefail && curl https://raw.githubusercontent.com/yacoob/conf/master/workarea/conf/init.sh | bash"]
+# Copy the entire repo to a tmp directory.
+COPY --chown=yacoob:yacoob . /tmp/conf-bootstrap
+# Initialize dotfiles, using that tmp directory as a remote repo.
+RUN REPO_PULL_URL=/tmp/conf-bootstrap /tmp/conf-bootstrap/workarea/conf/init.sh && rm -rf /tmp/conf-bootstrap
+
 # Install all zsh plugins.
 RUN /usr/bin/zsh /home/yacoob/.zsh/antigen-plugins
 # Run a dummy zsh session to allow plugins to fully initialize.
 RUN script -qec '/usr/bin/zsh -is </dev/null' /dev/null
+# Run the shell.
+ENTRYPOINT ["/usr/bin/zsh"]
 
 FROM base as vim
 USER root
@@ -60,6 +67,3 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Install all vim plugins.
 USER yacoob
 RUN script -qec "/usr/bin/vim -T dumb -c 'PlugInstall' -c 'qa!' >/dev/null" /dev/null
-
-# Run the shell.
-ENTRYPOINT ["/usr/bin/zsh"]
