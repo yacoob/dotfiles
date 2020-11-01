@@ -24,6 +24,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       git-lfs \
       less \
       man-db \
+      nvi \
       openssh-client \
       silversearcher-ag \
       sudo \

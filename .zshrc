@@ -169,8 +169,10 @@ alias rezsh='nocorrect exec $SHELL'
 alias rm='rm -i'
 alias sfcp='rsync -i -rltgoD'
 alias sudosh='nocorrect sudo -Es'
-alias vi=vim
 alias zmv='noglob zmv'
+if (( $+commands[vim] )); then
+  alias vi=vim
+fi
 
 alias -g G="egrep"
 alias -g H='|head'
