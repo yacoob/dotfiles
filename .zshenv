@@ -1,22 +1,11 @@
 source ~/.yacoob-conf
-#
+# System dependent settings
+[[ -r ~/.zshenv.${OS} ]] && source ~/.zshenv.${OS}
+
 # No duplicates in  variables specified below.
 typeset -U path manpath
 # set fixed PATH
 path=(/usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin)
-# Handle non-standard homebrew location.
-local p
-foreach p (/usr/local/bin ~/brew/bin) {
-  if [[ -x $p/brew ]]; then
-    export BREWPATH=${p%%/bin}
-    break
-  fi
-}
-if [[ "${BREWPATH}" != "/usr/local" ]]; then
-  path=(${BREWPATH}/bin ${BREWPATH}/sbin $path[@])
-  manpath=(${BREWPATH}/share/man $(manpath))
-  fpath=(${BREWPATH}/share/zsh-completions $fpath)
-fi
 path=(~/bin ~/.cargo/bin $path[@])
 
 # locales
@@ -60,9 +49,6 @@ fi
 export PIP_REQUIRE_VIRTUALENV=true
 export WORKON_HOME="${HOME}/.venvs"
 export PIPENV_VENV_IN_PROJECT=1
-
-# System dependent settings
-[[ -r ~/.zshenv.${OS} ]] && source ~/.zshenv.${OS}
 
 # Location dependent confidential settings
 [[ -r ~/.zshenv.${LOCATION} ]] && source ~/.zshenv.${LOCATION}
