@@ -9,6 +9,7 @@ esac
 
 if [[ -r ${antigen_file} ]]; then
   source ${antigen_file}
+  antigen bundle Aloxaf/fzf-tab
   antigen bundle Tarrasch/zsh-functional
   antigen bundle zsh-users/zsh-completions
   antigen bundle zsh-users/zsh-syntax-highlighting
