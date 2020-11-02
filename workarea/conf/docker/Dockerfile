@@ -56,7 +56,7 @@ RUN /usr/bin/zsh /home/yacoob/.zsh/antigen-plugins
 # Run a dummy zsh session to allow plugins to fully initialize.
 RUN script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 # Run the shell.
-ENTRYPOINT ["/usr/bin/zsh"]
+ENTRYPOINT ["/usr/bin/zsh", "--login"]
 
 FROM base as vim
 USER root
