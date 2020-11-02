@@ -21,7 +21,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       file \
       fzf \
       git \
-      git-lfs \
       less \
       nvi \
       openssh-client \
