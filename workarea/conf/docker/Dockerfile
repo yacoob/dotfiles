@@ -1,4 +1,4 @@
-FROM debian:stable AS base
+FROM debian:stable-slim AS base
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get upgrade -y && apt-get clean && rm -rf /var/lib/apt/lists/*
 
