@@ -18,13 +18,11 @@ ENV LC_MESSAGES=C
 RUN apt-get update && apt-get install -y --no-install-recommends \
       ca-certificates \
       curl \
-      dialog \
       file \
       fzf \
       git \
       git-lfs \
       less \
-      man-db \
       nvi \
       openssh-client \
       silversearcher-ag \
