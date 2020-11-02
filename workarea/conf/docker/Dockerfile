@@ -1,13 +1,14 @@
 FROM debian:stable AS base
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get upgrade -y
+RUN apt-get update && apt-get upgrade -y && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Sort out locales.
 COPY workarea/conf/docker/debconf debconf
 RUN cat debconf | debconf-set-selections && rm -f debconf
 RUN apt-get update && apt-get install -y apt-utils locales localepurge && \
     dpkg-reconfigure --unseen-only localepurge && localepurge && \
-    echo 'localepurge localepurge/use-dpkg-feature boolean true' | debconf-set-selections
+    echo 'localepurge localepurge/use-dpkg-feature boolean true' | debconf-set-selections && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 ENV LANG=en_IE.UTF-8
 ENV LC_COLLATE=pl_PL.UTF-8
 ENV LC_CTYPE=pl_PL.UTF-8
@@ -31,7 +32,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       wget \
       zsh \
       zsh-antigen \
-    && apt-get clean
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set up my user.
 RUN groupadd -g 1000 yacoob
@@ -64,7 +65,7 @@ FROM base as vim
 USER root
 RUN apt-get update && apt-get install -y --no-install-recommends \
       vim-nox \
-    && apt-get clean
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 # Install all vim plugins.
 USER yacoob
 RUN script -qec "/usr/bin/vim -T dumb -c 'PlugInstall' -c 'qa!' >/dev/null" /dev/null
