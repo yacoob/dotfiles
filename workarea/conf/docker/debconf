@@ -1,3 +1,5 @@
+debconf         debconf/frontend                select  Readline
+debconf         debconf/priority                select  medium
 localepurge     localepurge/dontbothernew       boolean true
 localepurge     localepurge/mandelete           boolean true
 localepurge     localepurge/none_selected       boolean false
