@@ -50,7 +50,6 @@ massbind vi-cmd-up-line-history '^[[A' '^[OA'
 massbind vi-cmd-down-line-history '^[[B' '^[OB'
 
 # Setup ZSH variables.
-cdpath=(. ~)
 DIRSTACKSIZE=20
 fignore=(\~)
 LISTMAX=0
