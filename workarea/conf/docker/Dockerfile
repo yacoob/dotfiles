@@ -35,7 +35,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN groupadd -g 1000 yacoob
 RUN useradd -u 1000 -g 1000 -m -s /usr/bin/zsh -G sudo yacoob && passwd -d yacoob
 USER yacoob
-WORKDIR /home/yacoob
 
 # Set the environment.
 ENV SHELL=/usr/bin/zsh
@@ -46,10 +45,14 @@ ENV SSH_AUTH_SOCK=/home/yacoob/.ssh/agent.sock
 # Set up the dotfiles.
 ENV OS=linux
 ENV LOCATION=home
-# Copy the entire repo to a tmp directory.
-COPY --chown=yacoob:yacoob . /tmp/conf-bootstrap
+ARG CTX=/tmp/conf-bootstrap
+# Copy the entire context, which should be our conf repo to a tmp directory.
+COPY --chown=yacoob:yacoob . ${CTX}
+WORKDIR ${CTX}
 # Initialize dotfiles, using that tmp directory as a remote repo.
-RUN REPO_PULL_URL=/tmp/conf-bootstrap /tmp/conf-bootstrap/workarea/conf/init.sh && rm -rf /tmp/conf-bootstrap
+RUN BRANCH=$(git rev-parse --abbrev-ref HEAD) REPO_PULL_URL=$(pwd) workarea/conf/init.sh && \
+      rm -rf ${CTX}
+WORKDIR /home/yacoob
 
 # Install all zsh plugins.
 RUN /usr/bin/zsh /home/yacoob/.zsh/antigen-plugins
