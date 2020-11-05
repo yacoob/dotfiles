@@ -45,7 +45,7 @@ jobs:
       - name: Build and optionally push the vim version
         uses: docker/build-push-action@v2
         with:
-          target: gcu-dev
+          target: vim
           context: .
           file: workarea/conf/docker/Dockerfile
           # Skip registry push for pull_requests.
