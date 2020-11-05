@@ -25,8 +25,8 @@ jobs:
           tag-sha: true
       - name: Work out the branch name
         run: |
+          echo "Determined that we're on a branch: ${GITHUB_REF##*/}"
           echo "BRANCH=${GITHUB_REF##*/}" >> $GITHUB_ENV
-          echo "::set-output name=branch::${GITHUB_REF##*/}"
       - name: Set up docker builder (buildx)
         uses: docker/setup-buildx-action@v1
       - name: Log in to docker hub
