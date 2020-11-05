@@ -24,7 +24,9 @@ jobs:
           tag-match-latest: ${{ github.ref == 'refs/heads/master' }}
           tag-sha: true
       - name: Set current branch as env variable
-        run: echo "BRANCH=${{ github.head_ref || github.ref }}" >> $GITHUB_ENV
+        run: |
+          export _BRANCH=${{ github.head_ref || github.ref }}
+         echo "CONF_BRANCH=${_BRANCH##*/}" >> $GITHUB_ENV
       - name: Debug dump
         uses: crazy-max/ghaction-dump-context@v1
       - name: Set up docker builder (buildx)
@@ -42,6 +44,8 @@ jobs:
           target: base
           context: .
           file: workarea/conf/docker/Dockerfile
+          build-args: |
+            CONF_BRANCH=${{ env.CONF_BRANCH }}
           # Skip registry push for pull_requests.
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
@@ -52,6 +56,8 @@ jobs:
           target: vim
           context: .
           file: workarea/conf/docker/Dockerfile
+          build-args: |
+            CONF_BRANCH=${{ env.CONF_BRANCH }}
           # Skip registry push for pull_requests.
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
