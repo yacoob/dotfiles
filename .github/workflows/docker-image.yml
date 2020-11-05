@@ -1,4 +1,4 @@
-name: Build and push image to Docker Hub
+NAME: Build and push image to Docker Hub
 
 on:
   # Build for all git pushes, push and mark as 'latest' only for
@@ -23,6 +23,8 @@ jobs:
           # Tag as 'latest' only if it's a push to the main branch.
           tag-match-latest: ${{ github.ref == 'refs/heads/master' }}
           tag-sha: true
+      - name: Set current branch as env variable
+        run: echo "BRANCH=${{ github.head_ref || github.ref }}" >> $GITHUB_ENV
       - name: Dump the context
         uses: crazy-max/ghaction-dump-context@v1
       - name: Set up docker builder (buildx)
