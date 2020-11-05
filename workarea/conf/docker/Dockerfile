@@ -50,7 +50,7 @@ ARG CTX=/tmp/conf-bootstrap
 COPY --chown=yacoob:yacoob . ${CTX}
 WORKDIR ${CTX}
 # Initialize dotfiles, using that tmp directory as a remote repo.
-RUN BRANCH=$(git rev-parse --abbrev-ref HEAD) REPO_PULL_URL=$(pwd) workarea/conf/init.sh && \
+RUN BRANCH=${BRANCH:-$(git rev-parse --abbrev-ref HEAD)} REPO_PULL_URL=$(pwd) workarea/conf/init.sh && \
       rm -rf ${CTX}
 WORKDIR /home/yacoob
 
