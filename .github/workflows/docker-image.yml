@@ -52,3 +52,17 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
+  ping-others:
+    name: Notify other repositories about new version of the base image.
+    runs-on: ubuntu-latest
+    # Only ping others on pushes to main branch.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    # Don't ping if build step failed.
+    needs: build
+    steps:
+      - name: Ping yacoob/gcu
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.PUBLIC_REPO_TOKEN }}
+          repository: yacoob/gcu
+          event-type: dependency-updated
