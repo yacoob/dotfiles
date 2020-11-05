@@ -25,7 +25,7 @@ jobs:
           tag-sha: true
       - name: Set current branch as env variable
         run: echo "BRANCH=${{ github.head_ref || github.ref }}" >> $GITHUB_ENV
-      - name: Dump the context
+      - name: Debug dump
         uses: crazy-max/ghaction-dump-context@v1
       - name: Set up docker builder (buildx)
         uses: docker/setup-buildx-action@v1

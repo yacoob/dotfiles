@@ -24,6 +24,7 @@ confgit() {
 # 'success' but sure as hell I'm not going to write error checking for every
 # single command.
 set -e
+echo "Trying to clone branch: ${BRANCH}"
 git clone --depth 1 --bare -b ${BRANCH} ${REPO_PULL_URL} ${TARGET}
 confgit config status.showUntrackedFiles no
 confgit config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
