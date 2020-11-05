@@ -1,4 +1,4 @@
-NAME: Build and push image to Docker Hub
+name: Build and push image to Docker Hub
 
 on:
   # Build for all git pushes, push and mark as 'latest' only for
