@@ -29,7 +29,7 @@ echo "  from: ${REPO_PULL_URL}"
 echo "  branch: ${BRANCH}"
 # Are we cloning from a normal repository or a detached HEAD one?
 # The latter shows up in Github's CI during pull requests.
-if [[ "${REPO_IS_DETACHED_HEAD}" = "false" ]]; then
+if [[ "${REPO_IS_DETACHED}" = "false" ]]; then
   # Normal repository.
   set -e
   # Fetch latest revision of specified branch.
