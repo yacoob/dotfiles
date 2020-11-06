@@ -59,6 +59,7 @@ jobs:
           file: workarea/conf/docker/Dockerfile
           build-args: |
             CONF_BRANCH=${{ env.CONF_BRANCH }}
+            REPO_IS_DETACHED=${{ env.REPO_IS_DETACHED }}
           # Skip registry push for pull_requests.
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
