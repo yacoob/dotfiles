@@ -52,8 +52,6 @@ WORKDIR ${CTX}
 # Initialize dotfiles, using that tmp directory as a remote repo.
 ARG CONF_BRANCH
 ARG REPO_IS_DETACHED
-RUN echo "CONF_BRANCH: ${CONF_BRANCH} || REPO_IS_DETACHED: ${REPO_IS_DETACHED}";
-RUN echo -n "There are following branches in the repo: "; echo $(git branch)
 RUN BRANCH=${CONF_BRANCH} REPO_IS_DETACHED=${REPO_IS_DETACHED} REPO_PULL_URL=file:///$(pwd) \
       workarea/conf/init.sh && \
       rm -rf ${CTX}

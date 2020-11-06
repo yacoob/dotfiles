@@ -23,7 +23,7 @@ jobs:
           # Tag as 'latest' only if it's a push to the main branch.
           tag-match-latest: ${{ github.ref == 'refs/heads/master' }}
           tag-sha: true
-      - name: Set current branch as env variable
+      - name: Set branch name and repo flavour as env variable
         run: |
           export _BRANCH=${{ github.head_ref || github.ref }}
           echo "CONF_BRANCH=${_BRANCH##*/}" >> $GITHUB_ENV
