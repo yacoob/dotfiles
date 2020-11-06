@@ -53,7 +53,7 @@ WORKDIR ${CTX}
 ARG CONF_BRANCH
 RUN echo "CONF_BRANCH variable is set to ${CONF_BRANCH}"; echo -n "Also, output of rev-parse: "; echo $(git rev-parse --abbrev-ref HEAD)
 RUN echo -n "There are following branches in the repo: "; echo $(git branch)
-RUN BRANCH=${CONF_BRANCH:-$(git rev-parse --abbrev-ref HEAD)} REPO_PULL_URL=$(pwd) workarea/conf/init.sh && \
+RUN BRANCH=${CONF_BRANCH} REPO_PULL_URL=file:///$(pwd) workarea/conf/init.sh && \
       rm -rf ${CTX}
 WORKDIR /home/yacoob
 
