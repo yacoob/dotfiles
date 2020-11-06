@@ -51,9 +51,10 @@ COPY --chown=yacoob:yacoob . ${CTX}
 WORKDIR ${CTX}
 # Initialize dotfiles, using that tmp directory as a remote repo.
 ARG CONF_BRANCH
-RUN echo "CONF_BRANCH variable is set to ${CONF_BRANCH}"; echo -n "Also, output of rev-parse: "; echo $(git rev-parse --abbrev-ref HEAD)
+ARG REPO_IS_DETACHED
+RUN echo "CONF_BRANCH: ${CONF_BRANCH} || REPO_IS_DETACHED: ${REPO_IS_DETACHED}";
 RUN echo -n "There are following branches in the repo: "; echo $(git branch)
-RUN BRANCH=${CONF_BRANCH} REPO_PULL_URL=file:///$(pwd) workarea/conf/init.sh && \
+RUN REPO_PULL_URL=file:///$(pwd) workarea/conf/init.sh && \
       rm -rf ${CTX}
 WORKDIR /home/yacoob
 
