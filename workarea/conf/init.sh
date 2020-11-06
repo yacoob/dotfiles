@@ -6,6 +6,7 @@ DEFAULT_PULL_URL="https://github.com/yacoob/conf"
 REPO_PULL_URL=${REPO_PULL_URL:-${DEFAULT_PULL_URL}}
 REPO_PUSH_URL=${REPO_PUSH_URL:-git@github.com:yacoob/conf.git}
 BRANCH=${BRANCH:-master}
+REPO_IS_DETACHED_HEAD=${REPO_IS_DETACHED_HEAD:-false}
 METAFILE=${HOME}/.yacoob-conf
 CONFDIR=${HOME}/workarea/conf
 
@@ -23,14 +24,26 @@ confgit() {
 # failing in a weird manner. So I want this block below to succed fsvo
 # 'success' but sure as hell I'm not going to write error checking for every
 # single command.
-set -e
 echo "Trying to clone branch: ${BRANCH}"
-git clone --depth 1 --bare -b ${BRANCH} ${REPO_PULL_URL} ${TARGET}
+# Are we cloning from a normal repository or a detached HEAD one?
+# The latter shows up in Github's CI during pull requests.
+if [[ "${REPO_IS_DETACHED_HEAD}" = "false" ]]; then
+  # Normal repository.
+  set -e
+  # Fetch latest revision of specified branch.
+  git clone --depth 1 --bare -b ${BRANCH} ${REPO_PULL_URL} ${TARGET}
+  # Populate the work tree.
+  confgit checkout
+ else
+  set -e
+  # Fetch latest revision; there's no information about which branch is it
+  # though.
+  git clone --depth 1 --bare ${REPO_PULL_URL} ${TARGET}
+  # ...so we can create a matching branch locally.
+  confgit checkout -B ${BRANCH}
+fi
+# Don't complain about other files in ~ that are not part of this repo.
 confgit config status.showUntrackedFiles no
-confgit config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
-confgit fetch
-confgit checkout -f ${BRANCH}
-confgit branch --set-upstream-to=origin/${BRANCH} ${BRANCH}
 # Normalize the remote URLs regardless of where we've cloned from:
 # - we should always pull from Github over https
 # - we should always push to Github over ssh
