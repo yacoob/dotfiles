@@ -38,6 +38,7 @@ if [[ "${REPO_IS_DETACHED_HEAD}" = "false" ]]; then
   confgit checkout
  else
   set -e
+  echo "The remote repo has a detached HEAD."
   # Fetch latest revision; there's no information about which branch is it
   # though.
   git clone --depth 1 --bare ${REPO_PULL_URL} ${TARGET}
