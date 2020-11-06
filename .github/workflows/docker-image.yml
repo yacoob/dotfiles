@@ -27,7 +27,7 @@ jobs:
         run: |
           export _BRANCH=${{ github.head_ref || github.ref }}
           echo "CONF_BRANCH=${_BRANCH##*/}" >> $GITHUB_ENV
-          echo "REPO_IS_DETACHED_HEAD=${{ github.event_name == 'pull_request' }}" >> $GITHUB_ENV
+          echo "REPO_IS_DETACHED=${{ github.event_name == 'pull_request' }}" >> $GITHUB_ENV
       - name: Debug dump
         uses: crazy-max/ghaction-dump-context@v1
       - name: Set up docker builder (buildx)
