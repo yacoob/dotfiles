@@ -24,7 +24,9 @@ confgit() {
 # failing in a weird manner. So I want this block below to succed fsvo
 # 'success' but sure as hell I'm not going to write error checking for every
 # single command.
-echo "Trying to clone branch: ${BRANCH}"
+echo "Trying to clone the config files."
+echo "  from: ${REPO_PULL_URL}"
+echo "  branch: ${BRANCH}"
 # Are we cloning from a normal repository or a detached HEAD one?
 # The latter shows up in Github's CI during pull requests.
 if [[ "${REPO_IS_DETACHED_HEAD}" = "false" ]]; then
