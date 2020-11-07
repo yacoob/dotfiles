@@ -1,43 +1,81 @@
 name: Build and push image to Docker Hub
 
 on:
+  # Build for all git pushes, push and mark as 'latest' only for
+  # main branch.
   push:
-    branches: [ master ]
+  # For pull requests, build but don't push.
   pull_request:
-    branches: [ master ]
+  # Build and push if triggered manually.
 
 jobs:
   build:
-    name: Build and push image to Docker Hub
+    name: Build and optionally push the image to Docker Hub
     runs-on: ubuntu-latest
     steps:
-      - name: Set current date as env variable
-        run: echo "NOW=$(date +%s)" >> $GITHUB_ENV
-      - uses: actions/checkout@v2
-      - uses: docker/setup-buildx-action@v1
-      - uses: docker/login-action@v1
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Work out docker tags
+        uses: crazy-max/ghaction-docker-meta@v1
+        id: docker_meta
+        with:
+          images: yacoob/interactive
+          # Tag as 'latest' only if it's a push to the main branch.
+          tag-match-latest: ${{ github.ref == 'refs/heads/master' }}
+          tag-sha: true
+      - name: Set branch name and repo flavour as env variable
+        run: |
+          export _BRANCH=${{ github.head_ref || github.ref }}
+          echo "CONF_BRANCH=${_BRANCH##*/}" >> $GITHUB_ENV
+          echo "REPO_IS_DETACHED=${{ github.event_name == 'pull_request' }}" >> $GITHUB_ENV
+      - name: Debug dump
+        uses: crazy-max/ghaction-dump-context@v1
+      - name: Set up docker builder (buildx)
+        uses: docker/setup-buildx-action@v1
+      - name: Log in to docker hub
+        # Skip registry push for pull_requests.
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
-      - name: Build and push base version
+      - name: Build and optionally push the base version
         uses: docker/build-push-action@v2
         with:
           target: base
           context: .
           file: workarea/conf/docker/Dockerfile
-          push: true
-          tags: |
-            yacoob/interactive:latest
-            yacoob/interactive:latest-${{ env.NOW }}
-            yacoob/interactive:base
-            yacoob/interactive:base-${{ env.NOW }}
-      - name: Build and push vim version
+          build-args: |
+            CONF_BRANCH=${{ env.CONF_BRANCH }}
+            REPO_IS_DETACHED=${{ env.REPO_IS_DETACHED }}
+          # Skip registry push for pull_requests.
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.docker_meta.outputs.tags }}
+          labels: ${{ steps.docker_meta.outputs.labels }}
+      - name: Build and optionally push the vim version
         uses: docker/build-push-action@v2
         with:
           target: vim
           context: .
           file: workarea/conf/docker/Dockerfile
-          push: true
-          tags: |
-            yacoob/interactive:vim
-            yacoob/interactive:vim-${{ env.NOW }}
+          build-args: |
+            CONF_BRANCH=${{ env.CONF_BRANCH }}
+            REPO_IS_DETACHED=${{ env.REPO_IS_DETACHED }}
+          # Skip registry push for pull_requests.
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.docker_meta.outputs.tags }}
+          labels: ${{ steps.docker_meta.outputs.labels }}
+  ping-others:
+    name: Notify other repositories about new version of the base image.
+    runs-on: ubuntu-latest
+    # Only ping others on pushes to main branch.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    # Don't ping if build step failed.
+    needs: build
+    steps:
+      - name: Ping yacoob/gcu
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.PUBLIC_REPO_TOKEN }}
+          repository: yacoob/gcu
+          event-type: dependency-updated
