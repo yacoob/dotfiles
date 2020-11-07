@@ -32,13 +32,14 @@ echo "  branch: ${BRANCH}"
 if [[ "${REPO_IS_DETACHED}" = "false" ]]; then
   # Normal repository.
   set -e
+  echo "I'm assuming the repo contains the branch I'd like to pull."
   # Fetch latest revision of specified branch.
   git clone --depth 1 --bare -b ${BRANCH} ${REPO_PULL_URL} ${TARGET}
   # Populate the work tree.
   confgit checkout
  else
   set -e
-  echo "The remote repo has a detached HEAD."
+  echo "I'm assuming the remote repo has a detached HEAD and not the branch I'd like to pull."
   # Fetch latest revision; there's no information about which branch is it
   # though.
   git clone --depth 1 --bare ${REPO_PULL_URL} ${TARGET}
