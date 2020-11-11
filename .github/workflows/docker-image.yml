@@ -8,6 +8,9 @@ on:
   pull_request:
   # Build and push if triggered manually.
 
+env:
+  REPO_IS_DETACHED: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   build:
     name: Build and optionally push the image to Docker Hub
@@ -20,14 +23,14 @@ jobs:
         id: docker_meta
         with:
           images: yacoob/interactive
-          # Tag as 'latest' only if it's a push to the main branch.
-          tag-match-latest: ${{ github.ref == 'refs/heads/master' }}
           tag-sha: true
-      - name: Set branch name and repo flavour as env variable
+      - name: Set branch name as env variable
         run: |
           export _BRANCH=${{ github.head_ref || github.ref }}
           echo "CONF_BRANCH=${_BRANCH##*/}" >> $GITHUB_ENV
-          echo "REPO_IS_DETACHED=${{ github.event_name == 'pull_request' }}" >> $GITHUB_ENV
+      - name: Decide on 'latest' tag
+        if: ${{ github.event_name == 'push' && endsWith(github.ref, '/master') }}
+        run: echo "EXTRA_DOCKER_TAGS=latest" >> $GITHUB_ENV
       - name: Debug dump
         uses: crazy-max/ghaction-dump-context@v1
       - name: Set up docker builder (buildx)
@@ -50,8 +53,10 @@ jobs:
             REPO_IS_DETACHED=${{ env.REPO_IS_DETACHED }}
           # Skip registry push for pull_requests.
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
+          tags: |
+            ${{ steps.docker_meta.outputs.tags }}
+            ${{ env.EXTRA_DOCKER_TAGS }}
       - name: Build and optionally push the vim version
         uses: docker/build-push-action@v2
         with:
@@ -63,13 +68,15 @@ jobs:
             REPO_IS_DETACHED=${{ env.REPO_IS_DETACHED }}
           # Skip registry push for pull_requests.
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
+          tags: |
+            ${{ steps.docker_meta.outputs.tags }}
+            ${{ env.EXTRA_DOCKER_TAGS }}
   ping-others:
     name: Notify other repositories about new version of the base image.
     runs-on: ubuntu-latest
     # Only ping others on pushes to main branch.
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    if: github.event_name == 'push' && endsWith(github.ref, '/master')
     # Don't ping if build step failed.
     needs: build
     steps:
