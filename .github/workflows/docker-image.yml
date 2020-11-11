@@ -29,11 +29,6 @@ jobs:
         run: |
           export _BRANCH=${{ github.head_ref || github.ref }}
           echo "CONF_BRANCH=${_BRANCH##*/}" >> $GITHUB_ENV
-      - name: Decide on 'latest' tag
-        if: ${{ github.event_name == 'push' && endsWith(github.ref, '/master') }}
-        run: echo "EXTRA_DOCKER_TAGS=latest" >> $GITHUB_ENV
-      - name: Test conditional expansion
-        run: echo "bla ${{ env.PUSH_TO_MASTER == 'true' && 'stonoga' }} bla"
       - name: Debug dump
         uses: crazy-max/ghaction-dump-context@v1
       - name: Set up docker builder (buildx)
@@ -59,7 +54,7 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           tags: |
             ${{ steps.docker_meta.outputs.tags }}
-            ${{ env.EXTRA_DOCKER_TAGS }}
+            ${{ env.PUSH_TO_MASTER == 'true' && 'latest' }}
       - name: Build and optionally push the vim version
         uses: docker/build-push-action@v2
         with:
@@ -74,7 +69,7 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           tags: |
             ${{ steps.docker_meta.outputs.tags }}
-            ${{ env.EXTRA_DOCKER_TAGS }}
+            ${{ env.PUSH_TO_MASTER == 'true' && 'vim' }}
   ping-others:
     name: Notify other repositories about new version of the base image.
     runs-on: ubuntu-latest
