@@ -23,7 +23,7 @@ jobs:
         uses: crazy-max/ghaction-docker-meta@v1
         id: docker_meta
         with:
-          images: yacoob/interactive
+          images: ${{ env.DOCKER_IMAGE }}
           tag-sha: true
       - name: Set branch name as env variable
         run: |
@@ -54,7 +54,7 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           tags: |
             ${{ steps.docker_meta.outputs.tags }}
-            ${{ env.PUSH_TO_MASTER == 'true' && 'latest' }}
+            ${{ env.PUSH_TO_MASTER == 'true' && 'yacoob/interactive:latest' }}
       - name: Build and optionally push the vim version
         uses: docker/build-push-action@v2
         with:
@@ -69,7 +69,7 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           tags: |
             ${{ steps.docker_meta.outputs.tags }}
-            ${{ env.PUSH_TO_MASTER == 'true' && 'vim' }}
+            ${{ env.PUSH_TO_MASTER == 'true' && 'yacoob/interactive:vim' }}
   ping-others:
     name: Notify other repositories about new version of the base image.
     runs-on: ubuntu-latest
