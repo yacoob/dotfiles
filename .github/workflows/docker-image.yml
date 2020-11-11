@@ -23,7 +23,7 @@ jobs:
         uses: crazy-max/ghaction-docker-meta@v1
         id: docker_meta
         with:
-          images: ${{ env.DOCKER_IMAGE }}
+          images: yacoob/interactive
           tag-sha: true
       - name: Set branch name as env variable
         run: |
