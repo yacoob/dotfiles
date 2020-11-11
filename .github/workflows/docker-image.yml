@@ -10,6 +10,7 @@ on:
 
 env:
   REPO_IS_DETACHED: ${{ github.event_name == 'pull_request' }}
+  PUSH_TO_MASTER: ${{ github.event_name == 'push' && endsWith(github.ref, '/master') }}
 
 jobs:
   build:
@@ -31,6 +32,8 @@ jobs:
       - name: Decide on 'latest' tag
         if: ${{ github.event_name == 'push' && endsWith(github.ref, '/master') }}
         run: echo "EXTRA_DOCKER_TAGS=latest" >> $GITHUB_ENV
+      - name: Test conditional expansion
+        run: echo "bla ${{ env.PUSH_TO_MASTER == 'true' && 'stonoga' }} bla"
       - name: Debug dump
         uses: crazy-max/ghaction-dump-context@v1
       - name: Set up docker builder (buildx)
