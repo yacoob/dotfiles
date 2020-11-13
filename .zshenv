@@ -1,12 +1,13 @@
 source ~/.yacoob-conf
-# System dependent settings
-[[ -r ~/.zshenv.${OS} ]] && source ~/.zshenv.${OS}
 
 # No duplicates in  variables specified below.
 typeset -U path manpath
 # set fixed PATH
 path=(/usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin)
 path=(~/bin ~/.cargo/bin $path[@])
+
+# System dependent settings
+[[ -r ~/.zshenv.${OS} ]] && source ~/.zshenv.${OS}
 
 # locales
 export LANG=en_IE.UTF-8
