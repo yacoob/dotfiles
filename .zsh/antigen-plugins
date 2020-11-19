@@ -1,11 +1,15 @@
-case "${OS}" in
-  "osx")
-      local antigen_file=${BREWPATH}/share/antigen/antigen.zsh
-      ;;
-  "linux")
-      local antigen_file=/usr/share/zsh-antigen/antigen.zsh
-      ;;
-esac
+if [[ -r ~/.zsh/antigen.zsh ]]; then
+  local antigen_file=~/.zsh/antigen.zsh
+else
+  case "${OS}" in
+    "osx")
+        local antigen_file=${BREWPATH}/share/antigen/antigen.zsh
+        ;;
+    "linux")
+        local antigen_file=/usr/share/zsh-antigen/antigen.zsh
+        ;;
+  esac
+fi
 
 if [[ -r ${antigen_file} ]]; then
   source ${antigen_file}
