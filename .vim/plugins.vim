@@ -51,5 +51,5 @@ Plug 'sjl/splice.vim'                      " diff/merge plugin
 
 " location/os specific bundles
 silent! source ~/.vim/plugins.$LOCATION.vim
-silent! source ~/.vim/plugins.$OS.vim
+silent! source ~/.vim/plugins.$FLAVOUR.vim
 call plug#end()

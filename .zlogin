@@ -1,11 +1,11 @@
 if [[ -z "${TMUX}" && ! -f tmux-inhibit ]]; then
-  if [[ "${LOCATION}" == "office" && "${OS}" == "linux" ]]; then
+  if [[ "${LOCATION}" == "office" && "${FLAVOUR}" == "linux" ]]; then
     TMUX_CMD=tmx
   else
     TMUX_CMD=tmux
   fi
   if (( $+commands[${TMUX_CMD}] )); then
-    if [[ "${OS}" == "osx" ]]; then
+    if [[ "${FLAVOUR}" == "osx" ]]; then
       # Start a session for fs iterm.
       ${TMUX_CMD} has-session -t fs || ${TMUX_CMD} new-session -d -s fs
     fi

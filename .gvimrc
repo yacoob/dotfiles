@@ -3,11 +3,11 @@ set guioptions-=T            " don't show toolbar
 set guioptions-=m            " no menu
 
 "" OS specific settings
-if $OS == "linux"
+if $FLAVOUR == "linux"
   set guifont=Fira\ Code\ 14
 endif
 
-if $OS == "osx"
+if $FLAVOUR == "osx"
   set guifont=FiraCodeNerdFontComplete-Retina:h14
   set macligatures
   set fuoptions=maxvert,maxhorz      " use whole screen in fullscreen mode

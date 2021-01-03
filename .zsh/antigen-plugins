@@ -1,7 +1,7 @@
 if [[ -r ~/.zsh/antigen.zsh ]]; then
   local antigen_file=~/.zsh/antigen.zsh
 else
-  case "${OS}" in
+  case "${FLAVOUR}" in
     "osx")
         local antigen_file=${BREWPATH}/share/antigen/antigen.zsh
         ;;

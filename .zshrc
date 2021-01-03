@@ -208,7 +208,7 @@ if (( $+commands[fzf] )); then
 fi
 
 # Pull in OS dependent settings.
-case "${OS}" in
+case "${FLAVOUR}" in
     "linux")
         alias ls='ls --color=auto'
         alias vew='source /etc/bash_completion.d/virtualenvwrapper'

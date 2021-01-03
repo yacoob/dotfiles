@@ -7,7 +7,7 @@ path=(/usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin)
 path=(~/bin ~/.cargo/bin $path[@])
 
 # System dependent settings
-[[ -r ~/.zshenv.${OS} ]] && source ~/.zshenv.${OS}
+[[ -r ~/.zshenv.${FLAVOUR} ]] && source ~/.zshenv.${FLAVOUR}
 
 # locales
 export LANG=en_IE.UTF-8

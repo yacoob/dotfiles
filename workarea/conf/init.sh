@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-OS=${OS:-linux}
+FLAVOUR=${FLAVOUR:-linux}
 LOCATION=${LOCATION:-home}
 TARGET=${HOME}/.dotrepo
 DEFAULT_PULL_URL="https://github.com/yacoob/conf"
@@ -57,7 +57,7 @@ set +e
 
 # set up meta config
 rm -f ${METAFILE}
-echo "export OS=${OS}" > ${METAFILE}
+echo "export FLAVOUR=${FLAVOUR}" > ${METAFILE}
 echo "export LOCATION=${LOCATION}" >> ${METAFILE}
 echo "export CONFDIR=${CONFDIR}" >> ${METAFILE}
 echo "export CONFREPODIR=${TARGET}" >> ${METAFILE}
@@ -67,7 +67,7 @@ echo "${METAFILE} now contains:"
 cat ${METAFILE}
 
 # run OS-specific script if there is one
-s=${CONFDIR}/${OS}/init.sh
+s=${CONFDIR}/${FLAVOUR}/init.sh
 if [[ -x $s ]]; then
   echo "Now run $s by hand."
 fi

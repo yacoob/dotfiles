@@ -1,7 +1,7 @@
 # Home-specific config.
 
 # Pull in OS dependent settings.
-case "${OS}" in
+case "${FLAVOUR}" in
     "osx")
         alias mame='cd ~/.mame; mame; cd -'
         ;;
