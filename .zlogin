@@ -1,3 +1,7 @@
+# Regen dynamic conf files.
+conf-generate-files
+
+# Maybe attach tmux session.
 if [[ -z "${TMUX}" && ! -f tmux-inhibit ]]; then
   if [[ "${LOCATION}" == "office" && "${FLAVOUR}" == "linux" ]]; then
     TMUX_CMD=tmx
