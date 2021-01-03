@@ -7,4 +7,4 @@
 [difftool "mvimdiff"]
   cmd = mvim -f -d \"$LOCAL\" \"$REMOTE\"
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain

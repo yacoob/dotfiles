@@ -1,9 +1,9 @@
 [color]
-	ui = true
+  ui = true
 [core]
-	excludesfile = ~/.cvsignore
+  excludesfile = ~/.cvsignore
 [push]
-	default = matching
+  default = matching
 [alias]
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
   branch-name = "!git rev-parse --abbrev-ref HEAD"
@@ -17,11 +17,5 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
-[include]
-# wildcards don't work, but nonexisting files are ignored :|
-  path = .gitconfig.osx
-  path = .gitconfig.linux
-  path = .gitconfig.home
-  path = .gitconfig.office
 [pull]
-	rebase = true
+  rebase = true
