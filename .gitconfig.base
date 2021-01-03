@@ -4,6 +4,10 @@
   excludesfile = ~/.cvsignore
 [push]
   default = matching
+[pull]
+  rebase = true
+[difftool]
+  prompt = false
 [alias]
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
   branch-name = "!git rev-parse --abbrev-ref HEAD"
@@ -17,5 +21,3 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
-[pull]
-  rebase = true
