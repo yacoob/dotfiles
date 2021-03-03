@@ -43,7 +43,13 @@ fi
 
 # fzf
 if (( $+commands[fzf] )); then
-  export FZF_DEFAULT_OPTS='--height 40% --reverse --border --inline-info --black'
+  export FZF_DEFAULT_OPTS='--height 40% --reverse --border --inline-info --ansi'
+fi
+
+# fd
+if (( $+commands[fd] )); then
+  export FZF_DEFAULT_COMMAND="fd --type file --color=always"
+  export FZF_DEFAULT_OPTS="--ansi"
 fi
 
 # python settings
