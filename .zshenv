@@ -49,7 +49,6 @@ fi
 # fd
 if (( $+commands[fd] )); then
   export FZF_DEFAULT_COMMAND="fd --type file --color=always"
-  export FZF_DEFAULT_OPTS="--ansi"
 fi
 
 # python settings
