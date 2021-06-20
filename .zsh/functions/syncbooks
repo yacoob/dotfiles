@@ -1,1 +1,0 @@
-syncdir -machine boxoob -share archiwum -localdir ~/Documents/books $1
