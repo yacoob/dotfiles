@@ -1,4 +1,4 @@
-FROM debian:stable-slim AS base
+FROM debian:stable-slim AS minimal
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get upgrade -y && apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -30,12 +30,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       zsh \
       zsh-antigen \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
-
 # Set up my user.
 RUN groupadd -g 1000 yacoob
 RUN useradd -u 1000 -g 1000 -m -s /usr/bin/zsh -G sudo yacoob && passwd -d yacoob
 USER yacoob
 
+# Prepare an up-to-date fzf binary as buster's has some annoying bugs.
+# TODO: remove this once Debian moves past 0.24 or so.
+FROM minimal as fzf
+RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
+    /home/yacoob/.fzf/install --bin
+
+FROM minimal as base
 # Set the environment.
 ENV SHELL=/usr/bin/zsh
 ENV TERM=xterm-256color
@@ -56,6 +62,9 @@ RUN BRANCH=${CONF_BRANCH} REPO_IS_DETACHED=${REPO_IS_DETACHED} REPO_PULL_URL=fil
       workarea/conf/init.sh && \
       rm -rf ${CTX}
 WORKDIR /home/yacoob
+
+# Grab fzf binary.
+COPY --from=fzf /home/yacoob/.fzf/bin/fzf /home/yacoob/bin/fzf
 
 # Install all zsh plugins.
 RUN /usr/bin/zsh /home/yacoob/.zsh/antigen-plugins
