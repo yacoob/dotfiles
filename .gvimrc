@@ -7,16 +7,9 @@ if $FLAVOUR == "linux"
   set guifont=Fira\ Code\ 14
 endif
 
-if $FLAVOUR == "osx"
-  set guifont=FiraCodeNerdFontComplete-Retina:h14
-  set macligatures
-  set fuoptions=maxvert,maxhorz      " use whole screen in fullscreen mode
-  " keybindings a'la tpope/vim-unimpaired
-  nmap cof :set fullscreen! fullscreen?<CR>
-  nmap [of :set fullscreen<CR>
-  nmap ]of :set nofullscreen<CR>
-endif
-
+"" In theory, this repo doesn't support being used with win10. In practice,
+"" I reuse vim's config. :D
+"" So: no FLAVOUR=win10, but win-specific code.
 if has('win32')
   set guifont=FiraCode_NF:h12:cDEFAULT:qCLEARTYPE
   set renderoptions=type:directx,renmode:0,taamode:0

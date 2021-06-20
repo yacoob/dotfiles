@@ -213,13 +213,6 @@ case "${FLAVOUR}" in
         alias ls='ls --color=auto'
         alias vew='source /etc/bash_completion.d/virtualenvwrapper'
         ;;
-    "osx")
-        alias ls='ls -G'
-        alias vew='source $(which virtualenvwrapper.sh)'
-        alias vi=mvim
-        alias vim=mvim
-        alias vimdiff='mvim -d'
-        ;;
 esac
 
 # Set up ssh-agent forwarding in WSL environment.

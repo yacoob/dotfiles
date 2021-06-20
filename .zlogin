@@ -9,10 +9,6 @@ if [[ -z "${TMUX}" && ! -f tmux-inhibit ]]; then
     TMUX_CMD=tmux
   fi
   if (( $+commands[${TMUX_CMD}] )); then
-    if [[ "${FLAVOUR}" == "osx" ]]; then
-      # Start a session for fs iterm.
-      ${TMUX_CMD} has-session -t fs || ${TMUX_CMD} new-session -d -s fs
-    fi
     if [[ -n "${SSH_CONNECTION}" ]]; then
       SESSION_FILE=${HOME}/.tmux-attach-session-ssh
       FALLBACK_SESSION_NAME='tmp-ssh'
