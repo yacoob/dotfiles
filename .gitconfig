@@ -1,7 +1,15 @@
+[user]
+  name = Jakub Turski
+  email = yacoob@gmail.com
 [color]
   ui = true
 [core]
   excludesfile = ~/.cvsignore
+  editor = vim
+[merge]
+	tool = vimdiff
+[diff]
+	tool = vimdiff
 [push]
   default = matching
 [pull]
@@ -21,3 +29,11 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
+[difftool "winmerge"]
+  cmd = winmerge -e -r -u -wl -wr \"$(wslpath -wa ${LOCAL})\" \"$(wslpath -wa ${REMOTE})\"
+  trustExitCode = false
+[mergetool "winmerge"]
+  cmd = winmerge -e -r -u -al -wm -wr \"$(wslpath -wa ${LOCAL})\" \"$(wslpath -wa ${REMOTE})\" \"$(wslpath -wa ${BASE})\" -o \"$(wslpath -wa $MERGED)\"
+  trustExitCode = false
+[include]
+  path = ~/.gitconfig.local

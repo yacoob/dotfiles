@@ -48,6 +48,9 @@ if (( $+commands[fd] )); then
   export FZF_DEFAULT_COMMAND="fd --type file --color=always"
 fi
 
+# golang settings
+export GOPATH="${HOME}/workarea/golang"
+
 # python settings
 export PIP_REQUIRE_VIRTUALENV=true
 export WORKON_HOME="${HOME}/.venvs"

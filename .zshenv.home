@@ -1,2 +1,0 @@
-# Default Go workspace.
-export GOPATH="${HOME}/workarea/golang"
