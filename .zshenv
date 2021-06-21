@@ -1,5 +1,3 @@
-source ~/.yacoob-conf
-
 # No duplicates in  variables specified below.
 typeset -U path manpath
 # set fixed PATH

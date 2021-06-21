@@ -1,5 +1,3 @@
-source ~/.yacoob-conf
-
 # Umask
 umask 027
 
