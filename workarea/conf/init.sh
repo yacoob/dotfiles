@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-FLAVOUR=${FLAVOUR:-linux}
 TARGET=${HOME}/.dotrepo
 DEFAULT_PULL_URL="https://github.com/yacoob/conf"
 REPO_PULL_URL=${REPO_PULL_URL:-${DEFAULT_PULL_URL}}
@@ -56,16 +55,9 @@ set +e
 
 # set up meta config
 rm -f ${METAFILE}
-echo "export FLAVOUR=${FLAVOUR}" > ${METAFILE}
 echo "export CONFDIR=${CONFDIR}" >> ${METAFILE}
 echo "export CONFREPODIR=${TARGET}" >> ${METAFILE}
 echo "export CONFBRANCH=${BRANCH}" >> ${METAFILE}
 chmod u=r,go= ${METAFILE}
 echo "${METAFILE} now contains:"
 cat ${METAFILE}
-
-# run OS-specific script if there is one
-s=${CONFDIR}/${FLAVOUR}/init.sh
-if [[ -x $s ]]; then
-  echo "Now run $s by hand."
-fi

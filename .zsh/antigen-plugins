@@ -1,11 +1,7 @@
 if [[ -r ~/.zsh/antigen.zsh ]]; then
   local antigen_file=~/.zsh/antigen.zsh
 else
-  case "${FLAVOUR}" in
-    "linux")
-        local antigen_file=/usr/share/zsh-antigen/antigen.zsh
-        ;;
-  esac
+  local antigen_file=/usr/share/zsh-antigen/antigen.zsh
 fi
 
 if [[ -r ${antigen_file} ]]; then

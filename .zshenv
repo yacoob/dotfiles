@@ -6,9 +6,6 @@ typeset -U path manpath
 path=(/usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin)
 path=(~/bin ~/.cargo/bin $path[@])
 
-# System dependent settings
-[[ -r ~/.zshenv.${FLAVOUR} ]] && source ~/.zshenv.${FLAVOUR}
-
 # locales
 export LANG=en_IE.UTF-8
 export LC_COLLATE=pl_PL.UTF-8

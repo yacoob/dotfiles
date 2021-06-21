@@ -1,16 +1,5 @@
 # Home-specific config.
-
-# Pull in OS dependent settings.
-case "${FLAVOUR}" in
-    "osx")
-        alias mame='cd ~/.mame; mame; cd -'
-        ;;
-    "linux")
-        alias wm='sudo wifi-menu -o'
-        ;;
-esac
-
-# OS independent aliases
+alias wm='sudo wifi-menu -o'
 alias yda='youtube-dl --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s"'
 
 # Initialize tabcompletion.

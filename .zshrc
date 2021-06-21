@@ -141,9 +141,9 @@ add-zsh-hook preexec preexec_term_title
 #fi
 
 # Define aliases.
-alias cd/='cd /'
-alias cd..='cd ..'
 alias cd...='cd ../..'
+alias cd..='cd ..'
+alias cd/='cd /'
 alias cp='nocorrect cp -i'
 alias d='dirs -v'
 alias dlbf='rm -f (.*~|*~)'
@@ -155,19 +155,21 @@ alias la='ls -A'
 alias lla='ll -A'
 alias lld='ls -ld *(-/DN)'
 alias ll='ls -lh'
+alias ls='ls --color=auto'
 alias mkdir='nocorrect mkdir'
-alias mosh-kill-other='kill $(ps --no-headers --sort=start_time -C mosh-server -o pid | head -n -1)'
 alias mmv='noglob zmv -W'
+alias mosh-kill-other='kill $(ps --no-headers --sort=start_time -C mosh-server -o pid | head -n -1)'
 alias mv='nocorrect mv -i'
 alias po=popd
 alias pu=pushd
-alias pwg='pwgen -c -n -y -s -B 12 1'
 alias pwgl='pwgen -c -n -y -s -B 30 1'
+alias pwg='pwgen -c -n -y -s -B 12 1'
 alias rdlbf='find . -iname \*~ | xargs rm -f'
 alias rezsh='nocorrect exec $SHELL'
 alias rm='rm -i'
 alias sfcp='rsync -i -rltgoD'
 alias sudosh='nocorrect sudo -Es'
+alias vew='source /etc/bash_completion.d/virtualenvwrapper'
 alias zmv='noglob zmv'
 if (( $+commands[vim] )); then
   alias vi=vim
@@ -206,14 +208,6 @@ cmd-init-cache "fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh
 if (( $+commands[fzf] )); then
   source ~/.zsh/fzf-key-bindings.zsh
 fi
-
-# Pull in OS dependent settings.
-case "${FLAVOUR}" in
-    "linux")
-        alias ls='ls --color=auto'
-        alias vew='source /etc/bash_completion.d/virtualenvwrapper'
-        ;;
-esac
 
 # Set up ssh-agent forwarding in WSL environment.
 if [[ ! -z "$WSL_DISTRO_NAME" ]]; then
