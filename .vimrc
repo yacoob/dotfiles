@@ -215,5 +215,5 @@ let g:rust_clip_command = 'pbcopy'
 " zoomwin
 nmap <silent> <leader>z :ZoomWin<CR>
 
-" system/location dependent settings
-silent! source ~/.vimrc.${LOCATION}
+" machine specific config
+silent! source ~/.vimrc.local

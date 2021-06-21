@@ -225,8 +225,8 @@ if [[ ! -z "$WSL_DISTRO_NAME" ]]; then
   fi
 fi
 
-# Pull in location dependent settings.
-[[ -r ~/.zshrc.${LOCATION} ]] && source ~/.zshrc.${LOCATION}
+# machine specific config
+[[ -r ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]

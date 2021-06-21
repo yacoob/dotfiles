@@ -50,7 +50,6 @@ ENV SSH_AUTH_SOCK=/home/yacoob/.ssh/agent.sock
 
 # Set up the dotfiles.
 ENV FLAVOUR=linux
-ENV LOCATION=home
 ARG CTX=/tmp/conf-bootstrap
 # Copy the entire context, which should be our conf repo to a tmp directory.
 COPY --chown=yacoob:yacoob . ${CTX}

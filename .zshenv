@@ -56,5 +56,5 @@ export PIP_REQUIRE_VIRTUALENV=true
 export WORKON_HOME="${HOME}/.venvs"
 export PIPENV_VENV_IN_PROJECT=1
 
-# Location dependent confidential settings
-[[ -r ~/.zshenv.${LOCATION} ]] && source ~/.zshenv.${LOCATION}
+# machine specific config
+[[ -r ~/.zshenv.local ]] && source ~/.zshenv.local

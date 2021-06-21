@@ -1,7 +1,0 @@
-# .gitconfig
-if [[ ! -z "${WSL_DISTRO_NAME}" ]]; then
-  OLDFLAVOUR=${FLAVOUR}
-  FLAVOUR=wsl
-fi
-cat ~/.gitconfig.base ~/.gitconfig.${FLAVOUR} ~/.gitconfig.${LOCATION} > ~/.gitconfig
-FLAVOUR=${OLDFLAVOUR}

@@ -1,13 +1,7 @@
-# Regen dynamic conf files.
-conf-generate-files
-
 # Maybe attach tmux session.
 if [[ -z "${TMUX}" && ! -f tmux-inhibit ]]; then
-  if [[ "${LOCATION}" == "office" && "${FLAVOUR}" == "linux" ]]; then
-    TMUX_CMD=tmx
-  else
-    TMUX_CMD=tmux
-  fi
+  # TODO: handle 'tmx' properly
+  TMUX_CMD=${TMUX_CMD:-tmux}
   if (( $+commands[${TMUX_CMD}] )); then
     if [[ -n "${SSH_CONNECTION}" ]]; then
       SESSION_FILE=${HOME}/.tmux-attach-session-ssh
