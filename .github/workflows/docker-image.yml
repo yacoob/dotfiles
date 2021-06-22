@@ -69,7 +69,7 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           tags: |
             ${{ steps.docker_meta.outputs.tags }}
-            ${{ env.PUSH_TO_MASTER == 'true' && 'yacoob/interactive:latest' || ''}}
+            ${{ env.PUSH_TO_MASTER == 'true' && 'yacoob/interactive:vim' || ''}}
   ping-others:
     name: Notify other repositories about new version of the base image.
     runs-on: ubuntu-latest
