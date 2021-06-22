@@ -1,7 +1,8 @@
 # No duplicates in  variables specified below.
 typeset -U path manpath
 # set fixed PATH
-path=(/usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin)
+[[ -z "${__PRESERVE_PATH}" ]] && path=()
+path=(/usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin $path[@])
 path=(~/bin ~/.cargo/bin $path[@])
 
 # locales
