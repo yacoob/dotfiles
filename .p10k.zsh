@@ -35,6 +35,7 @@
     #os_icon                 # os identifier
     my_conf_update
     context                 # user@hostname
+    my_wsl_distro           # name of WSL distro
     dir                     # current directory
     status                  # exit code of the last command
     background_jobs         # presence of background jobs

@@ -1,0 +1,4 @@
+if [[ ! -z "${WSL_DISTRO_NAME}" ]]; then
+  p10k segment -f red -i "" -t "${WSL_DISTRO_NAME}"
+fi
+
