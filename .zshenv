@@ -10,7 +10,6 @@ export LANG=en_IE.UTF-8
 export LC_COLLATE=pl_PL.UTF-8
 export LC_CTYPE=pl_PL.UTF-8
 export LC_MESSAGES=C
-export LC_MESSAGES=C
 export TZ='Europe/Dublin'
 
 # misc
