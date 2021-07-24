@@ -165,9 +165,6 @@ zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SU
 # Pull in antigen plugins.
 source ~/.zsh/antigen-plugins
 
-# fasd
-cmd-init-cache "fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install"
-
 # fzf
 if (( $+commands[fzf] )); then
   source ~/.zsh/fzf-key-bindings.zsh
