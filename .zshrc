@@ -104,40 +104,6 @@ add-zsh-hook periodic conf-prompt-helper
 add-zsh-hook precmd precmd_term_title
 add-zsh-hook preexec preexec_term_title
 
-# Set up prompts.
-# Use an anonymous function to isolate local variables from user environment.
-# function {
-#   local -a plines tmp
-
-#   nondefault_user() {
-#     [[ "${USERNAME}" != "yacoob" ]] && echo ${USERNAME}
-#   }
-#   # First line.
-#   tmp+='%(!.%F{red} %F{default}.)'
-#   tmp+='$(nondefault_user)%F{red}@%F{default}%m%F{default}  '
-#   tmp+='%(3L.%F{magenta} %L%F{default}  .)'
-#   tmp+='%F{red} %T %w%F{default}  '
-#   tmp+='%F{yellow} %!%F{default}  '
-#   tmp+='%(?..%F{cyan} %?%F{default}  )'
-#   plines+=${(j::)tmp}
-
-#   # Second line.
-#   plines+='%F{cyan} %~%F{default}'
-
-#   # Third line.
-#   tmp=()
-#   tmp+='%F{yellow}${_CMD_MODE:+ }%F{default}'
-#   tmp+='%F{cyan}${_CONF_UPDATE:+  }%F{default}'
-#   tmp+='%(?,,%F{red})%(!.#.$)%F{default} '
-#   plines+=${(j::)tmp}
-
-#   # PROMPT, assemble!
-#   PROMPT=${(F)plines}
-# }
-#if (( $+commands[starship] )); then
-#  eval $(starship init zsh)
-#fi
-
 # Define aliases.
 alias cd...='cd ../..'
 alias cd..='cd ..'
