@@ -1,3 +1,2 @@
 confgit pull && touch ~/.conf-last-update
 conf-prompt-helper
-conf-generate-files
