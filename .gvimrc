@@ -1,7 +1,7 @@
 "" GUI specific settings
 set guioptions-=T            " don't show toolbar
 set guioptions-=m            " no menu
-set guifont=Fira\ Code\ 14
+set guifont=FiraCode\ Nerd\ Font\ 14
 
 "" In theory, this repo doesn't support being used with win10. In practice,
 "" I reuse vim's config. :D
