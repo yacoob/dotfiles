@@ -124,7 +124,7 @@ alias mkdir='nocorrect mkdir'
 alias mmv='noglob zmv -W'
 alias mosh-kill-other='kill $(ps --no-headers --sort=start_time -C mosh-server -o pid | head -n -1)'
 alias mv='nocorrect mv -i'
-alias please='sudo $(fc -ln -1)'
+alias please='sudo $(fc -Lln -1)'
 alias po=popd
 alias pu=pushd
 alias pwgl='pwgen -c -n -y -s -B 30 1'
