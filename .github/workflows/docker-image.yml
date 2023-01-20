@@ -57,7 +57,7 @@ jobs:
             ${{ steps.docker_meta.outputs.tags }}
             ${{ env.PUSH_TO_MASTER == 'true' && 'yacoob/interactive:latest' || ''}}
       - name: Build and optionally push the vim version
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           target: vim
           context: .
