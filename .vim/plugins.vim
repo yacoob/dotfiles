@@ -50,6 +50,7 @@ Plug 'morhetz/gruvbox'
 " untested
 Plug 'kana/vim-narrow'                     " narrowing
 Plug 'sjl/splice.vim'                      " diff/merge plugin
+Plug 'nfnty/vim-nftables'                  " nftables syntax
 
 " machine specific config
 silent! source ~/.vim/plugins.local.vim
