@@ -15,6 +15,6 @@ if [[ -z "${TMUX}" && ! -f tmux-inhibit ]]; then
     else
       sname=${FALLBACK_SESSION_NAME}
     fi
-    ( ${TMUX_CMD} has-session -t ${sname} && ${TMUX_CMD} attach-session -t ${sname} ) || ( ${TMUX_CMD} new-session -s ${sname} )
+      ${TMUX_CMD} has-session -t ${sname} && exec ${TMUX_CMD} attach-session -t ${sname} || exec ${TMUX_CMD} new-session -s ${sname}
   fi
 fi
