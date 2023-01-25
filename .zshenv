@@ -3,7 +3,7 @@ typeset -U path manpath
 # set fixed PATH
 [[ -z "${__PRESERVE_PATH}" ]] && path=()
 path=(/usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin $path[@])
-path=(~/bin ~/.cargo/bin $path[@])
+path=(~/bin ~/.local/bin $path[@])
 
 # locales
 export LANG=en_IE.UTF-8
