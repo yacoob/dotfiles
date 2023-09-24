@@ -11,7 +11,7 @@ on:
 
 env:
   REPO_IS_DETACHED: ${{ github.event_name == 'pull_request' }}
-  PUSH_TO_MASTER: ${{ github.event_name == 'push' && endsWith(github.ref, '/master') }}
+  PUSH_TO_MAIN: ${{ github.event_name == 'push' && endsWith(github.ref, '/main') }}
 
 jobs:
   build:
@@ -56,7 +56,7 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           tags: |
             ${{ steps.docker_meta.outputs.tags }}
-            ${{ env.PUSH_TO_MASTER == 'true' && 'yacoob/interactive:latest' || ''}}
+            ${{ env.PUSH_TO_MAIN == 'true' && 'yacoob/interactive:latest' || ''}}
       - name: Build and optionally push the vim version
         uses: docker/build-push-action@v3
         with:
@@ -71,13 +71,13 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           tags: |
             ${{ steps.docker_meta.outputs.tags }}
-            ${{ env.PUSH_TO_MASTER == 'true' && 'yacoob/interactive:vim' || ''}}
+            ${{ env.PUSH_TO_MAIN == 'true' && 'yacoob/interactive:vim' || ''}}
 
   ping-others:
     name: Notify other repositories about new version of the base image.
     runs-on: ubuntu-latest
     # Only ping others on pushes to main branch.
-    if: github.event_name == 'push' && endsWith(github.ref, '/master')
+    if: github.event_name == 'push' && endsWith(github.ref, '/main')
     # Don't ping if build step failed.
     needs: build
     steps:
