@@ -7,6 +7,7 @@ on:
   # For pull requests, build but don't push.
   pull_request:
   # Build and push if triggered manually.
+  workflow_dispatch:
 
 env:
   REPO_IS_DETACHED: ${{ github.event_name == 'pull_request' }}
