@@ -24,15 +24,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       less \
       nvi \
       openssh-client \
+      ripgrep \
       silversearcher-ag \
       sudo \
       wget \
       zsh \
       zsh-antigen \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 # Set up my user.
-RUN groupadd -g 1000 yacoob
-RUN useradd -u 1000 -g 1000 -m -s /usr/bin/zsh -G sudo yacoob && passwd -d yacoob
+ARG UID
+ARG GID
+ENV UID=${UID:-1026}
+ENV GID=${GID:-65537}
+RUN groupadd -g ${GID} yacoob
+RUN useradd -u ${UID} -g ${GID} -m -s /usr/bin/zsh -G sudo yacoob && passwd -d yacoob
 USER yacoob
 
 FROM minimal as base
