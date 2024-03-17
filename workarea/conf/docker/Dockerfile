@@ -59,18 +59,18 @@ RUN BRANCH=${CONF_BRANCH} REPO_IS_DETACHED=${REPO_IS_DETACHED} REPO_PULL_URL=fil
       rm -rf ${CTX}
 WORKDIR /home/yacoob
 
-# Install all zsh plugins.
-RUN /usr/bin/zsh /home/yacoob/.zsh/antigen-plugins
-# Run a dummy zsh session to allow plugins to fully initialize.
-RUN script -qec '/usr/bin/zsh -is </dev/null' /dev/null
-# Run the shell.
-ENTRYPOINT ["/usr/bin/zsh", "--login"]
+# Install all zsh plugins. Run a dummy zsh session to allow plugins to fully initialize.
+RUN /usr/bin/zsh /home/yacoob/.zsh/antigen-plugins && script -qec '/usr/bin/zsh -is </dev/null' /dev/null
+# Run a custom script on container start.
+COPY --chown=yacoob:yacoob --chmod=750 workarea/conf/docker/entry.sh /home/yacoob/.entry.sh
+USER root
+ENTRYPOINT ["/home/yacoob/.entry.sh"]
 
 FROM base as vim
-USER root
 RUN apt-get update && apt-get install -y --no-install-recommends \
       vim-nox \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 # Install all vim plugins.
 USER yacoob
 RUN script -qec "/usr/bin/vim -T dumb -c 'PlugInstall' -c 'qa!' >/dev/null" /dev/null
+USER root
