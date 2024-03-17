@@ -34,8 +34,9 @@ ARG UID
 ARG GID
 ENV UID=${UID:-1026}
 ENV GID=${GID:-65537}
-RUN groupadd -g ${GID} yacoob
-RUN useradd -u ${UID} -g ${GID} -m -s /usr/bin/zsh -G sudo yacoob && passwd -d yacoob
+RUN groupadd -g ${GID} yacoob && \
+    useradd -u ${UID} -g ${GID} -m -s /usr/bin/zsh -G sudo yacoob && \
+    passwd -d yacoob
 USER yacoob
 
 FROM minimal as base
