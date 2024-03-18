@@ -56,7 +56,7 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           tags: |
             ${{ steps.docker_meta.outputs.tags }}
-            base
+            yacoob/interactive:base
       - name: Build and optionally push the vim version
         uses: docker/build-push-action@v5
         with:
@@ -71,7 +71,7 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           tags: |
             ${{ steps.docker_meta.outputs.tags }}
-            vim
+            yacoob/interactive:vim
 
 
   ping-others:
