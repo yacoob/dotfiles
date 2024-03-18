@@ -54,7 +54,9 @@ jobs:
           # Skip registry push for pull_requests.
           push: ${{ github.event_name != 'pull_request' }}
           labels: ${{ steps.docker_meta.outputs.labels }}
-          tags: ${{ steps.docker_meta.outputs.tags }}
+          tags: |
+            ${{ steps.docker_meta.outputs.tags }}
+            base
       - name: Build and optionally push the vim version
         uses: docker/build-push-action@v5
         with:
@@ -67,7 +69,9 @@ jobs:
           # Skip registry push for pull_requests.
           push: ${{ github.event_name != 'pull_request' }}
           labels: ${{ steps.docker_meta.outputs.labels }}
-          tags: ${{ steps.docker_meta.outputs.tags }}
+          tags: |
+            ${{ steps.docker_meta.outputs.tags }}
+            vim
 
 
   ping-others:
