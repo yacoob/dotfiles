@@ -22,7 +22,6 @@ RUN cat debconf | debconf-set-selections && rm -f debconf && \
       nvi \
       openssh-client \
       ripgrep \
-      silversearcher-ag \
       sudo \
       wget \
       zsh \
