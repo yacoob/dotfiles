@@ -31,8 +31,8 @@ RUN cat debconf | debconf-set-selections && rm -f debconf && \
 # Set up my user
 ARG UID
 ARG GID
-ENV UID=${UID:-1026}
-ENV GID=${GID:-65537}
+ENV UID=${UID:-1000}
+ENV GID=${GID:-1000}
 RUN groupadd -g ${GID} yacoob && \
     useradd -u ${UID} -g ${GID} -m -s /usr/bin/zsh -G sudo yacoob && \
     passwd -d yacoob
@@ -51,15 +51,15 @@ WORKDIR /home/yacoob
 RUN /usr/bin/zsh /home/yacoob/.zsh/antigen-plugins && script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 # Run a custom script on container start
 RUN cp ${CTX}/workarea/conf/docker/entry.sh /home/yacoob/.entry.sh && rm -rf ${CTX}
-COPY --chown=yacoob:yacoob --chmod=750 workarea/conf/docker/entry.sh /home/yacoob/.entry.sh
+COPY --chown=yacoob:yacoob --chmod=755 workarea/conf/docker/entry.sh /home/yacoob/.entry.sh
 
 
 FROM debian:stable-slim as base
 # Redo the envs
 ARG UID
 ARG GID
-ENV UID=${UID:-1026}
-ENV GID=${GID:-65537}
+ENV UID=${UID:-1000}
+ENV GID=${GID:-1000}
 # Set the environment
 ENV LANG=en_IE.UTF-8
 ENV LC_COLLATE=pl_PL.UTF-8
