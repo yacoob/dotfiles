@@ -105,8 +105,8 @@ add-zsh-hook precmd precmd_term_title
 add-zsh-hook preexec preexec_term_title
 
 # Define aliases.
-alias beetsdocker='docker compose -f ~/bin/beets/compose.yaml run --rm beets'
 alias apt-list-backports="aptitude search -t $(lsb_release -sc)-backports -F '%p %v -> %V' '~U ~Abackports'"
+alias beetsdocker='docker compose -f ~/bin/beets/compose.yaml run --rm beets'
 alias cd...='cd ../..'
 alias cd..='cd ..'
 alias cd/='cd /'
