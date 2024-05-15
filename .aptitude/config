@@ -8,3 +8,5 @@ aptitude::UI "";
 aptitude::UI::Flat-View-As-First-View "true";
 aptitude::UI::Package-Display-Format "%c%a%M%S %p %t %O %Z %v %V";
 aptitude::Pkg-Display-Limit "~i";
+APT "";
+APT::Install-Recommends "false";
