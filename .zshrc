@@ -194,7 +194,7 @@ if [[ -z "${SSH_CONNECTION}" ]]; then
     # Do we already have an ssh-agent running?
     if ps uxwww | grep -q 'ssh-agen[t]'; then
       # Yes; read keychain's information about it, and hope for it not to be stale :D
-      update-ssh-agent-from-keychain
+      update-ssh-auth-sock-from-keychain
     else
       # No; use keychain to start a new agent.
       eval $(keychain --eval --agents ssh --nogui ~/.ssh/id_*~*.ssh/*.*)
