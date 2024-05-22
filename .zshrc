@@ -148,21 +148,22 @@ alias -g L='|less'
 alias -g T='|tail'
 
 # Configure tab-completion.
+zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu no
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' verbose yes
 zstyle ':completion::complete:cd::' tag-order '! users' -
 zstyle ':completion::complete:-command-::' tag-order '! users' -
 zstyle ':completion:*:corrections' format "- %d - (errors %e})"
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'
-zstyle ':completion:*:descriptions' format "- %d -"
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion:*:*:*:*:hosts' list-colors '=*=30;41'
 zstyle ':completion:*:kill:*:processes' command "ps x"
-zstyle ':completion:*:manuals.(^1*)' insert-sections true
 zstyle ':completion:*:manuals' separate-sections true
-zstyle ':completion:*' cache-path ~/.zsh/cache
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' menu select
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' verbose yes
+zstyle ':completion:*:manuals.(^1*)' insert-sections true
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
 
 # Pull in antigen plugins.
@@ -170,6 +171,7 @@ source ~/.zsh/antigen-plugins
 
 # fzf
 if (( $+commands[fzf] )); then
+  zstyle ':fzf-tab:*' switch-group '<' '>'
   source ~/.zsh/fzf-key-bindings.zsh
 fi
 
