@@ -54,6 +54,11 @@ export PIP_REQUIRE_VIRTUALENV=true
 export WORKON_HOME="${HOME}/.venvs"
 export PIPENV_VENV_IN_PROJECT=1
 
+# agkozak's prompt theme settings
+AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
+AGKOZAK_COLORS_PROMPT_CHAR='magenta'
+AGKOZAK_CUSTOM_SYMBOLS=( '⇣⇡' '⇣' '⇡' '+' 'x' '!' '>' '?' 'S')
+
 # Set up ssh-agent forwarding in WSL environment.
 if [[ ! -z "$WSL_DISTRO_NAME" ]]; then
   export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock

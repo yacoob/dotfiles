@@ -11,7 +11,7 @@ if [[ -r ${antigen_file} ]]; then
   antigen bundle Tarrasch/zsh-functional
   antigen bundle zsh-users/zsh-completions
   antigen bundle zsh-users/zsh-syntax-highlighting
-  antigen theme romkatv/powerlevel10k
+  antigen bundle agkozak/agkozak-zsh-prompt
   antigen apply
 
   # zsh-syntax-highlighting
