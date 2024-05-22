@@ -1,6 +1,6 @@
 # No duplicates in  variables specified below.
 typeset -U path manpath
-# set fixed PATH
+# reset PATH (unles asked otherwise) to ensure sane baseline for it
 [[ -z "${__PRESERVE_PATH}" ]] && path=()
 path=(/usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin $path[@])
 path=(~/.local/bin $path[@])
@@ -14,10 +14,15 @@ export TZ='Europe/Dublin'
 
 # misc
 export CVS_RSH=ssh
-export EDITOR=vim
-export EMAIL="yacoob@gmail.com"
+export EMAIL="yacoob@ftml.net"
 export TMPDIR=/tmp
-export VISUAL=vim
+if (( $+commands[vim] )); then
+  export EDITOR=vim
+  export VISUAL=vim
+elif (( $+commands[vi] )); then
+  export EDITOR=vi
+  export VISUAL=vi
+fi
 
 # less settings
 export LESS="-iSRM"
@@ -25,8 +30,6 @@ export LESSCHARSET="utf-8"
 export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode – red
 export LESS_TERMCAP_md=$(printf '\e[01;35m') # enter double-bright mode – bold, magenta
 export LESS_TERMCAP_me=$(printf '\e[0m')     # turn off all appearance modes (mb, md, so, us)
-#export LESS_TERMCAP_se=$(printf '\e[0m')     # leave standout mode
-#export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode – yellow
 export LESS_TERMCAP_ue=$(printf '\e[0m')     # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode – cyan
 #
@@ -42,7 +45,9 @@ if (( $+commands[fzf] )); then
 fi
 
 # fd
-if (( $+commands[fd] )); then
+if (( $+commands[fdfind] )); then
+  export FZF_DEFAULT_COMMAND="fdfind --type file --color=always"
+elif (( $+commands[fd] )); then
   export FZF_DEFAULT_COMMAND="fd --type file --color=always"
 fi
 
@@ -55,19 +60,10 @@ export WORKON_HOME="${HOME}/.venvs"
 export PIPENV_VENV_IN_PROJECT=1
 
 # agkozak's prompt theme settings
-AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
 AGKOZAK_COLORS_PROMPT_CHAR='magenta'
 AGKOZAK_CUSTOM_SYMBOLS=( '⇣⇡' '⇣' '⇡' '+' 'x' '!' '>' '?' 'S')
-
-# Set up ssh-agent forwarding in WSL environment.
-if [[ ! -z "$WSL_DISTRO_NAME" ]]; then
-  export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
-  ss -a | grep -q $SSH_AUTH_SOCK
-  if [ $? -ne 0    ]; then
-    rm -f $SSH_AUTH_SOCK
-    ( setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Users/yacoob/bin/wsl-ssh-agent/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &  ) >/dev/null 2>&1
-  fi
-fi
+AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
+AGKOZAK_PROMPT_DIRTRIM=0
 
 # machine specific config
 [[ -r ~/.zshenv.local ]] && source ~/.zshenv.local
