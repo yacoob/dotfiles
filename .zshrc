@@ -188,5 +188,19 @@ if ! whence compdef >/dev/null; then
   bashcompinit
 fi
 
+# For a local session: try to use keychain to manage a local ssh-agent.
+if [[ -z "${SSH_CONNECTION}" ]]; then
+  if (( $+commands[keychain] )); then
+    # Do we already have an ssh-agent running?
+    if ps uxwww | grep -q 'ssh-agen[t]'; then
+      # Yes; read keychain's information about it, and hope for it not to be stale :D
+      update-ssh-agent-from-keychain
+    else
+      # No; use keychain to start a new agent.
+      eval $(keychain --eval --agents ssh --nogui ~/.ssh/id_*~*.ssh/*.*)
+    fi
+  fi
+fi
+
 # A dummy command that returns positive exit status to make prompt non-red :)
 :

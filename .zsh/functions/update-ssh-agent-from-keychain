@@ -1,0 +1,2 @@
+local af=~/.keychain/$(print -P %m)-sh
+[[ -r ${af} ]] && source ${af}
