@@ -169,6 +169,9 @@ zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SU
 # Pull in antigen plugins.
 source ~/.zsh/antigen-plugins
 
+# agkozak prompt - always display host
+psvar[1]="@${(%):-%m}"
+
 # fzf
 if (( $+commands[fzf] )); then
   zstyle ':fzf-tab:*' switch-group '<' '>'
