@@ -166,8 +166,15 @@ zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:manuals.(^1*)' insert-sections true
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
 
-# Pull in antigen plugins.
-source ~/.zsh/antigen-plugins
+# Pull in plugins.
+if [[ -r ~/.antidote/antidote.zsh ]]; then
+  source ~/.antidote/antidote.zsh
+  antidote load ~/.zsh/plugins.txt
+
+  # zsh-syntax-highlighting
+  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+  ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
+fi
 
 # agkozak prompt - always display host
 psvar[1]="@${(%):-%m}"
