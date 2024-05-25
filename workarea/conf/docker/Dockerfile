@@ -26,7 +26,6 @@ RUN cat debconf | debconf-set-selections && rm -f debconf && \
       sudo \
       wget \
       zsh \
-      zsh-antigen \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 # Set up my user
 ARG UID
@@ -47,8 +46,10 @@ ARG CONF_BRANCH
 ARG REPO_IS_DETACHED
 RUN BRANCH=${CONF_BRANCH} REPO_IS_DETACHED=${REPO_IS_DETACHED} REPO_PULL_URL=file:///$(pwd) workarea/conf/init.sh
 WORKDIR /home/yacoob
-# Install all zsh plugins and run a dummy zsh session to allow plugins to fully initialize
-RUN /usr/bin/zsh /home/yacoob/.zsh/antigen-plugins && script -qec '/usr/bin/zsh -is </dev/null' /dev/null
+# Install antidote
+RUN /usr/bin/git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
+# Run a dummy zsh session to allow plugins to fully initialize
+RUN script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 # Run a custom script on container start
 RUN cp ${CTX}/workarea/conf/docker/entry.sh /home/yacoob/.entry.sh && rm -rf ${CTX}
 COPY --chown=yacoob:yacoob --chmod=755 workarea/conf/docker/entry.sh /home/yacoob/.entry.sh
