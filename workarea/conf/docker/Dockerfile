@@ -7,7 +7,7 @@ ENV LC_COLLATE=pl_PL.UTF-8
 ENV LC_CTYPE=pl_PL.UTF-8
 ENV LC_MESSAGES=C
 # Install packages
-RUN cat debconf | debconf-set-selections && rm -f debconf && \
+RUN debconf-set-selections < debconf && rm -f debconf && \
     apt-get update && apt-get upgrade -y --no-install-recommends --no-install-suggests && \
     apt-get install -y --no-install-suggests --no-install-recommends \
             apt-utils locales localepurge && \
