@@ -1,5 +1,5 @@
-agkozak/agkozak-zsh-prompt
 agkozak/zsh-z
 Aloxaf/fzf-tab
+sindresorhus/pure
 zsh-users/zsh-completions
 zsh-users/zsh-syntax-highlighting
