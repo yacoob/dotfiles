@@ -4,7 +4,7 @@ if [[ ! -r ${envfile} ]]; then
   return 1
 fi
 
-docker run -it --user $(id -u):$(id -g) \
+docker run -it --user $(id -u):$(id -g) --rm \
            -v ~/.lego:/o --env-file ${envfile} \
            goacme/lego \
            --path /o --email ${EMAIL} \
