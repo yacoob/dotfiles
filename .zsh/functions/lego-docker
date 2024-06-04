@@ -1,0 +1,12 @@
+local envfile=~/.lego/env
+if [[ ! -r ${envfile} ]]; then
+  echo "Can't read ${envfile} - make sure it exists."
+  return 1
+fi
+
+docker run -it --user $(id -u):$(id -g) \
+           -v ~/.lego:/o --env-file ${envfile} \
+           goacme/lego \
+           --path /o --email ${EMAIL} \
+           $(cat ~/.lego/flags 2>/dev/null) \
+           $@
