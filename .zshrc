@@ -101,8 +101,6 @@ setopt \
 autoload -Uz add-zsh-hook
 PERIOD=300
 add-zsh-hook periodic conf-prompt-helper
-add-zsh-hook precmd precmd_term_title
-add-zsh-hook preexec preexec_term_title
 
 # Define aliases.
 alias apt-list-backports='aptitude search -t $(lsb_release -sc)-backports -F "%p %v -> %V" "~U ~Abackports"'
