@@ -2,7 +2,7 @@
 if [[ ! -z ${CONF_AUTO_UPDATE} ]]; then
   zstat -H update_stat ~/.conf-last-update
   local last_update_age=$(( $(strftime +%s) - ${update_stat[mtime]} ))
-  if [[ ${last_update_age} > ${CONF_STALE_IF_OLDER_THAN} ]]; then
+  if [[ ${last_update_age} -gt ${CONF_STALE_IF_OLDER_THAN} ]]; then
     echo "Attempting conf files update, as it's been $(humanize-seconds ${last_update_age}) since the last update:"
     conf-dir-update
   fi
