@@ -7,7 +7,7 @@ path=(~/.local/bin $path[@])
 
 # conf repo updater
 export CONF_AUTO_UPDATE=true
-export CONF_STALE_IF_OLDER_THAN=300
+export CONF_STALE_IF_OLDER_THAN=3600
 
 # locales
 export LANG=en_IE.UTF-8
