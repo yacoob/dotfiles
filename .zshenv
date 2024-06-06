@@ -59,11 +59,5 @@ export PIP_REQUIRE_VIRTUALENV=true
 export WORKON_HOME="${HOME}/.venvs"
 export PIPENV_VENV_IN_PROJECT=1
 
-# agkozak's prompt theme settings
-AGKOZAK_COLORS_PROMPT_CHAR='magenta'
-AGKOZAK_CUSTOM_SYMBOLS=( '⇣⇡' '⇣' '⇡' '+' 'x' '!' '>' '?' 'S')
-AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
-AGKOZAK_PROMPT_DIRTRIM=0
-
 # machine specific config
 [[ -r ~/.zshenv.local ]] && source ~/.zshenv.local
