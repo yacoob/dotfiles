@@ -97,11 +97,6 @@ setopt \
   share_history \
   transient_rprompt \
 
-# Hooks
-autoload -Uz add-zsh-hook
-PERIOD=300
-add-zsh-hook periodic conf-prompt-helper
-
 # Define aliases.
 alias apt-list-backports='aptitude search -t $(lsb_release -sc)-backports -F "%p %v -> %V" "~U ~Abackports"'
 alias beets-docker='docker compose -f ~/.local/bin/beets/compose.yaml run --rm beets'

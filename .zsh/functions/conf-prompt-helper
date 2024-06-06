@@ -1,5 +1,0 @@
-if [[ ~/.conf-update-available -nt ~/.conf-last-update ]]; then
-  export _CONF_UPDATE=" "
-else
-  unset _CONF_UPDATE
-fi

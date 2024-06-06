@@ -1,3 +1,0 @@
-if [[ ! -z "${_CONF_UPDATE}" ]]; then
-  p10k segment -f red -i ''
-fi
