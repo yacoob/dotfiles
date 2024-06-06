@@ -5,6 +5,10 @@ typeset -U path manpath
 path=(/usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin $path[@])
 path=(~/.local/bin $path[@])
 
+# conf repo updater
+export CONF_AUTO_UPDATE=true
+export CONF_STALE_IF_OLDER_THAN=300
+
 # locales
 export LANG=en_IE.UTF-8
 export LC_COLLATE=pl_PL.UTF-8
