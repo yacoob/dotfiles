@@ -2,12 +2,12 @@
 umask 027
 
 # Load zsh modules and builtins, configure them.
-autoload run-help
-autoload -U url-quote-magic
-zle -N self-insert url-quote-magic
 autoload -Uz bracketed-paste-magic
+autoload -Uz run-help
+autoload -Uz zmv
+zmodload -F zsh/stat b:zstat
+zmodload zsh/datetime
 zle -N bracketed-paste bracketed-paste-magic
-autoload -U zmv
 
 # Load user functions.
 fpath=(~/.zsh/functions* ~/.zsh/completion $fpath)
