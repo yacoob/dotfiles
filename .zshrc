@@ -15,9 +15,6 @@ autoload -U -- ~/.zsh/functions*/*(:t)
 
 # Configure ZLE.
 bindkey -v
-# vi mode indicator in prompt.
-# zle -N zle-line-init
-# zle -N zle-keymap-select
 # Some vim and emacs keybindings.
 bindkey -M viins '^r' history-incremental-search-backward
 bindkey -M vicmd '^r' history-incremental-search-backward
@@ -100,13 +97,10 @@ setopt \
 # Define aliases.
 alias apt-list-backports='aptitude search -t $(lsb_release -sc)-backports -F "%p %v -> %V" "~U ~Abackports"'
 alias beets-docker='docker compose -f ~/.local/bin/beets/compose.yaml run --rm beets'
-alias cd...='cd ../..'
-alias cd..='cd ..'
-alias cd/='cd /'
 alias cp='nocorrect cp -i'
 alias d='dirs -v'
 alias dlbf='rm -f (.*~|*~)'
-alias dlb='rm  -i (.*~|*~)'
+alias dlb='rm -i (.*~|*~)'
 alias grep='egrep --color=auto'
 alias h=history
 alias j=jobs
@@ -127,7 +121,6 @@ alias pwg='pwgen -c -n -y -s -B 12 1'
 alias rdlbf='find . -iname \*~ | xargs rm -f'
 alias rezsh='nocorrect exec $SHELL'
 alias rm='rm -i'
-alias sfcp='rsync -i -rltgoD'
 alias sudosh='nocorrect sudo -Es'
 alias vew='source /etc/bash_completion.d/virtualenvwrapper'
 alias zmv='noglob zmv'
@@ -158,24 +151,14 @@ zstyle ':completion:*:kill:*:processes' command "ps x"
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:manuals.(^1*)' insert-sections true
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
+zstyle ':fzf-tab:*' switch-group '<' '>'
 
 # Pull in plugins.
 if [[ -r ~/.antidote/antidote.zsh ]]; then
   source ~/.antidote/antidote.zsh
   antidote load ~/.zsh/plugins.txt
-
-  # zsh-syntax-highlighting
-  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-  ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
-fi
-
-# agkozak prompt - always display host
-psvar[1]="@${(%):-%m}"
-
-# fzf
-if (( $+commands[fzf] )); then
-  zstyle ':fzf-tab:*' switch-group '<' '>'
-  source ~/.zsh/fzf-key-bindings.zsh
+else
+  alias antidote=git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
 fi
 
 # machine specific config
