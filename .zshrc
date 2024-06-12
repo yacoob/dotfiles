@@ -158,7 +158,7 @@ if [[ -r ~/.antidote/antidote.zsh ]]; then
   source ~/.antidote/antidote.zsh
   antidote load ~/.zsh/plugins.txt
 else
-  alias antidote=git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
+  alias antidote='git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote'
 fi
 
 # machine specific config
