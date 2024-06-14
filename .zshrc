@@ -161,6 +161,11 @@ else
   alias antidote='git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote'
 fi
 
+# fzf
+if (( $+commands[fzf] )); then
+  source ~/.zsh/fzf-key-bindings.zsh
+fi
+
 # machine specific config
 [[ -r ~/.zshrc.local ]] && source ~/.zshrc.local
 

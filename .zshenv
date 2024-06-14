@@ -58,7 +58,6 @@ fi
 # fzf
 if (( $+commands[fzf] )); then
   export FZF_DEFAULT_OPTS='--height 40% --reverse --border --inline-info --ansi'
-  source ~/.zsh/fzf-key-bindings.zsh
 fi
 
 # fd
