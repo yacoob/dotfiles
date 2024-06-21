@@ -16,6 +16,7 @@ RUN debconf-set-selections < debconf && rm -f debconf && \
     apt-get install -y --no-install-recommends --no-install-suggests \
       ca-certificates \
       curl \
+      fd-find \
       file \
       fzf \
       git \
