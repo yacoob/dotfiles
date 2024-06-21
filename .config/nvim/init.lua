@@ -73,8 +73,6 @@ noremap <tab> v>
 noremap <s-tab> v<
 vnoremap <tab> >gv
 vnoremap <s-tab> <gv
-" window operations
-nmap <C-C> :close<cr>
 " easier escape
 inoremap jj <ESC>
 " forgot your sudo?
@@ -113,35 +111,39 @@ require('lazy').setup({
   {'nvim-lualine/lualine.nvim', dependencies = {'nvim-tree/nvim-web-devicons'}},
   {'nvim-telescope/telescope.nvim', dependencies = {'nvim-lua/plenary.nvim'}},
   'nvim-treesitter/nvim-treesitter',
---[[
-'brooth/far.vim'                      " find&replace on steroids
-'gregsexton/gitv'                     " gitk in vim
-'inside/vim-search-pulse'             " pulse current line after search
-'junegunn/limelight.vim'              " dim syntax in other parts of the file
-'justinmk/vim-sneak'                  " middle ground between f and /
-'kana/vim-narrow'                     " emacs-style narrowing
-'lilydjwg/colorizer'                  " sets background under color definitions
-'majutsushi/tagbar'                   " tagbar
-'mbbill/undotree'                     " undo tree visualisation
-'mhinz/vim-signify'                   " vcs modification marks
-'Raimondi/delimitMate'                " auto-closing of quotes, parenthesis and brackets
-'regedarek/ZoomWin'                   " toggle between single/multi window
-'terryma/vim-expand-region'           " quick selection expansion for visual mode
-'tpope/vim-commentary'                " quick comment out/in
-'tpope/vim-fugitive'                  " git integration
-'tpope/vim-surround'                  " quick 'surrounds' editing
-'tpope/vim-unimpaired'                " various navigation and convenience toggles
-'Valloric/ListToggle'                 " quick toggle for location and quickfist lists
-'vasconcelloslf/vim-interestingwords' " arbitrary phrase highlighter
-'vim-airline/vim-airline-themes'      " airline themes
-'vim-scripts/CursorLineCurrentWindow' " current line highlight only in active buffer
-'vim-scripts/gitignore'               " merge .gitignore into wildignore
-'yuttie/comfortable-motion.vim'       " intertial scrolling
+  -- trying these out
+  {'folke/flash.nvim', event = 'VeryLazy', opts = {},
+    keys = {
+      { 's', mode = { 'n', 'x', 'o' }, function() require('flash').jump() end, desc = 'Flash' },
+      { 'S', mode = { 'n', 'x', 'o' }, function() require('flash').treesitter() end, desc = 'Flash Treesitter' },
+      { 'r', mode = 'o', function() require('flash').remote() end, desc = 'Remote Flash' },
+      { 'R', mode = { 'o', 'x' }, function() require('flash').treesitter_search() end, desc = 'Treesitter Search' },
+      { '<c-s>', mode = { 'c' }, function() require('flash').toggle() end, desc = 'Toggle Flash Search' }}},
+  'folke/which-key.nvim',
+  'lewis6991/gitsigns.nvim',
+  {'tummetott/reticle.nvim', event = 'VeryLazy', opts = {}},
+
+--[[ check out these later
+'akinsho/toggleterm.nvim'
+'hrsh7th/cmp-buffer'
+'hrsh7th/cmp-nvim-lsp'
+'hrsh7th/cmp-path'
+'hrsh7th/nvim-cmp'
+'JoosepAlviste/nvim-ts-context-commentstring'
+'max397574/better-escape.nvim'
+'Mr-LLLLL/interestingwords.nvim'
+'NMAC427/guess-indent.nvim'
+'norcalli/nvim-colorizer.lua'
+'numToStr/Comment.nvim'
+'nvim-neo-tree/neo-tree.nvim'
+'nvim-treesitter/nvim-treesitter-textobjects'
+'terrortylor/nvim-comment'
+'windwp/nvim-autopairs'
 --]]
 })
 -- activate plugins
 require('lualine').setup()
-
+require('gitsigns').setup()
 
 -- colors
 vim.opt.background = 'dark'
