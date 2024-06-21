@@ -127,6 +127,10 @@ alias zmv='noglob zmv'
 if (( $+commands[vim] )); then
   alias vi=vim
 fi
+if (( $+commands[nvim] )); then
+  alias vi=nvim
+  alias vim=nvim
+fi
 
 alias -g G="egrep"
 alias -g H='|head'
@@ -154,6 +158,7 @@ zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SU
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
+export FORGIT_INSTALL_DIR=~/.cache/antidote/wfxr/forgit
 # Pull in plugins.
 if [[ -r ~/.antidote/antidote.zsh ]]; then
   source ~/.antidote/antidote.zsh
