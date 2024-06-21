@@ -133,7 +133,7 @@ alias -g H='|head'
 alias -g L='|less'
 alias -g T='|tail'
 
-# Configure tab-completion.
+# zstyle
 zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -151,6 +151,7 @@ zstyle ':completion:*:kill:*:processes' command "ps x"
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:manuals.(^1*)' insert-sections true
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
+zstyle ':antidote:bundle' use-friendly-names 'yes'
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
 # Pull in plugins.
