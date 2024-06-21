@@ -49,10 +49,15 @@ export PIPENV_VENV_IN_PROJECT=1
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 export ZSH_HIGHLIGHT_PATTERNS=('rm -rf *' 'fg=white,bold,bg=red')
 
-# use highlight if it's installed
+# highlight
 if (( $+commands[highlight] )); then
   export LESSOPEN="| $(which highlight) --force --quiet %s"
   export HIGHLIGHT_OPTIONS="-O truecolor -s zmrok"
+fi
+
+# delta
+if (( $+commands[delta] )); then
+  export GIT_PAGER=delta
 fi
 
 # fzf

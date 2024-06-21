@@ -3,19 +3,24 @@
   email = yacoob@ftml.net
 [color]
   ui = true
+[init]
+  defaultBranch = main
 [core]
   excludesfile = ~/.cvsignore
-  editor = vim
+  editor = nvim
+[interactive]
+  diffFilter = delta --color-only --features=interactive
 [merge]
-	tool = vimdiff
+  tool = nvimdiff
 [diff]
-	tool = vimdiff
+  tool = nvimdiff
 [push]
   default = matching
 [pull]
   rebase = true
 [difftool]
   prompt = false
+
 [alias]
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
   branch-name = "!git rev-parse --abbrev-ref HEAD"
@@ -24,18 +29,24 @@
   diffc = diff --cached
   push-everywhere = "!git remote | xargs -L1 git push"
   push-all = "!git remote | xargs -L1 git push --all"
+
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
-[difftool "winmerge"]
-  cmd = winmerge -e -r -u -wl -wr \"$(wslpath -wa ${LOCAL})\" \"$(wslpath -wa ${REMOTE})\"
-  trustExitCode = false
-[mergetool "winmerge"]
-  cmd = winmerge -e -r -u -al -wm -wr \"$(wslpath -wa ${LOCAL})\" \"$(wslpath -wa ${REMOTE})\" \"$(wslpath -wa ${BASE})\" -o \"$(wslpath -wa $MERGED)\"
-  trustExitCode = false
+[delta]
+  features = decorations
+[delta "interactive"]
+  keep-plus-minus-markers = false
+[delta "decorations"]
+  commit-decoration-style = blue ol
+  commit-style = raw
+  file-style = omit
+  hunk-header-decoration-style = blue box
+  hunk-header-file-style = red
+  hunk-header-line-number-style = "#067a00"
+  hunk-header-style = file line-number syntax
+
 [include]
   path = ~/.gitconfig.local
-[init]
-	defaultBranch = main
