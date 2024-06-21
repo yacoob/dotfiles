@@ -76,12 +76,14 @@ ENTRYPOINT ["/home/yacoob/.entry.sh"]
 
 
 FROM base as vim-builder
-RUN apt-get update && apt-get install -y --no-install-recommends --no-install-suggests \
-      vim-nox \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
-# Install vim plugins
 USER yacoob
-RUN script -qec "/usr/bin/vim -T dumb -c 'PlugInstall' -c 'qa!' >/dev/null" /dev/null
+# Install neovim; I want at last 0.10, all Debian packages are 0.9 or older.
+# APPIMAGE_EXTRACT_AND_RUN is set to avoid /dev/fuse dependency during runtime.
+RUN cd /home/yacoob/.local/bin && curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage \
+    && chmod a+rx nvim.appimage && ln -s nvim.appimage nvim \
+    && echo 'export APPIMAGE_EXTRACT_AND_RUN=1' >> ~/.zshenv.local 
+# Install neovim plugins
+RUN APPIMAGE_EXTRACT_AND_RUN=1 /home/yacoob/.local/bin/nvim -c 'Lazy install' -c 'qa!'
 
 
 FROM base as vim
