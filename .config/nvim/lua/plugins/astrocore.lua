@@ -22,7 +22,7 @@ return {
           matchpairs = '[:],(:),{:},<:>',     -- add < and > to list of matching brackets
           showmatch = true,                   -- flash matching bracket
           -- ui
-          guifont = 'FiraCode Nerd Font Mono Retina:h15',
+          guifont = 'FiraCode Nerd Font:h14',
           scrolloff = 14,                     -- leave this amount of lines while scrolling up/down
           -- behavioral
           autowrite = true,                   -- auto-write file before certain operations
