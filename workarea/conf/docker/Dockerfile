@@ -14,6 +14,7 @@ RUN debconf-set-selections < debconf && rm -f debconf && \
     dpkg-reconfigure --unseen-only localepurge && localepurge && \
     echo 'localepurge localepurge/use-dpkg-feature boolean true' | debconf-set-selections && \
     apt-get install -y --no-install-recommends --no-install-suggests \
+      bat \
       ca-certificates \
       curl \
       fd-find \
