@@ -71,10 +71,10 @@ return {
           -- keep search matches in the middle of the window
           ['n'] = {'nzzzv'},
           ['N'] = {'Nzzzv'},
-          -- convenience shortcuts
+          -- my convenience shortcuts
           ['<Leader>Y'] = {name = 'yacoob shortcuts'},
           ['<Leader>Yc'] = {':cd %:p:h<CR>:pwd<CR>', desc='cd to current file\'s path'},
-          ['<Leader>Yr'] = {':n $MYVIMRC<CR>', desc='edit $MYVIMRC'},
+          ['<Leader>Yr'] = {':n $MYVIMRC<CR>:cd %:p:h<CR>', desc='edit main rc file'},
         },
         s = {
           -- no yank on paste
