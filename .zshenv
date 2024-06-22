@@ -72,5 +72,9 @@ elif (( $+commands[fd] )); then
   export FZF_DEFAULT_COMMAND="fd --type file --color=always"
 fi
 
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
 # machine specific config
 [[ -r ~/.zshenv.local ]] && source ~/.zshenv.local
