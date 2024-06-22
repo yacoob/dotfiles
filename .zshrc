@@ -1,4 +1,3 @@
-# Umask
 umask 027
 
 # Load zsh modules and builtins, configure them.
@@ -158,7 +157,6 @@ zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SU
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
-export FORGIT_INSTALL_DIR=~/.cache/antidote/wfxr/forgit
 # Pull in plugins.
 if [[ -r ~/.antidote/antidote.zsh ]]; then
   source ~/.antidote/antidote.zsh
