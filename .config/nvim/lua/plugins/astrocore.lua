@@ -50,8 +50,6 @@ return {
         ia = {
           -- abbreviations
           ['---'] = {'—'},
-          ['-->'] = {'→'},
-          ['<--'] = {'←'},
           ['dts'] = {'strftime("%Y-%m-%d")', expr=true},
         },
         n = {
