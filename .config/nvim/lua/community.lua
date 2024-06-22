@@ -6,7 +6,8 @@
 
 ---@type LazySpec
 return {
-  "AstroNvim/astrocommunity",
-  { import = "astrocommunity.recipes.telescope-lsp-mappings" },
+  'AstroNvim/astrocommunity',
+  {import = 'astrocommunity.recipes.telescope-lsp-mappings'},
+  {import = 'astrocommunity.pack.markdown'},
   -- import/override with your plugins folder
 }
