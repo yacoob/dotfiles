@@ -54,8 +54,11 @@ return {
           ['<down>'] = {'<nop>'},
           ['<left>'] = {'<nop>'},
           ['<right>'] = {'<nop>'},
+          -- disable couple of AstroNvim's default keybindings
           ['<Leader>c'] = {'<nop>'},
           ['<Leader>C'] = {'<nop>'},
+          ['<Leader>q'] = {'<nop>'},
+          ['<Leader>Q'] = {'<nop>'},
           -- move by screen lines
           ['j'] = {'gj'},
           ['k'] = {'gk'},
