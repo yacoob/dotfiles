@@ -3,4 +3,3 @@ Aloxaf/fzf-tab
 sindresorhus/pure
 zsh-users/zsh-completions
 zsh-users/zsh-syntax-highlighting
-wfxr/forgit
