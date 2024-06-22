@@ -24,6 +24,7 @@ RUN debconf-set-selections < debconf && rm -f debconf && \
       less \
       nvi \
       openssh-client \
+      pv \
       ripgrep \
       sudo \
       wget \
@@ -83,7 +84,7 @@ USER yacoob
 # APPIMAGE_EXTRACT_AND_RUN is set to avoid /dev/fuse dependency during runtime.
 RUN cd /home/yacoob/.local/bin && curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage \
     && chmod a+rx nvim.appimage && ln -s nvim.appimage nvim && ln -s nvim vim \
-    && echo 'export APPIMAGE_EXTRACT_AND_RUN=1' >> ~/.zshenv.local 
+    && echo 'export APPIMAGE_EXTRACT_AND_RUN=1' >> ~/.zshenv.local
 # Install neovim plugins
 RUN APPIMAGE_EXTRACT_AND_RUN=1 /home/yacoob/.local/bin/nvim -c 'Lazy install' -c 'qa!'
 
