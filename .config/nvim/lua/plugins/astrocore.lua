@@ -73,8 +73,8 @@ return {
           ['<tab>'] = {'v>'},
           ['<s-tab>'] = {'v<'},
           -- keep search matches in the middle of the window
-          ['n'] = {'nzzzv'},
-          ['N'] = {'Nzzzv'},
+          -- ['n'] = {'nzzzv'},
+          -- ['N'] = {'Nzzzv'},
           -- my convenience shortcuts
           ['<Leader>Y'] = {name = 'yacoob shortcuts'},
           ['<Leader>Yc'] = {':cd %:p:h<CR>:pwd<CR>', desc='cd to current file\'s path'},
