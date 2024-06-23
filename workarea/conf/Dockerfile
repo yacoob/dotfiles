@@ -55,7 +55,7 @@ RUN /usr/bin/git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.anti
 # Run a dummy zsh session to allow plugins to fully initialize
 RUN script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 # Run a custom script on container start
-COPY --chown=yacoob:yacoob --chmod=755 workarea/conf/entry.sh /home/yacoob/.entry.sh
+COPY --chown=yacoob:yacoob --chmod=755 workarea/conf/entry.sh ~/.entry.sh
 
 
 FROM debian:stable-slim AS base
@@ -80,15 +80,15 @@ ENTRYPOINT ["/home/yacoob/.entry.sh"]
 
 FROM base AS vim-builder
 RUN apt-get purge -y vim-tiny
-USER yacoob
-WORKDIR /home/yacoob/.local/bin
+WORKDIR /usr/local/bin
 # Install neovim appimage; I want at last 0.10, all Debian packages are 0.9 or older.
 # APPIMAGE_EXTRACT_AND_RUN is set to avoid /dev/fuse dependency during runtime.
 RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage \
-  && chmod a+rx nvim.appimage && ln -s nvim.appimage nvim && ln -s nvim vim \
-  && echo 'export APPIMAGE_EXTRACT_AND_RUN=1' >> ~/.zshenv.local
+  && chmod a+rx nvim.appimage && ln -s nvim.appimage nvim && ln -s nvim vim && ln -s nvim vi
+USER yacoob
+RUN echo 'export APPIMAGE_EXTRACT_AND_RUN=1' >> ~/.zshenv.local
 # Install neovim plugins
-RUN APPIMAGE_EXTRACT_AND_RUN=1 /home/yacoob/.local/bin/nvim -c 'Lazy install' -c 'qa!'
+RUN APPIMAGE_EXTRACT_AND_RUN=1 /usr/local/bin/nvim -c 'Lazy install' -c 'qa!'
 
 
 FROM base AS vim
