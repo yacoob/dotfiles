@@ -178,7 +178,6 @@ if ! whence compdef >/dev/null; then
   autoload -Uz compinit
   [[ -d "${ZDOTDIR:-$HOME}/.zcompdumps" ]] || mkdir -m 0700 -p "${ZDOTDIR:-$HOME}/.zcompdumps"
   compinit -i -d "${ZDOTDIR:-$HOME}/.zcompdumps/${HOST%%.*}-$ZSH_VERSION"
-  compdefas git confgit
   autoload -Uz bashcompinit
   bashcompinit
 fi
