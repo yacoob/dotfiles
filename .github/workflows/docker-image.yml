@@ -9,9 +9,6 @@ on:
   # Build and push if triggered manually.
   workflow_dispatch:
 
-env:
-  REPO_IS_DETACHED: ${{ github.event_name == 'pull_request' }}
-
 jobs:
   build:
     name: Build and optionally push the image to Docker Hub
@@ -52,7 +49,6 @@ jobs:
           file: workarea/conf/Dockerfile
           build-args: |
             CONF_BRANCH=${{ env.CONF_BRANCH }}
-            REPO_IS_DETACHED=${{ env.REPO_IS_DETACHED }}
           # Skip registry push for pull_requests.
           push: ${{ github.event_name != 'pull_request' }}
           labels: ${{ steps.docker_meta.outputs.labels }}
@@ -67,7 +63,6 @@ jobs:
           file: workarea/conf/Dockerfile
           build-args: |
             CONF_BRANCH=${{ env.CONF_BRANCH }}
-            REPO_IS_DETACHED=${{ env.REPO_IS_DETACHED }}
           # Skip registry push for pull_requests.
           push: ${{ github.event_name != 'pull_request' }}
           labels: ${{ steps.docker_meta.outputs.labels }}
