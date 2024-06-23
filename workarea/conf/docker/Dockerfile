@@ -22,13 +22,13 @@ RUN debconf-set-selections < debconf && rm -f debconf && \
   fzf \
   git \
   less \
-  nvi \
   openssh-client \
   pv \
   ripgrep \
   sudo \
   wget \
   vcsh \
+  vim-tiny \
   zsh \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 # Set up my user
@@ -79,6 +79,7 @@ ENTRYPOINT ["/home/yacoob/.entry.sh"]
 
 
 FROM base AS vim-builder
+RUN apt-get purge -y vim-tiny
 USER yacoob
 # Install neovim; I want at last 0.10, all Debian packages are 0.9 or older.
 # APPIMAGE_EXTRACT_AND_RUN is set to avoid /dev/fuse dependency during runtime.
