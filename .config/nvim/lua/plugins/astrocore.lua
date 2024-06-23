@@ -80,6 +80,8 @@ return {
           ['<Leader>Y'] = {name = 'yacoob shortcuts'},
           ['<Leader>Yc'] = {':cd %:p:h<CR>:pwd<CR>', desc='cd to current file\'s path'},
           ['<Leader>Yr'] = {':n $MYVIMRC<CR>:cd %:p:h<CR>', desc='edit main rc file'},
+          -- plugin shortcuts
+          ['<Leader>gnt'] = {':Neogit kind=split<CR>', desc='Open Neogit in a split above'},
         },
         -- select mode
         s = {
