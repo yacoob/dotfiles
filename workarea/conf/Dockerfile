@@ -81,9 +81,10 @@ ENTRYPOINT ["/home/yacoob/.entry.sh"]
 FROM base AS vim-builder
 RUN apt-get purge -y vim-tiny
 USER yacoob
-# Install neovim; I want at last 0.10, all Debian packages are 0.9 or older.
+WORKDIR /home/yacoob/.local/bin
+# Install neovim appimage; I want at last 0.10, all Debian packages are 0.9 or older.
 # APPIMAGE_EXTRACT_AND_RUN is set to avoid /dev/fuse dependency during runtime.
-RUN cd /home/yacoob/.local/bin && curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage \
+RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage \
   && chmod a+rx nvim.appimage && ln -s nvim.appimage nvim && ln -s nvim vim \
   && echo 'export APPIMAGE_EXTRACT_AND_RUN=1' >> ~/.zshenv.local
 # Install neovim plugins
