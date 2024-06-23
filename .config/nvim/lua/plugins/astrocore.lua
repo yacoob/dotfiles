@@ -27,6 +27,7 @@ return {
           -- behavioral
           autowrite = true,                   -- auto-write file before certain operations
           keymodel = 'startsel',              -- shift+special key = selection
+          cmdheight = 1                       -- no more "press enter prompts" for one line outputs
         },
         g = {
           loaded_perl_provider = 0,
