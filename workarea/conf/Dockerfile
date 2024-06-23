@@ -1,6 +1,6 @@
 FROM debian:stable-slim AS builder
 # Sort out locales
-COPY workarea/conf/docker/debconf debconf
+COPY workarea/conf/debconf debconf
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG=en_IE.UTF-8
 ENV LC_COLLATE=pl_PL.UTF-8
@@ -49,13 +49,13 @@ WORKDIR ${CTX}
 ARG CONF_BRANCH
 RUN vcsh clone -b ${CONF_BRANCH} file:///$(pwd) dotfiles
 WORKDIR /home/yacoob
+RUN rm -rf ${CTX}
 # Install antidote
 RUN /usr/bin/git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
 # Run a dummy zsh session to allow plugins to fully initialize
 RUN script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 # Run a custom script on container start
-RUN cp ${CTX}/workarea/conf/docker/entry.sh /home/yacoob/.entry.sh && rm -rf ${CTX}
-COPY --chown=yacoob:yacoob --chmod=755 workarea/conf/docker/entry.sh /home/yacoob/.entry.sh
+COPY --chown=yacoob:yacoob --chmod=755 workarea/conf/entry.sh /home/yacoob/.entry.sh
 
 
 FROM debian:stable-slim AS base
