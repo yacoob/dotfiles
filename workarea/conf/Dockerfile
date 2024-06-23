@@ -78,7 +78,7 @@ USER root
 ENTRYPOINT ["/home/yacoob/.entry.sh"]
 
 
-FROM base AS vim-builder
+FROM base AS nvim-builder
 RUN apt-get purge -y vim-tiny
 WORKDIR /usr/local/bin
 # Install neovim appimage; I want at last 0.10, all Debian packages are 0.9 or older.
@@ -91,5 +91,5 @@ RUN echo 'export APPIMAGE_EXTRACT_AND_RUN=1' >> /home/yacoob/.zshenv.local
 RUN APPIMAGE_EXTRACT_AND_RUN=1 /usr/local/bin/nvim -c 'Lazy install' -c 'qa!'
 
 
-FROM base AS vim
-COPY --from=vim-builder / /
+FROM base AS nvim
+COPY --from=nvim-builder / /
