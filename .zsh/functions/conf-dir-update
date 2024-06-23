@@ -1,1 +1,1 @@
-confgit pull && touch ~/.conf-last-update
+vcsh dotfiles pull && touch ~/.conf-last-update
