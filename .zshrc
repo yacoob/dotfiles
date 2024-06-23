@@ -97,6 +97,7 @@ setopt \
 alias apt-list-backports='aptitude search -t $(lsb_release -sc)-backports -F "%p %v -> %V" "~U ~Abackports"'
 alias beets-docker='docker compose -f ~/.local/bin/beets/compose.yaml pull --policy=always && docker compose -f ~/.local/bin/beets/compose.yaml run --rm beets'
 alias cp='nocorrect cp -i'
+alias confgit='vcsh dotfiles'
 alias d='dirs -v'
 alias dlbf='rm -f (.*~|*~)'
 alias dlb='rm -i (.*~|*~)'
