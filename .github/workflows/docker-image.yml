@@ -55,10 +55,10 @@ jobs:
           tags: |
             ${{ steps.docker_meta.outputs.tags }}
             yacoob/interactive:base
-      - name: Build and optionally push the vim version
+      - name: Build and optionally push the nvim version
         uses: docker/build-push-action@v6
         with:
-          target: vim
+          target: nvim
           context: .
           file: workarea/conf/Dockerfile
           build-args: |
@@ -68,7 +68,7 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           tags: |
             ${{ steps.docker_meta.outputs.tags }}
-            yacoob/interactive:vim
+            yacoob/interactive:nvim
 
   ping-others:
     name: Notify other repositories about new version of the base image.
