@@ -46,7 +46,7 @@ jobs:
         with:
           target: base
           context: .
-          file: workarea/conf/Dockerfile
+          file: .local/share/dotfiles-docker/Dockerfile
           build-args: |
             CONF_BRANCH=${{ env.CONF_BRANCH }}
           # Push to registry only for main branch pushes.
@@ -60,7 +60,7 @@ jobs:
         with:
           target: nvim
           context: .
-          file: workarea/conf/Dockerfile
+          file: .local/share/dotfiles-docker/Dockerfile
           build-args: |
             CONF_BRANCH=${{ env.CONF_BRANCH }}
           # Push to registry only for main branch pushes.

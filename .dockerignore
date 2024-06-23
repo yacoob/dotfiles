@@ -1,2 +1,2 @@
-workarea/conf/Dockerfile
-workarea/conf/.*sw[op]
+.local/share/dotfiles-docker/Dockerfile
+.local/share/dotfiles-docker/.*sw[op]
