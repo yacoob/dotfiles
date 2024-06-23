@@ -49,7 +49,7 @@ jobs:
         with:
           target: base
           context: .
-          file: workarea/conf/docker/Dockerfile
+          file: workarea/conf/Dockerfile
           build-args: |
             CONF_BRANCH=${{ env.CONF_BRANCH }}
             REPO_IS_DETACHED=${{ env.REPO_IS_DETACHED }}
@@ -64,7 +64,7 @@ jobs:
         with:
           target: vim
           context: .
-          file: workarea/conf/docker/Dockerfile
+          file: workarea/conf/Dockerfile
           build-args: |
             CONF_BRANCH=${{ env.CONF_BRANCH }}
             REPO_IS_DETACHED=${{ env.REPO_IS_DETACHED }}
