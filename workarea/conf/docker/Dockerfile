@@ -58,7 +58,7 @@ RUN cp ${CTX}/workarea/conf/docker/entry.sh /home/yacoob/.entry.sh && rm -rf ${C
 COPY --chown=yacoob:yacoob --chmod=755 workarea/conf/docker/entry.sh /home/yacoob/.entry.sh
 
 
-FROM debian:stable-slim as base
+FROM debian:stable-slim AS base
 # Redo the envs
 ARG UID
 ARG GID
@@ -78,7 +78,7 @@ USER root
 ENTRYPOINT ["/home/yacoob/.entry.sh"]
 
 
-FROM base as vim-builder
+FROM base AS vim-builder
 USER yacoob
 # Install neovim; I want at last 0.10, all Debian packages are 0.9 or older.
 # APPIMAGE_EXTRACT_AND_RUN is set to avoid /dev/fuse dependency during runtime.
@@ -89,5 +89,5 @@ RUN cd /home/yacoob/.local/bin && curl -LO https://github.com/neovim/neovim/rele
 RUN APPIMAGE_EXTRACT_AND_RUN=1 /home/yacoob/.local/bin/nvim -c 'Lazy install' -c 'qa!'
 
 
-FROM base as vim
+FROM base AS vim
 COPY --from=vim-builder / /
