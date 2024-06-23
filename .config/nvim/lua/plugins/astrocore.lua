@@ -37,10 +37,12 @@ return {
         },
       },
       mappings = {
+        -- command mode
         c = {
           -- forgot your sudo?
           ['w!!'] = {'w !sudo tee % >/dev/null', desc='sudo write :3'}
         },
+        -- insert mode
         i = {
           -- disable arrows
           ['<up>'] = {'<nop>'},
@@ -48,11 +50,12 @@ return {
           ['<left>'] = {'<nop>'},
           ['<right>'] = {'<nop>'},
         },
+        -- abbreviations
         ia = {
-          -- abbreviations
           ['---'] = {'—'},
           ['dts'] = {'strftime("%Y-%m-%d")', expr=true},
         },
+        -- normal mode
         n = {
           -- disable arrows
           ['<up>'] = {'<nop>'},
@@ -73,18 +76,17 @@ return {
           -- better tab
           ['<tab>'] = {'v>'},
           ['<s-tab>'] = {'v<'},
-          -- keep search matches in the middle of the window
-          -- ['n'] = {'nzzzv'},
-          -- ['N'] = {'Nzzzv'},
           -- my convenience shortcuts
           ['<Leader>Y'] = {name = 'yacoob shortcuts'},
           ['<Leader>Yc'] = {':cd %:p:h<CR>:pwd<CR>', desc='cd to current file\'s path'},
           ['<Leader>Yr'] = {':n $MYVIMRC<CR>:cd %:p:h<CR>', desc='edit main rc file'},
         },
+        -- select mode
         s = {
           -- no yank on paste
           ['p'] = {'pgvy'},
         },
+        -- visual mode
         v = {
           -- moving whole lines
           ['<C-k>'] = {'xkP`[V`'},
