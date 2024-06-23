@@ -51,11 +51,11 @@ RUN vcsh clone -b ${CONF_BRANCH} file:///$(pwd) dotfiles
 WORKDIR /home/yacoob
 RUN rm -rf ${CTX}
 # Install antidote
-RUN /usr/bin/git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
+RUN /usr/bin/git clone --depth=1 https://github.com/mattmc3/antidote.git /home/yacoob/.antidote
 # Run a dummy zsh session to allow plugins to fully initialize
 RUN script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 # Run a custom script on container start
-COPY --chown=yacoob:yacoob --chmod=755 workarea/conf/entry.sh ~/.entry.sh
+COPY --chown=yacoob:yacoob --chmod=755 workarea/conf/entry.sh /home/yacoob/.entry.sh
 
 
 FROM debian:stable-slim AS base
@@ -86,7 +86,7 @@ WORKDIR /usr/local/bin
 RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage \
   && chmod a+rx nvim.appimage && ln -s nvim.appimage nvim && ln -s nvim vim && ln -s nvim vi
 USER yacoob
-RUN echo 'export APPIMAGE_EXTRACT_AND_RUN=1' >> ~/.zshenv.local
+RUN echo 'export APPIMAGE_EXTRACT_AND_RUN=1' >> /home/yacoob/.zshenv.local
 # Install neovim plugins
 RUN APPIMAGE_EXTRACT_AND_RUN=1 /usr/local/bin/nvim -c 'Lazy install' -c 'qa!'
 
