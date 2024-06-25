@@ -44,11 +44,14 @@ RUN debconf-set-selections < .local/share/dotfiles-docker/debconf && rm -f debco
   vim-tiny \
   zsh \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
-# Install https://github.com/zyedidia/eget
+# Use https://github.com/zyedidia/eget to fetch some binaries missing in the distro
 WORKDIR /usr/local/bin
 # hadolint ignore=DL4006
-RUN curl https://zyedidia.github.io/eget.sh | sh && \
-  chmod a+rx eget
+RUN umask 022 && curl https://zyedidia.github.io/eget.sh | sh && \
+  ./eget ClementTsang/bottom -a gnu.tar -f btm && \
+  ./eget dandavison/delta -a gnu.tar && \
+  ./eget starship/starship -a gnu.tar && \
+  ./eget wfxr/forgit -f bin/git-forgit
 # Initialize dotfiles, using that tmp directory as a remote repo
 USER yacoob
 WORKDIR /home/yacoob
@@ -88,9 +91,8 @@ ENTRYPOINT ["/home/yacoob/.entry.sh"]
 FROM base AS nvim-builder
 RUN apt-get purge -y vim-tiny
 WORKDIR /usr/local/bin
-# Install neovim appimage; I want at last 0.10, all Debian packages are 0.9 or older.
-RUN umask 022 && /usr/local/bin/eget neovim/neovim -a appimage && \
-  ln -s vim vi && ln -s nvim vim
+# Install neovim appimage via eget; I want at last 0.10, all Debian packages are 0.9 or older.
+RUN umask 022 && ./eget neovim/neovim -a appimage && ln -s vim vi && ln -s nvim vim
 USER yacoob
 WORKDIR /home/yacoob
 # APPIMAGE_EXTRACT_AND_RUN is set to avoid /dev/fuse dependency during runtime.
