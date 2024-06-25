@@ -1,0 +1,21 @@
+[cmd_duration]
+show_milliseconds = true
+
+[time]
+disabled = false
+
+[shlvl]
+disabled = false
+threshold = 3
+symbol = '↕️'
+
+[hostname]
+ssh_only = false
+format = '[@](dimmed red bold)[$hostname]($style) in '
+
+[directory]
+truncation_length = 8
+
+[status]
+disabled = false
+pipestatus = true

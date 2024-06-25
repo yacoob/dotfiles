@@ -158,25 +158,6 @@ zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SU
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
-# Pull in plugins.
-if [[ -r ~/.antidote/antidote.zsh ]]; then
-  source ~/.antidote/antidote.zsh
-  antidote load ~/.zsh/plugins.txt
-else
-  alias antidote='git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote'
-fi
-
-# put pipe status in rprompt
-add-zsh-hook precmd precmd_pipestatus
-
-# fzf
-if (( $+commands[fzf] )); then
-  source ~/.zsh/fzf-key-bindings.zsh
-fi
-
-# machine specific config
-[[ -r ~/.zshrc.local ]] && source ~/.zshrc.local
-
 # Initialize tabcompletion if it hasn't been initialised already.
 if ! whence compdef >/dev/null; then
   autoload -Uz compinit
@@ -199,6 +180,27 @@ if [[ -z "${SSH_CONNECTION}" ]]; then
     fi
   fi
 fi
+
+# fzf
+if (( $+commands[fzf] )); then
+  source ~/.zsh/fzf-key-bindings.zsh
+fi
+
+# Pull in plugins.
+if [[ -r ~/.antidote/antidote.zsh ]]; then
+  source ~/.antidote/antidote.zsh
+  antidote load ~/.zsh/plugins.txt
+else
+  alias antidote='git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote'
+fi
+
+# get aboard the starship!
+if (( $+commands[starship] )); then
+  eval "$(starship init zsh)"
+fi
+
+# machine specific config
+[[ -r ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # A dummy command that returns positive exit status to make prompt non-red :)
 :
