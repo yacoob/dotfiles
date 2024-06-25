@@ -49,9 +49,7 @@ WORKDIR /usr/local/bin
 # hadolint ignore=DL4006
 RUN umask 022 && curl https://zyedidia.github.io/eget.sh | sh && \
   ./eget ClementTsang/bottom -a gnu.tar -f btm && \
-  ./eget dandavison/delta -a gnu.tar && \
-  ./eget starship/starship -a gnu.tar && \
-  ./eget wfxr/forgit -f bin/git-forgit
+  ./eget starship/starship -a gnu.tar
 # Initialize dotfiles, using that tmp directory as a remote repo
 USER yacoob
 WORKDIR /home/yacoob
@@ -89,10 +87,18 @@ ENTRYPOINT ["/home/yacoob/.entry.sh"]
 
 
 FROM base AS nvim-builder
-RUN apt-get purge -y vim-tiny
+# hadolint ignore=DL3008
+RUN apt-get update && apt-get purge -y vim-tiny && \
+  apt-get install -y --no-install-recommends --no-install-suggests \
+  gh \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+# Install neovim and a couple of supporting binaries via eget
 WORKDIR /usr/local/bin
-# Install neovim appimage via eget; I want at last 0.10, all Debian packages are 0.9 or older.
-RUN umask 022 && ./eget neovim/neovim -a appimage && ln -s vim vi && ln -s nvim vim
+RUN umask 022 && ln -s vim vi && ln -s nvim vim && \
+  ./eget dandavison/delta -a gnu.tar && \
+  ./eget jesseduffield/lazygit && \
+  ./eget neovim/neovim -a appimage && \
+  ./eget wfxr/forgit -f bin/git-forgit
 USER yacoob
 WORKDIR /home/yacoob
 # APPIMAGE_EXTRACT_AND_RUN is set to avoid /dev/fuse dependency during runtime.
