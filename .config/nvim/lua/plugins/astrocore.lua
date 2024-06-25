@@ -1,6 +1,6 @@
 return {
   {
-    "AstroNvim/astrocore",
+    'AstroNvim/astrocore',
     ---@type AstroCoreOpts
     opts = {
       autocmds = {
