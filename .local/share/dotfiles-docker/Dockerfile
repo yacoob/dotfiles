@@ -1,13 +1,26 @@
 FROM debian:stable-slim AS builder
+# Set up my user
+ARG UID
+ARG GID
+ENV UID=${UID:-1000}
+ENV GID=${GID:-1000}
+RUN groupadd -g ${GID} yacoob && \
+  useradd -l -u ${UID} -g ${GID} -m -s /usr/bin/zsh -G sudo yacoob && \
+  passwd -d yacoob
+# The context should contain the entire repository.
+# This also mean you should NOT build the docker image from a vcsh-managed install of the dotfiles, as it'll happily use the entire homedir for the context.
+ARG CTX=/tmp/conf-bootstrap
+USER yacoob
+COPY --chown=yacoob:yacoob . ${CTX}
+WORKDIR ${CTX}
 # Sort out locales
-COPY .local/share/dotfiles-docker/debconf debconf
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG=en_IE.UTF-8
 ENV LC_COLLATE=pl_PL.UTF-8
 ENV LC_CTYPE=pl_PL.UTF-8
 ENV LC_MESSAGES=C
 # Install packages
-RUN debconf-set-selections < debconf && rm -f debconf && \
+RUN debconf-set-selections < .local/share/dotfiles-docker/debconf && rm -f debconf && \
   apt-get update && apt-get upgrade -y --no-install-recommends --no-install-suggests && \
   apt-get install -y --no-install-suggests --no-install-recommends \
   apt-utils locales localepurge && \
@@ -31,29 +44,14 @@ RUN debconf-set-selections < debconf && rm -f debconf && \
   vim-tiny \
   zsh \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
-# Set up my user
-ARG UID
-ARG GID
-ENV UID=${UID:-1000}
-ENV GID=${GID:-1000}
-RUN groupadd -g ${GID} yacoob && \
-  useradd -u ${UID} -g ${GID} -m -s /usr/bin/zsh -G sudo yacoob && \
-  passwd -d yacoob
-# Set up the dotfiles
-ARG CTX=/tmp/conf-bootstrap
-USER yacoob
-# Copy the entire context, which should be our conf repo to a tmp directory
-COPY --chown=yacoob:yacoob . ${CTX}
-WORKDIR ${CTX}
 # Initialize dotfiles, using that tmp directory as a remote repo
 ARG CONF_BRANCH
-RUN vcsh clone -b ${CONF_BRANCH} file:///$(pwd) dotfiles
+RUN vcsh clone -b ${CONF_BRANCH} "file:///$(pwd)" dotfiles
 WORKDIR /home/yacoob
 RUN rm -rf ${CTX}
-# Install antidote
-RUN /usr/bin/git clone --depth=1 https://github.com/mattmc3/antidote.git /home/yacoob/.antidote
-# Run a dummy zsh session to allow plugins to fully initialize
-RUN script -qec '/usr/bin/zsh -is </dev/null' /dev/null
+# Install antidote, run a dummy zsh session to install plugins
+RUN /usr/bin/git clone --depth=1 https://github.com/mattmc3/antidote.git /home/yacoob/.antidote && \
+  script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 # Run a custom script on container start
 COPY --chown=yacoob:yacoob --chmod=755 .local/share/dotfiles-docker/entry.sh /home/yacoob/.entry.sh
 
@@ -74,7 +72,8 @@ ENV SSH_AUTH_SOCK=/home/yacoob/.ssh/agent.sock
 ENV TERM=xterm-256color
 ENV TZ='Europe/Dublin'
 COPY --from=builder / /
-USER root
+# entry.sh adjusts the uid/gid at runtime, then execs sudo -u yacoob
+USER root  # hadolint ignore=DL3002
 ENTRYPOINT ["/home/yacoob/.entry.sh"]
 
 
@@ -86,9 +85,8 @@ WORKDIR /usr/local/bin
 RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage \
   && chmod a+rx nvim.appimage && ln -s nvim.appimage nvim && ln -s nvim vim && ln -s nvim vi
 USER yacoob
-RUN echo 'export APPIMAGE_EXTRACT_AND_RUN=1' >> /home/yacoob/.zshenv.local
-# Install neovim plugins
-RUN APPIMAGE_EXTRACT_AND_RUN=1 /usr/local/bin/nvim -c 'Lazy install' -c 'qa!'
+RUN echo 'export APPIMAGE_EXTRACT_AND_RUN=1' >> /home/yacoob/.zshenv.local && \
+  RUN APPIMAGE_EXTRACT_AND_RUN=1 /usr/local/bin/nvim -c 'Lazy install' -c 'qa!'
 
 
 FROM base AS nvim
