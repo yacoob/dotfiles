@@ -49,6 +49,11 @@ export PIPENV_VENV_IN_PROJECT=1
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 export ZSH_HIGHLIGHT_PATTERNS=('rm -rf *' 'fg=white,bold,bg=red')
 
+# WSL marker for distros other than Debian
+if [[ -n "${WSL_DISTRO_NAME}" && "${WSL_DISTRO_NAME}" != "Debian" ]]; then
+  export WSL_PROMPT_DISTRO_NAME="${WSL_DISTRO_NAME}"
+fi
+
 # highlight
 if (( $+commands[highlight] )); then
   export LESSOPEN="| $(which highlight) --force --quiet %s"

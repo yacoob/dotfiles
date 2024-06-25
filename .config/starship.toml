@@ -1,14 +1,16 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
 [cmd_duration]
 show_milliseconds = true
 
 [directory]
 truncation_length = 8
 
-[env_var.WSL_DISTRO_NAME]
+[env_var.WSL_PROMPT_DISTRO_NAME]
 symbol = '󰌽'
-description = 'WSL Distribution name, if applicable'
-format = '[$symbol $env_value]($style)'
-style = 'cyan'
+description = 'WSL Distribution name, if different than Debian'
+format = '[$symbol $env_value ]($style)'
+style = 'blue'
 
 [hostname]
 ssh_only = false
@@ -18,7 +20,7 @@ style = 'yellow'
 [shlvl]
 disabled = false
 threshold = 3
-symbol = '↕️'
+symbol = ' '
 
 [status]
 disabled = false
@@ -28,6 +30,6 @@ pipestatus = true
 disabled = false
 
 [username]
+aliases = { 'yacoob' = '' }
 format = '[$user]($style)'
 style_user = 'dimmed yellow'
-aliases = { 'yacoob' = '' }
