@@ -4,6 +4,12 @@ show_milliseconds = true
 [directory]
 truncation_length = 8
 
+[env_var.WSL_DISTRO_NAME]
+symbol = '󰌽'
+description = 'WSL Distribution name, if applicable'
+format = '[$symbol $env_value]($style)'
+style = 'cyan'
+
 [hostname]
 ssh_only = false
 format = '[@](dimmed red)[$hostname]($style) in '
