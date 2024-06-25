@@ -44,6 +44,11 @@ RUN debconf-set-selections < .local/share/dotfiles-docker/debconf && rm -f debco
   vim-tiny \
   zsh \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
+# Install https://github.com/zyedidia/eget
+WORKDIR /usr/local/bin
+# hadolint ignore=DL4006
+RUN curl https://zyedidia.github.io/eget.sh | sh && \
+  chmod a+rx eget
 # Initialize dotfiles, using that tmp directory as a remote repo
 USER yacoob
 WORKDIR /home/yacoob
@@ -52,10 +57,10 @@ ARG CONF_BRANCH=main
 RUN vcsh clone -b ${CONF_BRANCH} "file:///${BOOTSTRAP}" dotfiles && \
   rm -rf ${BOOTSTRAP}
 # Set up zsh
-RUN /usr/bin/git clone --depth=1 https://github.com/mattmc3/antidote.git /home/yacoob/.antidote && \
+RUN /usr/bin/git clone --depth=1 https://github.com/mattmc3/antidote.git .antidote && \
   script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 # Run a custom script on container start
-COPY --chown=yacoob:yacoob --chmod=755 .local/share/dotfiles-docker/entry.sh /home/yacoob/.entry.sh
+COPY --chown=yacoob:yacoob --chmod=755 .local/share/dotfiles-docker/entry.sh .entry.sh
 
 
 FROM debian:stable-slim AS base
@@ -84,12 +89,13 @@ FROM base AS nvim-builder
 RUN apt-get purge -y vim-tiny
 WORKDIR /usr/local/bin
 # Install neovim appimage; I want at last 0.10, all Debian packages are 0.9 or older.
-# APPIMAGE_EXTRACT_AND_RUN is set to avoid /dev/fuse dependency during runtime.
-RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage \
-  && chmod a+rx nvim.appimage && ln -s nvim.appimage nvim && ln -s nvim vim && ln -s nvim vi
+RUN umask 022 && /usr/local/bin/eget neovim/neovim -a appimage && \
+  ln -s vim vi && ln -s nvim vim
 USER yacoob
-RUN echo 'export APPIMAGE_EXTRACT_AND_RUN=1' >> /home/yacoob/.zshenv.local && \
-  RUN APPIMAGE_EXTRACT_AND_RUN=1 /usr/local/bin/nvim -c 'Lazy install' -c 'qa!'
+WORKDIR /home/yacoob
+# APPIMAGE_EXTRACT_AND_RUN is set to avoid /dev/fuse dependency during runtime.
+RUN echo 'export APPIMAGE_EXTRACT_AND_RUN=1' >> .zshenv.local && \
+  APPIMAGE_EXTRACT_AND_RUN=1 /usr/local/bin/nvim -c 'Lazy install' -c 'qa!'
 
 
 FROM base AS nvim
