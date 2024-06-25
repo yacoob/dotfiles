@@ -1,21 +1,27 @@
 [cmd_duration]
 show_milliseconds = true
 
-[time]
-disabled = false
+[directory]
+truncation_length = 8
+
+[hostname]
+ssh_only = false
+format = '[@](dimmed red)[$hostname]($style) in '
+style = 'yellow'
 
 [shlvl]
 disabled = false
 threshold = 3
 symbol = '↕️'
 
-[hostname]
-ssh_only = false
-format = '[@](dimmed red bold)[$hostname]($style) in '
-
-[directory]
-truncation_length = 8
-
 [status]
 disabled = false
 pipestatus = true
+
+[time]
+disabled = false
+
+[username]
+format = '[$user]($style)'
+style_user = 'dimmed yellow'
+aliases = { 'yacoob' = '' }
