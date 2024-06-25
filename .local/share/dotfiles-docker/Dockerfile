@@ -9,10 +9,9 @@ RUN groupadd -g ${GID} yacoob && \
   passwd -d yacoob
 # The context should contain the entire repository.
 # This also mean you should NOT build the docker image from a vcsh-managed install of the dotfiles, as it'll happily use the entire homedir for the context.
-ARG CTX=/tmp/conf-bootstrap
-USER yacoob
-COPY --chown=yacoob:yacoob . ${CTX}
-WORKDIR ${CTX}
+ARG BOOTSTRAP=/tmp/conf-bootstrap
+COPY --chown=yacoob:yacoob . ${BOOTSTRAP}
+WORKDIR ${BOOTSTRAP}
 # Sort out locales
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG=en_IE.UTF-8
@@ -20,6 +19,7 @@ ENV LC_COLLATE=pl_PL.UTF-8
 ENV LC_CTYPE=pl_PL.UTF-8
 ENV LC_MESSAGES=C
 # Install packages
+# hadolint ignore=DL3008,DL4006
 RUN debconf-set-selections < .local/share/dotfiles-docker/debconf && rm -f debconf && \
   apt-get update && apt-get upgrade -y --no-install-recommends --no-install-suggests && \
   apt-get install -y --no-install-suggests --no-install-recommends \
@@ -45,11 +45,13 @@ RUN debconf-set-selections < .local/share/dotfiles-docker/debconf && rm -f debco
   zsh \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 # Initialize dotfiles, using that tmp directory as a remote repo
-ARG CONF_BRANCH
-RUN vcsh clone -b ${CONF_BRANCH} "file:///$(pwd)" dotfiles
+USER yacoob
 WORKDIR /home/yacoob
-RUN rm -rf ${CTX}
-# Install antidote, run a dummy zsh session to install plugins
+ARG CONF_BRANCH=main
+# Install the dotfiles from the local repo copy
+RUN vcsh clone -b ${CONF_BRANCH} "file:///${BOOTSTRAP}" dotfiles && \
+  rm -rf ${BOOTSTRAP}
+# Set up zsh
 RUN /usr/bin/git clone --depth=1 https://github.com/mattmc3/antidote.git /home/yacoob/.antidote && \
   script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 # Run a custom script on container start
@@ -73,7 +75,8 @@ ENV TERM=xterm-256color
 ENV TZ='Europe/Dublin'
 COPY --from=builder / /
 # entry.sh adjusts the uid/gid at runtime, then execs sudo -u yacoob
-USER root  # hadolint ignore=DL3002
+# hadolint ignore=DL3002
+USER root
 ENTRYPOINT ["/home/yacoob/.entry.sh"]
 
 
