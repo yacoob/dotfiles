@@ -166,6 +166,9 @@ else
   alias antidote='git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote'
 fi
 
+# put pipe status in rprompt
+add-zsh-hook precmd precmd_pipestatus
+
 # fzf
 if (( $+commands[fzf] )); then
   source ~/.zsh/fzf-key-bindings.zsh
