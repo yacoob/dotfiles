@@ -5,8 +5,8 @@
 ---@type LazySpec
 return {
   'AstroNvim/astrocommunity',
-  {import = 'astrocommunity.recipes.telescope-lsp-mappings'},
-  {import = 'astrocommunity.pack.markdown'},
-  {import = 'astrocommunity.git.neogit'},
-  {import = 'astrocommunity.git.diffview-nvim'},
+  { import = 'astrocommunity.git.neogit' },
+  { import = 'astrocommunity.git.diffview-nvim' },
+  { import = 'astrocommunity.pack.markdown' },
+  { import = 'astrocommunity.recipes.telescope-lsp-mappings' },
 }
