@@ -6,28 +6,28 @@ return {
       autocmds = {
         yacoob = {
           {
-            event = {'BufWritePre'},
+            event = { 'BufWritePre' },
             desc = 'Strip trailing whitespace on save',
             command = ':%s/\\s\\+$//e',
-          },
+          }
         },
       },
       options = {
         opt = {
           -- -- whitespace
-          list = true,                        -- highlight some special characters
-          listchars = {tab= '| ', trail='·', extends='»', precedes='«'},
+          list = true, -- highlight some special characters
+          listchars = { tab = '| ', trail = '·', extends = '»', precedes = '«' },
           -- searching
-          gdefault = true,                    -- g flag by default for :s
-          matchpairs = '[:],(:),{:},<:>',     -- add < and > to list of matching brackets
-          showmatch = true,                   -- flash matching bracket
+          gdefault = true,                -- g flag by default for :s
+          matchpairs = '[:],(:),{:},<:>', -- add < and > to list of matching brackets
+          showmatch = true,               -- flash matching bracket
           -- ui
           guifont = 'FiraCode Nerd Font:h14',
-          scrolloff = 14,                     -- leave this amount of lines while scrolling up/down
+          scrolloff = 14,        -- leave this amount of lines while scrolling up/down
           -- behavioral
-          autowrite = true,                   -- auto-write file before certain operations
-          keymodel = 'startsel',              -- shift+special key = selection
-          cmdheight = 1                       -- no more "press enter prompts" for one line outputs
+          autowrite = true,      -- auto-write file before certain operations
+          keymodel = 'startsel', -- shift+special key = selection
+          cmdheight = 1          -- no more "press enter prompts" for one line outputs
         },
         g = {
           loaded_perl_provider = 0,
@@ -40,64 +40,64 @@ return {
         -- command mode
         c = {
           -- forgot your sudo?
-          ['w!!'] = {'w !sudo tee % >/dev/null', desc='sudo write :3'}
+          ['w!!'] = { 'w !sudo tee % >/dev/null', desc = 'sudo write :3' }
         },
         -- insert mode
         i = {
           -- disable arrows
-          ['<up>'] = {'<nop>'},
-          ['<down>'] = {'<nop>'},
-          ['<left>'] = {'<nop>'},
-          ['<right>'] = {'<nop>'},
+          ['<up>'] = { '<nop>' },
+          ['<down>'] = { '<nop>' },
+          ['<left>'] = { '<nop>' },
+          ['<right>'] = { '<nop>' },
         },
         -- abbreviations
         ia = {
-          ['---'] = {'—'},
-          ['dts'] = {'strftime("%Y-%m-%d")', expr=true},
+          ['---'] = { '—' },
+          ['dts'] = { 'strftime("%Y-%m-%d")', expr = true },
         },
         -- normal mode
         n = {
           -- disable arrows
-          ['<up>'] = {'<nop>'},
-          ['<down>'] = {'<nop>'},
-          ['<left>'] = {'<nop>'},
-          ['<right>'] = {'<nop>'},
+          ['<up>'] = { '<nop>' },
+          ['<down>'] = { '<nop>' },
+          ['<left>'] = { '<nop>' },
+          ['<right>'] = { '<nop>' },
           -- disable couple of AstroNvim's default keybindings
-          ['<Leader>c'] = {'<nop>'},
-          ['<Leader>C'] = {'<nop>'},
-          ['<Leader>q'] = {'<nop>'},
-          ['<Leader>Q'] = {'<nop>'},
+          ['<Leader>c'] = { '<nop>' },
+          ['<Leader>C'] = { '<nop>' },
+          ['<Leader>q'] = { '<nop>' },
+          ['<Leader>Q'] = { '<nop>' },
           -- move by screen lines
-          ['j'] = {'gj'},
-          ['k'] = {'gk'},
+          ['j'] = { 'gj' },
+          ['k'] = { 'gk' },
           -- moving whole lines
-          ['<C-k>'] = {'ddkP'},
-          ['<C-j>'] = {'ddp'},
+          ['<C-k>'] = { 'ddkP' },
+          ['<C-j>'] = { 'ddp' },
           -- better tab
-          ['<tab>'] = {'v>'},
-          ['<s-tab>'] = {'v<'},
+          ['<tab>'] = { 'v>' },
+          ['<s-tab>'] = { 'v<' },
           -- my convenience shortcuts
-          ['<Leader>Y'] = {name = 'yacoob shortcuts'},
-          ['<Leader>Yc'] = {':cd %:p:h<CR>:pwd<CR>', desc='cd to current file\'s path'},
-          ['<Leader>Yr'] = {':n $MYVIMRC<CR>:cd %:p:h<CR>', desc='edit main rc file'},
+          ['<Leader>Y'] = { name = 'yacoob shortcuts' },
+          ['<Leader>Yc'] = { ':cd %:p:h<CR>:pwd<CR>', desc = 'cd to current file\'s path' },
+          ['<Leader>Yr'] = { ':n $MYVIMRC<CR>:cd %:p:h<CR>', desc = 'edit main rc file' },
           -- plugin shortcuts
-          ['<Leader>gnt'] = {':Neogit kind=split<CR>', desc='Open Neogit in a split above'},
+          ['<Leader>gnt'] = { ':Neogit kind=split<CR>', desc = 'Open Neogit in a split above' },
         },
         -- select mode
         s = {
           -- no yank on paste
-          ['p'] = {'pgvy'},
+          ['p'] = { 'pgvy' },
         },
         -- visual mode
         v = {
           -- moving whole lines
-          ['<C-k>'] = {'xkP`[V`'},
-          ['<C-j>'] = {'xp`[V`]'},
+          ['<C-k>'] = { 'xkP`[V`' },
+          ['<C-j>'] = { 'xp`[V`]' },
           -- better tab
-          ['<tab>'] = {'>gv'},
-          ['<s-tab>'] = {'<gv'},
+          ['<tab>'] = { '>gv' },
+          ['<s-tab>'] = { '<gv' },
           -- no yank on paste
-          ['p'] = {'pgvy'},
+          ['p'] = { 'pgvy' },
         }
       },
     },
