@@ -49,14 +49,6 @@ return {
           -- forgot your sudo?
           ['w!!'] = { 'w !sudo tee % >/dev/null', desc = 'sudo write :3' }
         },
-        -- insert mode
-        i = {
-          -- disable arrows
-          ['<up>'] = { '<nop>' },
-          ['<down>'] = { '<nop>' },
-          ['<left>'] = { '<nop>' },
-          ['<right>'] = { '<nop>' },
-        },
         -- abbreviations
         ia = {
           ['---'] = { '—' },
@@ -64,11 +56,6 @@ return {
         },
         -- normal mode
         n = {
-          -- disable arrows
-          ['<up>'] = { '<nop>' },
-          ['<down>'] = { '<nop>' },
-          ['<left>'] = { '<nop>' },
-          ['<right>'] = { '<nop>' },
           -- disable couple of AstroNvim's default keybindings
           ['<Leader>c'] = { '<nop>' },
           ['<Leader>C'] = { '<nop>' },
