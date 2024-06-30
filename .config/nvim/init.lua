@@ -19,8 +19,7 @@ require('lazy').setup({
       update_notifications = true,
     },
   },
-  { import = 'community' }, -- add AstroNvim Community packs https://github.com/AstroNvim/astrocommunity
-  { import = 'plugins' },   -- load local plugin configs
+  { import = 'plugins' }, -- load local plugin configs
 } --[[@as LazySpec]], {
   install = { colorscheme = { 'astrodark' } },
   ui = { backdrop = 100 },

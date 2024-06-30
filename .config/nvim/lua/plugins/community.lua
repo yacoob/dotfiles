@@ -9,8 +9,6 @@ return {
   { import = 'astrocommunity.editing-support.wildfire-nvim' },
   { import = 'astrocommunity.git.neogit' },
   { import = 'astrocommunity.git.diffview-nvim' },
-  { import = 'astrocommunity.motion.flash-nvim' },
   { import = 'astrocommunity.pack.markdown' },
-  { import = 'astrocommunity.pack.python-ruff' },
   { import = 'astrocommunity.recipes.telescope-lsp-mappings' },
 }
