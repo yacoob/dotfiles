@@ -5,6 +5,8 @@
 ---@type LazySpec
 return {
   'AstroNvim/astrocommunity',
+  { import = 'astrocommunity.editing-support.rainbow-delimiters-nvim' },
+  { import = 'astrocommunity.editing-support.wildfire-nvim' },
   { import = 'astrocommunity.git.neogit' },
   { import = 'astrocommunity.git.diffview-nvim' },
   { import = 'astrocommunity.pack.markdown' },
