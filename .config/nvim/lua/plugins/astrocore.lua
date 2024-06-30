@@ -13,9 +13,10 @@ return {
           {
             event = { 'FileType' },
             pattern = { 'beancount' },
-            desc = 'Explicitly start highlighting for beancount files, as AstroNvim disables it for huge files',
+            desc = 'Explicitly disable AstroNvim large buffer check for specific filetypes',
             callback = function(args)
-              vim.treesitter.start(args.buf, 'beancount')
+              vim.b[args.buf].large_buf = false
+              require('astrocore').event('LargeBuf', true)
             end
           }
         },
