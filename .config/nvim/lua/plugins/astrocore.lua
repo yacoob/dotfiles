@@ -12,6 +12,7 @@ return {
           },
           {
             event = { 'FileType' },
+            pattern = { 'beancount' },
             desc = 'Explicitly start highlighting for beancount files, as AstroNvim disables it for huge files',
             callback = function(args)
               vim.treesitter.start(args.buf, 'beancount')
