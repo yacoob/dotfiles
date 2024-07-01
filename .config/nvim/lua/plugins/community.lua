@@ -10,5 +10,6 @@ return {
   { import = 'astrocommunity.git.neogit' },
   { import = 'astrocommunity.git.diffview-nvim' },
   { import = 'astrocommunity.pack.markdown' },
+  { import = 'astrocommunity.recipes.neovide' },
   { import = 'astrocommunity.recipes.telescope-lsp-mappings' },
 }
