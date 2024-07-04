@@ -98,6 +98,14 @@ return {
           ['p'] = { 'pgvy' },
         }
       },
+    git_worktrees = {
+      -- set repository location for the dotfiles
+      -- https://docs.astronvim.com/recipes/detached_git_worktrees/
+      {
+        toplevel = vim.env.HOME,
+        gitdir = vim.env.HOME .. "/.config/vcsh/repo.d/dotfiles.git"
+      },
+    },
     },
   },
 }
