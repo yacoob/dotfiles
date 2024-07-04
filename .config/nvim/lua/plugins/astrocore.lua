@@ -33,6 +33,8 @@ return {
           -- ui
           guifont = 'FiraCode Nerd Font:h14',
           scrolloff = 14,        -- leave this amount of lines while scrolling up/down
+          winblend = 20,         -- transparency for floating window
+          pumblend = 20,         -- transparency for popup menu
           -- behavioral
           autowrite = true,      -- auto-write file before certain operations
           keymodel = 'startsel', -- shift+special key = selection
