@@ -9,6 +9,11 @@ show_milliseconds = true
 truncation_length = 8
 read_only = " 󰌾"
 
+[direnv]
+disabled = false
+style = 'dimmed yellow'
+symbol = ' '
+
 [env_var.WSL_PROMPT_DISTRO_NAME]
 symbol = '󰌽'
 description = 'WSL Distribution name, if different than Debian'
@@ -35,7 +40,7 @@ pipestatus = true
 disabled = false
 format = '[󱑎 ](red)[$time]($style) '
 style = 'italic white'
-time_format = '%T %a %b-%e'
+time_format = '%T %a %b-%0e'
 
 [username]
 aliases = { 'yacoob' = '' }
