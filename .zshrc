@@ -186,6 +186,11 @@ if (( $+commands[fzf] )); then
   source ~/.zsh/fzf-key-bindings.zsh
 fi
 
+# direnv
+if (( $+commands[direnv] )); then
+  eval "$(direnv hook zsh)"
+fi
+
 # Pull in plugins.
 if [[ -r ~/.antidote/antidote.zsh ]]; then
   source ~/.antidote/antidote.zsh
