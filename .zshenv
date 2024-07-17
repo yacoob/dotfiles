@@ -83,5 +83,10 @@ if [[ -d ~/.nvm ]]; then
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 fi
 
+# rye
+if [[ -d ~/.rye ]]; then
+  source ~/.rye/env
+fi
+
 # machine specific config
 [[ -r ~/.zshenv.local ]] && source ~/.zshenv.local
