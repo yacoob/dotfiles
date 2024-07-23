@@ -31,6 +31,11 @@ fi
 # golang settings
 export GOPATH="${HOME}/workarea/golang"
 
+# explicitly mark truecolor support under Windows Terminal
+if [[ -n    "${WT_SESSION}" ]]; then
+  export COLORTERM=truecolor
+fi
+
 # less
 export LESS="-iSRM"
 export LESSCHARSET="utf-8"
