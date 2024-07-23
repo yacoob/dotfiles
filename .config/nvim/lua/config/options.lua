@@ -18,6 +18,7 @@ opt.gdefault = true
 opt.matchpairs = "[:],(:),{:},<:>"
 opt.showmatch = true
 -- ui
+opt.background = "dark"
 opt.guifont = "FiraCode Nerd Font:h14"
 opt.scrolloff = 14 -- leave this amount of lines while scrolling up/down
 opt.winblend = 20 -- transparency for floating window
