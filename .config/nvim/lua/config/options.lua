@@ -21,8 +21,8 @@ opt.showmatch = true
 opt.background = "dark"
 opt.guifont = "FiraCode Nerd Font:h14"
 opt.scrolloff = 14 -- leave this amount of lines while scrolling up/down
-opt.winblend = 20 -- transparency for floating window
-opt.pumblend = 20 -- transparency for popup menu
+opt.winblend = 0 -- transparency for floating window
+opt.pumblend = 0 -- transparency for popup menu
 -- behavioral
 opt.cmdheight = 1 -- no more "press enter prompts" for one line outputs
 opt.keymodel = "startsel" -- shift+special key = selection
