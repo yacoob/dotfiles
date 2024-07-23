@@ -1,4 +1,5 @@
 return {
+  { import = "config.python-lsp-options" },
   { import = "lazyvim.plugins.extras.coding.copilot" },
   { import = "lazyvim.plugins.extras.coding.copilot-chat" },
   { import = "lazyvim.plugins.extras.editor.overseer" },
