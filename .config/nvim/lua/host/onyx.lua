@@ -1,11 +1,12 @@
 return {
-  {
-    'AstroNvim/astrocommunity',
-    { import = 'astrocommunity.editing-support/nvim-devdocs'},
-    { import = 'astrocommunity.pack.docker' },
-    { import = 'astrocommunity.pack.json' },
-    { import = 'astrocommunity.pack.python-ruff' },
-    { import = 'astrocommunity.pack.toml' },
-    { import = 'astrocommunity.pack.yaml' },
-  },
+  { import = "lazyvim.plugins.extras.coding.copilot" },
+  { import = "lazyvim.plugins.extras.coding.copilot-chat" },
+  { import = "lazyvim.plugins.extras.editor.refactoring" },
+  { import = "lazyvim.plugins.extras.lang.docker" },
+  { import = "lazyvim.plugins.extras.lang.git" },
+  { import = "lazyvim.plugins.extras.lang.json" },
+  { import = "lazyvim.plugins.extras.lang.python" },
+  { import = "lazyvim.plugins.extras.lang.toml" },
+  { import = "lazyvim.plugins.extras.lang.yaml" },
+  { import = "lazyvim.plugins.extras.test.core" },
 }
