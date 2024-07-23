@@ -1,6 +1,7 @@
 return {
   { import = "lazyvim.plugins.extras.coding.copilot" },
   { import = "lazyvim.plugins.extras.coding.copilot-chat" },
+  { import = "lazyvim.plugins.extras.editor.overseer" },
   { import = "lazyvim.plugins.extras.editor.refactoring" },
   { import = "lazyvim.plugins.extras.lang.docker" },
   { import = "lazyvim.plugins.extras.lang.git" },
