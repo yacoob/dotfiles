@@ -11,4 +11,5 @@ return {
   { import = "lazyvim.plugins.extras.lang.toml" },
   { import = "lazyvim.plugins.extras.lang.yaml" },
   { import = "lazyvim.plugins.extras.test.core" },
+  { "zbirenbaum/copilot-cmp", enabled = false },
 }
