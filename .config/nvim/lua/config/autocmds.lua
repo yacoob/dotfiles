@@ -15,9 +15,14 @@ vim.api.nvim_create_augroup("yacoob", { clear = true })
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*.py" },
   group = "yacoob",
-  desc = "Sort python imports",
+  desc = "sort python imports",
   callback = function()
     vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
     vim.wait(100)
   end,
+})
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  group = "yacoob",
+  desc = "strip trailing whitespace on save",
+  command = ":%s/\\s\\+$//e",
 })
