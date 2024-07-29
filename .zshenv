@@ -79,23 +79,23 @@ if (( $+commands[fzf] )); then
     --info=inline-right \
     --ansi \
     --layout=reverse \
-    --border=none
-    --color=bg+:#283457 \
-    --color=bg:#16161e \
-    --color=border:#27a1b9 \
-    --color=fg:#c0caf5 \
-    --color=gutter:#16161e \
-    --color=header:#ff9e64 \
-    --color=hl+:#2ac3de \
-    --color=hl:#2ac3de \
-    --color=info:#545c7e \
-    --color=marker:#ff007c \
-    --color=pointer:#ff007c \
-    --color=prompt:#2ac3de \
-    --color=query:#c0caf5:regular \
-    --color=scrollbar:#27a1b9 \
-    --color=separator:#ff9e64 \
-    --color=spinner:#ff007c \
+    --border=none \
+    --color=bg+:#1E222A \
+    --color=bg:#1A1D23 \
+    --color=border:#3A3E47 \
+    --color=fg:#ADB0BB \
+    --color=gutter:#1A1D23 \
+    --color=header:#50A4E9 \
+    --color=hl+:#5EB7FF \
+    --color=hl:#5EB7FF \
+    --color=info:#3A3E47 \
+    --color=marker:#5EB7FF \
+    --color=pointer:#5EB7FF \
+    --color=prompt:#5EB7FF \
+    --color=query:#ADB0BB:regular \
+    --color=scrollbar:#3A3E47 \
+    --color=separator:#3A3E47 \
+    --color=spinner:#5EB7FF \
   "
 fi
 
