@@ -13,5 +13,4 @@ return {
   { import = 'astrocommunity.pack.markdown' },
   { import = 'astrocommunity.recipes.neovide' },
   { import = 'astrocommunity.recipes.telescope-lsp-mappings' },
-  { import = 'astrocommunity.utility.noice-nvim' },
 }
