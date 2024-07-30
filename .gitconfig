@@ -37,18 +37,18 @@
   required = true
 [delta]
   features = decorations
-  # from https://github.com/AstroNvim/astrotheme/blob/main/extras/delta/astrodark.gitconfig
-  minus-style                   = syntax "#FF838B"
-  minus-non-emph-style          = syntax "#FF838B"
-  minus-emph-style              = syntax "#F8747E"
-  minus-empty-line-marker-style = syntax "#FF838B"
-  line-numbers-minus-style      = syntax "red"
-  plus-style                    = syntax "#87C05F"
-  plus-non-emph-style           = syntax "#87C05F"
-  plus-emph-style               = syntax "#75AD47"
-  plus-empty-line-marker-style  = syntax "#87C05F"
-  line-numbers-plus-style       = syntax "green"
-  line-numbers-zero-style       = "#1A1D23"
+  side-by-side = true
+  minus-style                   = syntax "#914C54"
+  minus-non-emph-style          = syntax "#914C54"
+  minus-emph-style              = syntax "#DD7480"
+  minus-empty-line-marker-style = syntax "#914C54"
+  line-numbers-minus-style      = syntax "#914C54"
+  plus-style                    = syntax "#449DAB"
+  plus-non-emph-style           = syntax "#449DAB"
+  plus-emph-style               = syntax "#62e3f7"
+  plus-empty-line-marker-style  = syntax "#449DAB"
+  line-numbers-plus-style       = syntax "#449DAB"
+  line-numbers-zero-style       = "#1A1B26"
 [delta "interactive"]
   keep-plus-minus-markers = false
 [delta "decorations"]
