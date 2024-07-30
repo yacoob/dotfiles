@@ -34,6 +34,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup(spec,
 {
-  install = { colorscheme = { 'astrodark' } },
+  install = { colorscheme = { 'tokyonight-night' } },
   ui = { backdrop = 100 },
 } --[[@as LazyConfig]])
