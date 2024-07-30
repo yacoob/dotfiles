@@ -75,42 +75,20 @@ return {
         },
         -- normal mode
         n = {
-          -- disable couple of AstroNvim's default keybindings
-          ['<Leader>c'] = { '<nop>' },
-          ['<Leader>C'] = { '<nop>' },
-          ['<Leader>q'] = { '<nop>' },
-          ['<Leader>Q'] = { '<nop>' },
-          -- move by screen lines
-          ['j'] = { 'gj' },
-          ['k'] = { 'gk' },
           -- moving whole lines
-          ['<C-k>'] = { 'ddkP' },
-          ['<C-j>'] = { 'ddp' },
-          -- better tab
-          ['<tab>'] = { 'v>' },
-          ['<s-tab>'] = { 'v<' },
+          ['<A-k>'] = { 'ddkP' },
+          ['<A-j>'] = { 'ddp' },
           -- my convenience shortcuts
           ['<Leader>Y'] = { name = 'yacoob shortcuts' },
           ['<Leader>Yc'] = { ':cd %:p:h<CR>:pwd<CR>', desc = 'cd to current file\'s path' },
-          ['<Leader>Yr'] = { ':n $MYVIMRC<CR>:cd %:p:h<CR>', desc = 'edit main rc file' },
           -- plugin shortcuts
           ['<Leader>gnt'] = { ':Neogit kind=split<CR>', desc = 'Open Neogit in a split above' },
-        },
-        -- select mode
-        s = {
-          -- no yank on paste
-          ['p'] = { 'pgvy' },
         },
         -- visual mode
         v = {
           -- moving whole lines
-          ['<C-k>'] = { 'xkP`[V`' },
-          ['<C-j>'] = { 'xp`[V`]' },
-          -- better tab
-          ['<tab>'] = { '>gv' },
-          ['<s-tab>'] = { '<gv' },
-          -- no yank on paste
-          ['p'] = { 'pgvy' },
+          ['<A-k>'] = { 'xkP`[V`' },
+          ['<A-j>'] = { 'xp`[V`]' },
         }
       },
     git_worktrees = {
