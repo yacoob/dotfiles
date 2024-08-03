@@ -32,7 +32,6 @@ RUN debconf-set-selections < .local/share/dotfiles-docker/debconf && rm -f debco
   curl \
   fd-find \
   file \
-  fzf \
   git \
   less \
   openssh-client \
@@ -49,7 +48,8 @@ WORKDIR /usr/local/bin
 # hadolint ignore=DL4006
 RUN umask 022 && curl https://zyedidia.github.io/eget.sh | sh && \
   ./eget ClementTsang/bottom -a gnu.tar -f btm && \
-  ./eget starship/starship -a gnu.tar
+  ./eget starship/starship -a gnu.tar && \
+  ./eget junegunn/fzf -a amd64.tar
 # Initialize dotfiles, using that tmp directory as a remote repo
 USER yacoob
 WORKDIR /home/yacoob
