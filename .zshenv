@@ -112,6 +112,11 @@ if [[ -d ~/.nvm ]]; then
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 fi
 
+# rust
+if [[ -d ~/.cargo ]]; then
+  source ~/.cargo/env
+fi
+
 # rye
 if [[ -d ~/.rye ]]; then
   source ~/.rye/env
