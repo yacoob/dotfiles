@@ -1,0 +1,5 @@
+['.antidote']
+type = 'git-repo'
+url = 'https://github.com/mattmc3/antidote.git'
+['.antidote'.clone]
+args = ['--depth=1']
