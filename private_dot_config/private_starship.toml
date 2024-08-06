@@ -26,7 +26,6 @@ ssh_symbol = " "
 format = '[@](red)[$hostname]($style) in '
 style = 'yellow'
 
-
 [shlvl]
 disabled = false
 threshold = 3
@@ -47,6 +46,25 @@ aliases = { 'yacoob' = '' }
 show_always = true
 format = '[$user]($style)'
 style_user = 'yellow'
+
+[battery]
+full_symbol = '󱈏'
+discharging_symbol = '󱟞'
+charging_symbol = '󰢝'
+empty_symbol = '󱉞'
+unknown_symbol = '󰂑'
+
+[[battery.display]]
+threshold = 15
+style = 'blink red'
+
+[[battery.display]]
+threshold = 33
+style = 'yellow'
+
+[[battery.display]]
+threshold = 66
+style = 'dimmed green'
 
 # The symbols below were produced by `starship preset nerd-font-symbols`, then moved to sections above, as needed.
 [aws]
