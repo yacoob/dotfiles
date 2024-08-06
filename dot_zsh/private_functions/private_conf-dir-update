@@ -1,1 +1,1 @@
-vcsh dotfiles pull && touch ~/.conf-last-update
+chezmoi update && touch ~/.conf-last-update
