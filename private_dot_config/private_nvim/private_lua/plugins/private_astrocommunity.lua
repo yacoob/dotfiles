@@ -7,6 +7,7 @@ return {
 	"AstroNvim/astrocommunity",
 	{ import = "astrocommunity.colorscheme.tokyonight-nvim" },
 	{ import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
+	{ import = "astrocommunity.editing-support.suda-vim" },
 	{ import = "astrocommunity.editing-support.wildfire-nvim" },
 	{ import = "astrocommunity.git.neogit" },
 	{ import = "astrocommunity.git.diffview-nvim" },
