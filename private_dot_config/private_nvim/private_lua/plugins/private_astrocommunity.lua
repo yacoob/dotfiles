@@ -10,6 +10,8 @@ return {
 	{ import = "astrocommunity.editing-support.wildfire-nvim" },
 	{ import = "astrocommunity.git.neogit" },
 	{ import = "astrocommunity.git.diffview-nvim" },
+	{ import = "astrocommunity.pack.bash" },
+	{ import = "astrocommunity.pack.chezmoi" },
 	{ import = "astrocommunity.pack.markdown" },
 	{ import = "astrocommunity.recipes.neovide" },
 	{ import = "astrocommunity.recipes.telescope-lsp-mappings" },
