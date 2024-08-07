@@ -15,3 +15,5 @@ ${eg} starship/starship -a gnu.tar
 ${eg} watchexec/watchexec -a gnu.tar -a '^b3' -a '^sha512'
 ${eg} wfxr/forgit -f bin/git-forgit
 ${eg} Wilfred/difftastic
+ln -fs nvim vim
+ln -fs vim vi
