@@ -1,4 +1,4 @@
-FROM debian:stable-slim AS builder
+FROM debian:stable-slim AS common-builder
 # Set up my user
 ARG UID
 ARG GID
@@ -33,16 +33,31 @@ RUN debconf-set-selections < ./docker/debconf && rm -f debconf && \
   sudo && \
   apt-get clean && rm -rf /var/lib/apt/lists/* && \
   usermod -a -G sudo yacoob
+
+
+FROM common-builder AS base-builder
 # Run chezmoi install script
 USER yacoob
 WORKDIR /home/yacoob
-RUN ${BOOTSTRAP}/install.sh && \
+RUN "${BOOTSTRAP}/install.sh" --promptBool neovim=false && \
   script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 # Run a custom script on container start
 COPY --chown=yacoob:yacoob --chmod=755 ./docker/entry.sh .entry.sh
 
 
-FROM debian:stable-slim AS base
+FROM common-builder AS nvim-builder
+USER yacoob
+WORKDIR /home/yacoob
+RUN "${BOOTSTRAP}/install.sh" --promptBool neovim=true && \
+  script -qec '/usr/bin/zsh -is </dev/null' /dev/null
+# Run a custom script on container start
+COPY --chown=yacoob:yacoob --chmod=755 ./docker/entry.sh .entry.sh
+# APPIMAGE_EXTRACT_AND_RUN is set to avoid /dev/fuse dependency during runtime.
+RUN echo 'export APPIMAGE_EXTRACT_AND_RUN=1' >> .zshenv.local && \
+  APPIMAGE_EXTRACT_AND_RUN=1 ./.local/bin/nvim -c 'Lazy install' -c 'qa!'
+
+
+FROM debian:stable-slim AS common
 # Redo the envs
 ARG UID
 ARG GID
@@ -57,20 +72,15 @@ ENV SHELL=/usr/bin/zsh
 ENV SSH_AUTH_SOCK=/home/yacoob/.ssh/agent.sock
 ENV TERM=xterm-256color
 ENV TZ='Europe/Dublin'
-COPY --from=builder / /
 # entry.sh adjusts the uid/gid at runtime, then execs sudo -u yacoob
 # hadolint ignore=DL3002
 USER root
 ENTRYPOINT ["/home/yacoob/.entry.sh"]
 
 
-FROM base AS nvim-builder
-USER yacoob
-WORKDIR /home/yacoob
-# APPIMAGE_EXTRACT_AND_RUN is set to avoid /dev/fuse dependency during runtime.
-RUN echo 'export APPIMAGE_EXTRACT_AND_RUN=1' >> .zshenv.local && \
-  APPIMAGE_EXTRACT_AND_RUN=1 /usr/local/bin/nvim -c 'Lazy install' -c 'qa!'
+FROM common AS base
+COPY --from=base-builder / /
 
 
-FROM base AS nvim
+FROM common AS nvim
 COPY --from=nvim-builder / /

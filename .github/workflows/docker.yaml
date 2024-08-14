@@ -49,7 +49,6 @@ jobs:
             yacoob/interactive:base
       - name: Build and optionally push the nvim version
         # disable temporarily while I work on switching to chezmoi
-        if: false
         uses: docker/build-push-action@v6
         with:
           target: nvim
