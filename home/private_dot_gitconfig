@@ -8,18 +8,19 @@
 [core]
   excludesfile = ~/.cvsignore
   editor = nvim
-[interactive]
-  diffFilter = delta --color-only --features=interactive
 [merge]
-  tool = nvimdiff
+  tool = diffview
 [diff]
-  tool = nvimdiff
+  external = difft
 [push]
   default = matching
 [pull]
   rebase = true
 [difftool]
   prompt = false
+[mergetool]
+  prompt = false
+  keepBackup = false
 
 [alias]
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
@@ -35,30 +36,9 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
-[delta]
-  features = decorations
-  side-by-side = true
-  minus-style                   = syntax "#914C54"
-  minus-non-emph-style          = syntax "#914C54"
-  minus-emph-style              = syntax "#DD7480"
-  minus-empty-line-marker-style = syntax "#914C54"
-  line-numbers-minus-style      = syntax "#914C54"
-  plus-style                    = syntax "#449DAB"
-  plus-non-emph-style           = syntax "#449DAB"
-  plus-emph-style               = syntax "#62e3f7"
-  plus-empty-line-marker-style  = syntax "#449DAB"
-  line-numbers-plus-style       = syntax "#449DAB"
-  line-numbers-zero-style       = "#1A1B26"
-[delta "interactive"]
-  keep-plus-minus-markers = false
-[delta "decorations"]
-  commit-decoration-style = blue ol
-  commit-style = raw
-  file-style = omit
-  hunk-header-decoration-style = blue box
-  hunk-header-file-style = red
-  hunk-header-line-number-style = "#067a00"
-  hunk-header-style = file line-number syntax
 
 [include]
   path = ~/.gitconfig.local
+
+[mergetool "diffview"]
+  cmd = nvim -n -c "DiffviewOpen" "$MERGE"
