@@ -62,12 +62,10 @@ jobs:
             yacoob/interactive:nvim
 
   ping-others:
-    # disable temporarily while I work on switching to chezmoi
-    if: false
     name: Notify other repositories about new version of the base image.
     runs-on: ubuntu-latest
     # Only ping others on pushes to main branch.
-    # if: github.event_name == 'push' && endsWith(github.ref, '/main')
+    if: github.event_name == 'push' && endsWith(github.ref, '/main')
     # Don't ping if build step failed.
     needs: build
     steps:
