@@ -1,6 +1,6 @@
+{{- $useNvim := promptBool "neovim" true -}}
 data:
-  flavours:
-    - basic
+  useNvim: {{ $useNvim }}
 merge:
   command: nvim
   args:
