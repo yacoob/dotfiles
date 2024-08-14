@@ -1,3 +1,7 @@
+# Disable lint warning about merging consecutive `RUN` lines; I squash the layers at the end regardless,
+# and simpler `RUN` files cache better.
+# hadolint global ignore=DL3059
+
 FROM debian:stable-slim AS common-builder
 # Set up my user
 ARG UID
@@ -7,20 +11,18 @@ ENV GID=${GID:-1000}
 RUN groupadd -g ${GID} yacoob && \
   useradd -l -u ${UID} -g ${GID} -m -s /usr/bin/zsh -G sudo yacoob && \
   passwd -d yacoob
-# The context should contain the entire repository.
-# This also mean you should NOT build the docker image from a vcsh-managed install of the dotfiles, as it'll happily use the entire homedir for the context.
-ARG BOOTSTRAP=/tmp/conf-bootstrap
-COPY --chown=yacoob:yacoob . ${BOOTSTRAP}
-WORKDIR ${BOOTSTRAP}
 # Sort out locales
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG=en_IE.UTF-8
 ENV LC_COLLATE=pl_PL.UTF-8
 ENV LC_CTYPE=pl_PL.UTF-8
 ENV LC_MESSAGES=C
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # Install packages
-# hadolint ignore=DL3008,DL4006
-RUN debconf-set-selections < ./docker/debconf && rm -f debconf && \
+WORKDIR /tmp
+COPY --chown=yacoob:yacoob --chmod=755 ./docker/debconf debconf
+# hadolint ignore=DL3008
+RUN debconf-set-selections < /tmp/debconf && rm -f /tmp/debconf && \
   apt-get update && apt-get upgrade -y --no-install-recommends --no-install-suggests && \
   apt-get install -y --no-install-suggests --no-install-recommends \
   apt-utils locales localepurge && \
@@ -30,31 +32,37 @@ RUN debconf-set-selections < ./docker/debconf && rm -f debconf && \
   ca-certificates \
   curl \
   git \
-  sudo && \
-  apt-get clean && rm -rf /var/lib/apt/lists/* && \
-  usermod -a -G sudo yacoob
+  sudo \
+  zsh && \
+  apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN usermod -a -G sudo yacoob
+# Run a custom script on container start
+COPY --chown=yacoob:yacoob --chmod=755 ./docker/entry.sh .entry.sh
+# The context should contain the entire repository.
+ARG BOOTSTRAP=/tmp/conf-bootstrap
+COPY --chown=yacoob:yacoob . ${BOOTSTRAP}
 
 
 FROM common-builder AS base-builder
-# Run chezmoi install script
 USER yacoob
 WORKDIR /home/yacoob
-RUN "${BOOTSTRAP}/install.sh" --promptBool neovim=false && \
-  script -qec '/usr/bin/zsh -is </dev/null' /dev/null
-# Run a custom script on container start
-COPY --chown=yacoob:yacoob --chmod=755 ./docker/entry.sh .entry.sh
+# Run chezmoi install script
+RUN "${BOOTSTRAP}/install.sh" --promptBool neovim=false && rm -rf "${BOOTSTRAP}"
+# start zsh so antidote can install plugins
+RUN  script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 
 
 FROM common-builder AS nvim-builder
 USER yacoob
 WORKDIR /home/yacoob
-RUN "${BOOTSTRAP}/install.sh" --promptBool neovim=true && \
-  script -qec '/usr/bin/zsh -is </dev/null' /dev/null
-# Run a custom script on container start
-COPY --chown=yacoob:yacoob --chmod=755 ./docker/entry.sh .entry.sh
-# APPIMAGE_EXTRACT_AND_RUN is set to avoid /dev/fuse dependency during runtime.
-RUN echo 'export APPIMAGE_EXTRACT_AND_RUN=1' >> .zshenv.local && \
-  APPIMAGE_EXTRACT_AND_RUN=1 ./.local/bin/nvim -c 'Lazy install' -c 'qa!'
+# Run chezmoi install script
+RUN "${BOOTSTRAP}/install.sh" --promptBool neovim=true && rm -rf "${BOOTSTRAP}"
+# bootstrap zsh plugins
+RUN script -qec '/usr/bin/zsh -is </dev/null' /dev/null
+# set APPIMAGE_EXTRACT_AND_RUN to avoid /dev/fuse dependency during runtime.
+RUN echo 'export APPIMAGE_EXTRACT_AND_RUN=1' >> .zshenv.local
+# bootstrap neovim plugins
+RUN APPIMAGE_EXTRACT_AND_RUN=1 ./.local/bin/nvim -c 'Lazy install' -c 'qa!'
 
 
 FROM debian:stable-slim AS common

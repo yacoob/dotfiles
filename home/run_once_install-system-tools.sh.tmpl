@@ -6,6 +6,6 @@ sudo apt update
 sudo apt install -y --no-install-suggests --no-install-recommends \
   {{ if .useNvim -}} build-essential {{- else -}} vim-tiny {{- end }} \
   curl file fuse git less openssh-client pv sudo wget zsh
-sudo apt purge {{ if .useNvim -}} vim-tiny {{- else -}} build-essential {{- end }}
-sudo apt clean && sudo apt autoremove
+sudo apt purge -y {{ if .useNvim -}} vim-tiny {{- else -}} build-essential {{- end }}
+sudo apt clean && sudo apt autoremove -y
 {{ end }}
