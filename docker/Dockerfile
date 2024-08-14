@@ -20,48 +20,26 @@ ENV LC_CTYPE=pl_PL.UTF-8
 ENV LC_MESSAGES=C
 # Install packages
 # hadolint ignore=DL3008,DL4006
-RUN debconf-set-selections < .local/share/dotfiles-docker/debconf && rm -f debconf && \
+RUN debconf-set-selections < ./docker/debconf && rm -f debconf && \
   apt-get update && apt-get upgrade -y --no-install-recommends --no-install-suggests && \
   apt-get install -y --no-install-suggests --no-install-recommends \
   apt-utils locales localepurge && \
   dpkg-reconfigure --unseen-only localepurge && localepurge && \
   echo 'localepurge localepurge/use-dpkg-feature boolean true' | debconf-set-selections && \
   apt-get install -y --no-install-recommends --no-install-suggests \
-  bat \
   ca-certificates \
   curl \
-  fd-find \
-  file \
   git \
-  less \
-  openssh-client \
-  pv \
-  ripgrep \
-  sudo \
-  wget \
-  vcsh \
-  vim-tiny \
-  zsh \
-  && apt-get clean && rm -rf /var/lib/apt/lists/*
-# Use https://github.com/zyedidia/eget to fetch some binaries missing in the distro
-WORKDIR /usr/local/bin
-# hadolint ignore=DL4006
-RUN umask 022 && curl https://zyedidia.github.io/eget.sh | sh && \
-  ./eget ClementTsang/bottom -a gnu.tar -f btm && \
-  ./eget starship/starship -a gnu.tar && \
-  ./eget junegunn/fzf -a amd64.tar
-# Initialize dotfiles, using that tmp directory as a remote repo
+  sudo && \
+  apt-get clean && rm -rf /var/lib/apt/lists/* && \
+  usermod -a -G sudo yacoob
+# Run chezmoi install script
 USER yacoob
 WORKDIR /home/yacoob
-ARG CONF_BRANCH=main
-# Install the dotfiles from the local repo copy
-RUN vcsh clone -b ${CONF_BRANCH} "file:///${BOOTSTRAP}" dotfiles && \
-  rm -rf ${BOOTSTRAP}
-# Set up zsh
-RUN /usr/bin/git clone --depth=1 https://github.com/mattmc3/antidote.git .antidote && \
+RUN ${BOOTSTRAP}/install.sh && \
   script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 # Run a custom script on container start
-COPY --chown=yacoob:yacoob --chmod=755 .local/share/dotfiles-docker/entry.sh .entry.sh
+COPY --chown=yacoob:yacoob --chmod=755 ./docker/entry.sh .entry.sh
 
 
 FROM debian:stable-slim AS base
@@ -87,18 +65,6 @@ ENTRYPOINT ["/home/yacoob/.entry.sh"]
 
 
 FROM base AS nvim-builder
-# hadolint ignore=DL3008
-RUN apt-get update && apt-get purge -y vim-tiny && \
-  apt-get install -y --no-install-recommends --no-install-suggests \
-  gh \
-  && apt-get clean && rm -rf /var/lib/apt/lists/*
-# Install neovim and a couple of supporting binaries via eget
-WORKDIR /usr/local/bin
-RUN umask 022 && ln -s vim vi && ln -s nvim vim && \
-  ./eget dandavison/delta -a gnu.tar && \
-  ./eget jesseduffield/lazygit && \
-  ./eget neovim/neovim -a appimage && \
-  ./eget wfxr/forgit -f bin/git-forgit
 USER yacoob
 WORKDIR /home/yacoob
 # APPIMAGE_EXTRACT_AND_RUN is set to avoid /dev/fuse dependency during runtime.
