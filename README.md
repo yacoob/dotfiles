@@ -4,7 +4,7 @@
 
 ## next
 
-- generate tabcompletions for egetted binaries
+- handle nvm and rye
 
 ## Installation
 

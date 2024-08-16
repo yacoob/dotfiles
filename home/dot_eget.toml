@@ -1,3 +1,0 @@
-[global]
-target = '~/.local/bin'
-upgrade_only = true
