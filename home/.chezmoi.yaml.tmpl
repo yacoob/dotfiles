@@ -1,6 +1,8 @@
 {{- $useNvim := promptBool "neovim" true -}}
+{{- $pyDev := promptBool "python" false -}}
 data:
   useNvim: {{ $useNvim }}
+  pyDev: {{ $pyDev }}
 merge:
   command: nvim
   args:

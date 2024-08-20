@@ -47,7 +47,7 @@ FROM common-builder AS base-builder
 USER yacoob
 WORKDIR /home/yacoob
 # Run chezmoi install script
-RUN "${BOOTSTRAP}/install.sh" --promptBool neovim=false && rm -rf "${BOOTSTRAP}"
+RUN "${BOOTSTRAP}/install.sh" --promptBool neovim=false,python=false && rm -rf "${BOOTSTRAP}"
 # start zsh so antidote can install plugins
 RUN  script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 
@@ -56,7 +56,7 @@ FROM common-builder AS nvim-builder
 USER yacoob
 WORKDIR /home/yacoob
 # Run chezmoi install script
-RUN "${BOOTSTRAP}/install.sh" --promptBool neovim=true && rm -rf "${BOOTSTRAP}"
+RUN "${BOOTSTRAP}/install.sh" --promptBool neovim=true,python=false && rm -rf "${BOOTSTRAP}"
 # bootstrap zsh plugins
 RUN script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 # set APPIMAGE_EXTRACT_AND_RUN to avoid /dev/fuse dependency during runtime.

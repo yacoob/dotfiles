@@ -1,5 +1,6 @@
 #!/bin/sh
 set -eu
+CHEZMOI_FORCE_INSTALL_LOCAL_BIN_TOOLS=${CHEZMOI_FORCE_INSTALL_LOCAL_BIN_TOOLS:-}
 cd ~/.local/bin
 eg=~/.local/bin/eget
 cp=~/.zsh/completion
@@ -61,4 +62,11 @@ ln -fs nvim vim
 ln -fs vim vi
 {{ else }}
 rm -f vim vi nvim
+{{- end }}
+
+# maybe install rye
+{{ if .pyDev -}}
+if [ ! -x ~/.rye/shims/rye ]; then
+  curl -sSf https://rye.astral.sh/get | RYE_INSTALL_OPTION="--yes" RYE_TOOLCHAIN=/usr/bin/python3 bash
+fi
 {{- end }}
