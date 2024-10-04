@@ -37,7 +37,7 @@ RUN debconf-set-selections < /tmp/debconf && rm -f /tmp/debconf && \
   apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN usermod -a -G sudo yacoob
 # Run a custom script on container start
-COPY --chown=yacoob:yacoob --chmod=755 ./docker/entry.sh .entry.sh
+COPY --chown=yacoob:yacoob --chmod=755 ./docker/entry.sh /home/yacoob/.entry.sh
 # The context should contain the entire repository.
 ARG BOOTSTRAP=/tmp/conf-bootstrap
 COPY --chown=yacoob:yacoob . ${BOOTSTRAP}
