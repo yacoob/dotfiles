@@ -42,15 +42,15 @@ eget_install() {
 }
 
 # use eget to install tools that are either too old or not available in Debian stable
-eget_install BurntSushi/ripgrep rg
-eget_install ClementTsang/bottom btm gnu.tar _btm
-eget_install jesseduffield/lazygit
-eget_install junegunn/fzf fzf amd64.tar
-eget_install sharkdp/bat bat gnu.tar bat.zsh
-eget_install sharkdp/fd fd gnu.tar _fd
-eget_install starship/starship starship gnu.tar
+# eget_install BurntSushi/ripgrep rg
+# eget_install ClementTsang/bottom btm gnu.tar _btm
+# eget_install jesseduffield/lazygit
+# eget_install junegunn/fzf fzf amd64.tar
+# eget_install sharkdp/bat bat gnu.tar bat.zsh
+# eget_install sharkdp/fd fd gnu.tar _fd
+# eget_install starship/starship starship gnu.tar
 eget_install watchexec/watchexec watchexec gnu.tar.xz _ -a '^b3' -a '^sha512'
-eget_install Wilfred/difftastic difft
+# eget_install Wilfred/difftastic difft
 
 # normalize permissions of the tabcompletion files
 chmod 640 ${cp}/_*
