@@ -28,7 +28,7 @@ style = 'yellow'
 
 [shlvl]
 disabled = false
-threshold = 3
+threshold = 5
 symbol = ' '
 
 [status]
