@@ -1,0 +1,9 @@
+#!/bin/sh
+set -eux
+
+{{ if eq .chezmoi.osRelease.id "bazzite" }}
+# create a template for all interactive sessions
+distrobox assemble create --replace --file ~/.distrobox-interactive.ini
+# bring up the template distrobox so the packages are installed
+distrobox enter --name interactive-template -- echo 'distrobox interactive-template initialized'
+{{ end }}

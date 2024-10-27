@@ -1,0 +1,35 @@
+#!/bin/sh
+set -eux
+eg=~/.local/bin/eget
+{{ if .useNvim }}
+{{ if eq .chezmoi.osRelease.id "debian" }}
+# remove standard vim, install the build suite
+sudo apt install -y --no-install-suggests --no-install-recommends build-essential
+sudo apt purge -y vim-tiny
+sudo apt clean && sudo apt autoremove -y
+
+# install neovim via appimage
+${eg} neovim/neovim --upgrade-only -a appimage --to=~/.appimages/nvim.appimage
+ln -fs ~/.appimages/nvim.appimage ~/.local/bin/nvim
+ln -fs ~/.local/bin/nvim ~/.local/bin/vim
+ln -fs ~/.local/bin/vim ~/.local/bin/vi
+
+
+{{ else if eq .chezmoi.osRelease.id "bazzite" }}
+# add neovim in the interactive distrobox
+distrobox-enter --name interactive-template -- sudo dnf install -y neovim 
+distrobox-enter --name interactive-template -- sudo dnf clean all
+
+# add neovide on the host
+${eg} neovide/neovide --upgrade-only -a AppImage -a '^zsync' --to=~/.appimages/neovide.appimage
+sudo ln -fs ~/.appimages/neovide.appimage /usr/local/bin/neovide
+
+# point neovide in the interactive distrobox to host's command
+distrobox-enter --name interactive-template -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/neovide
+{{ end }}
+
+{{ else }}
+# remove all possible "redirections" and binaries from the host
+rm -f ~/.local/bin/vim ~/.local/bin/vi ~/.appimages/nvim.appimage
+rm -f ~/.local/bin/neovide ~/.appimages/neovide.appimage ~/.appimages/nvim.appimage
+{{ end }}

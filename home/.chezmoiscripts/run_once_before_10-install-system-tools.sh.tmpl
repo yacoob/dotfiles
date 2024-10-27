@@ -1,13 +1,33 @@
 #!/bin/sh
-set -eu
-{{ if eq .chezmoi.osRelease.id "debian" -}}
-set -x
+set -eux
+
+
+{{ if eq .chezmoi.osRelease.id "debian" }}
 sudo apt update
 sudo apt install -y --no-install-suggests --no-install-recommends \
-  {{ if .useNvim -}} build-essential {{- else -}} vim-tiny {{- end }} \
-  {{ if .pyDev -}} python3 {{- end }} \
-  curl file fuse git less openssh-client pv sudo wget zsh
-sudo apt purge -y {{ if .useNvim -}} vim-tiny {{- else -}} build-essential {{- end }}
+  curl file fuse git less openssh-client pv sudo vim-tiny wget zsh
 sudo apt clean && sudo apt autoremove -y
-{{ end }}
 
+
+{{ else if eq .chezmoi.osRelease.id "bazzite" }}
+# install homebrew; they're hard to execute from within a distrobox, due to fs access, superuser privileges etc.
+brew install \
+  gdu strace
+brew cleanup --prune=all --scrub
+rm -rf "$(brew --cache)"
+
+# install flatpaks
+for f in \
+  com.bitwarden.desktop \
+  com.calibre_ebook.calibre \
+  com.discordapp.Discord \
+  com.plexamp.Plexamp \
+  io.github.martchus.syncthingtray \
+  io.mpv.Mpv \
+  md.obsidian.Obsidian \
+  org.speedcrunch.SpeedCrunch \
+  org.telegram.desktop
+do
+  flatpak install --system --assumeyes ${f}
+done
+{{ end }}
