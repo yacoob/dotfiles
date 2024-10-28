@@ -9,7 +9,7 @@ sudo apt install -y --no-install-suggests --no-install-recommends \
 sudo apt clean && sudo apt autoremove -y
 
 
-{{ else if eq .chezmoi.osRelease.id "bazzite" }}
+{{ else if (or (eq .chezmoi.osRelease.id "bazzite") (eq .chezmoi.osRelease.id "aurora")) }}
 # install homebrew; they're hard to execute from within a distrobox, due to fs access, superuser privileges etc.
 brew install \
   gdu strace
@@ -30,4 +30,23 @@ for f in \
 do
   flatpak install --system --assumeyes ${f}
 done
+{{ end }}
+
+{{ if eq .chezmoi.osRelease.id "aurora" }}
+brew install \
+  bat \
+  bottom \
+  difftastic \
+  direnv \
+  fd \
+  gcc \
+  gdu \
+  lazygit \
+  ripgrep \
+  tealdeer \
+  trash-cli \
+  ugrep \
+  yq
+brew cleanup --prune=all --scrub
+rm -rf "$(brew --cache)"
 {{ end }}
