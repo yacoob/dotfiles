@@ -25,6 +25,7 @@ brew install \
   tealdeer \
   trash-cli \
   ugrep \
+  viu \
   yq
 brew cleanup --prune=all --scrub
 rm -rf "$(brew --cache)"
@@ -41,6 +42,7 @@ for f in \
   md.obsidian.Obsidian \
   org.speedcrunch.SpeedCrunch \
   org.telegram.desktop \
+  org.wezfurlong.wezterm \
   tv.plex.PlexDesktop
 do
   flatpak install --system --assumeyes ${f}
