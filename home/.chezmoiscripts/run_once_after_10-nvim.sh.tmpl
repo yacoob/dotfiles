@@ -18,19 +18,6 @@ ln -fs ~/.local/bin/nvim ~/.local/bin/vim
 ln -fs ~/.local/bin/vim ~/.local/bin/vi
 
 
-{{ else if eq .chezmoi.osRelease.id "bazzite" }}
-# add neovim in the interactive distrobox
-distrobox-enter --name interactive-template -- sudo dnf install -y neovim
-distrobox-enter --name interactive-template -- sudo dnf clean all
-
-# add neovide on the host
-${eg} neovide/neovide --upgrade-only -a AppImage -a '^zsync' --to=~/.appimages/neovide.appimage
-sudo ln -fs ~/.appimages/neovide.appimage /usr/local/bin/neovide
-
-# point neovide in the interactive distrobox to host's command
-distrobox-enter --name interactive-template -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/neovide
-
-
 {{ else if eq .chezmoi.osRelease.id "aurora" }}
 brew install neovim
 brew cleanup --prune=all --scrub
