@@ -22,11 +22,13 @@ for f in \
   com.calibre_ebook.calibre \
   com.discordapp.Discord \
   com.plexamp.Plexamp \
+  com.slack.Slack \
+  com.valvesoftware.Steam \
   io.github.martchus.syncthingtray \
-  io.mpv.Mpv \
   md.obsidian.Obsidian \
   org.speedcrunch.SpeedCrunch \
-  org.telegram.desktop
+  org.telegram.desktop \
+  tv.plex.PlexDesktop
 do
   flatpak install --system --assumeyes ${f}
 done
@@ -43,6 +45,7 @@ brew install \
   gdu \
   lazygit \
   ripgrep \
+  strace \
   tealdeer \
   trash-cli \
   ugrep \
