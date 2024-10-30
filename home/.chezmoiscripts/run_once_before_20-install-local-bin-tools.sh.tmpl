@@ -52,10 +52,11 @@ eget_install sharkdp/bat bat gnu.tar bat.zsh
 eget_install sharkdp/fd fd gnu.tar _fd
 eget_install starship/starship starship gnu.tar
 eget_install Wilfred/difftastic difft
-{{ end }}
 
 # normalize permissions of the tabcompletion files
 chmod 640 ${cp}/_*
+{{ end }}
+
 
 # make directory for AppImages
 mkdir -p ~/.appimages
