@@ -22,8 +22,6 @@ ln -fs ~/.local/bin/vim ~/.local/bin/vi
 brew install neovim
 brew cleanup --prune=all --scrub
 rm -rf "$(brew --cache)"
-${eg} neovide/neovide --upgrade-only -a AppImage -a '^zsync' --to=~/.appimages/neovide.appimage
-sudo ln -fs ~/.appimages/neovide.appimage /usr/local/bin/neovide
 
 
 {{ end }}
