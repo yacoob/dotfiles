@@ -1,3 +1,9 @@
+-- maybe add linuxbrew to PATH
+local homebrew_path = '/home/linuxbrew/.linuxbrew'
+if (vim.uv or vim.loop).fs_stat(homebrew_path) then
+  vim.env.PATH = vim.env.PATH .. ':' .. homebrew_path .. '/bin'
+end
+
 -- install Lazy if it's not there
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
