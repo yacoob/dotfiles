@@ -99,6 +99,9 @@ if (( $+commands[fzf] )); then
   "
 fi
 
+# 2024 is the year of Linux on the desktop :D
+QT_SCALE_FACTOR_ROUNDING_POLICY=RoundPreferFloor
+
 # fd
 if (( $+commands[fdfind] )); then
   export FZF_DEFAULT_COMMAND="fdfind --type file --color=always"
