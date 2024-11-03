@@ -5,6 +5,7 @@ set -eux
 {{ if eq .chezmoi.osRelease.id "debian" }}
 sudo apt update
 sudo apt install -y --no-install-suggests --no-install-recommends \
+  libgcc-s1 \
   curl file fuse git less openssh-client pv sudo vim-tiny wget zsh
 sudo apt clean && sudo apt autoremove -y
 
