@@ -11,5 +11,19 @@ local config = {
 
   -- default shell
   default_prog = {"/usr/bin/zsh", "-l"},
+
+  -- custom programs
+  launch_menu = {
+    {
+      label = 'illaoi.normally.works',
+      args = { 'ssh', '-A', 'illaoi' },
+    },
+  },
+  keys = {
+    {
+      key = 's', mods = 'ALT',
+      action = wezterm.action.ShowLauncherArgs { flags = 'FUZZY|LAUNCH_MENU_ITEMS' },
+    },
+  },
 }
 return config
