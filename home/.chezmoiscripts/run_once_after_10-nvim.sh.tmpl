@@ -2,29 +2,30 @@
 set -eux
 eg=~/.local/bin/eget
 
-{{ if .useNvim }}
-# install neovim via appimage
-${eg} neovim/neovim --upgrade-only -a appimage --to=~/.appimages/nvim.appimage
-ln -fs ~/.appimages/neovim.appimage ~/.local/bin/nvim
-
 {{ if eq .chezmoi.osRelease.id "debian" }}
-mv ~/.appimages/nvim.appimage ~/.appimages/neovim.appimage
-# remove standard vim, install the build suite
-sudo apt install -y --no-install-suggests --no-install-recommends build-essential
-sudo apt purge -y vim-tiny
+sudo apt install -y --no-install-suggests --no-install-recommends \
+{{ if .useNvim }} build-essential {{ else }} vim-tiny {{ end }}
+sudo apt purge -y \
+{{ if .useNvim }} vim-tiny {{ else }} build-essential {{ end }}
 sudo apt clean && sudo apt autoremove -y
+{{ end }}
 
-{{ else if eq .chezmoi.osRelease.id "aurora" }}
+{{ if .useNvim }}
+# install homebrew nvim
+brew install neovim
+brew cleanup --prune=all --scrub
+rm -rf "$(brew --cache)"
+
+{{ if eq .chezmoi.osRelease.id "aurora" }}
 ${eg} neovide/neovide --upgrade-only -a AppImage -a '^zsync' --to=~/.appimages/nvide.appimage
-flatpak run it.mijorus.gearlever ~/.appimages/nvim.appimage
 flatpak run it.mijorus.gearlever ~/.appimages/nvide.appimage
 ln -fs ~/.appimages/neovide.appimage ~/.local/bin/neovide
-
 {{ end }}
 
 
 {{ else }}
+# remove homebrewed nvim
+brew rm -f neovim
 # remove all nvim-related symlinks and appimages
-rm -f ~/.local/bin/nvim ~/.appimages/neovim.appimage
 rm -f ~/.local/bin/neovide ~/.appimages/neovide.appimage
 {{ end }}
