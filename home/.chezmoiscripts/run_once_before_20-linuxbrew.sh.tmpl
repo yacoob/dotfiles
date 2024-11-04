@@ -3,5 +3,8 @@ set -eux
 
 
 {{ if eq .chezmoi.osRelease.id "debian" }}
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if [[ ! -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+  sudo install -d --group=$(id -g) --owner=$(id -u) /home/linuxbrew
+  NONINTERACTIVE=1 bash -c +x "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 {{ end }}
