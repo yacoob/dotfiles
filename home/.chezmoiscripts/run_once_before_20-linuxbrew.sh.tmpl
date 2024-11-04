@@ -1,10 +1,13 @@
 #!/bin/sh
 set -eux
+b=/home/linuxbrew/.linuxbrew/bin/brew
 
 
 {{ if eq .chezmoi.osRelease.id "debian" }}
-if [[ ! -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+if [ ! -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
   sudo install -d --group=$(id -g) --owner=$(id -u) /home/linuxbrew
   NONINTERACTIVE=1 bash -c +x "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 {{ end }}
+
+${b} analytics off
