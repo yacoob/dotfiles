@@ -1,25 +1,34 @@
 #!/bin/sh
 set -eux
+b=/home/linuxbrew/.linuxbrew/bin/brew
 
 
 # install homebrews
-brew install \
+${b} install \
   bat \
   bottom \
+  chezmoi \
   difftastic \
-  direnv \
   eget \
   fd \
-  gcc \
   gdu \
   lazygit \
   ripgrep \
-  strace \
   tealdeer \
-  trash-cli \
   ugrep \
   viu \
   watchexec \
   yq
-brew cleanup --prune=all --scrub
-rm -rf "$(brew --cache)"
+
+{{ if eq .chezmoi.osRelease.id "aurora" }}
+# install homebrews specific to aurora
+${b} install \
+  direnv \
+  gcc \
+  strace \
+  trash-cli
+{{ end }}
+
+# cleanup
+${b} cleanup --prune=all --scrub
+rm -rf "$(${b} --cache)"
