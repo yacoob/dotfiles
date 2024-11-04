@@ -1,0 +1,24 @@
+#!/bin/sh
+set -eux
+
+
+{{ if eq .chezmoi.osRelease.id "aurora" }}
+# install flatpaks
+for f in \
+  com.bitwarden.desktop \
+  com.calibre_ebook.calibre \
+  com.discordapp.Discord \
+  com.plexamp.Plexamp \
+  com.slack.Slack \
+  com.valvesoftware.Steam \
+  io.github.martchus.syncthingtray \
+  it.mijorus.gearlever \
+  md.obsidian.Obsidian \
+  org.speedcrunch.SpeedCrunch \
+  org.telegram.desktop \
+  org.wezfurlong.wezterm \
+  tv.plex.PlexDesktop
+do
+  flatpak install --system --assumeyes ${f}
+done
+{{ end }}

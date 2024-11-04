@@ -1,0 +1,25 @@
+#!/bin/sh
+set -eux
+
+
+# install homebrews
+brew install \
+  bat \
+  bottom \
+  difftastic \
+  direnv \
+  eget \
+  fd \
+  gcc \
+  gdu \
+  lazygit \
+  ripgrep \
+  strace \
+  tealdeer \
+  trash-cli \
+  ugrep \
+  viu \
+  watchexec \
+  yq
+brew cleanup --prune=all --scrub
+rm -rf "$(brew --cache)"

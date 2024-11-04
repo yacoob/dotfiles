@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eux
+
+
+{{ if eq .chezmoi.osRelease.id "debian" }}
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+{{ end }}
