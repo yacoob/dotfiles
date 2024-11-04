@@ -125,5 +125,15 @@ if [[ -d ~/.rye ]]; then
   source ~/.rye/env
 fi
 
+# homebrew
+if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+  # not running `brew shellenv` as I want a different order for PATH
+  export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
+  export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
+  export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
+  export PATH="${PATH+:$PATH}:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin";
+  [ -z "${MANPATH-}" ] || export MANPATH=":${MANPATH#:}";
+  export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
+fi
 # machine specific config
 [[ -r ~/.zshenv.local ]] && source ~/.zshenv.local
