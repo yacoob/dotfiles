@@ -14,19 +14,25 @@ ${b} install \
   gdu \
   lazygit \
   ripgrep \
-  tealdeer \
-  ugrep \
   viu \
   watchexec \
   yq
 
-{{ if eq .chezmoi.osRelease.id "aurora" }}
+{{ if eq .chezmoi.osRelease.id "debian" }}
+# install homebrews specific to aurora
+${b} install \
+  fzf \
+  starship
+
+{{ else if eq .chezmoi.osRelease.id "aurora" }}
 # install homebrews specific to aurora
 ${b} install \
   direnv \
   gcc \
   strace \
-  trash-cli
+  tealdeer \
+  trash-cli \
+  ugrep
 {{ end }}
 
 # cleanup
