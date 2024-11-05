@@ -10,7 +10,7 @@ local config = {
   skip_close_confirmation_for_processes_named = { 'bash', 'flatpak-spawn', 'zsh' },
 
   -- default shell
-  default_prog = {"/usr/bin/zsh", "-l"},
+  default_prog = {'/usr/bin/zsh', '-l'},
 
   -- custom programs
   launch_menu = {
@@ -18,6 +18,10 @@ local config = {
       label = 'illaoi.normally.works',
       args = { 'ssh', '-A', 'illaoi' },
     },
+    {
+      label = 'ye olde bash',
+      args = { '/usr/bin/bash', '-l'},
+    }
   },
   keys = {
     {
