@@ -1,0 +1,3 @@
+{{ if eq .chezmoi.osRelease.id "debian" -}}
+{{- output "/home/yacoob/.local/bin/rg" "--generate" "complete-zsh" -}}
+{{- end }}
