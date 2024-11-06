@@ -42,7 +42,7 @@ eget_install() {
 }
 
 # use eget to install tools that are not in the distro
-eget_install watchexec/watchexec watchexec gnu.tar.xz _ -a '^b3' -a '^sha512' -a musl
+eget_install watchexec/watchexec watchexec musl.tar.xz _ -a '^b3' -a '^sha512'
 {{ if eq .chezmoi.osRelease.id "debian" }}
 eget_install BurntSushi/ripgrep rg
 eget_install ClementTsang/bottom btm gnu.tar _btm
