@@ -1,0 +1,76 @@
+# Disable lint warning about merging consecutive `RUN` lines; I squash the layers at the end regardless,
+# and simpler `RUN` files cache better.
+# hadolint global ignore=DL3059,DL3041
+
+FROM fedora:41 AS common-builder
+# Set up my user
+ARG UID
+ARG GID
+ENV UID=${UID:-1000}
+ENV GID=${GID:-1000}
+RUN groupadd -g ${GID} yacoob && \
+  useradd -l -u ${UID} -g ${GID} -m -s /usr/bin/zsh -G wheel yacoob && \
+  passwd -d yacoob
+# Install packages
+WORKDIR /etc/yum.repos.d
+RUN for c in atim/bottom atim/lazygit atim/starship faramirza/gdu; do \
+  curl --output-dir /etc/yum.repos.d/ --remote-name https://copr.fedorainfracloud.org/coprs/${c%%/*}/${c##*/}/repo/fedora-41/${c%%/*}-${c##*/}-fedora-41.repo; \
+  done \
+  && dnf install --setopt=install_weak_deps=False -y curl git gh sudo zsh fzf bat difftastic direnv fd-find gh ripgrep tealdeer ugrep yq \
+  && dnf install --setopt=install_weak_deps=False -y gdu lazygit bottom starship \
+  && dnf clean all
+# install extra binaries via eget
+WORKDIR /usr/local/bin
+RUN curl https://zyedidia.github.io/eget.sh | sh \
+  && ./eget watchexec/watchexec -a musl.tar.xz _ -a '^b3' -a '^sha512'
+
+# Run a custom script on container start
+COPY --chown=yacoob:yacoob --chmod=755 ./docker/entry.sh /home/yacoob/.entry.sh
+# The context should contain the entire repository.
+ARG BOOTSTRAP=/tmp/conf-bootstrap
+COPY --chown=yacoob:yacoob . ${BOOTSTRAP}
+
+
+FROM common-builder AS base-builder
+ARG BOOTSTRAP=/tmp/conf-bootstrap
+USER yacoob
+WORKDIR /home/yacoob
+# Run chezmoi install script
+RUN "${BOOTSTRAP}/install.sh" --promptBool neovim=false,python=false && rm -rf "${BOOTSTRAP}"
+# start zsh so antidote can install plugins
+RUN  script -qec '/usr/bin/zsh -is </dev/null' /dev/null
+
+
+FROM base-builder AS nvim-builder
+USER root
+RUN dnf install --setopt=install_weak_deps=True -y neovim \
+  && dnf clean all
+USER yacoob
+WORKDIR /home/yacoob
+# bootstrap neovim plugins
+RUN nvim -c 'Lazy install' -c 'qa!'
+
+
+FROM fedora:41 AS common
+# Redo the envs
+ARG UID
+ARG GID
+ENV UID=${UID:-1000}
+ENV GID=${GID:-1000}
+# Set the environment
+ENV SHELL=/usr/bin/zsh
+ENV SSH_AUTH_SOCK=/home/yacoob/.ssh/agent.sock
+ENV TERM=xterm-256color
+ENV TZ='Europe/Dublin'
+# entry.sh adjusts the uid/gid at runtime, then execs sudo -u yacoob
+# hadolint ignore=DL3002
+USER root
+ENTRYPOINT ["/home/yacoob/.entry.sh"]
+
+
+FROM common AS base
+COPY --from=base-builder / /
+
+
+FROM common AS nvim
+COPY --from=nvim-builder / /
