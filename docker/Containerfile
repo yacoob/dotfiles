@@ -2,7 +2,7 @@
 # and simpler `RUN` files cache better.
 # hadolint global ignore=DL3059,DL3041
 
-FROM fedora:41 AS common-builder
+FROM fedora:latest AS common-builder
 # Set up my user
 ARG UID
 ARG GID
@@ -12,18 +12,19 @@ RUN groupadd -g ${GID} yacoob && \
   useradd -l -u ${UID} -g ${GID} -m -s /usr/bin/zsh -G wheel yacoob && \
   passwd -d yacoob
 # Install packages
-WORKDIR /etc/yum.repos.d
-RUN for c in atim/bottom atim/lazygit atim/starship faramirza/gdu; do \
-  curl --output-dir /etc/yum.repos.d/ --remote-name https://copr.fedorainfracloud.org/coprs/${c%%/*}/${c##*/}/repo/fedora-41/${c%%/*}-${c##*/}-fedora-41.repo; \
-  done \
-  && dnf install --setopt=install_weak_deps=False -y curl git gh sudo zsh fzf bat difftastic direnv fd-find gh ripgrep tealdeer ugrep yq \
-  && dnf install --setopt=install_weak_deps=False -y gdu lazygit bottom starship \
-  && dnf clean all
+RUN \
+  dnf install --setopt=install_weak_deps=False -y \
+    dnf-plugins-core \
+    curl git gh sudo zsh fzf bat difftastic direnv fd-find gh ripgrep tealdeer ugrep yq && \
+  for c in atim/bottom atim/lazygit atim/starship faramirza/gdu; do \
+    dnf copr enable -y $c; \
+  done && \
+  dnf install --setopt=install_weak_deps=False -y gdu lazygit bottom starship && \
+  dnf clean all
 # install extra binaries via eget
 WORKDIR /usr/local/bin
 RUN curl https://zyedidia.github.io/eget.sh | sh \
   && ./eget watchexec/watchexec -a musl.tar.xz _ -a '^b3' -a '^sha512'
-
 # Run a custom script on container start
 COPY --chown=yacoob:yacoob --chmod=755 ./docker/entry.sh /home/yacoob/.entry.sh
 # The context should contain the entire repository.
@@ -51,7 +52,7 @@ WORKDIR /home/yacoob
 RUN nvim -c 'Lazy install' -c 'qa!'
 
 
-FROM fedora:41 AS common
+FROM fedora:latest AS common
 # Redo the envs
 ARG UID
 ARG GID
