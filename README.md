@@ -4,7 +4,7 @@
 
 ## next
 
-- handle nvm and rye
+- start pushing packages to ghcr.io
 
 ## Installation
 
