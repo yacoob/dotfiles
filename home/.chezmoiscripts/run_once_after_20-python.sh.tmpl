@@ -1,8 +1,0 @@
-#!/bin/sh
-set -eux
-
-{{ if .pyDev }}
-  if [ ! -x ~/.rye/shims/rye ]; then
-    curl -sSf https://rye.astral.sh/get | RYE_INSTALL_OPTION="--yes" bash
-  fi
-{{ end }}

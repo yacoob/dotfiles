@@ -1,6 +1,6 @@
 # Disable lint warning about merging consecutive `RUN` lines; I squash the layers at the end regardless,
 # and simpler `RUN` files cache better.
-# hadolint global ignore=DL3059,DL3041
+# hadolint global ignore=DL3007,DL3041,DL3059,DL4006
 
 FROM fedora:latest AS common-builder
 # Set up my user
@@ -37,7 +37,7 @@ ARG BOOTSTRAP=/tmp/conf-bootstrap
 USER yacoob
 WORKDIR /home/yacoob
 # Run chezmoi install script
-RUN "${BOOTSTRAP}/install.sh" --promptBool neovim=false,python=false && rm -rf "${BOOTSTRAP}"
+RUN "${BOOTSTRAP}/install.sh" --promptBool dev-environment=false && rm -rf "${BOOTSTRAP}"
 # start zsh so antidote can install plugins
 RUN  script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 

@@ -1,8 +1,6 @@
-{{- $useNvim := promptBool "neovim" true -}}
-{{- $pyDev := promptBool "python" false -}}
+{{- $devEnv := promptBool "dev-environment" false -}}
 data:
-  useNvim: {{ $useNvim }}
-  pyDev: {{ $pyDev }}
+  devEnv: {{ $devEnv }}
 merge:
   command: nvim
   args:
