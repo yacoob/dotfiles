@@ -1,0 +1,85 @@
+# Disable lint warning about merging consecutive `RUN` lines; I squash the layers at the end regardless,
+# and simpler `RUN` files cache better.
+# hadolint global ignore=DL3007,DL3041,DL3059,DL4006
+
+FROM fedora:latest AS common-builder
+# Set up my user
+ARG UID
+ARG GID
+ENV UID=${UID:-1000}
+ENV GID=${GID:-1000}
+RUN groupadd -g ${GID} yacoob \
+  && useradd -l -u ${UID} -g ${GID} -m -s /usr/bin/zsh -G wheel yacoob \
+  && passwd -d yacoob
+# Install packages
+RUN \
+  dnf install --setopt=install_weak_deps=False -y \
+    dnf-plugins-core \
+    curl git sudo zsh fzf bat difftastic fd-find ripgrep tealdeer ugrep yq \
+  && for c in atim/bottom atim/lazygit atim/starship faramirza/gdu; do \
+    dnf copr enable -y $c; \
+  done \
+  && dnf remove -y dnf-plugins-core \
+  && dnf install --setopt=install_weak_deps=False -y gdu bottom starship \
+  && dnf clean all
+# Run a custom script on container start
+COPY --chown=yacoob:yacoob --chmod=755 ./docker/entry.sh /home/yacoob/.entry.sh
+# The context should contain the entire repository.
+ARG BOOTSTRAP=/tmp/conf-bootstrap
+COPY --chown=yacoob:yacoob . ${BOOTSTRAP}
+USER yacoob
+WORKDIR /home/yacoob/.local/bin
+# install extra binaries via eget
+RUN curl https://zyedidia.github.io/eget.sh | sh
+
+
+FROM common-builder AS base-builder
+ARG BOOTSTRAP=/tmp/conf-bootstrap
+USER yacoob
+WORKDIR /home/yacoob
+# Run chezmoi install script
+RUN "${BOOTSTRAP}/install.sh" --promptBool dev-environment=false \
+  && rm -rf "${BOOTSTRAP}"
+# start zsh so antidote can install plugins
+RUN  script -qec '/usr/bin/zsh -is </dev/null' /dev/null
+
+
+FROM base-builder AS devenv-builder
+USER root
+# Add more packages
+RUN dnf install --setopt=install_weak_deps=True -y \
+    direnv gcc gh lazygit neovim unzip \
+  && dnf clean all
+USER yacoob
+WORKDIR /home/yacoob/.local/bin
+# install binaries via eget
+RUN ./eget watchexec/watchexec -a musl.tar.xz _ -a '^b3' -a '^sha512'
+# switch chezmoi to devenv mode
+RUN ./chezmoi init --promptBool dev-environment=true --apply
+# bootstrap neovim plugins and mason helpers
+RUN nvim -c 'Lazy install' -c 'qa!'
+
+
+FROM fedora:latest AS common
+# Redo the envs
+ARG UID
+ARG GID
+ENV UID=${UID:-1000}
+ENV GID=${GID:-1000}
+# Set the environment
+ENV SHELL=/usr/bin/zsh
+ENV SSH_AUTH_SOCK=/home/yacoob/.ssh/agent.sock
+ENV TERM=xterm-256color
+ENV TZ='Europe/Dublin'
+# entry.sh adjusts the uid/gid at runtime, then execs sudo -u yacoob
+# hadolint ignore=DL3002
+USER root
+ENTRYPOINT ["/home/yacoob/.entry.sh"]
+
+
+FROM common AS base
+COPY --from=base-builder / /
+
+
+FROM common AS devenv
+COPY --from=devenv-builder / /

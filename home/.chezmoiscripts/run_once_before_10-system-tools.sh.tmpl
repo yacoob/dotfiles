@@ -1,10 +1,9 @@
 #!/bin/sh
 set -eux
 
-
 {{ if eq .chezmoi.osRelease.id "debian" }}
-sudo apt update
-sudo apt install -y --no-install-suggests --no-install-recommends \
-  curl direnv file fuse git less openssh-client pv strace sudo wget zsh
-sudo apt clean && sudo apt autoremove -y
+  sudo apt update
+  sudo apt install -y --no-install-suggests --no-install-recommends \
+    curl direnv file fuse git less openssh-client pv strace sudo wget zsh
+  sudo apt clean && sudo apt autoremove -y
 {{ end }}

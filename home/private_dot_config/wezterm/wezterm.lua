@@ -19,6 +19,10 @@ local config = {
       args = { 'ssh', '-A', 'illaoi' },
     },
     {
+      label = 'tentakl.normally.works',
+      args = { 'ssh', '-A', 'tentakl' },
+    },
+    {
       label = 'ye olde bash',
       args = { '/usr/bin/bash', '-l'},
     }

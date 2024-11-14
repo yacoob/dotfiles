@@ -40,26 +40,26 @@ jobs:
         with:
           target: base
           context: .
-          file: ./docker/Dockerfile
+          file: ./docker/Containerfile
           # Push to registry only for main branch pushes.
           push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           tags: |
             ${{ steps.docker_meta.outputs.tags }}
             yacoob/interactive:base
-      - name: Build and optionally push the nvim version
+      - name: Build and optionally push the devenv version
         # disable temporarily while I work on switching to chezmoi
         uses: docker/build-push-action@v6
         with:
-          target: nvim
+          target: devenv
           context: .
-          file: ./docker/Dockerfile
+          file: ./docker/Containerfile
           # Push to registry only for main branch pushes.
           push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           tags: |
             ${{ steps.docker_meta.outputs.tags }}
-            yacoob/interactive:nvim
+            yacoob/interactive:devenv
 
   ping-others:
     name: Notify other repositories about new version of the base image.
