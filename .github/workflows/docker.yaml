@@ -4,6 +4,8 @@ on:
   # Build for all git pushes, push and mark as 'latest' only for
   # main branch.
   push:
+    paths-ignore:
+      - "**.md"
   # For pull requests, build but don't push.
   pull_request:
   # Build and push if triggered manually.
