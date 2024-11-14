@@ -1,6 +1,9 @@
-# Disable lint warning about merging consecutive `RUN` lines; I squash the layers at the end regardless,
-# and simpler `RUN` files cache better.
 # hadolint global ignore=DL3007,DL3041,DL3059,DL4006
+# - 3007 - yes, I do want the `latest` :D
+# - 3041 - no, I don't care about specific versions of the packages I'm installing
+# - 3059 - I'm ok with consecutive `RUN`s; I squash the layers at the end regardless,
+#          and during the build multiple `RUN` lines cache better
+# - 4006 - podman doesn't support this :[
 
 FROM fedora:latest AS common-builder
 # Set up my user
