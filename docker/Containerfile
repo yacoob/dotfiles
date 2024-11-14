@@ -8,28 +8,29 @@ ARG UID
 ARG GID
 ENV UID=${UID:-1000}
 ENV GID=${GID:-1000}
-RUN groupadd -g ${GID} yacoob && \
-  useradd -l -u ${UID} -g ${GID} -m -s /usr/bin/zsh -G wheel yacoob && \
-  passwd -d yacoob
+RUN groupadd -g ${GID} yacoob \
+  && useradd -l -u ${UID} -g ${GID} -m -s /usr/bin/zsh -G wheel yacoob \
+  && passwd -d yacoob
 # Install packages
 RUN \
   dnf install --setopt=install_weak_deps=False -y \
     dnf-plugins-core \
-    curl git gh sudo zsh fzf bat difftastic direnv fd-find gh ripgrep tealdeer ugrep yq && \
-  for c in atim/bottom atim/lazygit atim/starship faramirza/gdu; do \
+    curl git sudo zsh fzf bat difftastic fd-find ripgrep tealdeer ugrep yq \
+  && for c in atim/bottom atim/lazygit atim/starship faramirza/gdu; do \
     dnf copr enable -y $c; \
-  done && \
-  dnf install --setopt=install_weak_deps=False -y gdu lazygit bottom starship && \
-  dnf clean all
-# install extra binaries via eget
-WORKDIR /usr/local/bin
-RUN curl https://zyedidia.github.io/eget.sh | sh \
-  && ./eget watchexec/watchexec -a musl.tar.xz _ -a '^b3' -a '^sha512'
+  done \
+  && dnf remove -y dnf-plugins-core \
+  && dnf install --setopt=install_weak_deps=False -y gdu bottom starship \
+  && dnf clean all
 # Run a custom script on container start
 COPY --chown=yacoob:yacoob --chmod=755 ./docker/entry.sh /home/yacoob/.entry.sh
 # The context should contain the entire repository.
 ARG BOOTSTRAP=/tmp/conf-bootstrap
 COPY --chown=yacoob:yacoob . ${BOOTSTRAP}
+USER yacoob
+WORKDIR /home/yacoob/.local/bin
+# install extra binaries via eget
+RUN curl https://zyedidia.github.io/eget.sh | sh
 
 
 FROM common-builder AS base-builder
@@ -37,18 +38,25 @@ ARG BOOTSTRAP=/tmp/conf-bootstrap
 USER yacoob
 WORKDIR /home/yacoob
 # Run chezmoi install script
-RUN "${BOOTSTRAP}/install.sh" --promptBool dev-environment=false && rm -rf "${BOOTSTRAP}"
+RUN "${BOOTSTRAP}/install.sh" --promptBool dev-environment=false \
+  && rm -rf "${BOOTSTRAP}"
 # start zsh so antidote can install plugins
 RUN  script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 
 
-FROM base-builder AS nvim-builder
+FROM base-builder AS devenv-builder
 USER root
-RUN dnf install --setopt=install_weak_deps=True -y neovim \
+# Add more packages
+RUN dnf install --setopt=install_weak_deps=True -y \
+    direnv gcc gh lazygit neovim unzip \
   && dnf clean all
 USER yacoob
-WORKDIR /home/yacoob
-# bootstrap neovim plugins
+WORKDIR /home/yacoob/.local/bin
+# install binaries via eget
+RUN ./eget watchexec/watchexec -a musl.tar.xz _ -a '^b3' -a '^sha512'
+# switch chezmoi to devenv mode
+RUN ./chezmoi init --promptBool dev-environment=true --apply
+# bootstrap neovim plugins and mason helpers
 RUN nvim -c 'Lazy install' -c 'qa!'
 
 
@@ -73,5 +81,5 @@ FROM common AS base
 COPY --from=base-builder / /
 
 
-FROM common AS nvim
-COPY --from=nvim-builder / /
+FROM common AS devenv
+COPY --from=devenv-builder / /
