@@ -1,14 +1,10 @@
 name: Build and push image to GitHub Container Registry
 
 on:
-  # Build for all git pushes, push and mark as 'latest' only for
-  # main branch.
   push:
     paths-ignore:
       - "**.md"
-  # For pull requests, build but don't push.
   pull_request:
-  # Build and push if triggered manually.
   workflow_dispatch:
 
 env:
@@ -37,11 +33,8 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Log in to GitHub Container Registry
-        # Skip registry push for pull_requests.
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: docker/login-action@v3
         with:
@@ -68,7 +61,6 @@ jobs:
           target: ${{ matrix.target }}
           context: .
           file: ./docker/Containerfile
-          # Push to registry only for main branch pushes.
           push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           tags: ${{ steps.docker_meta.outputs.tags }}
