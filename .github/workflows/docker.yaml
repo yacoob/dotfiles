@@ -17,6 +17,7 @@ jobs:
     name: Build and optionally push ${{ matrix.target }} image
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 1
       matrix:
         target: [base, devenv]
 
@@ -64,6 +65,8 @@ jobs:
           push: ${{ env.SHOULD_PUSH == 'true' }}
           labels: ${{ steps.docker-meta.outputs.labels }}
           tags: ${{ steps.docker-meta.outputs.tags }}
+          cache-to: type=gha,mode=max
+          cache-from: type=gha
 
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v1
