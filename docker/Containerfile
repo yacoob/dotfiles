@@ -51,7 +51,7 @@ FROM base-builder AS devenv-builder
 USER root
 # Add more packages
 RUN dnf install --setopt=install_weak_deps=True -y \
-    direnv gcc gh lazygit neovim unzip \
+    direnv gcc gh just lazygit neovim unzip \
   && dnf clean all
 USER yacoob
 WORKDIR /home/yacoob/.local/bin
