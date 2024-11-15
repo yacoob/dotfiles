@@ -79,18 +79,3 @@ jobs:
           subject-name: ${{ env.TARGET }}
           subject-digest: ${{ steps.build.outputs.digest }}
           push-to-registry: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-
-  ping-others:
-    name: Notify other repositories about new version of the base image.
-    runs-on: ubuntu-latest
-    # Only ping others on pushes to main branch.
-    if: github.event_name == 'push' && endsWith(github.ref, '/main')
-    # Don't ping if build step failed.
-    needs: build
-    steps:
-      - name: Ping yacoob/docker-beets
-        uses: peter-evans/repository-dispatch@v3
-        with:
-          token: ${{ secrets.PUBLIC_REPO_TOKEN }}
-          repository: yacoob/docker-beets
-          event-type: dependency-updated
