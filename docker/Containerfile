@@ -18,7 +18,7 @@ RUN groupadd -g ${GID} yacoob \
 RUN \
   dnf install --setopt=install_weak_deps=False -y \
     dnf-plugins-core \
-    curl git sudo zsh fzf bat difftastic fd-find ripgrep tealdeer ugrep yq \
+    bat curl difftastic fd-find fzf git procps ripgrep sudo tealdeer ugrep unzip yq zsh \
   && for c in atim/bottom atim/lazygit atim/starship faramirza/gdu; do \
     dnf copr enable -y $c; \
   done \
@@ -51,7 +51,7 @@ FROM base-builder AS devenv-builder
 USER root
 # Add more packages
 RUN dnf install --setopt=install_weak_deps=True -y \
-    direnv gcc gh just lazygit neovim unzip \
+    direnv gcc gh just lazygit neovim \
   && dnf clean all
 USER yacoob
 WORKDIR /home/yacoob/.local/bin
