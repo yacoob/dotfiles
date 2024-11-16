@@ -50,14 +50,14 @@ RUN  script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 FROM base-builder AS devenv-builder
 USER root
 # Add more packages
-RUN dnf install --setopt=install_weak_deps=True -y \
-    direnv gcc gh just lazygit \
+RUN dnf install --setopt=install_weak_deps=False -y \
+    direnv gcc gh just lazygit nodejs-npm \
   && dnf clean all
 USER yacoob
 WORKDIR /home/yacoob/.local/bin
 # install binaries via eget
 RUN ./eget watchexec/watchexec -a musl.tar.xz _ -a '^b3' -a '^sha512'
-# switch chezmoi to devenv mode
+# switch chezmoi to devenv flavour
 RUN ./chezmoi init --promptBool dev-environment=true --apply
 
 
