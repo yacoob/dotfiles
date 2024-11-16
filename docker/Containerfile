@@ -51,7 +51,7 @@ FROM base-builder AS devenv-builder
 USER root
 # Add more packages
 RUN dnf install --setopt=install_weak_deps=True -y \
-    direnv gcc gh just lazygit neovim \
+    direnv gcc gh just lazygit \
   && dnf clean all
 USER yacoob
 WORKDIR /home/yacoob/.local/bin
@@ -59,8 +59,6 @@ WORKDIR /home/yacoob/.local/bin
 RUN ./eget watchexec/watchexec -a musl.tar.xz _ -a '^b3' -a '^sha512'
 # switch chezmoi to devenv mode
 RUN ./chezmoi init --promptBool dev-environment=true --apply
-# bootstrap neovim plugins and mason helpers
-RUN nvim -c 'Lazy install' -c 'qa!'
 
 
 FROM fedora:latest AS common
