@@ -3,6 +3,7 @@ set -eux
 
 {{ if eq .chezmoi.osRelease.id "debian" }}
   CHEZMOI_FORCE_INSTALL_LOCAL_BIN_TOOLS=${CHEZMOI_FORCE_INSTALL_LOCAL_BIN_TOOLS:-}
+  mkdir -p ~/.local/bin
   cd ~/.local/bin
   eg=~/.local/bin/eget
   cp=~/.zsh/completion
