@@ -36,6 +36,12 @@ if (vim.uv or vim.loop).fs_stat(hostconfig) then
   table.insert(spec, { import = 'host.' .. hostname})
 end
 
+-- source a "devenv host"'s config if we're running in a devpod
+local devenv_config = vim.fn.stdpath 'config' .. '/lua/host/devenv.lua'
+if vim.env.DEVPOD == 'true' and (vim.uv or ivm.loop).fs_stat(devenv_config) then
+  table.insert(spec, { import = 'host.devenv'})
+end
+
 -- run Lazy
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup(spec,
