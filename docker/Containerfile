@@ -32,7 +32,7 @@ ARG BOOTSTRAP=/tmp/conf-bootstrap
 COPY --chown=yacoob:yacoob . ${BOOTSTRAP}
 USER yacoob
 WORKDIR /home/yacoob/.local/bin
-# install extra binaries via eget
+# install eget
 RUN curl https://zyedidia.github.io/eget.sh | sh
 
 
@@ -53,10 +53,10 @@ USER root
 RUN dnf install --setopt=install_weak_deps=False -y \
     direnv gcc gh just lazygit nodejs-npm \
   && dnf clean all
-USER yacoob
 WORKDIR /home/yacoob/.local/bin
 # install binaries via eget
-RUN ./eget watchexec/watchexec -a musl.tar.xz _ -a '^b3' -a '^sha512'
+RUN ./eget watchexec/watchexec -a musl.tar.xz _ -a '^b3' -a '^sha512' --to=/usr/local/bin
+USER yacoob
 # switch chezmoi to devenv flavour
 RUN ./chezmoi init --promptBool dev-environment=true --apply
 
