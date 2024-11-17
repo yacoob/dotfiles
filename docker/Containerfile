@@ -25,8 +25,6 @@ RUN \
   && dnf remove -y dnf-plugins-core \
   && dnf install --setopt=install_weak_deps=False -y gdu bottom starship \
   && dnf clean all
-# Run a custom script on container start
-COPY --chown=yacoob:yacoob --chmod=755 ./docker/entry.sh /home/yacoob/.entry.sh
 # The context should contain the entire repository.
 ARG BOOTSTRAP=/tmp/conf-bootstrap
 COPY --chown=yacoob:yacoob . ${BOOTSTRAP}
@@ -62,20 +60,13 @@ RUN ./chezmoi init --promptBool dev-environment=true --apply
 
 
 FROM fedora:latest AS common
-# Redo the envs
-ARG UID
-ARG GID
-ENV UID=${UID:-1000}
-ENV GID=${GID:-1000}
 # Set the environment
 ENV SHELL=/usr/bin/zsh
 ENV SSH_AUTH_SOCK=/home/yacoob/.ssh/agent.sock
 ENV TERM=xterm-256color
 ENV TZ='Europe/Dublin'
-# entry.sh adjusts the uid/gid at runtime, then execs sudo -u yacoob
-# hadolint ignore=DL3002
-USER root
-ENTRYPOINT ["/home/yacoob/.entry.sh"]
+USER yacoob
+ENTRYPOINT ["/usr/bin/zsh"]
 
 
 FROM common AS base
