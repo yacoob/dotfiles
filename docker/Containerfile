@@ -68,6 +68,13 @@ ENV TZ='Europe/Dublin'
 USER yacoob
 ENTRYPOINT ["/usr/bin/zsh"]
 LABEL maintainer="yacoob@ftml.net"
+# Add devcontainer options
+# https://containers.dev/implementors/reference/#labels
+LABEL devcontainer.metadata='{ \
+  "remoteUser": "yacoob", \
+  "containerUser": "yacoob", \
+  "securityOpt": ["label=disable"] \
+}'
 
 
 FROM common AS base
