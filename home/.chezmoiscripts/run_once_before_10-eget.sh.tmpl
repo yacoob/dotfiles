@@ -1,6 +1,7 @@
 #!/bin/sh
 set -eux
 
+
 {{ if eq .chezmoi.osRelease.id "debian" }}
   CHEZMOI_FORCE_INSTALL_LOCAL_BIN_TOOLS=${CHEZMOI_FORCE_INSTALL_LOCAL_BIN_TOOLS:-}
   mkdir -p ~/.local/bin

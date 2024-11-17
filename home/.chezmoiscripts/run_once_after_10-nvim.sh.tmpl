@@ -1,9 +1,9 @@
 #!/bin/sh
 set -eux
-eg=~/.local/bin/eget
 
 
 {{ if eq .chezmoi.osRelease.id "debian" }}
+  eg=~/.local/bin/eget
   sudo apt install -y --no-install-suggests --no-install-recommends \
   {{ if .devEnv }} build-essential {{ else }} vim-tiny {{ end }}
   sudo apt purge -y \
