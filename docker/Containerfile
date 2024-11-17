@@ -67,6 +67,7 @@ ENV TERM=xterm-256color
 ENV TZ='Europe/Dublin'
 USER yacoob
 ENTRYPOINT ["/usr/bin/zsh"]
+LABEL maintainer="yacoob@ftml.net"
 
 
 FROM common AS base
