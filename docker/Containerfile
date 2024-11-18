@@ -49,7 +49,7 @@ FROM base-builder AS devenv-builder
 USER root
 # Add more packages
 RUN dnf install --setopt=install_weak_deps=False -y \
-    direnv gcc gh just lazygit neovim \
+    direnv gcc gh just lazygit neovim nodejs-npm tmux \
   && dnf clean all
 WORKDIR /home/yacoob/.local/bin
 # install binaries via eget
