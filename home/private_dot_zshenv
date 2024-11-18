@@ -5,10 +5,6 @@ typeset -U path manpath
 path=(/usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin $path[@])
 path=(~/.local/bin $path[@])
 
-# conf repo updater
-export CONF_AUTO_UPDATE=true
-export CONF_STALE_IF_OLDER_THAN=$(( 60 * 60 * 24 * 2 ))  # 2d in seconds
-
 # locales
 export LANG=en_IE.UTF-8
 export LC_COLLATE=pl_PL.UTF-8
@@ -17,7 +13,6 @@ export LC_MESSAGES=C
 export TZ='Europe/Dublin'
 
 # general
-export CVS_RSH=ssh
 export EMAIL="yacoob@ftml.net"
 export TMPDIR=/tmp
 if (( $+commands[vim] )); then
@@ -29,7 +24,7 @@ elif (( $+commands[vi] )); then
 fi
 
 # explicitly mark truecolor support under Windows Terminal
-if [[ -n    "${WT_SESSION}" ]]; then
+if [[ -n "${WT_SESSION}" ]]; then
   export COLORTERM=truecolor
 fi
 
@@ -44,27 +39,16 @@ export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode – cyan
 
 # python settings
 export PIP_REQUIRE_VIRTUALENV=true
-export WORKON_HOME="${HOME}/.venvs"
 export PIPENV_VENV_IN_PROJECT=1
 
 # zsh-syntax-highlighting
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 export ZSH_HIGHLIGHT_PATTERNS=('rm -rf *' 'fg=white,bold,bg=red')
 
-# WSL marker for distros other than Debian
-if [[ -n "${WSL_DISTRO_NAME}" && "${WSL_DISTRO_NAME}" != "Debian" ]]; then
-  export WSL_PROMPT_DISTRO_NAME="${WSL_DISTRO_NAME}"
-fi
-
 # highlight
 if (( $+commands[highlight] )); then
   export LESSOPEN="| $(which highlight) --force --quiet %s"
   export HIGHLIGHT_OPTIONS="-O truecolor -s zmrok"
-fi
-
-# delta
-if (( $+commands[delta] )); then
-  export GIT_PAGER=delta
 fi
 
 # fzf
@@ -103,31 +87,5 @@ elif (( $+commands[fd] )); then
   export FZF_DEFAULT_COMMAND="fd --type file --color=always"
 fi
 
-# nvm
-if [[ -d ~/.nvm ]]; then
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-fi
-
-# rust
-if [[ -d ~/.cargo ]]; then
-  source ~/.cargo/env
-fi
-
-# rye
-if [[ -d ~/.rye ]]; then
-  source ~/.rye/env
-fi
-
-# homebrew
-if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
-  # not running `brew shellenv` as I want a different order for PATH
-  export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
-  export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
-  export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
-  path=($path[@] /home/linuxbrew/.linuxbrew/bin /home/linuxbrew/.linuxbrew/sbin)
-  [ -z "${MANPATH-}" ] || export MANPATH=":${MANPATH#:}";
-  export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
-fi
 # machine specific config
 [[ -r ~/.zshenv.local ]] && source ~/.zshenv.local
