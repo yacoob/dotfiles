@@ -18,7 +18,7 @@ RUN groupadd -g ${GID} yacoob \
 RUN \
   dnf install --setopt=install_weak_deps=False -y \
     dnf-plugins-core \
-    bat curl difftastic fd-find fzf git procps psmisc ripgrep sudo tealdeer unzip yq zsh \
+    bat curl difftastic fd-find fzf git procps psmisc ripgrep sudo tealdeer unzip yq which zsh \
   && for c in atim/bottom atim/lazygit atim/starship faramirza/gdu; do \
     dnf copr enable -y $c; \
   done \
