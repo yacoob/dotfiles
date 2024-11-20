@@ -1,0 +1,5 @@
+keymap_mode = "vim-insert"
+filter_mode = "host"
+
+[sync]
+records = true

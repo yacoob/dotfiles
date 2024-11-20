@@ -210,5 +210,10 @@ fi
 # machine specific config
 [[ -r ~/.zshrc.local ]] && source ~/.zshrc.local
 
+# atuin
+if (( $+commands[atuin] )); then
+  eval "$(atuin init zsh --disable-up-arrow)"
+fi
+
 # A dummy command that returns positive exit status to make prompt non-red :)
 :

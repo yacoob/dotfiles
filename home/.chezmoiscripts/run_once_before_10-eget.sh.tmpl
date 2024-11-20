@@ -44,6 +44,7 @@ set -eux
   }
 
   # use eget to install tools that are not in the distro
+  eget_install atuinsh/atuin atuin gnu _ -a '^update'
   eget_install BurntSushi/ripgrep rg
   eget_install ClementTsang/bottom btm gnu.tar _btm
   eget_install jesseduffield/lazygit
