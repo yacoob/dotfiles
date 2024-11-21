@@ -26,8 +26,7 @@ RUN \
   && dnf install --setopt=install_weak_deps=False -y gdu bottom starship \
   && dnf clean all
 # The context should contain the entire repository.
-ARG BOOTSTRAP=/tmp/conf-bootstrap
-COPY --chown=yacoob:yacoob . ${BOOTSTRAP}
+COPY --chown=yacoob:yacoob . /home/yacoob/.local/share/chezmoi
 USER yacoob
 WORKDIR /home/yacoob/.local/bin
 # install eget
@@ -35,12 +34,10 @@ RUN curl https://zyedidia.github.io/eget.sh | sh
 
 
 FROM common-builder AS base-builder
-ARG BOOTSTRAP=/tmp/conf-bootstrap
 USER yacoob
 WORKDIR /home/yacoob
 # Run chezmoi install script
-RUN "${BOOTSTRAP}/install.sh" --promptDefaults \
-  && rm -rf "${BOOTSTRAP}"
+RUN ./.local/share/chezmoi/install.sh
 # start zsh so antidote can install plugins
 RUN  script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 
@@ -66,6 +63,7 @@ ENV SSH_AUTH_SOCK=/home/yacoob/.ssh/agent.sock
 ENV TERM=xterm-256color
 ENV TZ='Europe/Dublin'
 USER yacoob
+WORKDIR /home/yacoob
 ENTRYPOINT ["/usr/bin/zsh"]
 LABEL maintainer="yacoob@ftml.net"
 # Add devcontainer options
