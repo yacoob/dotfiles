@@ -167,14 +167,14 @@ if ! whence compdef >/dev/null; then
   bashcompinit
 fi
 
-# atuin
-if (( $+commands[atuin] )); then
-  eval "$(atuin init zsh --disable-up-arrow)"
-fi
-
 # fzf
 if (( $+commands[fzf] )); then
   source ~/.zsh/fzf-key-bindings.zsh
+fi
+
+# atuin (keep after fzf!)
+if (( $+commands[atuin] )); then
+  eval "$(atuin init zsh --disable-up-arrow)"
 fi
 
 # direnv
