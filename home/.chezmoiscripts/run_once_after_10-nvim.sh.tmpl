@@ -4,16 +4,8 @@ set -eux
 
 {{ if eq .chezmoi.osRelease.id "debian" }}
   eg=~/.local/bin/eget
-  sudo apt install -y --no-install-suggests --no-install-recommends \
-  {{ if .devEnv }} build-essential {{ else }} vim-tiny {{ end }}
-  sudo apt purge -y \
-  {{ if .devEnv }} vim-tiny {{ else }} build-essential {{ end }}
+  sudo apt install -y --no-install-suggests --no-install-recommends build-essential
   sudo apt clean && sudo apt autoremove -y
-  {{ if .devEnv -}}
-    ${eg} neovim/neovim -a appimage --to=~/.appimages/neovim.appimage
-    ln -fs ~/.appimages/neovim.appimage ~/.local/bin/nvim
-  {{ else }}
-    # remove all nvim-related symlinks and appimages
-    rm -f ~/.local/bin/nvim ~/.appimages/neovim.appimage
-  {{ end }}
+  ${eg} neovim/neovim -a appimage --to=~/.appimages/neovim.appimage
+  ln -fs ~/.appimages/neovim.appimage ~/.local/bin/nvim
 {{ end }}
