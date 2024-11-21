@@ -169,7 +169,15 @@ fi
 
 # fzf
 if (( $+commands[fzf] )); then
-  source ~/.zsh/fzf-key-bindings.zsh
+{{ if eq .chezmoi.osRelease.id "debian" -}}
+  source /usr/share/doc/fzf/examples/key-bindings.zsh
+{{ else if hasKey .chezmoi.osRelease "idLike" -}}
+{{ if eq .chezmoi.osRelease.idLike "fedora" -}}
+  source /usr/share/fzf/shell/key-bindings.zsh
+{{ end -}}
+{{ else -}}
+  echo "WARNING: fzf is installed, but I couldn't figure out where key-bindings.zsh lives"
+{{- end }}
 fi
 
 # atuin (keep after fzf!)
