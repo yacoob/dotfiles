@@ -97,7 +97,6 @@ setopt \
 alias apt-list-backports='aptitude search -t $(lsb_release -sc)-backports -F "%p %v -> %V" "~U ~Abackports"'
 alias beets-docker='docker compose -f ~/.local/bin/beets/compose.yaml pull --policy=always && docker compose -f ~/.local/bin/beets/compose.yaml run --rm beets'
 alias cp='nocorrect cp -i'
-alias confgit='vcsh dotfiles'
 alias d='dirs -v'
 alias dlbf='rm -f (.*~|*~)'
 alias dlb='rm -i (.*~|*~)'
@@ -121,8 +120,6 @@ alias pwg='pwgen -c -n -y -s -B 12 1'
 alias rdlbf='find . -iname \*~ | xargs rm -f'
 alias rezsh='nocorrect exec $SHELL'
 alias rm='rm -i'
-alias sudosh='nocorrect sudo -Es'
-alias vew='source /etc/bash_completion.d/virtualenvwrapper'
 alias zmv='noglob zmv'
 if (( $+commands[vim] )); then
   alias vi=vim
@@ -170,18 +167,9 @@ if ! whence compdef >/dev/null; then
   bashcompinit
 fi
 
-# For a local session: try to use keychain to manage a local ssh-agent.
-if [[ -z "${SSH_CONNECTION}" ]]; then
-  if (( $+commands[keychain] )); then
-    # Do we already have an ssh-agent running?
-    if ps uxwww | grep -q 'ssh-agen[t]'; then
-      # Yes; read keychain's information about it, and hope for it not to be stale :D
-      update-ssh-auth-sock-from-keychain
-    else
-      # No; use keychain to start a new agent.
-      eval $(keychain --eval --agents ssh --nogui ~/.ssh/id_*~*.ssh/*.*)
-    fi
-  fi
+# atuin
+if (( $+commands[atuin] )); then
+  eval "$(atuin init zsh --disable-up-arrow)"
 fi
 
 # fzf
@@ -209,11 +197,6 @@ fi
 
 # machine specific config
 [[ -r ~/.zshrc.local ]] && source ~/.zshrc.local
-
-# atuin
-if (( $+commands[atuin] )); then
-  eval "$(atuin init zsh --disable-up-arrow)"
-fi
 
 # A dummy command that returns positive exit status to make prompt non-red :)
 :
