@@ -91,12 +91,6 @@ return {
           ["<A-j>"] = { "xp`[V`]" },
         },
       },
-      diagnostics = {
-        virtual_text = {
-          virt_text_pos = "right_align",
-          suffix = " ",
-        },
-      },
     },
   },
 }
