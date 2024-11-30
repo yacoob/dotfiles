@@ -52,8 +52,6 @@ WORKDIR /home/yacoob/.local/bin
 # install binaries via eget
 RUN ./eget watchexec/watchexec -a musl.tar.xz _ -a '^b3' -a '^sha512' --to=/usr/local/bin
 USER yacoob
-# switch chezmoi to devenv flavour
-RUN ./chezmoi init --promptBool dev-environment=true --apply
 
 
 FROM fedora:latest AS common
