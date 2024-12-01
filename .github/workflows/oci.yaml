@@ -61,7 +61,7 @@ jobs:
         with:
           target: ${{ matrix.target }}
           context: .
-          file: ./docker/Containerfile
+          file: ./container/Containerfile
           push: ${{ env.SHOULD_PUSH == 'true' }}
           labels: ${{ steps.docker-meta.outputs.labels }}
           tags: ${{ steps.docker-meta.outputs.tags }}
