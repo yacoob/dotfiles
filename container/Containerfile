@@ -7,10 +7,8 @@
 
 FROM fedora:latest AS base-builder
 # Set up my user
-ARG UID
-ARG GID
-ENV UID=${UID:-1000}
-ENV GID=${GID:-1000}
+ARG UID=1000
+ARG GID=1000
 RUN groupadd -g ${GID} yacoob \
   && useradd -l -u ${UID} -g ${GID} -m -s /usr/bin/zsh -G wheel yacoob \
   && passwd -d yacoob
