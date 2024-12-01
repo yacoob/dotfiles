@@ -5,7 +5,7 @@
 #          and during the build multiple `RUN` lines cache better
 # - 4006 - podman doesn't support this :[
 
-FROM fedora:latest AS common-builder
+FROM fedora:latest AS base-builder
 # Set up my user
 ARG UID
 ARG GID
@@ -26,16 +26,11 @@ RUN \
 # The context should contain the entire repository.
 COPY --chown=yacoob:yacoob . /home/yacoob/.local/share/chezmoi
 USER yacoob
-WORKDIR /home/yacoob/.local/bin
-# install eget
-RUN curl https://zyedidia.github.io/eget.sh | sh
-
-
-FROM common-builder AS base-builder
-USER yacoob
 WORKDIR /home/yacoob
 # Run chezmoi install script
 RUN ./.local/share/chezmoi/install.sh
+# install eget
+RUN (curl https://zyedidia.github.io/eget.sh | sh) && mv ./eget ./.local/bin/
 # start zsh so antidote can install plugins
 RUN  script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 
