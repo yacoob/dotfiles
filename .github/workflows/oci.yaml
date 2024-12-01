@@ -69,14 +69,6 @@ jobs:
         with:
           tags: ${{ steps.build.outputs.tags }}
 
-      - name: Notify dependent repositories
-        if: ${{ env.SHOULD_PUSH == 'true' && matrix.target == 'base' }}
-        uses: peter-evans/repository-dispatch@v3
-        with:
-          token: ${{ secrets.PUBLIC_REPO_TOKEN }}
-          repository: yacoob/docker-beets
-          event-type: dependency-updated
-
       - name: Generate artifact attestation
         if: ${{ env.SHOULD_PUSH == 'true' }}
         uses: actions/attest-build-provenance@v1
@@ -84,3 +76,11 @@ jobs:
           subject-name: ${{ env.TARGET }}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
+
+      - name: Notify dependent repositories
+        if: ${{ env.SHOULD_PUSH == 'true' && matrix.target == 'base' }}
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.PUBLIC_REPO_TOKEN }}
+          repository: yacoob/docker-beets
+          event-type: dependency-updated
