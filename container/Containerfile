@@ -21,14 +21,18 @@ RUN \
     bat curl difftastic fd-find fzf git procps psmisc ripgrep sudo tealdeer unzip yq which zsh \
     gdu bottom starship \
   && dnf5 clean all
+# install eget
+WORKDIR /usr/bin
+RUN curl https://zyedidia.github.io/eget.sh | sh
+# install chezmoi + modify_manager
+RUN ./eget twpayne/chezmoi -a chezmoi-linux -a '^musl' --to=/usr/bin \
+  && ./eget VorpalBlade/chezmoi_modify_manager -a gnu --to=/usr/bin
 # The context should contain the entire repository.
 COPY --chown=yacoob:yacoob . /home/yacoob/.local/share/chezmoi
 USER yacoob
 WORKDIR /home/yacoob
 # Run chezmoi install script
 RUN ./.local/share/chezmoi/install.sh
-# install eget
-RUN (curl https://zyedidia.github.io/eget.sh | sh) && mv ./eget ./.local/bin/
 # start zsh so antidote can install plugins
 RUN  script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 
@@ -39,9 +43,8 @@ USER root
 RUN dnf5 install --setopt=install_weak_deps=False -y \
     direnv gcc gh just lazygit neovim nodejs-npm tmux \
   && dnf5 clean all
-WORKDIR /home/yacoob/.local/bin
 # install binaries via eget
-RUN ./eget watchexec/watchexec -a musl.tar.xz _ -a '^b3' -a '^sha512' --to=/usr/local/bin
+RUN /usr/bin/eget watchexec/watchexec -a musl.tar.xz _ -a '^b3' -a '^sha512' --to=/usr/local/bin
 USER yacoob
 
 
