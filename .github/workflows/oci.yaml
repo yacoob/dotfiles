@@ -82,5 +82,5 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.PUBLIC_REPO_TOKEN }}
-          repository: yacoob/docker-beets
+          repository: yacoob/beets-container
           event-type: dependency-updated
