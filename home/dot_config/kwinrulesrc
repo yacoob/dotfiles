@@ -1,0 +1,93 @@
+[0fda51e4-539f-4cc1-9493-7486409e4b09]
+Description=Icon for org.kde.KTailctl
+desktopfile=org.fkoehler.KTailctl
+desktopfilerule=2
+wmclass=org.kde.KTailctl
+wmclassmatch=1
+
+[2baf8e1c-2445-4a98-b95b-ea05de1c1485]
+Description=Icon for plex
+clientmachine=localhost
+desktopfile=tv.plex.PlexDesktop.desktop
+desktopfilerule=2
+wmclass=plex-bin Plex
+wmclasscomplete=true
+wmclassmatch=1
+
+[766c6b81-8819-4b5f-aca9-ff3b07771f2e]
+Description=Icon and behaviour for plexamp
+desktopfile=com.plexamp.Plexamp.desktop
+desktopfilerule=2
+desktops=\\0
+desktopsrule=2
+position=3826,637
+positionrule=3
+size=270,515
+sizerule=3
+skippager=true
+skippagerrule=2
+skipswitcher=true
+skipswitcherrule=2
+wmclass=Plexamp
+wmclassmatch=1
+
+[87518880-09a9-4063-b2bc-e7fd0078beb9]
+Description=Icon for Bitwarden
+desktopfile=com.bitwarden.desktop
+desktopfilerule=2
+title=Bitwarden
+types=1
+wmclass=\sBitwarden
+wmclasscomplete=true
+wmclassmatch=1
+
+[General]
+count=9
+rules=ea3839d2-bc36-4d8b-aca3-f786aa019ae1,e0e84287-36a2-40c2-b163-b75421fda8c7,87518880-09a9-4063-b2bc-e7fd0078beb9,2baf8e1c-2445-4a98-b95b-ea05de1c1485,766c6b81-8819-4b5f-aca9-ff3b07771f2e,bc8f903f-c729-4c57-9714-d7603a4ce826,c1af8ced-91c9-408b-8c7b-b885e7f25eae,e854b7b2-4958-4430-bb61-3e62033fea48,0fda51e4-539f-4cc1-9493-7486409e4b09
+
+[bc8f903f-c729-4c57-9714-d7603a4ce826]
+Description=Icon for obsidian
+desktopfile=md.obsidian.Obsidian
+desktopfilerule=2
+wmclass=obsidian
+wmclassmatch=1
+
+[c1af8ced-91c9-408b-8c7b-b885e7f25eae]
+Description=Icon for syncthingtray
+desktopfile=io.github.martchus.syncthingtray
+desktopfilerule=2
+title=Syncthing Tray
+types=1
+wmclass=\ssyncthingtray
+wmclasscomplete=true
+wmclassmatch=1
+
+[e0e84287-36a2-40c2-b163-b75421fda8c7]
+Description=Icon for org.speedcrunch.speedcrunch
+desktopfile=org.speedcrunch.speedcrunch
+desktopfilerule=2
+title=SpeedCrunch
+types=1
+wmclass=\sorg.speedcrunch.speedcrunch
+wmclasscomplete=true
+wmclassmatch=1
+
+[e854b7b2-4958-4430-bb61-3e62033fea48]
+Description=Icon for calibre
+desktopfile=com.calibre_ebook.calibre
+desktopfilerule=2
+wmclass=\scalibre-gui
+wmclasscomplete=true
+wmclassmatch=1
+
+[ea3839d2-bc36-4d8b-aca3-f786aa019ae1]
+Description=Icon for Slack
+clientmachine=localhost
+desktopfile=com.slack.Slack
+desktopfilerule=2
+types=1
+windowrole=browser-window
+windowrolematch=1
+wmclass=slack Slack
+wmclasscomplete=true
+wmclassmatch=1
