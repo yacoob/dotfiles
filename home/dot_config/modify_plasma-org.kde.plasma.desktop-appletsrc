@@ -1,0 +1,12 @@
+#!/usr/bin/env chezmoi_modify_manager
+
+source auto
+
+ignore regex "Containments.*ConfigDialog" "Dialog.+"
+ignore regex "Containments.*Wallpaper.*General" "(Preview)?Image"
+
+# Add your ignores and transforms here
+#ignore section "my-section"
+#ignore "exact section name without brackets" "exact key name"
+#ignore regex "section.*" "key_prefix_.*"
+#transform "section" "key" transform_name read="the docs" for="more detail on transforms"
