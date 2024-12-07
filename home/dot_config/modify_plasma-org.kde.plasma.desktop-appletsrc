@@ -4,3 +4,4 @@ source auto
 
 ignore regex "Containments.*ConfigDialog" "Dialog.+"
 ignore regex "Containments.*Wallpaper.*General" "(Preview)?Image"
+ignore regex "Containments.*Applets.*Configuration" ".+(Weight|Height|Width)"
