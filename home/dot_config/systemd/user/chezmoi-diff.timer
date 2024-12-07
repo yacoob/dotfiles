@@ -1,0 +1,9 @@
+[Unit]
+Description=Periodically count chezmoi differences
+
+[Timer]
+OnBootSec=5m
+OnUnitInactiveSec=5m
+
+[Install]
+WantedBy=timers.target

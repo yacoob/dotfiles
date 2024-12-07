@@ -1,0 +1,6 @@
+[Unit]
+Description=Record size of 'chezmoi diff' output
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'chezmoi diff | wc -l > ~/.cache/chezmoi-diff-count'

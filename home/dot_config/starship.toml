@@ -1,6 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = '$time$line_break$all$line_break$character'
+format = '$time$custom$line_break$all$line_break$character'
 
 [cmd_duration]
 show_milliseconds = true
@@ -59,6 +59,13 @@ style = 'yellow'
 [[battery.display]]
 threshold = 66
 style = 'dimmed green'
+
+[custom.chezmoi_diff]
+description = 'Size of the current "chezmoi diff" output'
+command = 'cat ~/.cache/chezmoi-diff-count'
+when = 'test -s ~/.cache/chezmoi-diff-count'
+symbol = '  '
+disabled = false
 
 # The symbols below were produced by `starship preset nerd-font-symbols`, then moved to sections above, as needed.
 [aws]
