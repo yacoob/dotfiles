@@ -63,7 +63,7 @@ style = 'dimmed green'
 [custom.chezmoi_diff]
 description = 'Size of the current "chezmoi diff" output'
 command = 'cat ~/.cache/chezmoi-diff-count'
-when = 'test -s ~/.cache/chezmoi-diff-count'
+when = '''test -s ~/.cache/chezmoi-diff-count && test "$(cat ~/.cache/chezmoi-diff-count)" != "0" '''
 symbol = '  '
 disabled = false
 
