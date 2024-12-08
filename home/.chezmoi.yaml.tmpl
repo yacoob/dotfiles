@@ -6,3 +6,5 @@ merge:
     - "{{"{{"}} .Destination {{"}}"}}"
     - "{{"{{"}} .Source {{"}}"}}"
     - "{{"{{"}} .Target {{"}}"}}"
+data:
+  chassisType: {{ (output "hostnamectl" "--json=short" | mustFromJson).Chassis }}
