@@ -1,9 +1,0 @@
-#!/usr/bin/env chezmoi_modify_manager
-
-source auto
-
-ignore regex "Desktops" "Id_.*"
-ignore regex "Tiling\\]\\[.*" ".*"
-ignore "Xwayland" "Scale"
-ignore section "Script-kzones"
-ignore "Plugins" "kzonesEnabled"
