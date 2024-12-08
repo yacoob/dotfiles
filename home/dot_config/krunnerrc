@@ -1,0 +1,5 @@
+[Plugins]
+baloosearchEnabled=true
+
+[Plugins][Favorites]
+plugins=krunner_services
