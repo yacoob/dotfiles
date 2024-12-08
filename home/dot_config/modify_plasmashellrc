@@ -2,6 +2,6 @@
 
 source auto
 
-ignore regex "Containments.*Applets.*Configuration" ".+(Weight|Height|Width)"
+ignore regex "Applets.*Configuration.*" ".+(Weight|Height|Width)"
 ignore regex "PlasmaTransientsConfig" ".+(Weight|Height|Width)"
 
