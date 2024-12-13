@@ -15,7 +15,10 @@ export TZ='Europe/Dublin'
 # general
 export EMAIL="yacoob@ftml.net"
 export TMPDIR=/tmp
-if (( $+commands[vim] )); then
+if (( $+commands[nvim] )); then
+  export EDITOR=nvim
+  export VISUAL=nvim
+elif (( $+commands[vim] )); then
   export EDITOR=vim
   export VISUAL=vim
 elif (( $+commands[vi] )); then
