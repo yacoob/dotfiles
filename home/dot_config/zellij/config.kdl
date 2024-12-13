@@ -147,6 +147,8 @@ keybinds clear-defaults=true {
         bind "Alt l" { MoveFocusOrTab "right"; }
         bind "Alt n" { NewPane; }
         bind "Alt o" { MoveTab "right"; }
+        bind "Alt S" { Run "sudo" "-i"; }
+        bind "Alt C" { Run "chezmoi" "cd"; }
     }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl g" { SwitchToMode "locked"; }
