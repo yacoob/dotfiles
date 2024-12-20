@@ -51,12 +51,6 @@ export PIPENV_VENV_IN_PROJECT=1
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 export ZSH_HIGHLIGHT_PATTERNS=('rm -rf *' 'fg=white,bold,bg=red')
 
-# highlight
-if (( $+commands[highlight] )); then
-  export LESSOPEN="| $(which highlight) --force --quiet %s"
-  export HIGHLIGHT_OPTIONS="-O truecolor -s zmrok"
-fi
-
 # fzf
 if (( $+commands[fzf] )); then
   export FZF_DEFAULT_OPTS='--height ~40% --reverse --inline-info --ansi'
