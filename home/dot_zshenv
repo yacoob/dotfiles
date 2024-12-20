@@ -40,6 +40,9 @@ export LESS_TERMCAP_me=$(printf '\e[0m')     # turn off all appearance modes (mb
 export LESS_TERMCAP_ue=$(printf '\e[0m')     # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode – cyan
 
+# podman
+export DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock
+
 # python settings
 export PIP_REQUIRE_VIRTUALENV=true
 export PIPENV_VENV_IN_PROJECT=1
