@@ -13,6 +13,7 @@ export LC_MESSAGES=C
 export TZ='Europe/Dublin'
 
 # general
+export SHELL=$(which zsh)
 export EMAIL="yacoob@ftml.net"
 export TMPDIR=/tmp
 if (( $+commands[nvim] )); then
