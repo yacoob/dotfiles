@@ -32,7 +32,7 @@ COPY --chown=yacoob:yacoob . /home/yacoob/.local/share/chezmoi
 USER yacoob
 WORKDIR /home/yacoob
 # Run chezmoi install script
-RUN ./.local/share/chezmoi/install.sh
+RUN touch ~/zellij-inhibit && ./.local/share/chezmoi/install.sh
 # start zsh so antidote can install plugins
 RUN  script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 
