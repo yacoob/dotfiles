@@ -1,0 +1,35 @@
+set fallback := false
+
+### devpod recipes
+#
+[private]
+ensure-host:
+  #!/bin/env bash
+  if [ -n "$DEVPOD" ]; then
+    echo "Run this on the host, not within the container."
+    exit 1
+  fi
+
+[no-cd]
+cli: ensure-host
+  devpod-cli up --ide=none .
+  devpod-cli ssh .
+
+[private]
+[no-cd]
+nvim-devpod cmd: ensure-host
+    #!/bin/env bash
+    set -x
+    devpod-cli up --ide=none .
+    devpod-cli ssh --command 'nvim --headless --listen localhost:6000' . >/dev/null &
+    sleep 2
+    {{ cmd }}
+    devpod-cli ssh --silent --command 'pkill nvim || true' .
+
+nvim: (nvim-devpod "nvim --server localhost:6000 --remote-ui")
+neovide: (nvim-devpod "neovide --server localhost:6000")
+
+[no-cd]
+clean-devpod: ensure-host
+  devpod-cli delete .
+
