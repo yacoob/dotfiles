@@ -2,7 +2,6 @@ set fallback := false
 
 ### devpod recipes
 #
-[private]
 ensure-host:
   #!/bin/env bash
   if [ -n "$DEVPOD" ]; then
@@ -11,8 +10,19 @@ ensure-host:
   fi
 
 [no-cd]
-cli: ensure-host
+init-devpod: ensure-host
   devpod-cli up --ide=none .
+
+[no-cd]
+raze-devpod: ensure-host
+  devpod-cli delete .
+
+[no-cd]
+stop-devpod: ensure-host
+  devpod-cli stop .
+
+[no-cd]
+cli: ensure-host init-devpod
   devpod-cli ssh .
 
 [private]
@@ -28,8 +38,3 @@ nvim-devpod cmd: ensure-host
 
 nvim: (nvim-devpod "nvim --server localhost:6000 --remote-ui")
 neovide: (nvim-devpod "neovide --server localhost:6000")
-
-[no-cd]
-clean-devpod: ensure-host
-  devpod-cli delete .
-
