@@ -31,7 +31,7 @@ nvim-devpod cmd: ensure-host
     #!/bin/env bash
     set -x
     devpod-cli up --ide=none .
-    devpod-cli ssh --command 'nvim --headless --listen localhost:6000' . >/dev/null &
+    devpod-cli ssh --command 'zsh -i -c "nvim --headless --listen localhost:6000"' . >/dev/null &
     sleep 2
     {{ cmd }}
     devpod-cli ssh --silent --command 'pkill nvim || true' .
