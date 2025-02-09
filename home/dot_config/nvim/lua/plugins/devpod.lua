@@ -15,11 +15,15 @@ if os.getenv("DEVPOD") then
 		{ import = "astrocommunity.test.nvim-coverage" },
 	})
 
-	local pack = os.getenv("DEVPOD_NVIM_ASTROCOMMUNITY_PACK")
-	if pack and string.match(pack, "^[A-Za-z-]+$") then
-		vim.list_extend(ac, {
-			{ import = "astrocommunity.pack." .. pack },
-		})
+	local packs = os.getenv("DEVPOD_NVIM_ASTROCOMMUNITY_PACKS")
+	if packs then
+			for pack in string.gmatch(packs, "[^, ]+") do
+					if string.match(pack, "^[A-Za-z-]+$") then
+							vim.list_extend(ac, {
+									{ import = "astrocommunity.pack." .. pack },
+							})
+					end
+			end
 	end
 end
 
