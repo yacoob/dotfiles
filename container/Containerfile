@@ -41,7 +41,7 @@ FROM base-builder AS devenv-builder
 USER root
 # Add more packages
 RUN dnf5 install --setopt=install_weak_deps=False -y \
-    direnv gcc gh just lazygit neovim nodejs-npm tmux \
+    direnv gcc gh just lazygit libicu neovim nodejs-npm tmux \
   && dnf5 clean all
 # install binaries via eget
 RUN /usr/bin/eget watchexec/watchexec -a musl.tar.xz _ -a '^b3' -a '^sha512' --to=/usr/local/bin \
