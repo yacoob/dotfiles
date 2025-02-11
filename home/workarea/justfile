@@ -22,8 +22,21 @@ stop-devpod: ensure-host
   devpod-cli stop .
 
 [no-cd]
+start-devpod: ensure-host
+  devpod-cli up --ide=none .
+
+[no-cd]
 cli: ensure-host init-devpod
   devpod-cli ssh .
+
+[private]
+[no-cd]
+cmd-devpod cmd: ensure-host start-devpod
+    #!/bin/env bash
+    set -x
+    devpod-cli ssh --command 'zsh -i -c "{{ cmd }}"' .
+
+dev-devpod: (cmd-devpod "just dev")
 
 [private]
 [no-cd]
