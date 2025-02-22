@@ -51,3 +51,4 @@ nvim-devpod cmd: ensure-host
 
 nvim: (nvim-devpod "nvim --server localhost:6000 --remote-ui")
 neovide: (nvim-devpod "neovide --server localhost:6000")
+nvimqt: (nvim-devpod "nvim-qt --server localhost:6000 --nofork")
