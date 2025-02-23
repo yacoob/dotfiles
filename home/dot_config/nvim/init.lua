@@ -31,8 +31,20 @@ local spec = {
 
 -- run Lazy
 vim.opt.rtp:prepend(lazypath)
-require('lazy').setup(spec,
-{
+local lazyconfig = {
   install = { colorscheme = { 'tokyonight-night' } },
   ui = { backdrop = 100 },
-} --[[@as LazyConfig]])
+  performance = {
+    rtp = {
+      paths = {}
+    }
+  }
+} --[[@as LazyConfig]]
+
+-- Add nvim-qt runtime path if it exists
+local nvim_qt_runtime = '/usr/share/nvim-qt/runtime'
+if vim.fn.isdirectory(nvim_qt_runtime) == 1 then
+  table.insert(lazyconfig.performance.rtp.paths, nvim_qt_runtime)
+end
+
+require('lazy').setup(spec, lazyconfig)
