@@ -1,26 +1,55 @@
 [user]
   name = Jakub Turski
   email = yacoob@ftml.net
+
+[column]
+  ui = auto
 [color]
   ui = true
 [init]
   defaultBranch = main
 [core]
-  excludesfile = ~/.cvsignore
+  excludesfile = ~/.gitignore
   editor = nvim
+  fsmonitor = true
 [merge]
   tool = diffview
 [diff]
   external = difft
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
 [push]
   default = matching
+  autoSetupRemote = true
+  followTags = true
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
 [pull]
   rebase = true
+[rebase]
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
 [difftool]
   prompt = false
 [mergetool]
   prompt = false
   keepBackup = false
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
+[help]
+  autocorrect = prompt
+[commit]
+  verbose = true
+[rerere]
+  enabled = true
+  autoupdate = true
 
 [alias]
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
@@ -37,8 +66,8 @@
   process = git-lfs filter-process
   required = true
 
-[include]
-  path = ~/.gitconfig.local
-
 [mergetool "diffview"]
   cmd = nvim -n -c "DiffviewOpen" "$MERGE"
+
+[include]
+  path = ~/.gitconfig.local
