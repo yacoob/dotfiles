@@ -11,30 +11,30 @@ ensure-host:
 
 [no-cd]
 init-devpod: ensure-host
-  devpod up --ide=none .
+  devpod-cli up --ide=none .
 
 [no-cd]
 raze-devpod: ensure-host
-  devpod delete .
+  devpod-cli delete .
 
 [no-cd]
 stop-devpod: ensure-host
-  devpod stop .
+  devpod-cli stop .
 
 [no-cd]
 start-devpod: ensure-host
-  devpod up --ide=none .
+  devpod-cli up --ide=none .
 
 [no-cd]
 cli: ensure-host init-devpod
-  devpod ssh .
+  devpod-cli ssh .
 
 [private]
 [no-cd]
 cmd-devpod cmd: ensure-host start-devpod
     #!/bin/env bash
     set -x
-    devpod ssh --command 'zsh -i -c "{{ cmd }}"' .
+    devpod-cli ssh --command 'zsh -i -c "{{ cmd }}"' .
 
 dev-devpod: (cmd-devpod "just dev")
 
@@ -43,11 +43,11 @@ dev-devpod: (cmd-devpod "just dev")
 nvim-devpod cmd: ensure-host
     #!/bin/env bash
     set -x
-    devpod up --ide=none .
-    devpod ssh --command 'zsh -i -c "nvim --headless --listen localhost:6000"' . >/dev/null &
+    devpod-cli up --ide=none .
+    devpod-cli ssh --command 'zsh -i -c "nvim --headless --listen localhost:6000"' . >/dev/null &
     sleep 2
     {{ cmd }}
-    devpod ssh --silent --command 'pkill nvim || true' .
+    devpod-cli ssh --silent --command 'pkill nvim || true' .
 
 nvim: (nvim-devpod "nvim --server localhost:6000 --remote-ui")
 neovide: (nvim-devpod "neovide --server localhost:6000")
