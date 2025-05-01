@@ -8,7 +8,6 @@ return {
    },
    config = {
       devpod = {
-         binary = "devpod-cli",
          docker_binary = "podman",
       },
       client_callback = function(port, _)
