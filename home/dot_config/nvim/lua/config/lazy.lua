@@ -18,6 +18,9 @@ local lazyconfig = {
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    -- These extras should always be present
+    { import = "lazyvim.plugins.extras.lang.markdown" },
+    { import = "lazyvim.plugins.extras.util.chezmoi" },
     -- import/override with your plugins
     { import = "plugins" },
   },
