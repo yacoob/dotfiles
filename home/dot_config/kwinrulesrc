@@ -1,5 +1,6 @@
 [0fda51e4-539f-4cc1-9493-7486409e4b09]
 Description=Icon for org.kde.KTailctl
+Enabled=false
 desktopfile=org.fkoehler.KTailctl
 desktopfilerule=2
 wmclass=org.kde.KTailctl
@@ -29,6 +30,7 @@ wmclassmatch=1
 
 [87518880-09a9-4063-b2bc-e7fd0078beb9]
 Description=Icon for Bitwarden
+Enabled=false
 desktopfile=com.bitwarden.desktop
 desktopfilerule=2
 title=Bitwarden
