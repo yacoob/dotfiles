@@ -165,6 +165,22 @@ if ! whence compdef >/dev/null; then
   bashcompinit
 fi
 
+# Maybe install soar pkgs - fixed list for the time being.
+if (( $+commands[soar] )); then
+  if [[ ! -d ~/.local/share/soar ]] || [[ -f ~/reinstall-soar-pkgs ]]; then
+    soar install \
+      bottom \
+      chezmoi_modify_manager \
+      devpod \
+      eza \
+      fswatcher \
+      lazygit \
+      starship \
+      viddy \
+      zellij
+  fi
+fi
+
 # fzf
 if (( $+commands[fzf] )); then
 {{ if eq .chezmoi.osRelease.id "debian" -}}
