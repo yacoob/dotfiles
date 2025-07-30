@@ -14,11 +14,11 @@ RUN groupadd -g ${GID} yacoob \
   && passwd -d yacoob
 # Install packages
 RUN \
-  for c in atim/bottom atim/lazygit atim/starship faramirza/gdu; do \
+  for c in atim/bottom atim/lazygit atim/starship; do \
     dnf5 copr enable -y $c; \
   done \
   && dnf5 install --setopt=install_weak_deps=False -y \
-    bat curl difftastic fd-find fzf git procps psmisc ripgrep sudo tealdeer unzip util-linux util-linux-script yq which zsh \
+    bat curl difftastic fd-find fzf gdu git procps psmisc ripgrep sudo tealdeer unzip util-linux util-linux-script yq which zsh \
     gdu bottom starship \
   && dnf5 clean all
 # install eget
