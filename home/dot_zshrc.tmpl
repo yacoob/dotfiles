@@ -165,19 +165,18 @@ if ! whence compdef >/dev/null; then
   bashcompinit
 fi
 
-# Maybe install soar pkgs - fixed list for the time being.
+# Maybe install soar pkgs
 if (( $+commands[soar] )); then
+  local sp=~/.soar-initial
   if [[ ! -d ~/.local/share/soar ]] || [[ -f ~/reinstall-soar-pkgs ]]; then
-    soar install \
-      bottom \
-      chezmoi_modify_manager \
-      devpod \
-      eza \
-      fswatcher \
-      lazygit \
-      starship \
-      viddy \
-      zellij
+    if [[ ! -s ${sp} ]]; then
+      echo "no packages specified in ${sp}"
+    elif grep -q '[^a-zA-Z0-9._:# \t-]' ${sp}; then
+      echo "${sp} contains invalid characters"
+      cat ${sp}
+    else
+      soar install $(cat ${sp})
+    fi
   fi
 fi
 
