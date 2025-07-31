@@ -14,25 +14,27 @@ RUN groupadd -g ${GID} yacoob \
   && passwd -d yacoob
 # Install packages
 RUN \
-  for c in atim/bottom atim/lazygit atim/starship; do \
-    dnf5 copr enable -y $c; \
-  done \
-  && dnf5 install --setopt=install_weak_deps=False -y \
+  dnf5 install --setopt=install_weak_deps=False -y \
     bat curl difftastic fd-find fzf gdu git procps psmisc ripgrep sudo tealdeer unzip util-linux util-linux-script yq which zsh \
-    gdu bottom starship \
   && dnf5 clean all
-# install eget
-WORKDIR /usr/bin
-RUN curl https://zyedidia.github.io/eget.sh | sh
-# install chezmoi + modify_manager
-RUN ./eget twpayne/chezmoi -a chezmoi-linux -a '^musl' --to=/usr/bin \
-  && ./eget VorpalBlade/chezmoi_modify_manager -a gnu --to=/usr/bin
-# The context should contain the entire repository.
-COPY --chown=yacoob:yacoob . /home/yacoob/.local/share/chezmoi
+# install soar and use it to fetch more binaries
 USER yacoob
 WORKDIR /home/yacoob
+RUN curl -fsSL https://soar.qaidvoid.dev/install.sh | sh \
+  && ./.local/bin/soar install \
+    bottom \
+    chezmoi \
+    chezmoi_modify_manager \
+    eget#github.com.zyedidia.eget:bincache \
+    eza#github.com.eza-community.eza:bincache \
+    lazygit#github.com.jesseduffield.lazygit:bincache \
+    starship#github.com.starship.starship:bincache \
+    viddy \
+  && ./.local/bin/soar clean
+# The context should contain the entire repository.
+COPY --chown=yacoob:yacoob . /home/yacoob/.local/share/chezmoi
 # Run chezmoi install script
-RUN touch ~/zellij-inhibit && ./.local/share/chezmoi/install.sh
+RUN touch ~/zellij-inhibit && PATH=~/.local/share/soar/bin:$PATH ./.local/share/chezmoi/install.sh
 # start zsh so antidote can install plugins
 RUN  script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 
@@ -41,12 +43,15 @@ FROM base-builder AS devenv-builder
 USER root
 # Add more packages
 RUN dnf5 install --setopt=install_weak_deps=False -y \
-    direnv gcc gh just lazygit libicu neovim nodejs-npm tmux \
+    direnv gcc gh just libicu neovim nodejs-npm \
   && dnf5 clean all
-# install binaries via eget
-RUN /usr/bin/eget watchexec/watchexec -a musl.tar.xz _ -a '^b3' -a '^sha512' --to=/usr/local/bin \
-  && /usr/bin/eget zellij-org/zellij --to=/usr/local/bin
+# install binaries via soar
 USER yacoob
+WORKDIR /home/yacoob
+RUN ./.local/bin/soar install \
+      fswatcher \
+      zellij \
+    && ./.local/bin/soar clean
 
 
 FROM fedora:latest AS common
