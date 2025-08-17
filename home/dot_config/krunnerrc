@@ -1,5 +1,7 @@
 [Plugins]
 baloosearchEnabled=true
+bazaarrunnerEnabled=false
+krunner_appstreamEnabled=true
 
 [Plugins][Favorites]
 plugins=krunner_services
