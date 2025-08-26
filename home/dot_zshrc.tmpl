@@ -165,21 +165,6 @@ if ! whence compdef >/dev/null; then
   bashcompinit
 fi
 
-# Maybe install soar pkgs
-if (( $+commands[soar] )); then
-  local sp=~/.soar-initial
-  if [[ ! -d ~/.local/share/soar ]] || [[ -f ~/reinstall-soar-pkgs ]]; then
-    if [[ ! -s ${sp} ]]; then
-      echo "no packages specified in ${sp}"
-    elif grep -q '[^a-zA-Z0-9._:# \t-]' ${sp}; then
-      echo "${sp} contains invalid characters"
-      cat ${sp}
-    else
-      soar install $(cat ${sp})
-    fi
-  fi
-fi
-
 # fzf
 if (( $+commands[fzf] )); then
 {{ if eq .chezmoi.osRelease.id "debian" -}}
