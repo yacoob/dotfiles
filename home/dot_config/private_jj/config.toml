@@ -3,3 +3,6 @@
 [user]
 name = "Jakub Turski"
 email = "yacoob@ftml.net"
+
+[ui]
+default-command = "log"
