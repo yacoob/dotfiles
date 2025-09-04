@@ -6,3 +6,6 @@ email = "yacoob@ftml.net"
 
 [ui]
 default-command = "log"
+
+[git]
+colocate = true
