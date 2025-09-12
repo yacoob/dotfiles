@@ -1,0 +1,5 @@
+{{ if lookPath "git-credential-oauth" -}}
+[credential]
+  helper = cache --timeout 21600
+  helper = oauth
+{{- end }}

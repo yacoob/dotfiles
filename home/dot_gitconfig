@@ -70,4 +70,5 @@
   cmd = nvim -n -c "DiffviewOpen" "$MERGE"
 
 [include]
+  path = ~/.gitconfig.oauth
   path = ~/.gitconfig.local
