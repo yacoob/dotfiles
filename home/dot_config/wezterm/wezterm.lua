@@ -33,6 +33,12 @@ local config = {
 			mods = "ALT",
 			action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|LAUNCH_MENU_ITEMS" }),
 		},
+		-- claude's shift-enter handling
+		{
+			key="Enter",
+			mods="SHIFT",
+			action = wezterm.action{SendString="\x1b\r"}
+		},
 	},
 }
 return config
