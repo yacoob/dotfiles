@@ -15,10 +15,21 @@ RUN groupadd -g ${GID} yacoob \
 # Install packages
 RUN \
   dnf5 install --setopt=install_weak_deps=False -y \
-    bat curl difftastic fd-find fzf gdu git \
-    git-credential-oauth procps psmisc ripgrep \
-    sudo tealdeer unzip util-linux util-linux-script \
-    yq which zsh \
+    curl \
+    fd-find \
+    fzf \
+    gdu \
+    git \
+    procps \
+    psmisc \
+    ripgrep \
+    sudo \
+    tealdeer \
+    unzip \
+    util-linux \
+    util-linux-script \
+    which \
+    zsh \
   && dnf5 clean all
 # install soar and use it to fetch more binaries
 USER yacoob
@@ -30,9 +41,7 @@ RUN curl -fsSL https://soar.qaidvoid.dev/install.sh | sh \
     chezmoi_modify_manager \
     eget#github.com.zyedidia.eget:bincache \
     eza#github.com.eza-community.eza:bincache \
-    lazygit#github.com.jesseduffield.lazygit:bincache \
     starship#github.com.starship.starship:bincache \
-    viddy \
   && ./.local/bin/soar clean \
   && rm -rf ./.local/share/soar/repos
 # The context should contain the entire repository.
@@ -47,13 +56,25 @@ FROM base-builder AS devenv-builder
 USER root
 # Add more packages
 RUN dnf5 install --setopt=install_weak_deps=False -y \
-    direnv gcc gh just libicu neovim nodejs-npm \
+    bat \
+    difftastic \
+    direnv \
+    gcc \
+    gh \
+    git-credential-oauth \
+    just \
+    libicu \
+    neovim \
+    nodejs-npm \
+    yq \
   && dnf5 clean all
 # install binaries via soar
 USER yacoob
 WORKDIR /home/yacoob
 RUN ./.local/bin/soar install \
       fswatcher \
+      lazygit#github.com.jesseduffield.lazygit:bincache \
+      viddy \
       zellij \
     && ./.local/bin/soar clean
 
