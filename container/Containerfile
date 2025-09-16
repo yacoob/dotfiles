@@ -95,6 +95,7 @@ LABEL devcontainer.metadata='{ \
   "remoteUser": "yacoob", \
   "containerUser": "yacoob", \
   "securityOpt": ["label=disable"] \
+  "run-prompt": "podman run -it --rm --userns=keep-id --security-opt label=disable -v /home/yacoob/.ssh:/home/yacoob/.ssh:ro IMAGE" \
 }'
 
 
