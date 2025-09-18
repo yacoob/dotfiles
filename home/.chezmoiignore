@@ -1,1 +1,14 @@
 **/*.src.ini
+
+# git oauth helper
+{{ if not (lookPath "git-credential-oauth") -}}
+.gitconfig.oauth
+{{- end }}
+
+# zsh completions
+{{ if not (lookPath "starship") -}}
+.zsh/completion/_starship
+{{- end }}
+{{ if not (lookPath "chezmoi_modify_manager") -}}
+.zsh/completion/_chezmoi_modify_manager
+{{- end }}
