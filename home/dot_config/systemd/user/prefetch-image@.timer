@@ -1,0 +1,11 @@
+[Unit]
+Description=Prefetch image %i periodically
+Requires=prefetch-image@%i.service
+
+[Timer]
+OnStartupSec=0
+OnUnitActiveSec=3h
+RandomizedDelaySec=1min
+
+[Install]
+WantedBy=timers.target

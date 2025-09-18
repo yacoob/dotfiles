@@ -12,3 +12,10 @@
 {{ if not (lookPath "chezmoi_modify_manager") -}}
 .zsh/completion/_chezmoi_modify_manager
 {{- end }}
+
+# podman image prefetchers
+{{ if ne .chezmoi.username "yacoob" and not (has .chezmoi.hostname (list "onyx" "snufkin")) }}
+.config/containers/systemd/prefetch-image@*
+.config/systemd/user/timers.target.wants/prefetch-image@*.timer
+.config/systemd/user/prefetch-image@*.timer
+{{- end }}
