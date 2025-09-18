@@ -34,7 +34,7 @@ RUN \
 # install soar and use it to fetch more binaries
 USER yacoob
 WORKDIR /home/yacoob
-RUN curl -fsSL https://soar.qaidvoid.dev/install.sh | sh \
+RUN curl -fsSL https://soar.qaidvoid.dev/install.sh | SOAR_VERSION=0.7.0 sh \
   && ./.local/bin/soar install \
     bottom \
     chezmoi \
