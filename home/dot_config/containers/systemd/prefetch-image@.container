@@ -5,7 +5,7 @@
 [Container]
 Image=docker.io/library/busybox:latest
 Pull=always
-UserNS=keep-id
+UserNS=keep-id:uid=1000,gid=1000
 Entrypoint=/bin/true
 
 [Service]
