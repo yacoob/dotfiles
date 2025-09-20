@@ -79,7 +79,8 @@ RUN ./.local/bin/soar install \
     && ./.local/bin/soar clean
 
 
-FROM fedora:latest AS common
+FROM fedora:latest AS base
+COPY --from=base-builder / /
 # Set the environment
 ENV SHELL=/usr/bin/zsh
 ENV SSH_AUTH_SOCK=/home/yacoob/.ssh/agent.sock
@@ -99,9 +100,5 @@ LABEL devcontainer.metadata='{ \
 }'
 
 
-FROM common AS base
-COPY --from=base-builder / /
-
-
-FROM common AS devenv
+FROM base AS devenv
 COPY --from=devenv-builder / /
