@@ -10,6 +10,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: yacoob/interactive
+  CACHE_TARGET: ghcr.io/yacoob/interactive-buildcache
   SHOULD_PUSH: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
 
 jobs:
@@ -49,13 +50,20 @@ jobs:
             type=sha,suffix=-devenv
             type=raw,value=devenv,enable={{ is_default_branch }}
 
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build the base version
         uses: redhat-actions/buildah-build@v2
         id: build-base
         with:
           containerfiles: ./container/Containerfile
           context: .
-          extra-args: --target=base
+          extra-args: --target=base --cache-from ${{ env.CACHE_TARGET }} --cache-to ${{ env.CACHE_TARGET }}
           layers: true
           labels: ${{ steps.base-tags.outputs.labels }}
           tags: ${{ steps.base-tags.outputs.tags }}
@@ -66,18 +74,10 @@ jobs:
         with:
           containerfiles: ./container/Containerfile
           context: .
-          extra-args: --target=devenv
+          extra-args: --target=devenv --cache-from ${{ env.CACHE_TARGET }} --cache-to ${{ env.CACHE_TARGET }}
           layers: true
           labels: ${{ steps.devenv-tags.outputs.labels }}
           tags: ${{ steps.devenv-tags.outputs.tags }}
-
-      - name: Log in to GitHub Container Registry
-        if: ${{ env.SHOULD_PUSH == 'true' }}
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push the base version
         if: ${{ env.SHOULD_PUSH == 'true' }}
