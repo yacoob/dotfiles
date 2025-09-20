@@ -51,6 +51,7 @@ jobs:
           containerfiles: ./container/Containerfile
           context: .
           extra-args: --target=${{ matrix.target }}
+          layers: true
           labels: ${{ steps.tags.outputs.labels }}
           tags: ${{ steps.tags.outputs.tags }}
 
