@@ -90,13 +90,13 @@ USER yacoob
 WORKDIR /home/yacoob
 ENTRYPOINT ["/usr/bin/zsh"]
 LABEL maintainer="yacoob@ftml.net"
+LABEL prompt="podman run -it --rm --userns=keep-id:uid=1000,gid=1000 --security-opt label=disable -v /home/yacoob/.ssh:/home/yacoob/.ssh:ro IMAGE"
 # Add devcontainer options
 # https://containers.dev/implementors/reference/#labels
 LABEL devcontainer.metadata='{ \
   "remoteUser": "yacoob", \
   "containerUser": "yacoob", \
   "securityOpt": ["label=disable"] \
-  "prompt": "podman run -it --rm --userns=keep-id:uid=1000,gid=1000 --security-opt label=disable -v /home/yacoob/.ssh:/home/yacoob/.ssh:ro IMAGE" \
 }'
 
 
