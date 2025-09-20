@@ -76,7 +76,8 @@ RUN ./.local/bin/soar install \
       lazygit#github.com.jesseduffield.lazygit:bincache \
       viddy \
       zellij \
-    && ./.local/bin/soar clean
+  && ./.local/bin/soar clean \
+  && rm -rf ./.local/share/soar/repos
 
 
 FROM fedora:latest AS base
