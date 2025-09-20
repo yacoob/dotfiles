@@ -44,6 +44,12 @@ jobs:
             type=sha,suffix=-${{ matrix.target }}
             type=raw,value=${{ matrix.target }},enable={{ is_default_branch }}
 
+      - name: Cache buildah layers
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/containers/storage
+          key: buildah-layers-${{ hashFiles('container/Containerfile') }}
+
       - name: Build the ${{ matrix.target }} version
         uses: redhat-actions/buildah-build@v2
         id: build
