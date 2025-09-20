@@ -14,12 +14,8 @@ env:
 
 jobs:
   build:
-    name: Build and optionally push ${{ matrix.target }} image
+    name: Build container images
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 1
-      matrix:
-        target: [base, devenv]
 
     permissions:
       contents: read
@@ -35,31 +31,45 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Work out container tags
+      - name: Work out base version tags
         uses: docker/metadata-action@v5
-        id: tags
+        id: base-tags
         with:
           images: ${{ env.TARGET }}
           tags: |
-            type=sha,suffix=-${{ matrix.target }}
-            type=raw,value=${{ matrix.target }},enable={{ is_default_branch }}
+            type=sha,suffix=-base
+            type=raw,value=base,enable={{ is_default_branch }}
 
-      - name: Cache buildah layers
-        uses: actions/cache@v4
+      - name: Work out devenv version tags
+        uses: docker/metadata-action@v5
+        id: devenv-tags
         with:
-          path: ~/.local/share/containers/storage
-          key: buildah-layers-${{ hashFiles('container/Containerfile') }}
+          images: ${{ env.TARGET }}
+          tags: |
+            type=sha,suffix=-devenv
+            type=raw,value=devenv,enable={{ is_default_branch }}
 
-      - name: Build the ${{ matrix.target }} version
+      - name: Build the base version
         uses: redhat-actions/buildah-build@v2
-        id: build
+        id: build-base
         with:
           containerfiles: ./container/Containerfile
           context: .
-          extra-args: --target=${{ matrix.target }}
+          extra-args: --target=base
           layers: true
-          labels: ${{ steps.tags.outputs.labels }}
-          tags: ${{ steps.tags.outputs.tags }}
+          labels: ${{ steps.base-tags.outputs.labels }}
+          tags: ${{ steps.base-tags.outputs.tags }}
+
+      - name: Build the devenv version
+        uses: redhat-actions/buildah-build@v2
+        id: build-devenv
+        with:
+          containerfiles: ./container/Containerfile
+          context: .
+          extra-args: --target=devenv
+          layers: true
+          labels: ${{ steps.devenv-tags.outputs.labels }}
+          tags: ${{ steps.devenv-tags.outputs.tags }}
 
       - name: Log in to GitHub Container Registry
         if: ${{ env.SHOULD_PUSH == 'true' }}
@@ -69,23 +79,38 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Push the ${{ matrix.target }} version
+      - name: Push the base version
         if: ${{ env.SHOULD_PUSH == 'true' }}
-        id: push
+        id: push-base
         uses: redhat-actions/push-to-registry@v2
         with:
-          tags: ${{ steps.build.outputs.tags }}
+          tags: ${{ steps.build-base.outputs.tags }}
 
-      - name: Generate artifact attestation
+      - name: Push the devenv version
+        if: ${{ env.SHOULD_PUSH == 'true' }}
+        id: push-devenv
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          tags: ${{ steps.build-devenv.outputs.tags }}
+
+      - name: Generate artifact attestation for base
         if: ${{ env.SHOULD_PUSH == 'true' }}
         uses: actions/attest-build-provenance@v1
         with:
           subject-name: ${{ env.TARGET }}
-          subject-digest: ${{ steps.push.outputs.digest }}
+          subject-digest: ${{ steps.push-base.outputs.digest }}
+          push-to-registry: true
+
+      - name: Generate artifact attestation for devenv
+        if: ${{ env.SHOULD_PUSH == 'true' }}
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-name: ${{ env.TARGET }}
+          subject-digest: ${{ steps.push-devenv.outputs.digest }}
           push-to-registry: true
 
       - name: Notify dependent repositories
-        if: ${{ env.SHOULD_PUSH == 'true' && matrix.target == 'base' }}
+        if: ${{ env.SHOULD_PUSH == 'true' }}
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.PUBLIC_REPO_TOKEN }}
