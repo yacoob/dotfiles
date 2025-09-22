@@ -193,6 +193,11 @@ if (( $+commands[eza] )); then
   alias ls='eza --colour-scale all --icons --hyperlink --group-directories-first'
 fi
 
+# bat
+if (( $+commands[batpipe] )); then
+  eval $(batpipe)
+fi
+
 # Pull in plugins.
 if [[ -r ~/.antidote/antidote.zsh ]]; then
   source ~/.antidote/antidote.zsh
