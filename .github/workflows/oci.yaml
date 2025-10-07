@@ -10,7 +10,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: yacoob/interactive
-  CACHE_TARGET: ghcr.io/yacoob/interactive-buildcache
+  CACHE_TARGET: ghcr.io/yacoob/interactive
   SHOULD_PUSH: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
 
 jobs:
