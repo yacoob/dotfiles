@@ -61,7 +61,7 @@ RUN \
     && mise system prune
 
 # start zsh so antidote can install plugins
-RUN  script -qec '/usr/bin/zsh -is </dev/null' /dev/null
+RUN script -qec '/usr/bin/zsh -is </dev/null' /dev/null
 
 
 
