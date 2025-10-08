@@ -61,7 +61,7 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         id: build-base
         with:
-          containerfiles: ./container/Containerfile
+          containerfiles: ./Containerfile
           context: .
           extra-args: --target=base --cache-from ${{ env.CACHE_TARGET }} --cache-to ${{ env.CACHE_TARGET }}
           layers: true
@@ -72,7 +72,7 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         id: build-devenv
         with:
-          containerfiles: ./container/Containerfile
+          containerfiles: ./Containerfile
           context: .
           extra-args: --target=devenv --cache-from ${{ env.CACHE_TARGET }} --cache-to ${{ env.CACHE_TARGET }}
           layers: true
