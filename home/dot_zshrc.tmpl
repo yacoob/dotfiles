@@ -165,6 +165,11 @@ if ! whence compdef >/dev/null; then
   bashcompinit
 fi
 
+# mise
+if (( $+commands[mise] )); then
+  eval "$(mise activate zsh)"
+fi
+
 # fzf
 if (( $+commands[fzf] )); then
 {{ if eq .chezmoi.osRelease.id "debian" -}}
