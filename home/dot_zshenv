@@ -1,7 +1,5 @@
 # No duplicates in  variables specified below.
 typeset -U path manpath
-# reset PATH (unles asked otherwise) to ensure sane baseline for it
-[[ -z "${__PRESERVE_PATH}" ]] && path=()
 path=(/usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin $path[@])
 path=(~/.local/bin $path[@])
 
