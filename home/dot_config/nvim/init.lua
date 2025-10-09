@@ -1,50 +1,26 @@
--- maybe add linuxbrew to PATH
-local homebrew_path = '/home/linuxbrew/.linuxbrew'
-if (vim.uv or vim.loop).fs_stat(homebrew_path) then
-  vim.env.PATH = vim.env.PATH .. ':' .. homebrew_path .. '/bin'
-end
+-- This file simply bootstraps the installation of Lazy.nvim and then calls other files for execution
+-- This file doesn't necessarily need to be touched, BE CAUTIOUS editing this file and proceed at your own risk.
+local lazypath = vim.env.LAZY or vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
--- install Lazy if it's not there
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
+if not (vim.env.LAZY or (vim.uv or vim.loop).fs_stat(lazypath)) then
   -- stylua: ignore
-  vim.fn.system({ 'git', 'clone', '--filter=blob:none', 'https://github.com/folke/lazy.nvim.git', '--branch=stable',
-    lazypath })
+  local result = vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
+  if vim.v.shell_error ~= 0 then
+    -- stylua: ignore
+    vim.api.nvim_echo({ { ("Error cloning lazy.nvim:\n%s\n"):format(result), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } }, true, {})
+    vim.fn.getchar()
+    vim.cmd.quit()
+  end
 end
 
--- Add AstroNvim to plugin spec
-local spec = {
-  {
-    'AstroNvim/AstroNvim',
-    version = '^4',
-    import = 'astronvim.plugins',
-    opts = {
-      mapleader = ' ',
-      maplocalleader = ',',
-      icons_enabled = true,
-      pin_plugins = nil,
-      update_notifications = true,
-    },
-  },
-  { import = 'plugins' },
-} --[[@as LazySpec]]
-
--- run Lazy
 vim.opt.rtp:prepend(lazypath)
-local lazyconfig = {
-  install = { colorscheme = { 'tokyonight-night' } },
-  ui = { backdrop = 100 },
-  performance = {
-    rtp = {
-      paths = {}
-    }
-  }
-} --[[@as LazyConfig]]
 
--- Add nvim-qt runtime path if it exists
-local nvim_qt_runtime = '/usr/share/nvim-qt/runtime'
-if vim.fn.isdirectory(nvim_qt_runtime) == 1 then
-  table.insert(lazyconfig.performance.rtp.paths, nvim_qt_runtime)
+-- validate that lazy is available
+if not pcall(require, "lazy") then
+  -- stylua: ignore
+  vim.api.nvim_echo({ { ("Unable to load lazy from: %s\n"):format(lazypath), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } }, true, {})
+  vim.fn.getchar()
+  vim.cmd.quit()
 end
 
-require('lazy').setup(spec, lazyconfig)
+require "lazy_setup"

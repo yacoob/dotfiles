@@ -15,7 +15,6 @@ return {
   { import = "astrocommunity.pack.chezmoi" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.recipes.neovide" },
-  { import = "astrocommunity.recipes.telescope-lsp-mappings" },
   { import = "astrocommunity.search.grug-far-nvim" },
   { import = "astrocommunity.split-and-window.colorful-winsep-nvim" },
 }

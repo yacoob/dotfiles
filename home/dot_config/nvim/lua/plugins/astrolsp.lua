@@ -1,27 +1,31 @@
-local rp = require("lspconfig.util").root_pattern
+-- AstroLSP allows you to customize the features in AstroNvim's LSP configuration engine
+-- Configuration documentation can be found with `:h astrolsp`
+-- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
+--       as this provides autocomplete and documentation while editing
 
--- Prioritize .venv directory for root directory determination. This find the
--- right dir for monorepos, where you have multiple pyproject.toml files in
--- different subdirs and one virtualenv for them in an ascendant dir.
-local pyright_root_files =
-  { ".venv", "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", "pyrightconfig.json", ".git" }
-local ruff_root_files = { ".venv", "pyproject.toml", "ruff.toml", ".ruff.toml" }
-
+---@type LazySpec
 return {
   "AstroNvim/astrolsp",
   ---@type AstroLSPOpts
   opts = {
+    -- Configuration table of features provided by AstroLSP
     features = {
+      codelens = true, -- enable/disable codelens refresh on start
+      inlay_hints = true, -- enable/disable inlay hints on start
+      semantic_tokens = true, -- enable/disable semantic token highlighting
       signature_help = true,
-      inlay_hints = true,
     },
-    ---@diagnostic disable-next-line: missing-fields
-    config = {
-      basedpyright = {
-        root_dir = function(fname)
-          return rp(unpack(pyright_root_files))(fname)
-        end,
+    -- customize lsp formatting options
+    formatting = {
+      -- control auto formatting on save
+      format_on_save = {
+        enabled = true, -- enable or disable format on save globally
       },
+      timeout_ms = 1000, -- default format timeout
+    },
+    -- customize language server configuration options passed to `lspconfig`
+    ---@diagnostic disable: missing-fields
+    config = {
       dockerls = {
         settings = {
           docker = {
@@ -32,11 +36,6 @@ return {
             },
           },
         },
-      },
-      ruff = {
-        root_dir = function(fname)
-          return rp(unpack(ruff_root_files))(fname)
-        end,
       },
     },
   },

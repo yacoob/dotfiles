@@ -1,9 +1,10 @@
+-- Customize Treesitter
+
 ---@type LazySpec
 return {
-  'nvim-treesitter/nvim-treesitter',
+  "nvim-treesitter/nvim-treesitter",
   opts = {
     ensure_installed = {
-      -- the bare minimum, TSInstall will fetch others as needed
       'diff',
       'gitattributes',
       'gitcommit',
