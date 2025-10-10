@@ -18,7 +18,6 @@ RUN \
   dnf5 copr enable -y atim/bottom \
   && dnf5 copr enable -y jdxcode/mise \
   && dnf5 install --setopt=install_weak_deps=False -y \
-    bat \
     bottom \
     chezmoi \
     curl \
