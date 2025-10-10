@@ -188,11 +188,6 @@ if (( $+commands[atuin] )); then
   eval "$(atuin init zsh --disable-up-arrow)"
 fi
 
-# direnv
-if (( $+commands[direnv] )); then
-  eval "$(direnv hook zsh)"
-fi
-
 # eza
 if (( $+commands[eza] )); then
   alias ls='eza --colour-scale all --icons --hyperlink --group-directories-first'

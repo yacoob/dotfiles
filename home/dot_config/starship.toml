@@ -9,11 +9,6 @@ show_milliseconds = true
 truncation_length = 8
 read_only = " 󰌾"
 
-[direnv]
-disabled = false
-style = 'dimmed yellow'
-symbol = ' '
-
 [hostname]
 ssh_only = false
 ssh_symbol = " "

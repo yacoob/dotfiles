@@ -75,7 +75,6 @@ RUN \
     bat \
     bat-extras \
     difftastic \
-    direnv \
     gcc \
     gh \
     git-credential-oauth \
