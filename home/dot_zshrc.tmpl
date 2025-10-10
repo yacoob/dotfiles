@@ -201,6 +201,7 @@ fi
 # bat
 if (( $+commands[batpipe] )); then
   eval $(batpipe)
+  export LESSOPEN="|BATPIPE_DEBUG_PARENT_EXECUTABLE=less /usr/bin/batpipe %s"
 fi
 
 # Pull in plugins.
