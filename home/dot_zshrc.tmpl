@@ -194,9 +194,8 @@ if (( $+commands[eza] )); then
 fi
 
 # bat
-if (( $+commands[batpipe] )); then
-  eval $(batpipe)
-  export LESSOPEN="|BATPIPE_DEBUG_PARENT_EXECUTABLE=less /usr/bin/batpipe %s"
+if (( $+commands[bat] )); then
+  export LESSOPEN="|bat --color=always --style=plain %s"
 fi
 
 # Pull in plugins.

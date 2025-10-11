@@ -69,10 +69,8 @@ USER root
 
 # Add more packages
 RUN \
-  dnf5 copr enable -y awood/bat-extras \
-  && dnf5 install --setopt=install_weak_deps=False -y \
+  dnf5 install --setopt=install_weak_deps=False -y \
     bat \
-    bat-extras \
     difftastic \
     gcc \
     gh \
