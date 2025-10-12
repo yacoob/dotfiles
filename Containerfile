@@ -57,7 +57,7 @@ RUN \
     && mise install \
     && mise use -g \
       starship \
-    && mise system prune
+    && mise cache prune
 
 # start zsh so antidote can install plugins
 RUN script -qec '/usr/bin/zsh -is </dev/null' /dev/null
@@ -89,7 +89,7 @@ RUN \
     mise use -g \
       lazygit \
       watchexec \
-    && mise system prune
+    && mise cache prune
 
 
 
