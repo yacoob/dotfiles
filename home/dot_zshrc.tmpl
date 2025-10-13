@@ -211,6 +211,11 @@ if (( $+commands[starship] )); then
   eval "$(starship init zsh)"
 fi
 
+# zoxide
+if (( $+commands[zoxide] )); then
+  eval "$(zoxide init zsh)"
+fi
+
 # machine specific config
 [[ -r ~/.zshrc.local ]] && source ~/.zshrc.local
 

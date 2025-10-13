@@ -1,4 +1,3 @@
-agkozak/zsh-z
 Aloxaf/fzf-tab
 zsh-users/zsh-completions
 zsh-users/zsh-syntax-highlighting
