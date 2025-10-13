@@ -1,2 +1,3 @@
+mattmc3/ez-compinit
+zsh-users/zsh-completions kind:fpath path:src
 Aloxaf/fzf-tab
-zsh-users/zsh-completions

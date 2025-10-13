@@ -136,7 +136,7 @@ alias -g T='|tail'
 alias hsudo='distrobox-host-exec sudo -i'
 
 # zstyle
-zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle ':completion:*' cache-path ~/.cache/zsh/completion
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu no
@@ -156,13 +156,12 @@ zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SU
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
-# Initialize tabcompletion if it hasn't been initialised already.
-if ! whence compdef >/dev/null; then
-  autoload -Uz compinit
-  [[ -d "${ZDOTDIR:-$HOME}/.zcompdumps" ]] || mkdir -m 0700 -p "${ZDOTDIR:-$HOME}/.zcompdumps"
-  compinit -i -d "${ZDOTDIR:-$HOME}/.zcompdumps/${HOST%%.*}-$ZSH_VERSION"
-  autoload -Uz bashcompinit
-  bashcompinit
+# pull in zsh plugins via antidote
+if [[ -r ~/.antidote/antidote.zsh ]]; then
+  source ~/.antidote/antidote.zsh
+  antidote load ~/.zsh/plugins.txt
+else
+  alias antidote='git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote'
 fi
 
 # mise
@@ -170,6 +169,11 @@ if (( $+commands[mise] )); then
   eval "$(mise activate zsh)"
 fi
 
+zshsh=/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [[ -r ${zshsh} ]]; then
+  source ${zshsh}
+fi
+#
 # fzf
 if (( $+commands[fzf] )); then
 {{ if eq .chezmoi.osRelease.id "debian" -}}
@@ -198,27 +202,14 @@ if (( $+commands[bat] )); then
   export LESSOPEN="|bat --color=always --style=plain %s"
 fi
 
-# Pull in plugins.
-if [[ -r ~/.antidote/antidote.zsh ]]; then
-  source ~/.antidote/antidote.zsh
-  antidote load ~/.zsh/plugins.txt
-else
-  alias antidote='git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote'
-fi
-
-zshsh=/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-if [[ -r ${zshsh} ]]; then
-  source ${zshsh}
+# zoxide
+if (( $+commands[zoxide] )); then
+  eval "$(zoxide init zsh)"
 fi
 
 # get aboard the starship!
 if (( $+commands[starship] )); then
   eval "$(starship init zsh)"
-fi
-
-# zoxide
-if (( $+commands[zoxide] )); then
-  eval "$(zoxide init zsh)"
 fi
 
 # machine specific config
