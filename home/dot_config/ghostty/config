@@ -1,0 +1,32 @@
+# looks
+font-family = "FiraCode Nerd Font Mono"
+font-size = 12
+theme = "TokyoNight Night"
+gtk-wide-tabs = false
+gtk-toolbar-style = flat
+
+
+# behaviour
+bell-features = border
+command = zsh -l
+confirm-close-surface = false
+copy-on-select = clipboard
+maximize = false
+shell-integration-features = no-cursor,ssh-terminfo,ssh-env
+cursor-style = block
+
+# keybindings - split management
+keybind = alt+n=new_split:auto
+keybind = alt+shift+d=new_split:down
+keybind = alt+shift+r=new_split:right
+
+keybind = alt+l=goto_split:right
+keybind = alt+j=goto_split:down
+keybind = alt+k=goto_split:up
+keybind = alt+h=goto_split:left
+keybind = alt+bracket_right=goto_split:next
+keybind = alt+bracket_left=goto_split:previous
+
+keybind = alt+equal=equalize_splits
+keybind = alt+f=toggle_split_zoom
+keybind = alt+x=close_surface
