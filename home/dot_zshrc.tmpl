@@ -206,6 +206,11 @@ else
   alias antidote='git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote'
 fi
 
+zshsh=/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [[ -r ${zshsh} ]]; then
+  source ${zshsh}
+fi
+
 # get aboard the starship!
 if (( $+commands[starship] )); then
   eval "$(starship init zsh)"
