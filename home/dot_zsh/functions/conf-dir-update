@@ -1,1 +1,0 @@
-chezmoi update --verbose && touch ~/.conf-last-update
