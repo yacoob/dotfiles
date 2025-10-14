@@ -1,4 +1,0 @@
-# Maybe attach zellij session.
-if [[ -z "$ZELLIJ" && ! -f ~/zellij-inhibit ]]; then
-  zellij
-fi
