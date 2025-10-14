@@ -1,0 +1,6 @@
+.config/direnv
+.local/share/applications/org.gnome.Ptyxis.desktop
+.tmux.conf
+.zlogin
+.zsh/functions/conf-dir-update
+workarea/justfile
