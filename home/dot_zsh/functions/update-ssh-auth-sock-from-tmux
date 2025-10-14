@@ -1,5 +1,0 @@
-local nv=$(tmux show-environment SSH_AUTH_SOCK 2>/dev/null)
-if [[ "$?" -eq 0 ]]; then
-  eval ${nv}
-  tmux setenv -g SSH_AUTH_SOCK ${SSH_AUTH_SOCK}
-fi
