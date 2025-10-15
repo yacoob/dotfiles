@@ -1,4 +1,5 @@
 return {
   "ejrichards/mise.nvim",
-  opts = {}
+  dependencies = { "williamboman/mason.nvim" },
+  opts = {},
 }
