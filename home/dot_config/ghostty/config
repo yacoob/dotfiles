@@ -18,6 +18,7 @@ cursor-style = block
 
 # keybindings - general
 keybind = shift+enter=text:\x1b\r
+keybind = global:alt+space=toggle_quick_terminal
 
 # keybindings - split management
 keybind = alt+n=new_split:auto
