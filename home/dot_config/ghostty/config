@@ -12,7 +12,7 @@ command = zsh -l
 confirm-close-surface = false
 copy-on-select = clipboard
 maximize = false
-shell-integration-features = no-cursor,ssh-terminfo,ssh-env
+shell-integration-features = no-cursor,ssh-env
 cursor-style = block
 
 
