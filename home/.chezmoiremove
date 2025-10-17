@@ -1,4 +1,5 @@
 .config/direnv
+.config/kwinrulesrc
 .local/share/applications/org.gnome.Ptyxis.desktop
 .tmux.conf
 .zlogin
