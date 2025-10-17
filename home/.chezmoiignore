@@ -31,3 +31,8 @@
 .config/systemd/user/timers.target.wants/prefetch-image@beets-latest.timer
 .config/systemd/user/prefetch-image@beets-latest.timer
 {{- end }}
+
+# ignore entire .terminfo, if the OS already contains the expected files
+{{ if not (and (stat "/usr/share/terminfo/g/ghostty") (not (stat "/usr/share/terminfo/x/xterm-ghostty"))) -}}
+.terminfo
+{{- end }}
