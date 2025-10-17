@@ -1,0 +1,3 @@
+{{- if and (stat "/usr/share/terminfo/g/ghostty") (not (stat "/usr/share/terminfo/x/xterm-ghostty")) -}}
+/usr/share/terminfo/g/ghostty
+{{- end -}}
