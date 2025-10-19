@@ -1,9 +1,0 @@
-#!/usr/bin/env chezmoi_modify_manager
-
-source auto
-
-ignore regex "Containments.*ConfigDialog" "Dialog.+"
-ignore regex "Containments.*Applets.*Configuration" ".+(Weight|Height|Width)"
-ignore regex "Containments.*39" ".*"
-ignore regex "Containments.*Wallpaper.*" ".*"
-transform regex "Containments.*Applets.*Configuration.*Appearance" "selectedTimeZones" unsorted-list separator=","
