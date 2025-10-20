@@ -1,25 +1,6 @@
-[0fda51e4-539f-4cc1-9493-7486409e4b09]
-Description=Icon for org.kde.KTailctl
-Enabled=false
-desktopfile=org.fkoehler.KTailctl
-desktopfilerule=2
-wmclass=org.kde.KTailctl
-wmclassmatch=1
-
-[87518880-09a9-4063-b2bc-e7fd0078beb9]
-Description=Icon for Bitwarden
-Enabled=false
-desktopfile=com.bitwarden.desktop
-desktopfilerule=2
-title=Bitwarden
-types=1
-wmclass=\sBitwarden
-wmclasscomplete=true
-wmclassmatch=1
-
 [General]
-count=6
-rules=ea3839d2-bc36-4d8b-aca3-f786aa019ae1,87518880-09a9-4063-b2bc-e7fd0078beb9,bc8f903f-c729-4c57-9714-d7603a4ce826,c1af8ced-91c9-408b-8c7b-b885e7f25eae,e854b7b2-4958-4430-bb61-3e62033fea48,0fda51e4-539f-4cc1-9493-7486409e4b09
+count=4
+rules=ea3839d2-bc36-4d8b-aca3-f786aa019ae1,bc8f903f-c729-4c57-9714-d7603a4ce826,c1af8ced-91c9-408b-8c7b-b885e7f25eae,e854b7b2-4958-4430-bb61-3e62033fea48
 
 [bc8f903f-c729-4c57-9714-d7603a4ce826]
 Description=Icon for obsidian
