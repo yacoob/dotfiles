@@ -5,10 +5,24 @@ name = "Jakub Turski"
 email = "yacoob@ftml.net"
 
 [ui]
-default-command = "log"
+default-command = "status"
 
 [git]
 colocate = true
 
 [revset-aliases]
 'immutable_heads()' = 'committer_date(before:"3 days ago")'
+
+[templates]
+log = "builtin_log_comfortable"
+draft_commit_description = '''
+  concat(
+    coalesce(description, default_commit_description, "\n"),
+    surround(
+      "\nJJ: This commit contains the following changes:\n", "",
+      indent("JJ:     ", diff.stat(72)),
+    ),
+    "\nJJ: ignore-rest\n",
+    diff.git(),
+  )
+'''
