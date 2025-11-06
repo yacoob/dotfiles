@@ -4,6 +4,7 @@ rules=ea3839d2-bc36-4d8b-aca3-f786aa019ae1,bc8f903f-c729-4c57-9714-d7603a4ce826,
 
 [bc8f903f-c729-4c57-9714-d7603a4ce826]
 Description=Icon for obsidian
+Enabled=false
 desktopfile=md.obsidian.Obsidian
 desktopfilerule=2
 wmclass=obsidian
@@ -11,6 +12,7 @@ wmclassmatch=1
 
 [c1af8ced-91c9-408b-8c7b-b885e7f25eae]
 Description=Icon for syncthingtray
+Enabled=false
 desktopfile=io.github.martchus.syncthingtray
 desktopfilerule=2
 title=Syncthing Tray
@@ -21,6 +23,7 @@ wmclassmatch=1
 
 [e854b7b2-4958-4430-bb61-3e62033fea48]
 Description=Icon for calibre
+Enabled=false
 desktopfile=com.calibre_ebook.calibre
 desktopfilerule=2
 wmclass=\scalibre-gui
@@ -29,6 +32,7 @@ wmclassmatch=1
 
 [ea3839d2-bc36-4d8b-aca3-f786aa019ae1]
 Description=Icon for Slack
+Enabled=false
 clientmachine=localhost
 desktopfile=com.slack.Slack
 desktopfilerule=2
