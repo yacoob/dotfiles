@@ -4,7 +4,6 @@ rules=ea3839d2-bc36-4d8b-aca3-f786aa019ae1,bc8f903f-c729-4c57-9714-d7603a4ce826,
 
 [bc8f903f-c729-4c57-9714-d7603a4ce826]
 Description=Icon for obsidian
-Enabled=false
 desktopfile=md.obsidian.Obsidian
 desktopfilerule=2
 wmclass=obsidian
