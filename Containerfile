@@ -15,10 +15,9 @@ RUN groupadd -g ${GID} yacoob \
 
 # Install packages
 RUN \
-  dnf5 copr enable -y atim/bottom \
-  && dnf5 copr enable -y jdxcode/mise \
+  dnf5 copr enable -y jdxcode/mise \
   && dnf5 install --setopt=install_weak_deps=False -y \
-    bottom \
+    bat \
     chezmoi \
     curl \
     fd-find \
@@ -30,9 +29,6 @@ RUN \
     psmisc \
     ripgrep \
     sudo \
-    tealdeer \
-    unzip \
-    util-linux \
     util-linux-script \
     which \
     zsh \
@@ -69,8 +65,9 @@ USER root
 
 # Add more packages
 RUN \
-  dnf5 install --setopt=install_weak_deps=False -y \
-    bat \
+  dnf5 copr enable -y atim/bottom \
+  && dnf5 install --setopt=install_weak_deps=False -y \
+    bottom \
     difftastic \
     gcc \
     gh \
@@ -79,6 +76,10 @@ RUN \
     libicu \
     neovim \
     nodejs-npm \
+    tealdeer \
+    unzip \
+    util-linux \
+    util-linux-script \
     yq \
   && dnf5 clean all
 
@@ -87,8 +88,10 @@ USER yacoob
 WORKDIR /home/yacoob
 RUN \
     mise use -g \
+      jj \
+      jjui \
       lazygit \
-      watchexec \
+      viddy \
     && mise cache prune
 
 

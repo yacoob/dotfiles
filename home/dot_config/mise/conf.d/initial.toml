@@ -1,13 +1,5 @@
 [tools]
-# abandoned from F42 onwards
-"ubi:eza-community/eza" = "latest"
-# no good source for Fedora
-jj = "latest"
-jjui = "latest"
 # needed for mise tabcompletion
 usage = "latest"
-# no good source for Fedora
-viddy = "latest"
-# COPR exists but is stale
-# https://copr.fedorainfracloud.org/coprs/varlad/zellij/package/zellij/
-zellij = "latest"
+# abandoned from F42 onwards
+"ubi:eza-community/eza" = "latest"
