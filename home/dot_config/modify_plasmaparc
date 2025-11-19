@@ -2,4 +2,4 @@
 
 source auto
 
-ignore "General" "GlobalMute"
+ignore regex "General" "GlobalMute.*"
