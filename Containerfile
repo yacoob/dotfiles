@@ -33,6 +33,16 @@ RUN \
     which \
     zsh \
   && dnf5 clean all
+
+# remove unused locales
+RUN \
+    find /usr/share/locale -maxdepth 1 -type d \
+    ! -name 'en' \
+    ! -name 'en_IE' \
+    ! -name 'pl' \
+    ! -name 'pl_PL' \
+    -exec rm -rf {} +
+
 # use mise/ubi to install chezmoi_modify_manager system-wide - it's needed for
 # a successful chezmoi run
 RUN \
