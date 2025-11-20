@@ -37,6 +37,7 @@ RUN \
 # a successful chezmoi run
 RUN \
   mise exec ubi -- ubi --project VorpalBlade/chezmoi_modify_manager \
+  && mise prune -y \
   && rm -rf /root/.local/mise /root/.cache/mise
 
 # set up dotfiles via chezmoi
