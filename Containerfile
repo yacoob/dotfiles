@@ -80,18 +80,13 @@ RUN \
   && dnf5 install --setopt=install_weak_deps=False -y \
     bottom \
     difftastic \
-    gcc \
-    gh \
     git-credential-oauth \
     just \
-    libicu \
     neovim \
     nodejs-npm \
     tealdeer \
     unzip \
     util-linux \
-    util-linux-script \
-    yq \
   && dnf5 clean all
 
 # install some binaries via mise
@@ -102,7 +97,6 @@ RUN \
       jj \
       jjui \
       lazygit \
-      viddy \
     && mise cache prune
 
 
