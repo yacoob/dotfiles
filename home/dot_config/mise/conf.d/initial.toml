@@ -2,4 +2,4 @@
 # needed for mise tabcompletion
 usage = "latest"
 # abandoned from F42 onwards
-"ubi:eza-community/eza" = "latest"
+"github:eza-community/eza" = "latest"
