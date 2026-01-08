@@ -1,7 +1,7 @@
 [Layout]
 DisplayNames=
 LayoutList=pl
-Options=caps:escape
+Options=caps:escape_shifted_capslock
 ResetOldOptions=true
 Use=true
 VariantList=
