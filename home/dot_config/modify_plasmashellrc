@@ -4,4 +4,5 @@ source auto
 
 ignore regex "Applets.*Configuration.*" ".+(Weight|Height|Width)"
 ignore regex "PlasmaTransientsConfig" ".+(Weight|Height|Width)"
+ignore regex "Updates" "performed"
 
