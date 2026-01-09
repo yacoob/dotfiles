@@ -31,3 +31,8 @@
 .config/systemd/user/timers.target.wants/prefetch-image@beets-latest.timer
 .config/systemd/user/prefetch-image@beets-latest.timer
 {{- end }}
+
+# skip authorized keys if marker is present
+{{ if stat (joinPath .chezmoi.homeDir ".ssh/skip-chezmoi-authorized-keys") }}
+.ssh/authorized_keys
+{{ end }}
