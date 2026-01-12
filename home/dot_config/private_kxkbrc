@@ -5,3 +5,4 @@ Options=caps:escape_shifted_capslock
 ResetOldOptions=true
 Use=true
 VariantList=
+
