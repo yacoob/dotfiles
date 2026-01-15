@@ -1,7 +1,12 @@
 [user]
   name = Jakub Turski
   email = yacoob@ftml.net
+  signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFn7Jo4qNc92Gh/ZmiD87QTqruvA/3XaaLKWkaFPpZR+"
 
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  allowedSignersFile = /home/yacoob/.ssh/allowedSigners
 [column]
   ui = auto
 [color]
@@ -47,6 +52,7 @@
   autocorrect = prompt
 [commit]
   verbose = true
+  gpgsign = true
 [rerere]
   enabled = true
   autoupdate = true

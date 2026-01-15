@@ -25,6 +25,9 @@ elif (( $+commands[vi] )); then
   export VISUAL=vi
 fi
 
+# use Bitwarden's ssh-agent
+export SSH_AUTH_SOCK=~/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
+
 # explicitly mark truecolor support under Windows Terminal
 if [[ -n "${WT_SESSION}" ]]; then
   export COLORTERM=truecolor
