@@ -1,13 +1,14 @@
-[6b46852e-b6f8-4b51-98b2-f9343a3d62f1]
-Description=Icon for waterfox
-desktopfile=net.waterfox.waterfox
-desktopfilerule=2
-wmclass=waterfox
-wmclassmatch=1
-
 [General]
 count=5
-rules=ea3839d2-bc36-4d8b-aca3-f786aa019ae1,bc8f903f-c729-4c57-9714-d7603a4ce826,c1af8ced-91c9-408b-8c7b-b885e7f25eae,e854b7b2-4958-4430-bb61-3e62033fea48,6b46852e-b6f8-4b51-98b2-f9343a3d62f1
+rules=ea3839d2-bc36-4d8b-aca3-f786aa019ae1,bc8f903f-c729-4c57-9714-d7603a4ce826,c1af8ced-91c9-408b-8c7b-b885e7f25eae,e854b7b2-4958-4430-bb61-3e62033fea48,a0fb8e43-6d2a-4f4c-81be-0c9992625750
+
+[a0fb8e43-6d2a-4f4c-81be-0c9992625750]
+Description=icon for bitwarden
+desktopfile=com.bitwarden.desktop
+desktopfilerule=2
+wmclass=.*Bitwarden.*
+wmclasscomplete=true
+wmclassmatch=3
 
 [bc8f903f-c729-4c57-9714-d7603a4ce826]
 Description=Icon for obsidian
