@@ -1,5 +1,0 @@
-[tools]
-# needed for mise tabcompletion
-usage = "latest"
-# abandoned from F42 onwards
-"github:eza-community/eza" = "latest"
