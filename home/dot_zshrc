@@ -153,6 +153,12 @@ zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SU
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
+#
+# pull in linuxbrew, if available
+if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+fi
+
 # pull in zsh plugins via antidote
 if [[ -r ~/.antidote/antidote.zsh ]]; then
   source ~/.antidote/antidote.zsh
