@@ -28,6 +28,8 @@ fi
 # use Bitwarden's ssh-agent
 export SSH_AUTH_SOCK=~/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
 
+# disable homebrew analytics
+export HOMEBREW_NO_ANALYTICS=1
 
 # less
 export LESS="-iSRM"
