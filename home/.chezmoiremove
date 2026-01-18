@@ -1,1 +1,4 @@
 .config/mise/conf.d/initial.toml
+.zsh/completeion/_chezmoi
+.zsh/completeion/_jj
+.zsh/completeion/_starship
