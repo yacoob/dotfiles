@@ -38,7 +38,6 @@ export LESS="-iSRM"
 
 # python settings
 export PIP_REQUIRE_VIRTUALENV=true
-export PIPENV_VENV_IN_PROJECT=1
 
 # zsh-syntax-highlighting
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
