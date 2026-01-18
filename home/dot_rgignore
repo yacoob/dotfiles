@@ -1,5 +1,6 @@
-.git
-.svn
-.hg
 .DS_Store
+.git
+.hg
+.jj
 **/*.pyc
+.svn
