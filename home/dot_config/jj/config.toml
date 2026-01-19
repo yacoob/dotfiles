@@ -17,9 +17,6 @@ show-cryptographic-signatures = true
 [git]
 colocate = true
 
-[revset-aliases]
-'immutable_heads()' = 'committer_date(before:"3 days ago")'
-
 [remotes.origin]
 auto-track-bookmarks = "glob:*"
 
