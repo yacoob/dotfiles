@@ -154,9 +154,11 @@ zstyle ':antidote:bundle' use-friendly-names 'yes'
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
 #
-# pull in linuxbrew, if available
-if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+# pull in linuxbrew if available and not yet initialized
+if [[ -z "${HOMEBREW_PREFIX}" ]]; then
+  if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  fi
 fi
 
 # pull in zsh plugins via antidote
