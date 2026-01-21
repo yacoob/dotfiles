@@ -25,6 +25,9 @@ elif (( $+commands[vi] )); then
   export VISUAL=vi
 fi
 
+# stop ps from showing kernel threads
+export LIBPROC_HIDE_KERNEL=1
+
 # use Bitwarden's ssh-agent
 export SSH_AUTH_SOCK=~/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
 
