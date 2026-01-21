@@ -205,7 +205,7 @@ if (( $+commands[zoxide] )); then
 fi
 
 # get aboard the starship!
-if (( $+commands[starship] )); then
+if (( $+commands[starship] )) && ! (( ${+functions[prompt_starship_precmd]} )); then
   eval "$(starship init zsh)"
 fi
 
