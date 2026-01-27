@@ -1,0 +1,17 @@
+umask = 0o027
+
+[cd]
+command = "zsh"
+
+[merge]
+command = "nvim"
+args = [
+    "-d",
+    {{ printf "%q" "{{ .Destination }}" }},
+    {{ printf "%q" "{{ .Source }}" }},
+    {{ printf "%q" "{{ .Target }}" }},
+]
+
+[data]
+chassisType = '{{ if lookPath "hostnamectl" }}{{ (output "hostnamectl" "--json=short" | mustFromJson).Chassis }}{{ else }}unknown{{ end }}'
+guardedMode = {{ if stat (joinPath .chezmoi.homeDir ".config/chezmoi/guarded-mode") }}true{{ else }}false{{ end }}

@@ -4,3 +4,5 @@
 .zsh/completion/_starship
 
 .ssh/skip-chezmoi-authorized-keys
+
+.config/chezmoi/chezmoi.yaml
