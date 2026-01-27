@@ -14,6 +14,9 @@ backends.ssh.allowed-signers = "~/.ssh/allowedSigners"
 default-command = "status"
 show-cryptographic-signatures = true
 
+[revset-aliases]
+my_work = 'trunk() | present(@) | heads(mine())'
+
 [git]
 colocate = true
 
