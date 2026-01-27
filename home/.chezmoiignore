@@ -9,12 +9,6 @@
 {{ if not (lookPath "chezmoi_modify_manager") -}}
 .zsh/completion/_chezmoi_modify_manager
 {{- end }}
-{{ if not (lookPath "jj") -}}
-.zsh/completion/_jj
-{{- end }}
-{{ if not (lookPath "starship") -}}
-.zsh/completion/_starship
-{{- end }}
 
 # podman image prefetching
 #
