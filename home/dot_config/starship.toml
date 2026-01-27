@@ -62,6 +62,13 @@ when = '''test -s ~/.cache/chezmoi-diff-count && test "$(cat ~/.cache/chezmoi-di
 symbol = '  '
 disabled = false
 
+[custom.github_prs]
+description = 'Number of outstanding github PRs'
+command = 'cat ~/.cache/gh-pr-count'
+when = '''test -s ~/.cache/gh-pr-count && test "$(cat ~/.cache/gh-pr-count)" != "0" '''
+symbol = '  '
+disabled = false
+
 # The symbols below were produced by `starship preset nerd-font-symbols`, then moved to sections above, as needed.
 [aws]
 symbol = "  "
