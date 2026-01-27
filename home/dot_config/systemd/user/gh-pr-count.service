@@ -1,0 +1,11 @@
+[Unit]
+Description=Check outstanding GitHub PR count
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c 'gh search prs --involves $(gh api user --jq .login) --state open --json url --jq "length" > %h/.cache/gh-pr-count 2>/dev/null || echo "0" > %h/.cache/gh-pr-count'
+
+[Install]
+WantedBy=default.target

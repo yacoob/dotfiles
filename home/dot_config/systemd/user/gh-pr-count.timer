@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodically check GitHub PRs
+Requires= gh-pr-count.service
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=5min
+Persistent=true
+
+[Install]
+WantedBy=timers.target
