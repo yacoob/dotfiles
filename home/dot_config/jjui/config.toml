@@ -5,6 +5,3 @@ args = ["rebase", "-r", "$change_id", "--insert-before", "$change_id-"]
 [custom_commands."move commit up"]
 key = ["ctrl+k"]
 args = ["rebase", "-r", "$change_id", "--insert-after", "$change_id+"]
-
-[revisions]
-revset = "my_work"
