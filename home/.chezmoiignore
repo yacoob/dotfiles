@@ -26,7 +26,9 @@
 .config/systemd/user/prefetch-image@beets-latest.timer
 {{- end }}
 
-# skip authorized keys if marker is present
-{{ if stat (joinPath .chezmoi.homeDir ".ssh/skip-chezmoi-authorized-keys") }}
+# guarded mode exclusions
+{{ if .guardedMode -}}
 .ssh/authorized_keys
-{{ end }}
+.ssh/allowedSigners
+.face.icon
+{{- end }}
