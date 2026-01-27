@@ -15,7 +15,7 @@ default-command = "status"
 show-cryptographic-signatures = true
 
 [revset-aliases]
-my_work = 'trunk() | present(@) | heads(mine())'
+my_work = 'present(@) | ancestors(mine() ~ ::trunk(), 3) | present(trunk())'
 
 [git]
 colocate = true
