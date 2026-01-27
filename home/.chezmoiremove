@@ -2,3 +2,5 @@
 .zsh/completion/_chezmoi
 .zsh/completion/_jj
 .zsh/completion/_starship
+
+.ssh/skip-chezmoi-authorized-keys
