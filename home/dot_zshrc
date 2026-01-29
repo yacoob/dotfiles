@@ -42,6 +42,7 @@ massbind vi-cmd-up-line-history '^[[A' '^[OA'
 massbind vi-cmd-down-line-history '^[[B' '^[OB'
 
 # Setup ZSH variables.
+CORRECT_IGNORE_FILE='.git'
 DIRSTACKSIZE=20
 fignore=(\~)
 LISTMAX=0
