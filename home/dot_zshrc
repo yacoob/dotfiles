@@ -97,8 +97,6 @@ alias apt-list-backports='aptitude search -t $(lsb_release -sc)-backports -F "%p
 alias beets-container='podman compose -f ~/.local/bin/beets/compose.yaml pull --policy=always && podman compose -f ~/.local/bin/beets/compose.yaml run --rm beets'
 alias cp='nocorrect cp -i'
 alias d='dirs -v'
-alias dlbf='rm -f (.*~|*~)'
-alias dlb='rm -i (.*~|*~)'
 alias grep='egrep --color=auto'
 alias h=history
 alias j=jobs
@@ -109,14 +107,10 @@ alias ll='ls -lh'
 alias ls='ls --color=auto'
 alias mkdir='nocorrect mkdir'
 alias mmv='noglob zmv -W'
-alias mosh-kill-other='kill $(ps --no-headers --sort=start_time -C mosh-server -o pid | head -n -1)'
 alias mv='nocorrect mv -i'
 alias please='sudo $(fc -Lln -1)'
 alias po=popd
 alias pu=pushd
-alias pwgl='pwgen -c -n -y -s -B 30 1'
-alias pwg='pwgen -c -n -y -s -B 12 1'
-alias rdlbf='find . -iname \*~ | xargs rm -f'
 alias rezsh='nocorrect exec $SHELL'
 alias rm='rm -i'
 alias zmv='noglob zmv'
