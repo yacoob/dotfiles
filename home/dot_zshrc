@@ -100,6 +100,9 @@ alias d='dirs -v'
 alias grep='egrep --color=auto'
 alias h=history
 alias j=jobs
+alias k=kubectl
+alias kns=kubens
+alias kctx=kubectx
 alias la='ls -A'
 alias lla='ll -A'
 alias lld='ls -ld *(-/DN)'
