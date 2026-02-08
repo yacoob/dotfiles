@@ -13,6 +13,7 @@ backends.ssh.allowed-signers = "~/.ssh/allowedSigners"
 [ui]
 default-command = "status"
 show-cryptographic-signatures = true
+diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]
 
 [revset-aliases]
 my_work = 'present(@) | ancestors(mine() ~ ::trunk(), 3) | present(trunk())'
