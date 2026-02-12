@@ -5,7 +5,7 @@ name = "Jakub Turski"
 email = "yacoob@ftml.net"
 
 [signing]
-behavior = "own"
+behavior = "drop"
 key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFn7Jo4qNc92Gh/ZmiD87QTqruvA/3XaaLKWkaFPpZR+"
 backend = "ssh"
 backends.ssh.allowed-signers = "~/.ssh/allowedSigners"
@@ -22,6 +22,7 @@ my_work = 'present(@) | ancestors(mine() ~ ::trunk(), 3) | present(trunk())'
 
 [git]
 colocate = true
+sign-on-push = true
 
 [remotes.origin]
 auto-track-bookmarks = "glob:*"
