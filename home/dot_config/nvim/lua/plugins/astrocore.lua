@@ -72,6 +72,8 @@ return {
       },
       -- normal mode
       n = {
+        -- rebind "close window" to "close window without disturbing the layout"
+        ["<C-w>c"] = { function() require("snacks.bufdelete").delete() end, desc = "Close current buffer" },
         -- moving whole lines
         ["<A-k>"] = { "ddkP" },
         ["<A-j>"] = { "ddp" },
