@@ -23,6 +23,14 @@
 .local/share/applications/org.jeffvli.feishin.desktop
 .local/share/icons/hicolor/**/*feishin*.png
 {{- end }}
+
+# install lmstudio only on hosts with decent GPU
+{{ if not (and (has .chezmoi.hostname (list "onyx" )) (eq .chezmoi.username "yacoob")) -}}
+.config/mise/conf.d/lm_studio.toml
+.local/share/applications/lm_studio.desktop
+.local/share/icons/hicolor/**/*lm_studio*.png
+{{- end }}
+
 # podman image prefetching
 # cache yacoob/interactive:{base,devenv} on onyx and snufkin
 {{ if not (and (has .chezmoi.hostname (list "onyx" "snufkin")) (eq .chezmoi.username "yacoob")) -}}
