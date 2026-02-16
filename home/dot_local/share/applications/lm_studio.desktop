@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=LM Studio
+Exec=/home/yacoob/.local/share/mise/installs/http-lmstudio/latest/lmstudio --no-sandbox %U
+TryExec=/home/yacoob/.local/share/mise/installs/http-lmstudio/latest/lmstudio
+Icon=lm_studio.png
+Terminal=false
+Type=Application
+
+StartupWMClass=LM Studio
+Comment=Discover, download, and run LLMs locally
+Categories=Utility;
