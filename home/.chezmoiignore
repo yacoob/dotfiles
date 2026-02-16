@@ -1,5 +1,12 @@
 **/*.src.ini
 
+# guarded mode exclusions
+{{ if .guardedMode -}}
+.ssh/authorized_keys
+.ssh/allowedSigners
+.face.icon
+{{- end }}
+
 # git oauth helper
 {{ if not (lookPath "git-credential-oauth") -}}
 .gitconfig.oauth
@@ -11,7 +18,6 @@
 {{- end }}
 
 # podman image prefetching
-#
 # cache yacoob/interactive:{base,devenv} on onyx and snufkin
 {{ if not (and (has .chezmoi.hostname (list "onyx" "snufkin")) (eq .chezmoi.username "yacoob")) -}}
 .config/containers/systemd/prefetch-image@interactive-*
@@ -26,9 +32,3 @@
 .config/systemd/user/prefetch-image@beets-latest.timer
 {{- end }}
 
-# guarded mode exclusions
-{{ if .guardedMode -}}
-.ssh/authorized_keys
-.ssh/allowedSigners
-.face.icon
-{{- end }}
