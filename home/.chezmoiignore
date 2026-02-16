@@ -17,6 +17,12 @@
 .zsh/completion/_chezmoi_modify_manager
 {{- end }}
 
+# install feishin only on selected hosts
+{{ if not (and (has .chezmoi.hostname (list "onyx" "mantaray")) (eq .chezmoi.username "yacoob")) -}}
+.config/mise/conf.d/feishin.toml
+.local/share/applications/org.jeffvli.feishin.desktop
+.local/share/icons/hicolor/**/*feishin*.png
+{{- end }}
 # podman image prefetching
 # cache yacoob/interactive:{base,devenv} on onyx and snufkin
 {{ if not (and (has .chezmoi.hostname (list "onyx" "snufkin")) (eq .chezmoi.username "yacoob")) -}}

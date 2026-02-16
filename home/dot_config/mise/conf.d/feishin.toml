@@ -1,0 +1,2 @@
+[tools]
+"github:jeffvli/feishin" = { version = "latest", bin = "feishin", asset_pattern = "*x86_64.AppImage" }
