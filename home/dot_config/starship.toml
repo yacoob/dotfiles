@@ -55,6 +55,9 @@ style = 'yellow'
 threshold = 66
 style = 'dimmed green'
 
+[kubernetes]
+disabled = false
+
 [custom.chezmoi_diff]
 description = 'Size of the current "chezmoi diff" output'
 command = 'cat ~/.cache/chezmoi-diff-count'
