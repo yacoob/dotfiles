@@ -101,8 +101,8 @@ alias grep='egrep --color=auto'
 alias h=history
 alias j=jobs
 alias k=kubectl
-alias kns=kubens
-alias kctx=kubectx
+alias kctx='kubert ctx'
+alias kns='kubert ns'
 alias la='ls -A'
 alias lla='ll -A'
 alias lld='ls -ld *(-/DN)'
