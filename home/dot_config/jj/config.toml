@@ -17,8 +17,45 @@ diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]
 pager = "delta"
 show-cryptographic-signatures = true
 
+[aliases]
+# borrowed from https://github.com/connor15mcc/.dotfiles/blob/main/.config/jj/config.toml
+tug = [
+  "bookmark",
+  "move",
+  "--from",
+  "closest_bookmark(@)",
+  "--to",
+  "closest_pushable(@)",
+]
+drag = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  """
+set -euo pipefail
+if [ -z "${1:-}" ]; then
+    bookmark=`jj log -r 'trunk()' --no-graph -T 'bookmarks.map(|b| b.name()).join("\n")' | head -1`
+    if [ -z "$bookmark" ]; then
+        echo "Error: Could not resolve trunk bookmark"
+        exit 1
+    fi
+else
+    bookmark="$1"
+fi
+jj git fetch -b "$bookmark"
+jj rebase -s "at_operation(@-, ${bookmark}+) & mutable()" -d "$bookmark"
+""",
+  "",
+]
+mine = ["bookmark", "list", "-r", "mine()"]
+rebase-all = ["rebase", "-s", "(::trunk())+ & mutable()", "-d", "trunk()"]
+
 [revset-aliases]
 my_work = 'present(@) | ancestors(mine() ~ ::trunk(), 3) | present(trunk())'
+'closest_bookmark(to)' = 'heads(::to & bookmarks())'
+'closest_pushable(to)' = 'heads(::to & ~description(exact:"") & (~empty() | merges()))'
 
 [git]
 colocate = true
