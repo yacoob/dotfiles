@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -ne 1 ]]; then
+  echo "Usage: mise run install-appimage-desktop <subdir>" >&2
+  exit 1
+fi
+
+TOOL_DIR="${HOME}/.local/share/mise/installs/$1/${MISE_TOOL_VERSION:-latest}"
+
+if [[ ! -d "${TOOL_DIR}" ]]; then
+  echo "Error: ${TOOL_DIR} does not exist" >&2
+  exit 1
+fi
+
+# Find exactly one executable in the tool dir
+mapfile -t executables < <(find -L "${TOOL_DIR}" -maxdepth 1 -type f -executable)
+
+if [[ ${#executables[@]} -eq 0 ]]; then
+  echo "Error: no executables found in ${TOOL_DIR}" >&2
+  exit 1
+fi
+
+if [[ ${#executables[@]} -gt 1 ]]; then
+  echo "Error: multiple executables found in ${TOOL_DIR}, cannot autodetect:" >&2
+  printf '  %s\n' "${executables[@]}" >&2
+  exit 1
+fi
+
+APPIMAGE="${executables[0]}"
+
+# Verify it's actually an AppImage (check for "AI\x02" magic at offset 8)
+if [[ "$(od -A n -t x1 -j 8 -N 3 "${APPIMAGE}" | tr -d ' \n')" != "414902" ]]; then
+  echo "Error: ${APPIMAGE} is not an AppImage" >&2
+  exit 1
+fi
+
+echo "using binary: ${APPIMAGE}"
+
+# Extract into a temp dir
+TMPDIR="$(mktemp -d)"
+trap 'rm -rf "${TMPDIR}"' EXIT
+
+cd "${TMPDIR}"
+"${APPIMAGE}" --appimage-extract '*.desktop' &>/dev/null || true
+"${APPIMAGE}" --appimage-extract '*.png' &>/dev/null || true
+"${APPIMAGE}" --appimage-extract 'usr/share/icons/*' &>/dev/null || true
+
+# Get app name from binary
+APP_NAME="$(basename "${APPIMAGE}")"
+
+# Install icon with mise- prefix
+ICON_DIR="${HOME}/.local/share/icons"
+DESKTOP_DIR="${HOME}/.local/share/applications"
+mkdir -p "${ICON_DIR}" "${DESKTOP_DIR}"
+
+ICON_NAME="mise-${APP_NAME}"
+if ! cp -fL "${TMPDIR}/squashfs-root"/*.png "${ICON_DIR}/${ICON_NAME}.png" 2>/dev/null; then
+  echo "warning: no icon found" >&2
+fi
+
+# Generate .desktop file
+DESKTOP_FILE="${DESKTOP_DIR}/mise-${APP_NAME}.desktop"
+ORIG_DESKTOP="$(find "${TMPDIR}/squashfs-root" -maxdepth 1 -name '*.desktop' | head -1)"
+
+# --- Desktop file template (fixed fields) ---
+cat >"${DESKTOP_FILE}" <<EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Exec=${APPIMAGE}
+TryExec=${APPIMAGE}
+Icon=${ICON_NAME}
+Terminal=false
+Type=Application
+EOF
+
+# --- Append metadata from original desktop file ---
+if [[ -n "${ORIG_DESKTOP}" ]]; then
+  grep -E '^(Name|GenericName|Categories|Keywords|Comment)=.+' "${ORIG_DESKTOP}" >>"${DESKTOP_FILE}" 2>/dev/null || true
+fi
+
+echo "installed icon to ${ICON_DIR}/${ICON_NAME}.png"
+echo "installed desktop file to ${DESKTOP_FILE}"
