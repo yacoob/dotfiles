@@ -2,4 +2,4 @@
 version = "latest"
 asset_pattern = "Obsidian-{{ version }}.AppImage"
 bin = "obsidian"
-postinstall = "~/.config/mise/tasks/wire-up-appimage github-obsidianmd-obsidian-releases"
+postinstall = "~/.config/mise/tasks/wire-up-appimage github-obsidianmd-obsidian-releases md.obsidian.Obsidian"
