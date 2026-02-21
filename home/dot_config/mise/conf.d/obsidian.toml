@@ -1,0 +1,5 @@
+[tools."github:obsidianmd/obsidian-releases"]
+version = "latest"
+asset_pattern = "Obsidian-{{ version }}.AppImage"
+bin = "obsidian"
+postinstall = "~/.config/mise/tasks/wire-up-appimage github-obsidianmd-obsidian-releases"

@@ -27,6 +27,10 @@
 .config/mise/conf.d/lm_studio.toml
 {{- end }}
 
+{{ if not (and (has .chezmoi.hostname (list "onyx" "snufkin")) (eq .chezmoi.username "yacoob")) -}}
+.config/mise/conf.d/obsidian.toml
+{{- end }}
+
 # podman image prefetching
 #
 # cache yacoob/interactive:{base,devenv}
