@@ -27,3 +27,13 @@ feishin = {{ get $install "feishin" | default false }}
 lm_studio = {{ get $install "lm_studio" | default false }}
 obsidian = {{ get $install "obsidian" | default false }}
 {{ end -}}
+
+[data.prefetch]
+{{ $prefetch := dig "prefetch" dict . -}}
+{{ if stdinIsATTY -}}
+beets = {{ promptBoolOnce $prefetch "beets" "Prefetch yacoob/beets" }}
+interactive = {{ promptBoolOnce $prefetch "interactive" "Prefetch yacoob/interactive:*" }}
+{{ else -}}
+beets = {{ get $prefetch "beets" | default false }}
+interactive = {{ get $prefetch "interactive" | default false }}
+{{ end -}}
