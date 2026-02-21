@@ -3,6 +3,7 @@
 source auto
 
 ignore regex "com.google.Chrome" ".+"
+ignore regex "org.chromium.Chromium" ".+"
 ignore regex "wacomtablet" ".+"
 
 # The two regex below have overlapping matches, this is OK in this case so
