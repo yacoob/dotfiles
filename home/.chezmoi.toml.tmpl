@@ -15,3 +15,15 @@ args = [
 [data]
 chassisType = '{{ if lookPath "hostnamectl" }}{{ (output "hostnamectl" "--json=short" | mustFromJson).Chassis }}{{ else }}unknown{{ end }}'
 guardedMode = {{ if stat (joinPath .chezmoi.homeDir ".config/chezmoi/guarded-mode") }}true{{ else }}false{{ end }}
+
+[data.install]
+{{ $install := dig "install" dict . -}}
+{{ if stdinIsATTY -}}
+feishin = {{ promptBoolOnce $install "feishin" "Install feishin" }}
+lm_studio = {{ promptBoolOnce $install "lm_studio" "Install lm_studio" }}
+obsidian = {{ promptBoolOnce $install "obsidian" "Install obsidian" }}
+{{ else -}}
+feishin = {{ get $install "feishin" | default false }}
+lm_studio = {{ get $install "lm_studio" | default false }}
+obsidian = {{ get $install "obsidian" | default false }}
+{{ end -}}
