@@ -17,17 +17,17 @@
 .zsh/completion/_chezmoi_modify_manager
 {{- end }}
 
-# selective mise installs
+# mise installs
 #
-{{ if not (and (has .chezmoi.hostname (list "onyx" "snufkin" "mantaray")) (eq .chezmoi.username "yacoob")) -}}
+{{ if not .install.feishin -}}
 .config/mise/conf.d/feishin.toml
 {{- end }}
 
-{{ if not (and (has .chezmoi.hostname (list "onyx" )) (eq .chezmoi.username "yacoob")) -}}
+{{ if not .install.lm_studio -}}
 .config/mise/conf.d/lm_studio.toml
 {{- end }}
 
-{{ if not (and (has .chezmoi.hostname (list "onyx" "snufkin")) (eq .chezmoi.username "yacoob")) -}}
+{{ if not .install.obsidian -}}
 .config/mise/conf.d/obsidian.toml
 {{- end }}
 
