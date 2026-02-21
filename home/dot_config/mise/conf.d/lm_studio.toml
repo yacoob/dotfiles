@@ -4,3 +4,4 @@ version_list_url = "https://versions-prod.lmstudio.ai/update/linux/x86"
 version_expr = '[fromJSON(body).version + "-" + fromJSON(body).build]'
 version = "latest"
 bin = "lmstudio"
+postinstall = "~/.config/mise/tasks/wire-up-appimage http-lmstudio"

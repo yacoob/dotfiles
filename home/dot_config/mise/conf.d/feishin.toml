@@ -2,3 +2,4 @@
 version = "latest"
 asset_pattern = "*x86_64.AppImage"
 bin = "feishin"
+postinstall = "~/.config/mise/tasks/wire-up-appimage github-jeffvli-feishin"

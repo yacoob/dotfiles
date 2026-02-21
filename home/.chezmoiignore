@@ -17,29 +17,26 @@
 .zsh/completion/_chezmoi_modify_manager
 {{- end }}
 
-# install feishin only on selected hosts
+# selective mise installs
+#
 {{ if not (and (has .chezmoi.hostname (list "onyx" "snufkin" "mantaray")) (eq .chezmoi.username "yacoob")) -}}
 .config/mise/conf.d/feishin.toml
-.local/share/applications/org.jeffvli.feishin.desktop
-.local/share/icons/hicolor/**/*feishin*.png
 {{- end }}
 
-# install lmstudio only on hosts with decent GPU
 {{ if not (and (has .chezmoi.hostname (list "onyx" )) (eq .chezmoi.username "yacoob")) -}}
 .config/mise/conf.d/lm_studio.toml
-.local/share/applications/lm_studio.desktop
-.local/share/icons/hicolor/**/*lm_studio*.png
 {{- end }}
 
 # podman image prefetching
-# cache yacoob/interactive:{base,devenv} on onyx and snufkin
+#
+# cache yacoob/interactive:{base,devenv}
 {{ if not (and (has .chezmoi.hostname (list "onyx" "snufkin")) (eq .chezmoi.username "yacoob")) -}}
 .config/containers/systemd/prefetch-image@interactive-*
 .config/systemd/user/timers.target.wants/prefetch-image@interactive-*.timer
 .config/systemd/user/prefetch-image@interactive-*.timer
 {{- end }}
 
-# cache yacoob/beets:latest on tentakl
+# cache yacoob/beets:latest
 {{ if not (and (has .chezmoi.hostname (list "tentakl")) (eq .chezmoi.username "yacoob")) -}}
 .config/containers/systemd/prefetch-image@beets-latest*
 .config/systemd/user/timers.target.wants/prefetch-image@beets-latest.timer
