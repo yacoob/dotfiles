@@ -28,8 +28,8 @@ fi
 # stop ps from showing kernel threads
 export LIBPROC_HIDE_KERNEL=1
 
-# use Bitwarden's ssh-agent
-export SSH_AUTH_SOCK=~/.1password/agent.sock
+# use 1Password's ssh-agent
+export SSH_AUTH_SOCK=${SSH_AUTH_SOCK:-~/.1password/agent.sock}
 
 # disable homebrew analytics
 export HOMEBREW_NO_ANALYTICS=1
