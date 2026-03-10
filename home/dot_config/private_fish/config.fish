@@ -98,6 +98,15 @@ if command -q fzf
         --color=spinner:#5EB7FF"
 end
 
+# homebrew
+if set -q HOMEBREW_PREFIX
+  for dir in $HOMEBREW_PREFIX/share/fish/{completions,vendor_completions.d}
+      if test -d $dir
+          set -p fish_complete_path $dir
+      end
+  end
+end
+
 # kubert
 if command -q kubert
   alias kctx 'kubert ctx'
