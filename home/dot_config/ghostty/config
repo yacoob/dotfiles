@@ -8,7 +8,7 @@ gtk-toolbar-style = flat
 
 # behaviour
 bell-features = border
-command = zsh -l
+command = fish -l
 confirm-close-surface = false
 copy-on-select = clipboard
 maximize = false
