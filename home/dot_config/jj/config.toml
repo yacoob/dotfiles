@@ -13,7 +13,6 @@ backends.ssh.allowed-signers = "~/.ssh/allowedSigners"
 [ui]
 default-command = "status"
 diff-formatter = ":git"
-diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]
 pager = "delta"
 show-cryptographic-signatures = true
 

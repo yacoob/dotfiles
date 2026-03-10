@@ -1,8 +1,3 @@
-.config/mise/conf.d/initial.toml
-.zsh/completion/_chezmoi
-.zsh/completion/_jj
-.zsh/completion/_starship
-
-.ssh/skip-chezmoi-authorized-keys
-
 .config/chezmoi/chezmoi.yaml
+
+.config/nvim/lua/plugins/hunk.lua
