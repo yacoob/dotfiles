@@ -15,20 +15,18 @@ RUN groupadd -g ${GID} yacoob \
 
 # Install packages
 RUN \
-  dnf5 copr enable -y jdxcode/mise \
+  dnf copr enable -y atim/starship \
   && dnf5 install --setopt=install_weak_deps=False -y \
-    bat \
     chezmoi \
     curl \
     fd-find \
     fish \
     fzf \
-    gdu \
     git \
-    mise \
     procps \
     psmisc \
     ripgrep \
+    starship \
     sudo \
     util-linux-script \
     which \
@@ -43,12 +41,15 @@ RUN \
     ! -name 'pl_PL' \
     -exec rm -rf {} +
 
-# use mise/ubi to install chezmoi_modify_manager system-wide - it's needed for
+# install chezmoi_modify_manager system-wide - it's needed for
 # a successful chezmoi run
 RUN \
-  mise exec ubi -- ubi --project VorpalBlade/chezmoi_modify_manager \
-  && mise prune -y \
-  && rm -rf /root/.local/mise /root/.cache/mise
+  TAG=$(curl -sI https://github.com/VorpalBlade/chezmoi_modify_manager/releases/latest \
+        | grep -i ^location \
+        | sed 's|.*/tag/||' \
+        | tr -d '[:space:]') \
+  && curl -sL "https://github.com/VorpalBlade/chezmoi_modify_manager/releases/download/${TAG}/chezmoi_modify_manager-${TAG}-x86_64-unknown-linux-gnu.tar.gz" \
+  | tar -xzC /usr/local/bin chezmoi_modify_manager
 
 # set up dotfiles via chezmoi
 USER yacoob
@@ -56,15 +57,7 @@ WORKDIR /home/yacoob
 # The context should contain the entire repository.
 COPY --chown=yacoob:yacoob . /home/yacoob/.local/share/chezmoi
 # Run chezmoi install script
-RUN touch ~/zellij-inhibit && PATH=~/.local/share/mise/shims:$PATH ./.local/share/chezmoi/install.sh
-
-# install default set of mise binaries plus some extras
-RUN \
-    touch ~/.config/mise/config.toml \
-    && mise install \
-    && mise use -g \
-      starship \
-    && mise cache prune
+RUN ./.local/share/chezmoi/install.sh
 
 # start the shell so it can install plugins
 RUN script -qec '/usr/bin/fish -i </dev/null' /dev/null
@@ -76,12 +69,13 @@ USER root
 
 # Add more packages
 RUN \
-  dnf5 copr enable -y atim/bottom \
+  dnf5 copr enable -y jdxcode/mise \
   && dnf5 install --setopt=install_weak_deps=False -y \
-    bottom \
-    difftastic \
+    bat \
     git-credential-oauth \
+    git-delta \
     just \
+    mise \
     neovim \
     nodejs-npm \
     tealdeer \
