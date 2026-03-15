@@ -10,7 +10,7 @@ FROM fedora:latest AS base-builder
 ARG UID=1000
 ARG GID=1000
 RUN groupadd -g ${GID} yacoob \
-  && useradd -l -u ${UID} -g ${GID} -m -s /usr/bin/zsh -G wheel yacoob \
+  && useradd -l -u ${UID} -g ${GID} -m -s /usr/bin/fish -G wheel yacoob \
   && passwd -d yacoob
 
 # Install packages
@@ -21,6 +21,7 @@ RUN \
     chezmoi \
     curl \
     fd-find \
+    fish \
     fzf \
     gdu \
     git \
@@ -31,7 +32,6 @@ RUN \
     sudo \
     util-linux-script \
     which \
-    zsh \
   && dnf5 clean all
 
 # remove unused locales
@@ -66,8 +66,8 @@ RUN \
       starship \
     && mise cache prune
 
-# start zsh so antidote can install plugins
-RUN script -qec '/usr/bin/zsh -is </dev/null' /dev/null
+# start the shell so it can install plugins
+RUN script -qec '/usr/bin/fish -i </dev/null' /dev/null
 
 
 
@@ -104,13 +104,13 @@ RUN \
 FROM fedora:latest AS base
 COPY --from=base-builder / /
 # Set the environment
-ENV SHELL=/usr/bin/zsh
+ENV SHELL=/usr/bin/fish
 ENV SSH_AUTH_SOCK=/home/yacoob/.ssh/agent.sock
 ENV TERM=xterm-256color
 ENV TZ='Europe/Dublin'
 USER yacoob
 WORKDIR /home/yacoob
-ENTRYPOINT ["/usr/bin/zsh"]
+ENTRYPOINT ["/usr/bin/fish"]
 LABEL maintainer="yacoob@ftml.net"
 LABEL prompt="podman run -it --rm --userns=keep-id:uid=1000,gid=1000 --security-opt label=disable -v /home/yacoob/.ssh:/home/yacoob/.ssh:ro IMAGE"
 # Add devcontainer options
