@@ -5,3 +5,9 @@
 .config/wezterm
 
 .config/zellij
+
+.zcompdumps/
+.zsh/
+.zshenv
+
+.config/jjui/config.toml
