@@ -1,7 +1,3 @@
-.config/chezmoi/chezmoi.yaml
-
-.config/nvim/lua/plugins/hunk.lua
-
 .config/wezterm
 
 .config/zellij
