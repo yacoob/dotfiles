@@ -2,6 +2,10 @@
 #
 umask 027
 
+# path
+#
+fish_add_path --path /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/.local/bin
+
 # locale
 #
 set -gx LANG en_IE.UTF-8
