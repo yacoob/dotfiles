@@ -1,5 +1,0 @@
-case ${KEYMAP} in
-  (vicmd) _CMD_MODE=1;;
-  (*)     _CMD_MODE=;;
-esac
-zle reset-prompt
