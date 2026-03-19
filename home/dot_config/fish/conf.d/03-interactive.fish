@@ -18,6 +18,7 @@ abbr --add ll 'ls -lh'
 abbr --add lla 'ls -lhA'
 abbr --add k kubectl
 abbr --add refish 'exec fish'
+abbr --add update-all 'sudo dnf update -y && brew update && brew upgrade && flatpak update -y && chezmoi update && mise up'
 
 abbr --add L --position anywhere --set-cursor "% | less"
 
