@@ -25,4 +25,3 @@ abbr --add L --position anywhere --set-cursor "% | less"
 # aliases
 #
 alias apt-list-backports 'aptitude search -t (lsb_release -sc)-backports -F "%p %v -> %V" "~U ~Abackports"'
-alias beets-container 'podman compose -f ~/.local/bin/beets/compose.yaml pull --policy=always && podman compose -f ~/.local/bin/beets/compose.yaml run --rm beets'
