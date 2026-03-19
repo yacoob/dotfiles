@@ -19,6 +19,8 @@ abbr --add lla 'ls -lhA'
 abbr --add k kubectl
 abbr --add refish 'exec fish'
 
+abbr --add L --position anywhere --set-cursor "% | less"
+
 # aliases
 #
 alias apt-list-backports 'aptitude search -t (lsb_release -sc)-backports -F "%p %v -> %V" "~U ~Abackports"'
