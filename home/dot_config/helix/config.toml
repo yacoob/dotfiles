@@ -1,0 +1,35 @@
+theme = "tokyonight"
+
+# editor options
+[editor]
+bufferline = "multiple"
+cursorline = true
+line-number = "relative"
+popup-border = "all"
+trim-trailing-whitespace = true
+
+[editor.lsp]
+display-inlay-hints = true
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.whitespace.render]
+tab = "all"
+
+[editor.indent-guides]
+render = true
+character = "⸽"
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+
+# keybindings
+[keys.insert]
+j = { k = "normal_mode"}
+
+[keys.normal]
+"ret" = "goto_word"
+
+[keys.normal."space"]
+o = "file_picker_in_current_buffer_directory"
