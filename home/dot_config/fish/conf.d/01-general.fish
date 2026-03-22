@@ -4,7 +4,7 @@ umask 027
 
 # path
 #
-fish_add_path --path /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/.local/bin
+fish_add_path --path /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin ~/.local/bin
 
 # locale
 #
@@ -18,7 +18,7 @@ set -gx TZ Europe/Dublin
 #
 set -gx EMAIL "yacoob@ftml.net"
 set -gx HOMEBREW_NO_ANALYTICS 1
-set -gx LESS "-iSRM"
+set -gx LESS -iSRM
 set -gx LIBPROC_HIDE_KERNEL 1
 set -gx PIP_REQUIRE_VIRTUALENV true
 set -gx SHELL $(which fish)
