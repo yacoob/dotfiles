@@ -50,8 +50,8 @@ end
 
 # kubert
 if command -q kubert
-  abbr --add kctx 'kubert ctx'
-  abbr --add kns 'kubert ns'
+    abbr --add kctx 'kubert ctx'
+    abbr --add kns 'kubert ns'
 end
 
 # vi/vim/nvim
