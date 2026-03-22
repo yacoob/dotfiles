@@ -1,1 +1,10 @@
+data
+debug
+doc/tags
+foo.*
 lazy-lock.json
+lazyvim.json
+*.log
+.repro
+.tests
+tt.*
