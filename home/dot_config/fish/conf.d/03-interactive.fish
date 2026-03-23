@@ -21,6 +21,9 @@ abbr --add refish 'exec fish'
 abbr --add update-all 'sudo dnf update -y && brew update && brew upgrade && flatpak update -y && chezmoi update && mise up'
 
 abbr --add L --position anywhere --set-cursor "% | less"
+abbr --add G --position anywhere "| grep -E"
+abbr --add R --position anywhere "| rg"
+abbr --add EO --position anywhere "2>&1 |"
 
 # aliases
 #
