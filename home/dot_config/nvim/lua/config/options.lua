@@ -28,3 +28,7 @@ vim.g.loaded_node_provider = 0
 
 -- lazyvim settings
 vim.g.root_spec = { "lsp", { ".jj", ".git", "lua" }, "cwd" }
+
+-- lazyvim top-level lsp preferences
+vim.g.lazyvim_python_lsp = "ty"
+vim.g.lazyvim_python_ruff = "ruff"
