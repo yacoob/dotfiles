@@ -16,6 +16,7 @@ set -gx TZ Europe/Dublin
 
 # environment
 #
+set -gx CLAUDE_CODE_NO_FLICKER 1
 set -gx EMAIL "yacoob@ftml.net"
 set -gx HOMEBREW_NO_ANALYTICS 1
 set -gx LESS -iSRM
