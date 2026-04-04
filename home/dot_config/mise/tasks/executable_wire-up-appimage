@@ -44,6 +44,7 @@ trap 'rm -rf "${TMPDIR}"' EXIT
 cd "${TMPDIR}"
 "${APPIMAGE}" --appimage-extract '*.desktop' &>/dev/null || true
 "${APPIMAGE}" --appimage-extract '*.png' &>/dev/null || true
+"${APPIMAGE}" --appimage-extract '*.svg' &>/dev/null || true
 "${APPIMAGE}" --appimage-extract 'usr/share/icons/*' &>/dev/null || true
 
 # Get app name from binary
@@ -56,8 +57,13 @@ mkdir -p "${ICON_DIR}" "${DESKTOP_DIR}"
 
 DESKTOP_NAME="${2:-mise-${APP_NAME}}"
 ICON_NAME="${DESKTOP_NAME}"
-if ! cp -fL "${TMPDIR}/squashfs-root"/*.png "${ICON_DIR}/${ICON_NAME}.png" 2>/dev/null; then
+if cp -fL "${TMPDIR}/squashfs-root"/*.svg "${ICON_DIR}/${ICON_NAME}.svg" 2>/dev/null; then
+  ICON_EXT=svg
+elif cp -fL "${TMPDIR}/squashfs-root"/*.png "${ICON_DIR}/${ICON_NAME}.png" 2>/dev/null; then
+  ICON_EXT=png
+else
   echo "warning: no icon found" >&2
+  ICON_EXT=""
 fi
 
 # Generate .desktop file
@@ -80,5 +86,7 @@ if [[ -n "${ORIG_DESKTOP}" ]]; then
   grep -E '^(Name|GenericName|Categories|Keywords|Comment)=.+' "${ORIG_DESKTOP}" >>"${DESKTOP_FILE}" 2>/dev/null || true
 fi
 
-echo "installed icon to ${ICON_DIR}/${ICON_NAME}.png"
+if [[ -n "${ICON_EXT}" ]]; then
+  echo "installed icon to ${ICON_DIR}/${ICON_NAME}.${ICON_EXT}"
+fi
 echo "installed desktop file to ${DESKTOP_FILE}"
