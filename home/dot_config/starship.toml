@@ -38,9 +38,9 @@ format = '[$user]($style)'
 style_user = 'yellow'
 
 [battery]
-full_symbol = '󱈏 '
+full_symbol = '󰁹 '
 discharging_symbol = '󱟞 '
-charging_symbol = '󰢝 '
+charging_symbol = '󰂄 '
 empty_symbol = '󱉞 '
 unknown_symbol = '󰂑 '
 
