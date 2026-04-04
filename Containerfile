@@ -15,39 +15,40 @@ RUN groupadd -g ${GID} yacoob \
 
 # Install packages
 RUN \
-  dnf copr enable -y atim/starship \
-  && dnf5 install --setopt=install_weak_deps=False -y \
-    chezmoi \
-    curl \
-    fd-find \
-    fish \
-    fzf \
-    git \
-    procps \
-    psmisc \
-    ripgrep \
-    starship \
-    sudo \
-    util-linux-script \
-    which \
+  dnf5 install --setopt=install_weak_deps=False -y \
+  chezmoi \
+  curl \
+  fd-find \
+  fish \
+  fzf \
+  git \
+  procps \
+  psmisc \
+  ripgrep \
+  sudo \
+  util-linux-script \
+  which \
   && dnf5 clean all
+
+# Install extra binaries
+RUN curl -sS https://starship.rs/install.sh | sh
 
 # remove unused locales
 RUN \
-    find /usr/share/locale -maxdepth 1 -type d \
-    ! -name 'en' \
-    ! -name 'en_IE' \
-    ! -name 'pl' \
-    ! -name 'pl_PL' \
-    -exec rm -rf {} +
+  find /usr/share/locale -maxdepth 1 -type d \
+  ! -name 'en' \
+  ! -name 'en_IE' \
+  ! -name 'pl' \
+  ! -name 'pl_PL' \
+  -exec rm -rf {} +
 
 # install chezmoi_modify_manager system-wide - it's needed for
 # a successful chezmoi run
 RUN \
   TAG=$(curl -sI https://github.com/VorpalBlade/chezmoi_modify_manager/releases/latest \
-        | grep -i ^location \
-        | sed 's|.*/tag/||' \
-        | tr -d '[:space:]') \
+  | grep -i ^location \
+  | sed 's|.*/tag/||' \
+  | tr -d '[:space:]') \
   && curl -sL "https://github.com/VorpalBlade/chezmoi_modify_manager/releases/download/${TAG}/chezmoi_modify_manager-${TAG}-x86_64-unknown-linux-gnu.tar.gz" \
   | tar -xzC /usr/local/bin chezmoi_modify_manager
 
@@ -69,29 +70,28 @@ USER root
 
 # Add more packages
 RUN \
-  dnf5 copr enable -y jdxcode/mise \
-  && dnf5 install --setopt=install_weak_deps=False -y \
-    bat \
-    git-credential-oauth \
-    git-delta \
-    just \
-    mise \
-    neovim \
-    nodejs-npm \
-    tealdeer \
-    unzip \
-    util-linux \
+  dnf5 install --setopt=install_weak_deps=False -y \
+  bat \
+  git-credential-oauth \
+  git-delta \
+  just \
+  neovim \
+  nodejs-npm \
+  unzip \
+  util-linux \
   && dnf5 clean all
+
+# Install extra binaries
+RUN curl https://mise.run | sh
 
 # install some binaries via mise
 USER yacoob
 WORKDIR /home/yacoob
 RUN \
-    mise use -g \
-      jj \
-      jjui \
-      lazygit \
-    && mise cache prune
+  mise use -g \
+  jj \
+  jjui \
+  && mise cache prune
 
 
 
@@ -113,7 +113,7 @@ LABEL devcontainer.metadata='{ \
   "remoteUser": "yacoob", \
   "containerUser": "yacoob", \
   "securityOpt": ["label=disable"] \
-}'
+  }'
 
 
 
