@@ -1,0 +1,5 @@
+[tools."github:neovide/neovide"]
+version = "latest"
+asset_pattern = "*.AppImage"
+bin = "neovide"
+postinstall = "~/.config/mise/tasks/wire-up-appimage github-neovide-neovide neovide"

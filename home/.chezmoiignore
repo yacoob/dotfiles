@@ -27,6 +27,10 @@
 .config/mise/conf.d/lm_studio.toml
 {{- end }}
 
+{{ if not .install.neovide -}}
+.config/mise/conf.d/neovide.toml
+{{- end }}
+
 {{ if not .install.obsidian -}}
 .config/mise/conf.d/obsidian.toml
 {{- end }}
