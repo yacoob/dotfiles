@@ -82,13 +82,13 @@ RUN \
   && dnf5 clean all
 
 # Install extra binaries
-RUN curl https://mise.run | sh
 
 # install some binaries via mise
 USER yacoob
 WORKDIR /home/yacoob
+RUN curl https://mise.run | sh
 RUN \
-  mise use -g \
+  ./.local/bin/mise use -g \
   jj \
   jjui \
   && mise cache prune
