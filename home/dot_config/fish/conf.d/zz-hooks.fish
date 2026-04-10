@@ -12,11 +12,6 @@ if command -q atuin
     atuin init fish --disable-up-arrow | source
 end
 
-# mise chdir hooks
-if command -q mise
-    mise activate fish | source
-end
-
 # prompt via starship
 if command -q starship
     starship init fish | source

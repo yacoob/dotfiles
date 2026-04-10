@@ -1,9 +1,7 @@
-.config/wezterm
-
-.config/zellij
-
 .zcompdumps/
 .zsh/
 .zshenv
 
 .config/jjui/config.toml
+
+.config/fish/conf.d/02-homebrew.fish
