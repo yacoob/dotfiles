@@ -31,7 +31,7 @@ RUN \
   && dnf5 clean all
 
 # Install extra binaries
-RUN curl -sS https://starship.rs/install.sh | sh
+RUN curl -sS https://starship.rs/install.sh | sh -s -- --yes
 
 # remove unused locales
 RUN \
