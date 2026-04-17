@@ -22,6 +22,6 @@ set -gx HOMEBREW_NO_ANALYTICS 1
 set -gx LESS -iSRM
 set -gx LIBPROC_HIDE_KERNEL 1
 set -gx PIP_REQUIRE_VIRTUALENV true
-set -gx SHELL $(which fish)
+set -gx SHELL $(type -P fish)
 set -gx SSH_AUTH_SOCK ~/.1password/agent.sock
 set -gx TMPDIR /tmp
