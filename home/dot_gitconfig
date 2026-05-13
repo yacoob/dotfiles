@@ -14,7 +14,6 @@
 [init]
   defaultBranch = main
 [core]
-  excludesfile = ~/.gitignore
   editor = nvim
   fsmonitor = true
   pager = delta
