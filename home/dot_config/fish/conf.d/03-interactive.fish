@@ -20,10 +20,12 @@ abbr --add k kubectl
 abbr --add refish 'exec fish'
 abbr --add update-all 'sudo dnf update --refresh --assumeyes && brew update && brew upgrade && flatpak update -y && chezmoi update && mise up'
 
+abbr --add B --position anywhere "| bat -l yaml"
+abbr --add EO --position anywhere "2>&1 "
 abbr --add L --position anywhere --set-cursor "% | less"
 abbr --add G --position anywhere "| grep -E"
 abbr --add R --position anywhere "| rg"
-abbr --add EO --position anywhere "2>&1 "
+abbr --add W --position anywhere "| wl-copy"
 
 # aliases
 #
