@@ -17,6 +17,11 @@
 .zsh/completion/_chezmoi_modify_manager
 {{- end }}
 
+# lazyvim
+{{ if not .install.lazyvim -}}
+.config/nvim
+{{- end }}
+
 # mise installs
 #
 {{ if not .install.feishin -}}
