@@ -20,11 +20,13 @@ guardedMode = {{ if stat (joinPath .chezmoi.homeDir ".config/chezmoi/guarded-mod
 {{ $install := dig "install" dict . -}}
 {{ if stdinIsATTY -}}
 feishin = {{ promptBoolOnce $install "feishin" "Install feishin" }}
+lazyvim = {{ promptBoolOnce $install "lazyvim" "Install lazyvim" }}
 lm_studio = {{ promptBoolOnce $install "lm_studio" "Install lm_studio" }}
 neovide = {{ promptBoolOnce $install "neovide" "Install neovide" }}
 obsidian = {{ promptBoolOnce $install "obsidian" "Install obsidian" }}
 {{ else -}}
 feishin = {{ get $install "feishin" | default false }}
+lazyvim = {{ get $install "lazyvim" | default false }}
 lm_studio = {{ get $install "lm_studio" | default false }}
 neovide = {{ get $install "neovide" | default false }}
 obsidian = {{ get $install "obsidian" | default false }}
