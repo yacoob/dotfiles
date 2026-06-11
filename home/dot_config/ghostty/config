@@ -6,6 +6,11 @@ gtk-wide-tabs = false
 gtk-toolbar-style = flat
 
 
+# io pressure reported (incorrectly?) with io_uring
+# https://github.com/ghostty-org/ghostty/discussions/3224
+async-backend = epoll
+
+
 # behaviour
 bell-features = border
 command = fish -l
