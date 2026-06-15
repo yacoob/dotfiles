@@ -18,7 +18,7 @@ abbr --add ll 'ls -lh'
 abbr --add lla 'ls -lhA'
 abbr --add k kubectl
 abbr --add refish 'exec fish'
-abbr --add update-all 'sudo dnf update --refresh --assumeyes && brew update && brew upgrade && flatpak update -y && chezmoi update && mise up'
+abbr --add update-all 'sudo dnf update --refresh --assumeyes && brew update && brew upgrade -y && flatpak update -y && chezmoi update && mise up'
 
 abbr --add B --position anywhere "| bat -l yaml"
 abbr --add EO --position anywhere "2>&1 "
