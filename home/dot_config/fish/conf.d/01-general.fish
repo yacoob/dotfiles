@@ -16,6 +16,10 @@ set -gx TZ Europe/Dublin
 
 # environment
 #
+if not set -q SSH_AUTH_SOCK
+    set -gx SSH_AUTH_SOCK ~/.1password/agent.sock
+end
+
 set -gx CLAUDE_CODE_NO_FLICKER 1
 set -gx EMAIL "yacoob@ftml.net"
 set -gx HOMEBREW_NO_ANALYTICS 1
@@ -23,5 +27,4 @@ set -gx LESS -iSRM
 set -gx LIBPROC_HIDE_KERNEL 1
 set -gx PIP_REQUIRE_VIRTUALENV true
 set -gx SHELL $(type -P fish)
-set -gx SSH_AUTH_SOCK ~/.1password/agent.sock
 set -gx TMPDIR /tmp
